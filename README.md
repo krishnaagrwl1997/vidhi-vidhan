@@ -9,13 +9,13 @@ Vidhi-Vidhan helps families with festivals and life events: what to prepare, whe
 | Path | What it is |
 | --- | --- |
 | `index.html` | Soft-launch website in English, Hindi, Kannada, Tamil and Telugu, with an interactive puja demo |
-| `prototype/` | The app preview visitors open from "Try the app": Deepavali plan, samagri, guided puja, family notes, life events. Everything a visitor does stays in their own browser. |
+| `app/` | The app preview visitors open from "Try the app": Deepavali plan, samagri, guided puja, family notes, life events. Everything a visitor does stays in their own browser. |
 
 Both are single static HTML files with no build step.
 
 ## Hosting with GitHub Pages
 
-Settings → Pages → Source: "Deploy from a branch" → Branch: `main`, folder `/ (root)`. The site appears at `https://<username>.github.io/vidhi-vidhan/` and the prototype at `/prototype/`.
+Settings → Pages → Source: "Deploy from a branch" → Branch: `main`, folder `/ (root)`. The site appears at `https://<username>.github.io/vidhi-vidhan/` and the app preview at `/app/`.
 
 ## Sign-up form
 
