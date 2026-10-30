@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Vidhi-Vidhan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Every ritual, done your family's way. Festival plans, samagri lists and step-by-step pujas in your family's own tradition.">
+<meta property="og:title" content="Vidhi-Vidhan: every ritual, done your family's way">
+<meta property="og:description" content="Festival plans, samagri lists and step-by-step pujas in your family's tradition. Join the early list.">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gotu&family=Hind:wght@400;500;600&family=Noto+Sans+Kannada:wght@400;600&display=swap">
+<style>
+/* Layout: full-width bands over a 1080px column. Hero: toran garland across the top, text left, phone right on a faint kolam. Bands alternate ground / surface / night, ending on a leaf-green call to action. */
+:root{
+  --ground:#F2F4EC; --surface:#FFFFFF; --ink:#1A211C; --muted:#56635A; --line:#D7DDD0;
+  --leaf:#2E6A3E; --leaf-soft:#E0ECDD; --haldi:#C98A06; --haldi-soft:#FAEFCF; --kumkum:#AE1530; --kumkum-ink:#FFFFFF;
+  --night:#16110B; --brass:#E9B850; --night-ink:#F4EBDD; --night-muted:#B9A98F;
+  --bubble-in:#FFFFFF; --bubble-out:#DCEFD6; --kolam:#2E6A3E;
+  --display:"Gotu","Hind",Georgia,serif; --body:"Hind",system-ui,sans-serif;
+  --kn:"Noto Sans Kannada","Hind",sans-serif; --ta:"Noto Sans Tamil","Hind",sans-serif; --te:"Noto Sans Telugu","Hind",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --ground:#101410; --surface:#191F1A; --ink:#E8ECE4; --muted:#9DA89F; --line:#29312B;
+  --leaf:#7DC28F; --leaf-soft:#1D3124; --haldi:#F0BA3D; --haldi-soft:#3A2D10; --kumkum:#E5506A; --kumkum-ink:#FFFFFF;
+  --bubble-in:#1F2620; --bubble-out:#21402A; --kolam:#7DC28F; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --ground:#101410; --surface:#191F1A; --ink:#E8ECE4; --muted:#9DA89F; --line:#29312B;
+  --leaf:#7DC28F; --leaf-soft:#1D3124; --haldi:#F0BA3D; --haldi-soft:#3A2D10; --kumkum:#E5506A; --kumkum-ink:#FFFFFF;
+  --bubble-in:#1F2620; --bubble-out:#21402A; --kolam:#7DC28F; color-scheme:dark}
+html[lang="kn"]{--display:"Noto Serif Kannada","Noto Sans Kannada",serif;--body:"Noto Sans Kannada","Hind",sans-serif}
+html[lang="ta"]{--display:"Noto Serif Tamil","Noto Sans Tamil",serif;--body:"Noto Sans Tamil","Hind",sans-serif}
+html[lang="te"]{--display:"Noto Serif Telugu","Noto Sans Telugu",serif;--body:"Noto Sans Telugu","Hind",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ground)}
+.in{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.18;text-wrap:balance}
+h1{font-size:clamp(2.4rem,6.2vw,4.4rem);letter-spacing:-.01em}
+html[lang="kn"] h1,html[lang="ta"] h1,html[lang="te"] h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.3}
+html[lang="ta"] h2{font-size:clamp(1.5rem,3vw,2.1rem)}
+h2{font-size:clamp(1.8rem,3.6vw,2.6rem)}
+h3{font-size:1.18rem;line-height:1.35}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--haldi);outline-offset:3px;border-radius:6px}
+.eyebrow{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+html:not([lang="en"]) .eyebrow{letter-spacing:.02em;text-transform:none;font-size:.85rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:14px 22px;font-weight:600;font-size:1rem;text-decoration:none;border:0;cursor:pointer;font-family:inherit;line-height:1.25}
+.btn.primary{background:var(--kumkum);color:var(--kumkum-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.quiet{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn.quiet:hover{border-color:var(--ink)}
+
+/* Nav */
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:8;background:color-mix(in srgb,var(--ground) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .2s}
+nav.top.scrolled{border-bottom-color:var(--line)}
+nav.top .in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.mark .w{font-family:"Gotu","Hind",serif;font-size:1.3rem;line-height:1.1;display:block}
+.mark .dv{font-size:.8rem;color:var(--muted);line-height:1.2;display:block}
+.navr{display:flex;align-items:center;gap:10px}
+.lang{position:relative}
+.lang select{appearance:none;-webkit-appearance:none;font:inherit;font-size:.9rem;font-weight:600;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:8px 32px 8px 34px;cursor:pointer;font-family:"Hind","Noto Sans Kannada","Noto Sans Tamil","Noto Sans Telugu",sans-serif}
+.lang svg{position:absolute;pointer-events:none;top:50%;transform:translateY(-50%)}
+.lang .g{left:11px}.lang .c{right:11px}
+nav.top .btn{padding:10px 16px;font-size:.92rem}
+@media (max-width:560px){nav.top .btn{display:none}.mark .w{font-size:1.15rem}}
+
+/* Hero */
+.hero{position:relative;overflow:hidden}
+.toran{display:block;width:100%;height:64px}
+.hero .in{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;align-items:center;padding-block:16px 64px}
+@media (max-width:860px){.hero .in{grid-template-columns:1fr;gap:36px;padding-block:8px 48px}}
+.kicker{font-family:var(--display);color:var(--haldi);font-size:1.1rem;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.kicker::after{content:"";height:1px;width:48px;background:var(--haldi);opacity:.6}
+.hero h1 em{font-style:normal;color:var(--kumkum)}
+.hero .sub{font-size:1.15rem;color:var(--muted);max-width:34em;margin-top:20px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero .note{margin-top:16px;font-size:.88rem;color:var(--muted)}
+.stage{position:relative;justify-self:center;width:min(340px,100%);display:grid;place-items:center}
+.kolam{position:absolute;inset:-30px -40px;width:calc(100% + 80px);height:calc(100% + 60px);color:var(--kolam);opacity:.18;pointer-events:none}
+
+/* Phone */
+.phone{position:relative;width:min(290px,100%);aspect-ratio:9/18.5;background:#0B0805;border-radius:42px;padding:10px;box-shadow:0 30px 60px -20px rgba(30,20,5,.45),0 0 0 1px rgba(0,0,0,.2);animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.screen{height:100%;border-radius:33px;background:radial-gradient(120% 60% at 50% 105%,#4A3415 0%,var(--night) 62%);color:var(--night-ink);padding:24px 18px 18px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.pbar{display:flex;gap:3px}.pbar i{flex:1;height:3px;border-radius:3px;background:rgba(233,184,80,.22)}.pbar i.on{background:var(--brass)}
+.screen .st{font-size:.72rem;color:var(--brass)}
+.screen h4{font-family:var(--display);font-weight:400;font-size:1.35rem;margin:0;color:#FFF5E0;line-height:1.25}
+.screen .do{font-size:.8rem;line-height:1.5}
+.mantra{border:1px solid rgba(233,184,80,.35);background:rgba(233,184,80,.06);border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:2px}
+.mantra .l{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brass)}
+.mantra .s{font-size:1rem;color:#FFF1CF;line-height:1.5}
+.mantra .t{font-size:.72rem;font-style:italic;color:var(--night-muted)}
+.fam{background:rgba(240,104,126,.14);border-radius:10px;padding:8px 10px;font-size:.74rem;line-height:1.45}
+.fam b{display:block;color:#F7B3BE;font-size:.68rem}
+.screen .nx{margin-top:auto;background:var(--brass);color:#2A1E07;border-radius:999px;text-align:center;padding:10px;font-weight:600;font-size:.85rem}
+.flame{transform-origin:50% 100%;animation:flick 2.6s ease-in-out infinite}
+@keyframes flick{0%,100%{transform:scaleY(1) rotate(-1deg)}50%{transform:scaleY(1.08) rotate(1.5deg)}}
+
+/* Ticker */
+.ticker{border-block:1px solid var(--line);background:var(--surface);overflow:hidden;white-space:nowrap}
+.ticker .track{display:inline-flex;gap:28px;padding-block:14px;animation:tick 60s linear infinite;font-family:"Gotu","Hind",serif;font-size:1.05rem;color:var(--muted)}
+.ticker .track span{display:inline-flex;align-items:center;gap:28px}
+.ticker .track span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--haldi)}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){.flame,.phone,.ticker .track{animation:none}.ticker{white-space:normal}.ticker .track{flex-wrap:wrap;justify-content:center;padding-inline:20px}}
+
+/* Sections */
+section.band{padding-block:84px}
+@media (max-width:700px){section.band{padding-block:60px}}
+.sec-head{display:flex;flex-direction:column;gap:12px;max-width:42em;margin-bottom:36px}
+.sec-head p.lead{color:var(--muted);font-size:1.08rem}
+
+/* Problem */
+.amma{background:var(--surface);border-bottom:1px solid var(--line)}
+.amma .in{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:center}
+@media (max-width:860px){.amma .in{grid-template-columns:1fr;gap:32px}}
+.chat{background:var(--ground);border:1px solid var(--line);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:8px;max-width:440px;width:100%;justify-self:center}
+.chat .hd{display:flex;align-items:center;gap:10px;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.chat .av{width:34px;height:34px;border-radius:50%;background:var(--haldi-soft);display:grid;place-items:center;font-weight:600;font-size:.85rem}
+.chat .hd b{display:block;font-size:.95rem;line-height:1.2}
+.chat .hd span{font-size:.75rem;color:var(--muted)}
+.msg{max-width:84%;padding:8px 12px 6px;border-radius:14px;font-size:.92rem;line-height:1.45}
+.msg small{display:block;text-align:right;font-size:.66rem;color:var(--muted);margin-top:2px;font-variant-numeric:tabular-nums}
+.msg.out{align-self:flex-end;background:var(--bubble-out);border-bottom-right-radius:4px}
+.msg.in{align-self:flex-start;background:var(--bubble-in);border:1px solid var(--line);border-bottom-left-radius:4px}
+.msg.voice{display:flex;align-items:center;gap:8px;min-width:200px}
+.msg.voice .p{width:26px;height:26px;border-radius:50%;background:var(--leaf);display:grid;place-items:center;flex:none}
+.msg.voice .wv{flex:1;display:flex;gap:2px;align-items:center;height:18px}
+.msg.voice .wv i{flex:1;background:var(--muted);opacity:.55;border-radius:2px}
+.amma .copy{display:flex;flex-direction:column;gap:18px}
+.amma .copy p{color:var(--muted);font-size:1.08rem;max-width:32em}
+.amma .copy p strong{color:var(--ink);font-weight:600}
+
+/* Demo */
+.demo{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:40px;align-items:start}
+@media (max-width:860px){.demo{grid-template-columns:1fr;gap:28px}}
+.seg{display:inline-flex;background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:4px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;border-radius:999px;padding:9px 18px;font:inherit;font-weight:600;color:var(--muted);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--leaf);color:var(--surface)}
+.dlabel{font-size:.85rem;font-weight:600;color:var(--muted);margin-bottom:8px;display:block}
+.dpanel{background:radial-gradient(120% 80% at 50% 110%,#4A3415 0%,var(--night) 60%);color:var(--night-ink);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:14px;min-height:430px;color-scheme:dark}
+.dpanel .st{font-size:.82rem;color:var(--brass)}
+.dpanel h3{font-size:1.6rem;color:#FFF5E0}
+.dpanel .do{font-size:1.02rem;line-height:1.6}
+.dpanel .mantra .s{font-size:1.25rem}
+.dpanel .why{color:var(--night-muted);font-size:.95rem;border-left:2px solid #9C7B3A;padding-left:12px}
+.dpanel .why b{color:var(--brass);font-weight:600}
+.dpanel .tip{background:rgba(233,184,80,.12);border-radius:10px;padding:8px 12px;font-size:.88rem}
+.dpanel .fam{font-size:.9rem}
+.dpanel .fam b{font-size:.75rem}
+.dnav{display:grid;grid-template-columns:1fr 2fr;gap:10px;margin-top:auto}
+.dnav button{border:0;border-radius:999px;padding:13px;font:inherit;font-weight:600;cursor:pointer}
+.dnav .b{background:rgba(255,255,255,.08);color:var(--night-ink)}
+.dnav .b[disabled]{opacity:.35;cursor:default}
+.dnav .n{background:var(--brass);color:#2A1E07}
+.addnote{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.addnote .row{display:flex;gap:8px}
+.addnote input{flex:1;min-width:0;font:inherit;font-size:.92rem;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:10px 12px}
+.addnote button{border:0;border-radius:12px;padding:10px 14px;font:inherit;font-weight:600;background:var(--leaf);color:var(--surface);cursor:pointer;white-space:nowrap}
+.addnote .linkbtn,.linkbtn{background:none;border:0;padding:6px 0;font:inherit;font-weight:600;color:var(--leaf);cursor:pointer;text-align:left;align-self:flex-start;border-radius:0}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+@media (max-width:820px){.steps{grid-template-columns:1fr}}
+.step-c{display:flex;flex-direction:column;gap:10px;padding-top:20px;border-top:2px solid var(--ink)}
+.step-c .n{font-size:.92rem;color:var(--kumkum);font-weight:600}
+.step-c p{color:var(--muted)}
+
+/* Night band */
+.night{background:radial-gradient(90% 120% at 80% 110%,#3F2C12 0%,var(--night) 58%);color:var(--night-ink);color-scheme:dark}
+.night .in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:center}
+@media (max-width:860px){.night .in{grid-template-columns:1fr;gap:36px}}
+.night .eyebrow{color:var(--brass)}
+.night h2{color:#FFF5E0}
+.night p.lead{color:var(--night-muted)}
+.night ul{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:16px}
+.night li{display:grid;grid-template-columns:22px 1fr;gap:12px}
+.night li svg{margin-top:5px}
+.night li b{color:#FFF5E0;font-weight:600}
+.night li span{color:var(--night-muted)}
+.lamps{display:flex;justify-content:center;gap:clamp(8px,3vw,28px);align-items:flex-end}
+.night .in > *{min-width:0}
+.lamps{min-width:0}
+.lamps svg{opacity:.25;transition:opacity 1.2s ease;flex:0 1 auto;min-width:0;max-width:19%;height:auto}
+.lamps svg:nth-child(3){max-width:28%}
+.lamps.lit svg{opacity:1}
+.lamps.lit svg:nth-child(2){transition-delay:.25s}.lamps.lit svg:nth-child(3){transition-delay:.5s}.lamps.lit svg:nth-child(4){transition-delay:.75s}.lamps.lit svg:nth-child(5){transition-delay:1s}
+
+/* Features */
+.feats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+@media (max-width:860px){.feats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.feats{grid-template-columns:1fr}}
+.feat{background:var(--surface);padding:24px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.feat svg{width:28px;height:28px;color:var(--leaf)}
+.feat p{color:var(--muted);font-size:.96rem}
+
+/* Trust */
+.trust{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+@media (max-width:900px){.trust{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.trust{grid-template-columns:1fr}}
+.tcard{display:flex;flex-direction:column;gap:10px}
+.tcard .ic{width:44px;height:44px;border-radius:50%;background:var(--haldi-soft);display:grid;place-items:center;color:var(--ink)}
+.tcard p{color:var(--muted);font-size:.96rem}
+
+/* Roadmap */
+.tl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:820px){.tl{grid-template-columns:1fr}}
+.tl > div{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.tl .d{color:var(--kumkum);font-weight:600;font-size:.95rem}
+.tl p{color:var(--muted);font-size:.96rem}
+.tl > div.now{border-color:var(--leaf);box-shadow:inset 0 0 0 1px var(--leaf)}
+.tradline{margin-top:18px;color:var(--muted);font-size:.95rem}
+
+/* FAQ */
+.faq{display:flex;flex-direction:column;border-top:1px solid var(--line);max-width:780px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 40px 18px 0;font-weight:600;font-size:1.05rem;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:8px;top:50%;width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq details p{padding:0 0 18px;color:var(--muted);max-width:40em}
+
+/* CTA */
+.cta{background:var(--leaf);color:#F6F3E6;position:relative;overflow:hidden}
+.cta .in{display:flex;flex-direction:column;align-items:flex-start;gap:20px;padding-block:80px}
+.cta .eyebrow{color:#CFE3CF}
+.cta h2{color:#FFF8E6;max-width:18em}
+.cta p{color:#D6E6D3;max-width:36em;font-size:1.08rem}
+.cta .btn.light{background:#FFF8E6;color:#1A211C}
+.cta .share{display:flex;gap:16px;flex-wrap:wrap;font-size:.92rem;color:#D6E6D3}
+.cta .share a{color:#FFF8E6;font-weight:600}
+.cta .kolam2{position:absolute;right:-60px;bottom:-60px;width:360px;height:360px;color:#FFF8E6;opacity:.1;pointer-events:none}
+.pending{display:none;background:rgba(255,255,255,.12);border-radius:12px;padding:12px 16px;font-size:.95rem;max-width:36em}
+.pending.show{display:block}
+footer{padding-block:36px;font-size:.88rem;color:var(--muted)}
+footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+</style>
+
+<nav class="top" id="nav"><div class="in">
+  <a class="mark" href="#top" aria-label="Vidhi-Vidhan">
+    <svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path class="flame" d="M20 4c-4 6-5 9-5 11.5a5 5 0 0 0 10 0C25 13 24 10 20 4z" fill="#E9B850"/><path d="M7 21h26c-1.5 7.5-7 12-13 12S8.5 28.5 7 21z" fill="#AE1530"/><path d="M7 21h26" stroke="#C98A06" stroke-width="2" stroke-linecap="round"/></svg>
+    <span><span class="w">Vidhi-Vidhan</span><span class="dv" id="brandSub">विधि-विधान</span></span>
+  </a>
+  <div class="navr">
+    <label class="lang"><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)" data-i="lang">Language</span>
+      <svg class="g" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>
+      <select id="langSel"><option value="en">English</option><option value="hi">हिन्दी</option><option value="kn">ಕನ್ನಡ</option><option value="ta">தமிழ்</option><option value="te">తెలుగు</option></select>
+      <svg class="c" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 4.5L6 7.5 9 4.5"/></svg>
+    </label>
+    <a class="btn primary js-join" href="#join" data-i="nav_join">Join the early list</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top">
+  <svg class="toran" id="toran" viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"></svg>
+  <div class="in">
+    <div>
+      <p class="kicker" id="kicker">विधि-विधान से</p>
+      <h1 data-ih="hero_h1">Every ritual, done <em>your family's way.</em></h1>
+      <p class="sub" data-i="hero_sub"></p>
+      <div class="ctas">
+        <a class="btn primary js-join" href="#join" data-i="nav_join">Join the early list</a>
+        <a class="btn quiet" href="#try" data-i="hero_try">Try a puja</a>
+      </div>
+      <p class="note" data-i="hero_note"></p>
+    </div>
+    <div class="stage">
+      <svg class="kolam" id="kolam" viewBox="0 0 400 400" aria-hidden="true"></svg>
+      <div class="phone" role="img" id="phone" aria-label="">
+        <div class="screen">
+          <div class="pbar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+          <svg width="52" height="46" viewBox="0 0 120 105" style="align-self:center" aria-hidden="true"><defs><radialGradient id="hg" cx="50%" cy="60%" r="50%"><stop offset="0" stop-color="#FFD873" stop-opacity=".55"/><stop offset="1" stop-color="#FFD873" stop-opacity="0"/></radialGradient></defs><circle cx="60" cy="45" r="44" fill="url(#hg)"/><path class="flame" d="M60 18c-7 11-9 17-9 22a9 9 0 0 0 18 0c0-5-2-11-9-22z" fill="#FFC54D"/><path d="M18 62h84c-4 18-20 30-42 30S22 80 18 62z" fill="#B8742A"/></svg>
+          <div class="st" data-i="ph_step"></div>
+          <h4 data-i="s4_t"></h4>
+          <p class="do" data-i="s4_d"></p>
+          <div class="mantra"><span class="l" data-i="demo_say"></span><span class="s" id="phMantra"></span><span class="t">Om Shreem Mahalakshmyai namaha</span></div>
+          <div class="fam"><b data-i="ph_fam_b"></b><span data-i="ph_fam"></span></div>
+          <div class="nx" data-i="demo_next"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ticker" aria-hidden="true"><div class="track" id="track"></div></div>
+</header>
+
+<section class="band amma" aria-labelledby="amma-h"><div class="in">
+  <div class="chat">
+    <div class="hd"><div class="av">A</div><div><b data-i="chat_name"></b><span data-i="chat_online"></span></div></div>
+    <div class="msg out"><span data-i="chat1"></span><small>9:12 PM</small></div>
+    <div class="msg out"><span data-i="chat2"></span><small>9:12 PM</small></div>
+    <div class="msg out"><span data-i="chat3"></span><small>9:14 PM</small></div>
+    <div class="msg in voice"><span class="p"><svg width="10" height="10" viewBox="0 0 10 10" fill="#fff"><path d="M2 1l7 4-7 4z"/></svg></span><span class="wv" aria-hidden="true"><i style="height:6px"></i><i style="height:12px"></i><i style="height:16px"></i><i style="height:9px"></i><i style="height:14px"></i><i style="height:7px"></i><i style="height:15px"></i><i style="height:11px"></i><i style="height:5px"></i><i style="height:13px"></i><i style="height:8px"></i><i style="height:16px"></i><i style="height:10px"></i><i style="height:6px"></i></span><small>2:41</small></div>
+    <div class="msg out"><span data-i="chat4"></span><small>10:03 PM</small></div>
+  </div>
+  <div class="copy">
+    <p class="eyebrow" data-i="prob_kicker"></p>
+    <h2 id="amma-h" data-i="prob_h"></h2>
+    <p data-i="prob_p1"></p>
+    <p data-ih="prob_p2"></p>
+  </div>
+</div></section>
+
+<section class="band" id="try" aria-labelledby="try-h"><div class="in">
+  <div class="demo">
+    <div class="sec-head" style="margin-bottom:0">
+      <p class="eyebrow" data-i="demo_kicker"></p>
+      <h2 id="try-h" data-i="demo_h"></h2>
+      <p class="lead" data-i="demo_p"></p>
+      <div style="margin-top:8px"><span class="dlabel" data-i="demo_trad"></span>
+        <div class="seg" role="group" id="tradSeg"><button data-t="kn" data-i="t_kn"></button><button data-t="ta" data-i="t_ta"></button><button data-t="te" data-i="t_te"></button></div>
+      </div>
+    </div>
+    <div>
+      <div class="dpanel" id="dpanel" aria-live="polite"></div>
+      <div class="addnote" id="addnote"></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="band" style="padding-top:0" aria-labelledby="how-h"><div class="in">
+  <div class="sec-head"><p class="eyebrow" data-i="how_kicker"></p><h2 id="how-h" data-i="how_h"></h2></div>
+  <div class="steps">
+    <div class="step-c"><span class="n" data-i="how1_n"></span><h3 data-i="how1_t"></h3><p data-i="how1_p"></p></div>
+    <div class="step-c"><span class="n" data-i="how2_n"></span><h3 data-i="how2_t"></h3><p data-i="how2_p"></p></div>
+    <div class="step-c"><span class="n" data-i="how3_n"></span><h3 data-i="how3_t"></h3><p data-i="how3_p"></p></div>
+  </div>
+</div></section>
+
+<section class="band night" aria-labelledby="fam-h"><div class="in">
+  <div>
+    <p class="eyebrow" data-i="fam_kicker"></p>
+    <h2 id="fam-h" data-i="fam_h"></h2>
+    <p class="lead" style="margin-top:16px;font-size:1.08rem" data-i="fam_p"></p>
+    <ul>
+      <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#E9B850" stroke-width="2"><path d="M3 9.5l4 4L15 5"/></svg><div><b data-i="fam1_b"></b> <span data-i="fam1"></span></div></li>
+      <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#E9B850" stroke-width="2"><path d="M3 9.5l4 4L15 5"/></svg><div><b data-i="fam2_b"></b> <span data-i="fam2"></span></div></li>
+      <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#E9B850" stroke-width="2"><path d="M3 9.5l4 4L15 5"/></svg><div><b data-i="fam3_b"></b> <span data-i="fam3"></span></div></li>
+    </ul>
+  </div>
+  <div class="lamps" id="lamps" aria-hidden="true"></div>
+</div></section>
+
+<section class="band" aria-labelledby="feat-h"><div class="in">
+  <div class="sec-head"><p class="eyebrow" data-i="feat_kicker"></p><h2 id="feat-h" data-i="feat_h"></h2></div>
+  <div class="feats">
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><h3 data-i="f1_t"></h3><p data-i="f1_p"></p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg><h3 data-i="f2_t"></h3><p data-i="f2_p"></p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11l8-6 8 6v9H4z"/><path d="M10 20v-5h4v5"/></svg><h3 data-i="f3_t"></h3><p data-i="f3_p"></p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.3"/><path d="M3 20c.5-3.5 3-5.5 6-5.5s5.5 2 6 5.5"/></svg><h3 data-i="f4_t"></h3><p data-i="f4_p"></p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 14a7 7 0 1 1-8-10 6 6 0 0 0 8 10z"/></svg><h3 data-i="f5_t"></h3><p data-i="f5_p"></p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg><h3 data-i="f6_t"></h3><p data-i="f6_p"></p></div>
+  </div>
+</div></section>
+
+<section class="band" style="padding-top:0" aria-labelledby="trust-h"><div class="in">
+  <div class="sec-head"><p class="eyebrow" data-i="trust_kicker"></p><h2 id="trust-h" data-i="trust_h"></h2></div>
+  <div class="trust">
+    <div class="tcard"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span><h3 data-i="tr1_t"></h3><p data-i="tr1_p"></p></div>
+    <div class="tcard"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="7.5" height="14" rx="2"/><rect x="13.5" y="5" width="7.5" height="14" rx="2"/></svg></span><h3 data-i="tr2_t"></h3><p data-i="tr2_p"></p></div>
+    <div class="tcard"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 4c-2 3-3 4.5-3 6.5a3 3 0 0 0 6 0C15 8.5 14 7 12 4z"/><path d="M5 15h14l-2 5H7z"/></svg></span><h3 data-i="tr3_t"></h3><p data-i="tr3_p"></p></div>
+    <div class="tcard"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span><h3 data-i="tr4_t"></h3><p data-i="tr4_p"></p></div>
+  </div>
+</div></section>
+
+<section class="band" style="padding-top:0" aria-labelledby="when-h"><div class="in">
+  <div class="sec-head"><p class="eyebrow" data-i="road_kicker"></p><h2 id="when-h" data-i="road_h"></h2></div>
+  <div class="tl">
+    <div class="now"><span class="d" data-i="r1_d"></span><h3 data-i="r1_t"></h3><p data-i="r1_p"></p></div>
+    <div><span class="d" data-i="r2_d"></span><h3 data-i="r2_t"></h3><p data-i="r2_p"></p></div>
+    <div><span class="d" data-i="r3_d"></span><h3 data-i="r3_t"></h3><p data-i="r3_p"></p></div>
+  </div>
+  <p class="tradline" data-i="trad_line"></p>
+</div></section>
+
+<section class="band" style="padding-top:0" aria-labelledby="faq-h"><div class="in">
+  <div class="sec-head"><p class="eyebrow" data-i="faq_kicker"></p><h2 id="faq-h" data-i="faq_h"></h2></div>
+  <div class="faq" id="faq"></div>
+</div></section>
+
+<section class="cta" id="join" aria-labelledby="join-h">
+  <svg class="kolam2" id="kolam2" viewBox="0 0 400 400" aria-hidden="true"></svg>
+  <div class="in">
+    <p class="eyebrow" data-i="cta_kicker"></p>
+    <h2 id="join-h" data-i="cta_h"></h2>
+    <p data-i="cta_p"></p>
+    <a class="btn light js-form" href="#join" data-i="nav_join"></a>
+    <div class="pending" id="pending" role="status" data-i="cta_pending"></div>
+    <div class="share"><span data-i="share_lead"></span>
+      <a id="shareLi" href="#" target="_blank" rel="noopener" data-i="share_li"></a>
+      <a id="shareX" href="#" target="_blank" rel="noopener" data-i="share_x"></a>
+      <a id="shareWa" href="#" target="_blank" rel="noopener" data-i="share_wa"></a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="in"><span>Vidhi-Vidhan · <span id="footBrand">विधि-विधान</span> · <span data-i="foot1"></span></span><span data-i="foot2"></span></div></footer>
+
+<script>
+/* Paste the Google Form link here. Until then, the join button shows a "sign-ups open soon" note. */
+const FORM_URL = "";
+
+const BRAND = {en:"विधि-विधान", hi:"विधि-विधान", kn:"ವಿಧಿ-ವಿಧಾನ", ta:"விதி-விதானம்", te:"విధి-విధానం"};
+const KICK = {en:"विधि-विधान से", hi:"विधि-विधान से", kn:"ವಿಧಿ-ವಿಧಾನದಂತೆ", ta:"விதி-விதானப்படி", te:"విధి-విధానంగా"};
+const FONTS = {kn:"Noto+Sans+Kannada:wght@400;600&family=Noto+Serif+Kannada", ta:"Noto+Sans+Tamil:wght@400;600&family=Noto+Serif+Tamil", te:"Noto+Sans+Telugu:wght@400;600&family=Noto+Serif+Telugu"};
+const MANTRA = {
+  g:{kn:"ಓಂ ಗಂ ಗಣಪತಯೇ ನಮಃ", ta:"ஓம் கம் கணபதயே நம:", te:"ఓం గం గణపతయే నమః", tr:"Om Gam Ganapataye namaha"},
+  l:{kn:"ಓಂ ಶ್ರೀಂ ಮಹಾಲಕ್ಷ್ಮ್ಯೈ ನಮಃ", ta:"ஓம் ஸ்ரீம் மஹாலக்ஷ்ம்யை நம:", te:"ఓం శ్రీం మహాలక్ష్మ్యై నమః", tr:"Om Shreem Mahalakshmyai namaha"}
+};
+const FESTS = ["Ugadi","Varamahalakshmi","Gowri-Ganesha","Bombe Habba","Deepavali","Thai Pongal","Golu","Karthigai Deepam","Varalakshmi Vratham","Bathukamma","Bonalu","Sankranti","Vinayaka Chavithi","Atla Taddi","Tulasi Habba","Sri Rama Navami","Puthandu","Aadi Perukku"];
+
+const T = {
+en:{lang:"Language",nav_join:"Join the early list",hero_h1:"Every ritual, done <em>your family's way.</em>",hero_sub:"Festival plans, samagri lists and step-by-step pujas in the tradition your family actually follows. No more calling home to ask what comes next.",hero_try:"Try a puja",hero_note:"First for Kannada, Tamil and Telugu families. Free to join.",
+prob_kicker:"The problem",prob_h:"Every festival starts with a call to Amma.",prob_p1:"Most of us now live far from the people who know how our festivals are done. So we half-remember, search YouTube, and end up following someone else's tradition.",prob_p2:"Other apps give you one generic version of each puja. <strong>But your Deepavali is not your neighbour's Deepavali</strong>, and it's certainly not the internet's.",
+chat1:"Amma, is the oil bath on Saturday or Sunday this year?",chat2:"And do we put a coin in the kalasha? 🙏",chat3:"What time is Lakshmi puja here?",chat4:"Sorry, which leaves did you say? 😅",chat_online:"online",chat_name:"Amma",
+demo_kicker:"Try it",demo_h:"See your Deepavali, your way",demo_p:"Pick your family's tradition and walk through the puja. Notice how the steps change.",demo_trad:"Your tradition",t_kn:"Kannada",t_ta:"Tamil",t_te:"Telugu",demo_step:"Step {n} of {t}",demo_say:"Say",demo_why:"Why",demo_next:"Next step",demo_back:"Back",demo_again:"Start again",demo_done_h:"That's the idea.",demo_done_p:"The full app covers every step of every festival, with audio, timings for your city and your family's notes.",demo_add:"Add your family's way",demo_add_ph:"For example: we keep Ajji's silver coin in the kalasha",demo_save:"Save note",demo_note:"Your family's way",
+s1_kn_t:"Neeru tumbuva and the oil bath",s1_kn_d:"The evening before, decorate the bathing vessel and fill it with water. Before sunrise, an elder applies warm oil and everyone bathes with that water.",s1_kn_w:"Bathing before dawn on Naraka Chaturdashi is said to equal a bath in the Ganga.",
+s1_ta_t:"Ganga snanam",s1_ta_d:"Wake before dawn. An elder puts oil on everyone's head; bathe, wear new clothes, then take a spoon of Deepavali marundhu.",s1_ta_w:"It recalls Krishna's victory over Narakasura before dawn; the marundhu settles the stomach before the sweets.",
+s1_te_t:"Oil bath before sunrise",s1_te_d:"Bathe with oil before sunrise on Naraka Chaturdashi, wear new clothes, and light lamps at the doorway.",s1_te_w:"It celebrates Satyabhama and Krishna's victory over Narakasura.",
+s2_t:"Light the lamps",s2_d:"Light the main lamp first, then the diyas at the entrance and windows.",s2_w:"The first lamp stays lit through the puja as its witness.",
+s3_t:"Begin with Ganapati",s3_d:"Offer akshata, a flower and kumkum to Ganapati and ask that the puja goes smoothly.",s3_w:"Every puja begins with the remover of obstacles.",
+s4_t:"Invite Lakshmi",s4_d:"Offer akshata at the feet of the Lakshmi image and welcome her into your home.",s4_w:"From here she is treated as an honoured guest.",tip_ta:"Many Tamil families do their main puja in the morning; Lakshmi puja in the evening is optional.",
+s5_t:"Arati and prasada",s5_d:"Wave the camphor flame clockwise, sing together, then share the prasada.",s5_w:"Arati closes the puja with light shared by everyone.",
+how_kicker:"How it works",how_h:"From the first preparation to the last lamp",how1_n:"Once",how1_t:"Tell us your tradition",how1_p:"Region, community and the script you read. Everything after that follows your family's version.",how2_n:"Days before",how2_t:"Get a plan",how2_p:"A day-by-day countdown, a samagri list for your household, and the right muhurat for your city.",how3_n:"On the day",how3_t:"Follow along",how3_p:"One step at a time, mantras in your script with audio, and a line on why each step matters. Works offline.",
+fam_kicker:"Your family's way",fam_h:"Keep what Amma knows, for everyone",fam_p:"The people who really know the rituals are in your family. Vidhi-Vidhan gives them a place.",fam1_b:"Ask an elder.",fam1:"Send a question on WhatsApp. Their voice-note reply is saved on that exact step.",fam2_b:"Family notes.",fam2:"“We use a turmeric Ganapati, not an idol.” Notes like this change what everyone in the family sees.",fam3_b:"Two families, one home.",fam3:"Married into a different tradition? See both side by side and choose.",
+feat_kicker:"What's inside",feat_h:"Everything around the ritual",f1_t:"Samagri, sorted",f1_p:"A list for your household, substitutes for hard-to-find items, and one-tap ordering.",f2_t:"Muhurat for your city",f2_p:"Panchang timings where you live, even abroad, with reminders.",f3_t:"Life events",f3_p:"Griha pravesha, naming, upanayana, shraddha: who does what, and when.",f4_t:"Shared tasks",f4_p:"Split the work: who buys flowers, who cleans the lamps, who draws the rangoli.",f5_t:"Vrats and tithis",f5_p:"Ekadashi, Sankashti and shraddha dates, worked out and remembered for you.",f6_t:"The why, for kids",f6_p:"Short stories behind each festival, for the next generation.",
+trust_kicker:"How we get it right",trust_h:"Built with care, not shortcuts",tr1_t:"Checked by those who know",tr1_p:"Every guide will be reviewed by priests and elders from that tradition before it goes live.",tr2_t:"Differences, not mistakes",tr2_p:"Families vary. We show variations side by side and never call one of them wrong.",tr3_t:"Calm by design",tr3_p:"No horoscopes, no paid remedies, no fear. No ads on the puja screen, ever.",tr4_t:"Private to your family",tr4_p:"Your notes and recordings are shared only with the family members you invite. We will never sell your data.",
+road_kicker:"When",road_h:"The plan for 2027",r1_d:"Now",r1_t:"Early list and testing",r1_p:"Families try the prototype this Deepavali and tell us what they need.",r2_d:"Ugadi, April 2027",r2_t:"Pilot in Bengaluru",r2_p:"The first families use it for Ugadi and Sri Rama Navami.",r3_d:"Aug–Nov 2027",r3_t:"Festival season",r3_p:"Varalakshmi, Ganesha, Navaratri and Deepavali in Kannada, Tamil and Telugu traditions.",trad_line:"First traditions: Kannada, Tamil and Telugu. Want yours next? Tell us when you join.",
+faq_kicker:"Questions",faq_h:"Frequently asked",
+q1:"Is it free?",a1:"Joining the early list is free, and festival guides will be free to use. A paid family plan with extra features may come later.",
+q2:"Which traditions will it cover?",a2:"We start with Kannada, Tamil and Telugu households, then add more one at a time. Tell us yours when you join.",
+q3:"Does it replace our priest?",a3:"No. It helps with the home rituals you do yourselves, and for bigger events it shows what the family does and what the priest does.",
+q4:"What if my family does it differently?",a4:"That's the point. You can switch steps on or off, add your family's notes, and ask an elder to fill in the gaps.",
+q5:"Which languages?",a5:"The app will be in English, Hindi, Kannada, Tamil and Telugu. Mantras show in your script with an English transliteration.",
+q6:"Will it work if we live abroad?",a6:"Yes. Timings follow your city, not India time, and the samagri list suggests substitutes you can find locally.",
+q7:"When can I use it?",a7:"A pilot runs in Bengaluru for Ugadi 2027, and the full festival season follows from August 2027. People on the early list get in first.",
+q8:"Who is building this?",a8:"Vidhi-Vidhan is an independent project being built in Bengaluru. Follow along on LinkedIn for updates.",
+cta_kicker:"Early access",cta_h:"Be one of the first families to use it",cta_p:"Join the early list to get the app first, help test it, and tell us which festivals matter to you.",cta_pending:"Sign-ups open in a day or two. Check back soon.",
+share_lead:"Know someone who always calls home before a festival?",share_li:"Share on LinkedIn",share_x:"Share on X",share_wa:"Share on WhatsApp",foot1:"Made in Bengaluru",foot2:"Rituals differ between families. When in doubt, follow your elders and your priest.",
+ph_step:"Step 4 of 5 · Lakshmi puja",ph_fam_b:"Amma's way",ph_fam:"We keep Ajji's silver coin in the kalasha.",share_text:"Vidhi-Vidhan: every ritual, done your family's way. Festival plans, samagri lists and step-by-step pujas in your own tradition."},
+
+hi:{lang:"भाषा",nav_join:"शुरुआती सूची से जुड़ें",hero_h1:"हर रस्म, <em>आपके परिवार के तरीके से।</em>",hero_sub:"त्योहार की योजना, सामग्री सूची और क्रम से पूजा, उसी परंपरा में जो आपका परिवार सच में मानता है। आगे क्या करना है, यह पूछने के लिए अब घर फ़ोन नहीं करना पड़ेगा।",hero_try:"पूजा आज़माएँ",hero_note:"पहले कन्नड़, तमिल और तेलुगु परिवारों के लिए। जुड़ना मुफ़्त है।",
+prob_kicker:"समस्या",prob_h:"हर त्योहार की शुरुआत अम्मा को फ़ोन से होती है।",prob_p1:"हम में से ज़्यादातर अब उन लोगों से दूर रहते हैं जो जानते हैं कि हमारे त्योहार कैसे मनाए जाते हैं। तो हम आधा याद करते हैं, YouTube देखते हैं, और किसी और की परंपरा निभा बैठते हैं।",prob_p2:"दूसरे ऐप हर पूजा का एक ही आम तरीका बताते हैं। <strong>लेकिन आपकी दीपावली आपके पड़ोसी की दीपावली नहीं है</strong>, और इंटरनेट वाली तो बिल्कुल नहीं।",
+chat1:"अम्मा, इस साल तेल स्नान शनिवार को है या रविवार को?",chat2:"और क्या कलश में सिक्का डालते हैं? 🙏",chat3:"यहाँ लक्ष्मी पूजा का समय क्या है?",chat4:"माफ़ करना, कौन से पत्ते बोले थे? 😅",chat_online:"ऑनलाइन",chat_name:"अम्मा",
+demo_kicker:"आज़माकर देखें",demo_h:"अपनी दीपावली, अपने तरीके से",demo_p:"अपने परिवार की परंपरा चुनें और पूजा के चरण देखें। ध्यान दें कि चरण कैसे बदलते हैं।",demo_trad:"आपकी परंपरा",t_kn:"कन्नड़",t_ta:"तमिल",t_te:"तेलुगु",demo_step:"चरण {n} / {t}",demo_say:"बोलें",demo_why:"क्यों",demo_next:"अगला चरण",demo_back:"पीछे",demo_again:"फिर से शुरू करें",demo_done_h:"बस यही विचार है।",demo_done_p:"पूरे ऐप में हर त्योहार का हर चरण होगा, ऑडियो, आपके शहर के समय और आपके परिवार के नोट्स के साथ।",demo_add:"अपने परिवार का तरीका जोड़ें",demo_add_ph:"जैसे: हम कलश में दादी का चाँदी का सिक्का रखते हैं",demo_save:"नोट सहेजें",demo_note:"आपके परिवार का तरीका",
+s1_kn_t:"नीरु तुंबुवा और तेल स्नान",s1_kn_d:"एक शाम पहले स्नान का पात्र सजाकर पानी से भरें। सूर्योदय से पहले कोई बड़ा सबको गुनगुना तेल लगाता है, और सब उसी पानी से नहाते हैं।",s1_kn_w:"नरक चतुर्दशी को भोर से पहले का स्नान गंगा स्नान के समान माना जाता है।",
+s1_ta_t:"गंगा स्नानम",s1_ta_d:"भोर से पहले उठें। कोई बड़ा सबके सिर पर तेल लगाता है; नहाकर नए कपड़े पहनें, फिर एक चम्मच दीपावली मरुंधु लें।",s1_ta_w:"यह भोर से पहले नरकासुर पर कृष्ण की जीत की याद है; मरुंधु मिठाइयों से पहले पेट को ठीक रखता है।",
+s1_te_t:"सूर्योदय से पहले तेल स्नान",s1_te_d:"नरक चतुर्दशी को सूर्योदय से पहले तेल लगाकर नहाएँ, नए कपड़े पहनें और दरवाज़े पर दीये जलाएँ।",s1_te_w:"यह नरकासुर पर सत्यभामा और कृष्ण की जीत का उत्सव है।",
+s2_t:"दीप जलाएँ",s2_d:"पहले मुख्य दीप जलाएँ, फिर दरवाज़े और खिड़कियों के दीये।",s2_w:"पहला दीप पूजा के साक्षी के रूप में अंत तक जलता रहता है।",
+s3_t:"गणपति से शुरुआत",s3_d:"गणपति को अक्षत, फूल और कुमकुम अर्पित करें और पूजा निर्विघ्न होने की प्रार्थना करें।",s3_w:"हर पूजा विघ्नहर्ता से शुरू होती है।",
+s4_t:"लक्ष्मी का आवाहन",s4_d:"लक्ष्मी जी के चरणों में अक्षत अर्पित करें और उन्हें घर में आमंत्रित करें।",s4_w:"यहाँ से उन्हें सम्मानित अतिथि की तरह माना जाता है।",tip_ta:"कई तमिल परिवारों में मुख्य पूजा सुबह होती है; शाम की लक्ष्मी पूजा वैकल्पिक है।",
+s5_t:"आरती और प्रसाद",s5_d:"कपूर की लौ घड़ी की दिशा में घुमाएँ, साथ में गाएँ, फिर प्रसाद बाँटें।",s5_w:"आरती सबके साथ बाँटे गए प्रकाश से पूजा पूरी करती है।",
+how_kicker:"कैसे काम करता है",how_h:"पहली तैयारी से आख़िरी दीये तक",how1_n:"एक बार",how1_t:"अपनी परंपरा बताएँ",how1_p:"क्षेत्र, समुदाय और लिपि चुनें। उसके बाद सब कुछ आपके परिवार के तरीके से दिखेगा।",how2_n:"कुछ दिन पहले",how2_t:"योजना पाएँ",how2_p:"दिन-ब-दिन की उलटी गिनती, आपके घर के हिसाब से सामग्री सूची, और आपके शहर का सही मुहूर्त।",how3_n:"त्योहार के दिन",how3_t:"साथ-साथ करें",how3_p:"एक-एक चरण, आपकी लिपि में मंत्र और ऑडियो, और हर चरण का कारण। बिना इंटरनेट भी चलता है।",
+fam_kicker:"आपके परिवार का तरीका",fam_h:"अम्मा जो जानती हैं, वह सबके लिए सहेजें",fam_p:"रस्मों को सच में जानने वाले लोग आपके परिवार में ही हैं। विधि-विधान उन्हें एक जगह देता है।",fam1_b:"बड़ों से पूछें।",fam1:"WhatsApp पर सवाल भेजें। उनका वॉइस नोट जवाब उसी चरण पर सहेजा जाता है।",fam2_b:"परिवार के नोट्स।",fam2:"“हम मूर्ति नहीं, हल्दी के गणपति बनाते हैं।” ऐसे नोट्स परिवार में सबको दिखते हैं।",fam3_b:"दो परिवार, एक घर।",fam3:"अलग परंपरा वाले परिवार में शादी हुई है? दोनों तरीके साथ-साथ देखें और चुनें।",
+feat_kicker:"ऐप में क्या है",feat_h:"रस्म से जुड़ी हर चीज़",f1_t:"सामग्री की पूरी तैयारी",f1_p:"आपके घर के हिसाब से सूची, न मिलने वाली चीज़ों के विकल्प, और एक टैप में ऑर्डर।",f2_t:"आपके शहर का मुहूर्त",f2_p:"जहाँ आप रहते हैं वहाँ के पंचांग के समय, विदेश में भी, रिमाइंडर के साथ।",f3_t:"जीवन के संस्कार",f3_p:"गृह प्रवेश, नामकरण, उपनयन, श्राद्ध: कौन क्या करता है, और कब।",f4_t:"बँटे हुए काम",f4_p:"फूल कौन लाएगा, दीये कौन साफ़ करेगा, रंगोली कौन बनाएगा।",f5_t:"व्रत और तिथियाँ",f5_p:"एकादशी, संकष्टी और श्राद्ध की तिथियाँ, आपके लिए गिनी और याद रखी हुई।",f6_t:"बच्चों के लिए कारण",f6_p:"हर त्योहार के पीछे की छोटी कहानियाँ, अगली पीढ़ी के लिए।",
+trust_kicker:"हम इसे सही कैसे रखते हैं",trust_h:"ध्यान से बनाया गया, जल्दबाज़ी में नहीं",tr1_t:"जानकारों द्वारा जाँचा गया",tr1_p:"हर गाइड लाइव होने से पहले उस परंपरा के पुरोहितों और बड़ों से जाँची जाएगी।",tr2_t:"अंतर, गलती नहीं",tr2_p:"हर परिवार अलग है। हम तरीकों को साथ-साथ दिखाते हैं, किसी को गलत नहीं कहते।",tr3_t:"शांत और सरल",tr3_p:"न राशिफल, न पैसे वाले उपाय, न डर। पूजा की स्क्रीन पर कभी कोई विज्ञापन नहीं।",tr4_t:"सिर्फ़ आपके परिवार के लिए",tr4_p:"आपके नोट्स और रिकॉर्डिंग सिर्फ़ उन्हीं परिवार वालों से साझा होते हैं जिन्हें आप जोड़ते हैं। हम आपका डेटा कभी नहीं बेचेंगे।",
+road_kicker:"कब",road_h:"2027 की योजना",r1_d:"अभी",r1_t:"शुरुआती सूची और परीक्षण",r1_p:"परिवार इस दीपावली प्रोटोटाइप आज़माकर बताते हैं कि उन्हें क्या चाहिए।",r2_d:"उगादि, अप्रैल 2027",r2_t:"बेंगलुरु में पायलट",r2_p:"पहले परिवार इसे उगादि और श्रीराम नवमी पर इस्तेमाल करेंगे।",r3_d:"अगस्त–नवंबर 2027",r3_t:"त्योहारों का मौसम",r3_p:"वरलक्ष्मी, गणेश, नवरात्रि और दीपावली, कन्नड़, तमिल और तेलुगु परंपराओं में।",trad_line:"पहली परंपराएँ: कन्नड़, तमिल और तेलुगु। अगली आपकी हो? जुड़ते समय बताएँ।",
+faq_kicker:"सवाल",faq_h:"अक्सर पूछे जाने वाले सवाल",
+q1:"क्या यह मुफ़्त है?",a1:"शुरुआती सूची से जुड़ना मुफ़्त है, और त्योहारों की गाइड मुफ़्त रहेंगी। बाद में अतिरिक्त सुविधाओं वाला एक पेड फ़ैमिली प्लान आ सकता है।",
+q2:"कौन सी परंपराएँ होंगी?",a2:"हम कन्नड़, तमिल और तेलुगु परिवारों से शुरू कर रहे हैं, फिर एक-एक करके और जोड़ेंगे। जुड़ते समय अपनी परंपरा बताएँ।",
+q3:"क्या यह हमारे पुरोहित की जगह लेगा?",a3:"नहीं। यह घर की उन रस्मों में मदद करता है जो आप खुद करते हैं, और बड़े आयोजनों में बताता है कि परिवार क्या करेगा और पुरोहित क्या।",
+q4:"अगर मेरा परिवार अलग तरीके से करता है?",a4:"यही तो बात है। आप चरण चालू या बंद कर सकते हैं, परिवार के नोट्स जोड़ सकते हैं, और जो पता न हो वह बड़ों से पूछ सकते हैं।",
+q5:"कौन सी भाषाएँ?",a5:"ऐप अंग्रेज़ी, हिंदी, कन्नड़, तमिल और तेलुगु में होगा। मंत्र आपकी लिपि में, अंग्रेज़ी लिप्यंतरण के साथ दिखेंगे।",
+q6:"क्या विदेश में रहकर भी चलेगा?",a6:"हाँ। समय आपके शहर के हिसाब से होता है, भारत के समय से नहीं, और सामग्री सूची वहाँ मिलने वाले विकल्प सुझाती है।",
+q7:"मैं इसे कब इस्तेमाल कर पाऊँगा?",a7:"उगादि 2027 पर बेंगलुरु में पायलट होगा, और अगस्त 2027 से पूरा त्योहार सीज़न। शुरुआती सूची वालों को सबसे पहले मौका मिलेगा।",
+q8:"इसे कौन बना रहा है?",a8:"विधि-विधान बेंगलुरु में बन रहा एक स्वतंत्र प्रोजेक्ट है। अपडेट के लिए LinkedIn पर जुड़े रहें।",
+cta_kicker:"शुरुआती पहुँच",cta_h:"इसे इस्तेमाल करने वाले पहले परिवारों में शामिल हों",cta_p:"ऐप सबसे पहले पाने, उसे परखने में मदद करने और अपने ज़रूरी त्योहार बताने के लिए शुरुआती सूची से जुड़ें।",cta_pending:"साइन-अप एक-दो दिन में खुलेंगे। जल्द ही फिर देखें।",
+share_lead:"कोई ऐसा जानते हैं जो हर त्योहार से पहले घर फ़ोन करता है?",share_li:"LinkedIn पर शेयर करें",share_x:"X पर शेयर करें",share_wa:"WhatsApp पर शेयर करें",foot1:"बेंगलुरु में बना",foot2:"हर परिवार की रस्में अलग होती हैं। शक हो तो अपने बड़ों और पुरोहित की बात मानें।",
+ph_step:"चरण 4 / 5 · लक्ष्मी पूजा",ph_fam_b:"अम्मा का तरीका",ph_fam:"हम कलश में दादी का चाँदी का सिक्का रखते हैं।",share_text:"विधि-विधान: हर रस्म, आपके परिवार के तरीके से। त्योहार की योजना, सामग्री सूची और क्रम से पूजा, आपकी अपनी परंपरा में।"},
+
+kn:{lang:"ಭಾಷೆ",nav_join:"ಮೊದಲ ಪಟ್ಟಿಗೆ ಸೇರಿ",hero_h1:"ಪ್ರತಿ ಆಚರಣೆ, <em>ನಿಮ್ಮ ಮನೆತನದ ರೀತಿಯಲ್ಲಿ.</em>",hero_sub:"ಹಬ್ಬದ ಯೋಜನೆ, ಪೂಜಾ ಸಾಮಗ್ರಿ ಪಟ್ಟಿ ಮತ್ತು ಹಂತ ಹಂತವಾಗಿ ಪೂಜೆ, ನಿಮ್ಮ ಕುಟುಂಬ ನಿಜವಾಗಿ ಪಾಲಿಸುವ ಸಂಪ್ರದಾಯದಲ್ಲಿ. ಮುಂದೇನು ಎಂದು ಕೇಳಲು ಇನ್ನು ಮನೆಗೆ ಫೋನ್ ಮಾಡಬೇಕಿಲ್ಲ.",hero_try:"ಪೂಜೆಯನ್ನು ಪ್ರಯತ್ನಿಸಿ",hero_note:"ಮೊದಲು ಕನ್ನಡ, ತಮಿಳು ಮತ್ತು ತೆಲುಗು ಕುಟುಂಬಗಳಿಗೆ. ಸೇರುವುದು ಉಚಿತ.",
+prob_kicker:"ಸಮಸ್ಯೆ",prob_h:"ಪ್ರತಿ ಹಬ್ಬ ಅಮ್ಮನಿಗೆ ಫೋನ್ ಮಾಡುವುದರಿಂದಲೇ ಶುರು.",prob_p1:"ನಮ್ಮ ಹಬ್ಬಗಳನ್ನು ಹೇಗೆ ಮಾಡಬೇಕೆಂದು ಗೊತ್ತಿರುವವರಿಂದ ನಮ್ಮಲ್ಲಿ ಹಲವರು ಈಗ ದೂರದಲ್ಲಿದ್ದೇವೆ. ಹಾಗಾಗಿ ಅರ್ಧ ನೆನಪಿನಿಂದ, YouTube ನೋಡಿ, ಬೇರೆ ಯಾರದೋ ಸಂಪ್ರದಾಯವನ್ನು ಪಾಲಿಸುತ್ತೇವೆ.",prob_p2:"ಇತರ ಆ್ಯಪ್‌ಗಳು ಪ್ರತಿ ಪೂಜೆಗೆ ಒಂದೇ ಸಾಮಾನ್ಯ ವಿಧಾನ ಕೊಡುತ್ತವೆ. <strong>ಆದರೆ ನಿಮ್ಮ ದೀಪಾವಳಿ ಪಕ್ಕದ ಮನೆಯವರ ದೀಪಾವಳಿ ಅಲ್ಲ</strong>, ಇಂಟರ್ನೆಟ್‌ನದ್ದಂತೂ ಅಲ್ಲವೇ ಅಲ್ಲ.",
+chat1:"ಅಮ್ಮ, ಈ ವರ್ಷ ಎಣ್ಣೆ ಸ್ನಾನ ಶನಿವಾರನಾ ಭಾನುವಾರನಾ?",chat2:"ಕಳಶದಲ್ಲಿ ನಾಣ್ಯ ಹಾಕ್ತೀವಾ? 🙏",chat3:"ಇಲ್ಲಿ ಲಕ್ಷ್ಮೀ ಪೂಜೆ ಎಷ್ಟು ಗಂಟೆಗೆ?",chat4:"ಸಾರಿ, ಯಾವ ಎಲೆ ಅಂದೆ? 😅",chat_online:"ಆನ್‌ಲೈನ್",chat_name:"ಅಮ್ಮ",
+demo_kicker:"ಪ್ರಯತ್ನಿಸಿ",demo_h:"ನಿಮ್ಮ ದೀಪಾವಳಿ, ನಿಮ್ಮ ರೀತಿಯಲ್ಲಿ",demo_p:"ನಿಮ್ಮ ಕುಟುಂಬದ ಸಂಪ್ರದಾಯ ಆರಿಸಿ ಪೂಜೆಯ ಹಂತಗಳನ್ನು ನೋಡಿ. ಹಂತಗಳು ಹೇಗೆ ಬದಲಾಗುತ್ತವೆ ಗಮನಿಸಿ.",demo_trad:"ನಿಮ್ಮ ಸಂಪ್ರದಾಯ",t_kn:"ಕನ್ನಡ",t_ta:"ತಮಿಳು",t_te:"ತೆಲುಗು",demo_step:"ಹಂತ {n} / {t}",demo_say:"ಹೇಳಿ",demo_why:"ಏಕೆ",demo_next:"ಮುಂದಿನ ಹಂತ",demo_back:"ಹಿಂದೆ",demo_again:"ಮತ್ತೆ ಶುರು ಮಾಡಿ",demo_done_h:"ಇದೇ ಆಲೋಚನೆ.",demo_done_p:"ಪೂರ್ಣ ಆ್ಯಪ್‌ನಲ್ಲಿ ಪ್ರತಿ ಹಬ್ಬದ ಪ್ರತಿ ಹಂತ, ಆಡಿಯೋ, ನಿಮ್ಮ ಊರಿನ ಸಮಯ ಮತ್ತು ನಿಮ್ಮ ಕುಟುಂಬದ ಟಿಪ್ಪಣಿಗಳೊಂದಿಗೆ ಇರುತ್ತದೆ.",demo_add:"ನಿಮ್ಮ ಕುಟುಂಬದ ರೀತಿ ಸೇರಿಸಿ",demo_add_ph:"ಉದಾ: ಕಳಶದಲ್ಲಿ ಅಜ್ಜಿಯ ಬೆಳ್ಳಿ ನಾಣ್ಯ ಇಡುತ್ತೇವೆ",demo_save:"ಟಿಪ್ಪಣಿ ಉಳಿಸಿ",demo_note:"ನಿಮ್ಮ ಕುಟುಂಬದ ರೀತಿ",
+s1_kn_t:"ನೀರು ತುಂಬುವುದು ಮತ್ತು ಎಣ್ಣೆ ಸ್ನಾನ",s1_kn_d:"ಹಿಂದಿನ ಸಂಜೆ ಹಂಡೆಯನ್ನು ಅಲಂಕರಿಸಿ ನೀರು ತುಂಬಿ. ಸೂರ್ಯೋದಯಕ್ಕೆ ಮುಂಚೆ ಹಿರಿಯರು ಎಲ್ಲರಿಗೂ ಬೆಚ್ಚಗಿನ ಎಣ್ಣೆ ಹಚ್ಚುತ್ತಾರೆ, ಆ ನೀರಿನಿಂದ ಎಲ್ಲರೂ ಸ್ನಾನ ಮಾಡುತ್ತಾರೆ.",s1_kn_w:"ನರಕ ಚತುರ್ದಶಿಯಂದು ಬೆಳಗಿನ ಜಾವದ ಸ್ನಾನ ಗಂಗಾಸ್ನಾನಕ್ಕೆ ಸಮ ಎನ್ನುತ್ತಾರೆ.",
+s1_ta_t:"ಗಂಗಾ ಸ್ನಾನಂ",s1_ta_d:"ಬೆಳಗಿನ ಜಾವಕ್ಕೆ ಮುಂಚೆ ಏಳಿ. ಹಿರಿಯರು ಎಲ್ಲರ ತಲೆಗೆ ಎಣ್ಣೆ ಹಚ್ಚುತ್ತಾರೆ; ಸ್ನಾನ ಮಾಡಿ ಹೊಸ ಬಟ್ಟೆ ಧರಿಸಿ, ನಂತರ ಒಂದು ಚಮಚ ದೀಪಾವಳಿ ಮರುಂದು ಸೇವಿಸಿ.",s1_ta_w:"ಇದು ಬೆಳಗಿನ ಜಾವ ನರಕಾಸುರನ ಮೇಲೆ ಕೃಷ್ಣನ ಗೆಲುವಿನ ನೆನಪು; ಸಿಹಿತಿಂಡಿಗೆ ಮುಂಚೆ ಮರುಂದು ಹೊಟ್ಟೆಯನ್ನು ಸರಿಯಾಗಿಡುತ್ತದೆ.",
+s1_te_t:"ಸೂರ್ಯೋದಯಕ್ಕೆ ಮುಂಚೆ ಎಣ್ಣೆ ಸ್ನಾನ",s1_te_d:"ನರಕ ಚತುರ್ದಶಿಯಂದು ಸೂರ್ಯೋದಯಕ್ಕೆ ಮುಂಚೆ ಎಣ್ಣೆ ಹಚ್ಚಿ ಸ್ನಾನ ಮಾಡಿ, ಹೊಸ ಬಟ್ಟೆ ಧರಿಸಿ, ಬಾಗಿಲಲ್ಲಿ ದೀಪ ಹಚ್ಚಿ.",s1_te_w:"ಇದು ನರಕಾಸುರನ ಮೇಲೆ ಸತ್ಯಭಾಮೆ ಮತ್ತು ಕೃಷ್ಣನ ಗೆಲುವಿನ ಹಬ್ಬ.",
+s2_t:"ದೀಪ ಹಚ್ಚಿ",s2_d:"ಮೊದಲು ಮುಖ್ಯ ದೀಪ, ನಂತರ ಬಾಗಿಲು ಮತ್ತು ಕಿಟಕಿಗಳ ಹಣತೆಗಳನ್ನು ಹಚ್ಚಿ.",s2_w:"ಮೊದಲ ದೀಪ ಪೂಜೆಯ ಸಾಕ್ಷಿಯಾಗಿ ಕೊನೆಯವರೆಗೂ ಉರಿಯುತ್ತಿರುತ್ತದೆ.",
+s3_t:"ಗಣಪತಿಯಿಂದ ಆರಂಭ",s3_d:"ಗಣಪತಿಗೆ ಅಕ್ಷತೆ, ಹೂವು ಮತ್ತು ಕುಂಕುಮ ಅರ್ಪಿಸಿ, ಪೂಜೆ ನಿರ್ವಿಘ್ನವಾಗಿ ನಡೆಯಲಿ ಎಂದು ಪ್ರಾರ್ಥಿಸಿ.",s3_w:"ಪ್ರತಿ ಪೂಜೆ ವಿಘ್ನನಿವಾರಕನಿಂದಲೇ ಶುರು.",
+s4_t:"ಲಕ್ಷ್ಮಿಯ ಆವಾಹನೆ",s4_d:"ಲಕ್ಷ್ಮಿಯ ಪಾದಗಳಿಗೆ ಅಕ್ಷತೆ ಅರ್ಪಿಸಿ ಮನೆಗೆ ಆಹ್ವಾನಿಸಿ.",s4_w:"ಇಲ್ಲಿಂದ ಆಕೆಯನ್ನು ಗೌರವಾನ್ವಿತ ಅತಿಥಿಯಂತೆ ಕಾಣುತ್ತೇವೆ.",tip_ta:"ಅನೇಕ ತಮಿಳು ಕುಟುಂಬಗಳಲ್ಲಿ ಮುಖ್ಯ ಪೂಜೆ ಬೆಳಿಗ್ಗೆ; ಸಂಜೆಯ ಲಕ್ಷ್ಮೀ ಪೂಜೆ ಐಚ್ಛಿಕ.",
+s5_t:"ಆರತಿ ಮತ್ತು ಪ್ರಸಾದ",s5_d:"ಕರ್ಪೂರದ ಆರತಿಯನ್ನು ಪ್ರದಕ್ಷಿಣವಾಗಿ ಬೆಳಗಿ, ಎಲ್ಲರೂ ಹಾಡಿ, ನಂತರ ಪ್ರಸಾದ ಹಂಚಿ.",s5_w:"ಎಲ್ಲರೂ ಹಂಚಿಕೊಳ್ಳುವ ಬೆಳಕಿನೊಂದಿಗೆ ಆರತಿ ಪೂಜೆಯನ್ನು ಮುಗಿಸುತ್ತದೆ.",
+how_kicker:"ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ",how_h:"ಮೊದಲ ತಯಾರಿಯಿಂದ ಕೊನೆಯ ದೀಪದವರೆಗೆ",how1_n:"ಒಮ್ಮೆ ಮಾತ್ರ",how1_t:"ನಿಮ್ಮ ಸಂಪ್ರದಾಯ ತಿಳಿಸಿ",how1_p:"ಪ್ರದೇಶ, ಸಮುದಾಯ ಮತ್ತು ನೀವು ಓದುವ ಲಿಪಿ. ಮುಂದಿನದೆಲ್ಲ ನಿಮ್ಮ ಕುಟುಂಬದ ರೀತಿಯಲ್ಲೇ.",how2_n:"ಹಬ್ಬಕ್ಕೆ ಮುಂಚೆ",how2_t:"ಯೋಜನೆ ಪಡೆಯಿರಿ",how2_p:"ದಿನದಿನದ ಕ್ಷಣಗಣನೆ, ನಿಮ್ಮ ಮನೆಗೆ ತಕ್ಕ ಸಾಮಗ್ರಿ ಪಟ್ಟಿ ಮತ್ತು ನಿಮ್ಮ ಊರಿನ ಸರಿಯಾದ ಮುಹೂರ್ತ.",how3_n:"ಹಬ್ಬದ ದಿನ",how3_t:"ಜೊತೆಜೊತೆಗೆ ಮಾಡಿ",how3_p:"ಒಂದೊಂದೇ ಹಂತ, ನಿಮ್ಮ ಲಿಪಿಯಲ್ಲಿ ಮಂತ್ರ ಮತ್ತು ಆಡಿಯೋ, ಪ್ರತಿ ಹಂತದ ಕಾರಣ. ಇಂಟರ್ನೆಟ್ ಇಲ್ಲದೆಯೂ ಕೆಲಸ ಮಾಡುತ್ತದೆ.",
+fam_kicker:"ನಿಮ್ಮ ಕುಟುಂಬದ ರೀತಿ",fam_h:"ಅಮ್ಮನಿಗೆ ಗೊತ್ತಿರುವುದನ್ನು ಎಲ್ಲರಿಗಾಗಿ ಉಳಿಸಿ",fam_p:"ಆಚರಣೆಗಳನ್ನು ನಿಜವಾಗಿ ಬಲ್ಲವರು ನಿಮ್ಮ ಕುಟುಂಬದಲ್ಲೇ ಇದ್ದಾರೆ. ವಿಧಿ-ವಿಧಾನ ಅವರಿಗೊಂದು ಜಾಗ ಕೊಡುತ್ತದೆ.",fam1_b:"ಹಿರಿಯರನ್ನು ಕೇಳಿ.",fam1:"WhatsApp‌ನಲ್ಲಿ ಪ್ರಶ್ನೆ ಕಳಿಸಿ. ಅವರ ವಾಯ್ಸ್ ನೋಟ್ ಉತ್ತರ ಅದೇ ಹಂತದಲ್ಲಿ ಉಳಿಯುತ್ತದೆ.",fam2_b:"ಕುಟುಂಬದ ಟಿಪ್ಪಣಿಗಳು.",fam2:"“ನಾವು ವಿಗ್ರಹವಲ್ಲ, ಅರಿಶಿನದ ಗಣಪತಿ ಮಾಡುತ್ತೇವೆ.” ಇಂತಹ ಟಿಪ್ಪಣಿಗಳು ಕುಟುಂಬದ ಎಲ್ಲರಿಗೂ ಕಾಣುತ್ತವೆ.",fam3_b:"ಎರಡು ಕುಟುಂಬ, ಒಂದು ಮನೆ.",fam3:"ಬೇರೆ ಸಂಪ್ರದಾಯದ ಮನೆಗೆ ಮದುವೆಯಾಗಿದ್ದೀರಾ? ಎರಡೂ ರೀತಿಗಳನ್ನು ಅಕ್ಕಪಕ್ಕ ನೋಡಿ ಆರಿಸಿ.",
+feat_kicker:"ಆ್ಯಪ್‌ನಲ್ಲಿ ಏನಿದೆ",feat_h:"ಆಚರಣೆಗೆ ಬೇಕಾದ ಎಲ್ಲವೂ",f1_t:"ಸಾಮಗ್ರಿ ಸಿದ್ಧ",f1_p:"ನಿಮ್ಮ ಮನೆಗೆ ತಕ್ಕ ಪಟ್ಟಿ, ಸಿಗದ ವಸ್ತುಗಳಿಗೆ ಪರ್ಯಾಯ, ಒಂದೇ ಟ್ಯಾಪ್‌ನಲ್ಲಿ ಆರ್ಡರ್.",f2_t:"ನಿಮ್ಮ ಊರಿನ ಮುಹೂರ್ತ",f2_p:"ನೀವಿರುವಲ್ಲಿನ ಪಂಚಾಂಗ ಸಮಯ, ವಿದೇಶದಲ್ಲೂ, ಜ್ಞಾಪನೆಗಳೊಂದಿಗೆ.",f3_t:"ಜೀವನದ ಸಂಸ್ಕಾರಗಳು",f3_p:"ಗೃಹಪ್ರವೇಶ, ನಾಮಕರಣ, ಉಪನಯನ, ಶ್ರಾದ್ಧ: ಯಾರು ಏನು ಮಾಡಬೇಕು, ಯಾವಾಗ.",f4_t:"ಹಂಚಿದ ಕೆಲಸಗಳು",f4_p:"ಹೂವು ಯಾರು ತರುತ್ತಾರೆ, ದೀಪ ಯಾರು ತೊಳೆಯುತ್ತಾರೆ, ರಂಗೋಲಿ ಯಾರು ಹಾಕುತ್ತಾರೆ.",f5_t:"ವ್ರತ ಮತ್ತು ತಿಥಿಗಳು",f5_p:"ಏಕಾದಶಿ, ಸಂಕಷ್ಟಿ ಮತ್ತು ಶ್ರಾದ್ಧದ ತಿಥಿಗಳು, ನಿಮಗಾಗಿ ಲೆಕ್ಕ ಹಾಕಿ ನೆನಪಿಡುತ್ತದೆ.",f6_t:"ಮಕ್ಕಳಿಗೆ ಕಾರಣಗಳು",f6_p:"ಪ್ರತಿ ಹಬ್ಬದ ಹಿಂದಿನ ಸಣ್ಣ ಕಥೆಗಳು, ಮುಂದಿನ ಪೀಳಿಗೆಗಾಗಿ.",
+trust_kicker:"ನಾವು ಸರಿಯಾಗಿಡುವುದು ಹೇಗೆ",trust_h:"ಎಚ್ಚರಿಕೆಯಿಂದ ಮಾಡಿದ್ದು, ಆತುರದಿಂದಲ್ಲ",tr1_t:"ಬಲ್ಲವರಿಂದ ಪರಿಶೀಲನೆ",tr1_p:"ಪ್ರತಿ ಮಾರ್ಗದರ್ಶಿಯನ್ನು ಪ್ರಕಟಿಸುವ ಮೊದಲು ಆ ಸಂಪ್ರದಾಯದ ಪುರೋಹಿತರು ಮತ್ತು ಹಿರಿಯರು ಪರಿಶೀಲಿಸುತ್ತಾರೆ.",tr2_t:"ವ್ಯತ್ಯಾಸ, ತಪ್ಪಲ್ಲ",tr2_p:"ಕುಟುಂಬಗಳು ಬೇರೆ ಬೇರೆ. ನಾವು ರೀತಿಗಳನ್ನು ಅಕ್ಕಪಕ್ಕ ತೋರಿಸುತ್ತೇವೆ, ಯಾವುದನ್ನೂ ತಪ್ಪು ಎನ್ನುವುದಿಲ್ಲ.",tr3_t:"ಶಾಂತ ಮತ್ತು ಸರಳ",tr3_p:"ಜಾತಕ ಭವಿಷ್ಯವಿಲ್ಲ, ಹಣದ ಪರಿಹಾರಗಳಿಲ್ಲ, ಭಯವಿಲ್ಲ. ಪೂಜೆಯ ಪರದೆಯಲ್ಲಿ ಎಂದಿಗೂ ಜಾಹೀರಾತು ಇಲ್ಲ.",tr4_t:"ನಿಮ್ಮ ಕುಟುಂಬಕ್ಕೆ ಮಾತ್ರ",tr4_p:"ನಿಮ್ಮ ಟಿಪ್ಪಣಿಗಳು ಮತ್ತು ರೆಕಾರ್ಡಿಂಗ್‌ಗಳು ನೀವು ಸೇರಿಸುವ ಕುಟುಂಬದವರಿಗೆ ಮಾತ್ರ. ನಿಮ್ಮ ಡೇಟಾವನ್ನು ನಾವು ಎಂದಿಗೂ ಮಾರುವುದಿಲ್ಲ.",
+road_kicker:"ಯಾವಾಗ",road_h:"2027ರ ಯೋಜನೆ",r1_d:"ಈಗ",r1_t:"ಮೊದಲ ಪಟ್ಟಿ ಮತ್ತು ಪರೀಕ್ಷೆ",r1_p:"ಈ ದೀಪಾವಳಿಗೆ ಕುಟುಂಬಗಳು ಮಾದರಿಯನ್ನು ಬಳಸಿ ತಮಗೇನು ಬೇಕು ಎಂದು ತಿಳಿಸುತ್ತವೆ.",r2_d:"ಯುಗಾದಿ, ಏಪ್ರಿಲ್ 2027",r2_t:"ಬೆಂಗಳೂರಿನಲ್ಲಿ ಪೈಲಟ್",r2_p:"ಮೊದಲ ಕುಟುಂಬಗಳು ಯುಗಾದಿ ಮತ್ತು ಶ್ರೀರಾಮ ನವಮಿಗೆ ಬಳಸುತ್ತವೆ.",r3_d:"ಆಗಸ್ಟ್–ನವೆಂಬರ್ 2027",r3_t:"ಹಬ್ಬಗಳ ಕಾಲ",r3_p:"ವರಮಹಾಲಕ್ಷ್ಮಿ, ಗಣೇಶ, ನವರಾತ್ರಿ ಮತ್ತು ದೀಪಾವಳಿ, ಕನ್ನಡ, ತಮಿಳು ಮತ್ತು ತೆಲುಗು ಸಂಪ್ರದಾಯಗಳಲ್ಲಿ.",trad_line:"ಮೊದಲ ಸಂಪ್ರದಾಯಗಳು: ಕನ್ನಡ, ತಮಿಳು ಮತ್ತು ತೆಲುಗು. ಮುಂದೆ ನಿಮ್ಮದಾಗಬೇಕೇ? ಸೇರುವಾಗ ತಿಳಿಸಿ.",
+faq_kicker:"ಪ್ರಶ್ನೆಗಳು",faq_h:"ಹೆಚ್ಚಾಗಿ ಕೇಳುವ ಪ್ರಶ್ನೆಗಳು",
+q1:"ಇದು ಉಚಿತವೇ?",a1:"ಮೊದಲ ಪಟ್ಟಿಗೆ ಸೇರುವುದು ಉಚಿತ, ಹಬ್ಬದ ಮಾರ್ಗದರ್ಶಿಗಳೂ ಉಚಿತವಾಗಿರುತ್ತವೆ. ಹೆಚ್ಚುವರಿ ಸೌಲಭ್ಯಗಳ ಪಾವತಿಸುವ ಕುಟುಂಬ ಯೋಜನೆ ಮುಂದೆ ಬರಬಹುದು.",
+q2:"ಯಾವ ಸಂಪ್ರದಾಯಗಳು ಇರುತ್ತವೆ?",a2:"ಕನ್ನಡ, ತಮಿಳು ಮತ್ತು ತೆಲುಗು ಕುಟುಂಬಗಳಿಂದ ಶುರು ಮಾಡಿ, ಒಂದೊಂದಾಗಿ ಇನ್ನಷ್ಟು ಸೇರಿಸುತ್ತೇವೆ. ಸೇರುವಾಗ ನಿಮ್ಮದನ್ನು ತಿಳಿಸಿ.",
+q3:"ಇದು ನಮ್ಮ ಪುರೋಹಿತರ ಬದಲಿಯೇ?",a3:"ಇಲ್ಲ. ನೀವೇ ಮನೆಯಲ್ಲಿ ಮಾಡುವ ಆಚರಣೆಗಳಿಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ; ದೊಡ್ಡ ಕಾರ್ಯಕ್ರಮಗಳಲ್ಲಿ ಕುಟುಂಬ ಏನು ಮಾಡಬೇಕು, ಪುರೋಹಿತರು ಏನು ಮಾಡುತ್ತಾರೆ ಎಂದು ತೋರಿಸುತ್ತದೆ.",
+q4:"ನಮ್ಮ ಮನೆಯಲ್ಲಿ ಬೇರೆ ರೀತಿ ಮಾಡಿದರೆ?",a4:"ಅದೇ ಮುಖ್ಯ ವಿಷಯ. ಹಂತಗಳನ್ನು ಆನ್ ಅಥವಾ ಆಫ್ ಮಾಡಬಹುದು, ಕುಟುಂಬದ ಟಿಪ್ಪಣಿ ಸೇರಿಸಬಹುದು, ಗೊತ್ತಿಲ್ಲದ್ದನ್ನು ಹಿರಿಯರಲ್ಲಿ ಕೇಳಬಹುದು.",
+q5:"ಯಾವ ಭಾಷೆಗಳು?",a5:"ಆ್ಯಪ್ ಇಂಗ್ಲಿಷ್, ಹಿಂದಿ, ಕನ್ನಡ, ತಮಿಳು ಮತ್ತು ತೆಲುಗುವಿನಲ್ಲಿರುತ್ತದೆ. ಮಂತ್ರಗಳು ನಿಮ್ಮ ಲಿಪಿಯಲ್ಲಿ, ಇಂಗ್ಲಿಷ್ ಲಿಪ್ಯಂತರದೊಂದಿಗೆ.",
+q6:"ವಿದೇಶದಲ್ಲಿದ್ದರೂ ಕೆಲಸ ಮಾಡುತ್ತದೆಯೇ?",a6:"ಹೌದು. ಸಮಯ ಭಾರತದ ಸಮಯದಂತೆ ಅಲ್ಲ, ನಿಮ್ಮ ಊರಿಗೆ ತಕ್ಕಂತೆ. ಸಾಮಗ್ರಿ ಪಟ್ಟಿ ಅಲ್ಲಿ ಸಿಗುವ ಪರ್ಯಾಯಗಳನ್ನು ಸೂಚಿಸುತ್ತದೆ.",
+q7:"ಯಾವಾಗ ಬಳಸಬಹುದು?",a7:"ಯುಗಾದಿ 2027ಕ್ಕೆ ಬೆಂಗಳೂರಿನಲ್ಲಿ ಪೈಲಟ್, ಆಗಸ್ಟ್ 2027ರಿಂದ ಪೂರ್ಣ ಹಬ್ಬದ ಕಾಲ. ಮೊದಲ ಪಟ್ಟಿಯಲ್ಲಿರುವವರಿಗೆ ಮೊದಲ ಅವಕಾಶ.",
+q8:"ಇದನ್ನು ಯಾರು ಮಾಡುತ್ತಿದ್ದಾರೆ?",a8:"ವಿಧಿ-ವಿಧಾನ ಬೆಂಗಳೂರಿನಲ್ಲಿ ರೂಪುಗೊಳ್ಳುತ್ತಿರುವ ಸ್ವತಂತ್ರ ಯೋಜನೆ. ಅಪ್‌ಡೇಟ್‌ಗಳಿಗಾಗಿ LinkedIn‌ನಲ್ಲಿ ಜೊತೆಗಿರಿ.",
+cta_kicker:"ಮೊದಲ ಪ್ರವೇಶ",cta_h:"ಇದನ್ನು ಬಳಸುವ ಮೊದಲ ಕುಟುಂಬಗಳಲ್ಲಿ ಒಬ್ಬರಾಗಿ",cta_p:"ಆ್ಯಪ್ ಮೊದಲು ಪಡೆಯಲು, ಪರೀಕ್ಷಿಸಲು ಸಹಾಯ ಮಾಡಲು ಮತ್ತು ನಿಮಗೆ ಮುಖ್ಯವಾದ ಹಬ್ಬಗಳನ್ನು ತಿಳಿಸಲು ಮೊದಲ ಪಟ್ಟಿಗೆ ಸೇರಿ.",cta_pending:"ನೋಂದಣಿ ಒಂದೆರಡು ದಿನಗಳಲ್ಲಿ ಶುರುವಾಗುತ್ತದೆ. ಸ್ವಲ್ಪ ಸಮಯದ ನಂತರ ಮತ್ತೆ ನೋಡಿ.",
+share_lead:"ಪ್ರತಿ ಹಬ್ಬಕ್ಕೂ ಮುಂಚೆ ಮನೆಗೆ ಫೋನ್ ಮಾಡುವವರು ನಿಮಗೆ ಗೊತ್ತೇ?",share_li:"LinkedIn‌ನಲ್ಲಿ ಹಂಚಿ",share_x:"X‌ನಲ್ಲಿ ಹಂಚಿ",share_wa:"WhatsApp‌ನಲ್ಲಿ ಹಂಚಿ",foot1:"ಬೆಂಗಳೂರಿನಲ್ಲಿ ತಯಾರಾದದ್ದು",foot2:"ಆಚರಣೆಗಳು ಕುಟುಂಬದಿಂದ ಕುಟುಂಬಕ್ಕೆ ಬೇರೆ. ಸಂದೇಹವಿದ್ದರೆ ಹಿರಿಯರು ಮತ್ತು ಪುರೋಹಿತರ ಮಾತು ಪಾಲಿಸಿ.",
+ph_step:"ಹಂತ 4 / 5 · ಲಕ್ಷ್ಮೀ ಪೂಜೆ",ph_fam_b:"ಅಮ್ಮನ ರೀತಿ",ph_fam:"ಕಳಶದಲ್ಲಿ ಅಜ್ಜಿಯ ಬೆಳ್ಳಿ ನಾಣ್ಯ ಇಡುತ್ತೇವೆ.",share_text:"ವಿಧಿ-ವಿಧಾನ: ಪ್ರತಿ ಆಚರಣೆ, ನಿಮ್ಮ ಮನೆತನದ ರೀತಿಯಲ್ಲಿ. ಹಬ್ಬದ ಯೋಜನೆ, ಸಾಮಗ್ರಿ ಪಟ್ಟಿ ಮತ್ತು ಹಂತ ಹಂತವಾಗಿ ಪೂಜೆ."},
+
+ta:{lang:"மொழி",nav_join:"முன்பதிவுப் பட்டியலில் சேருங்கள்",hero_h1:"ஒவ்வொரு சடங்கும், <em>உங்கள் குடும்ப முறைப்படி.</em>",hero_sub:"பண்டிகைத் திட்டம், பூஜைப் பொருள் பட்டியல், படிப்படியான பூஜை: உங்கள் குடும்பம் உண்மையில் பின்பற்றும் சம்பிரதாயத்தில். அடுத்து என்ன என்று கேட்க இனி வீட்டுக்கு போன் செய்ய வேண்டாம்.",hero_try:"பூஜையை முயற்சிக்கவும்",hero_note:"முதலில் கன்னட, தமிழ், தெலுங்கு குடும்பங்களுக்கு. சேர்வது இலவசம்.",
+prob_kicker:"பிரச்சனை",prob_h:"ஒவ்வொரு பண்டிகையும் அம்மாவுக்கு ஒரு போன் காலில்தான் தொடங்குகிறது.",prob_p1:"நம் பண்டிகைகளை எப்படிச் செய்வது என்று தெரிந்தவர்களிடமிருந்து நம்மில் பலர் இப்போது தொலைவில் வாழ்கிறோம். அதனால் பாதி நினைவில், YouTube பார்த்து, வேறு யாருடைய சம்பிரதாயத்தையோ பின்பற்றுகிறோம்.",prob_p2:"மற்ற ஆப்கள் ஒவ்வொரு பூஜைக்கும் ஒரே பொதுவான முறையைத் தருகின்றன. <strong>ஆனால் உங்கள் தீபாவளி பக்கத்து வீட்டுத் தீபாவளி அல்ல</strong>, இணையத்தின் தீபாவளி நிச்சயமாக அல்ல.",
+chat1:"அம்மா, இந்த வருஷம் எண்ணெய் ஸ்நானம் சனிக்கிழமையா ஞாயிற்றுக்கிழமையா?",chat2:"கலசத்துல காசு போடணுமா? 🙏",chat3:"இங்க லக்ஷ்மி பூஜை எத்தனை மணிக்கு?",chat4:"சாரி, எந்த இலைன்னு சொன்ன? 😅",chat_online:"ஆன்லைன்",chat_name:"அம்மா",
+demo_kicker:"முயற்சித்துப் பாருங்கள்",demo_h:"உங்கள் தீபாவளி, உங்கள் முறையில்",demo_p:"உங்கள் குடும்ப சம்பிரதாயத்தைத் தேர்ந்தெடுத்து பூஜையின் படிகளைப் பாருங்கள். படிகள் எப்படி மாறுகின்றன என்று கவனியுங்கள்.",demo_trad:"உங்கள் சம்பிரதாயம்",t_kn:"கன்னடம்",t_ta:"தமிழ்",t_te:"தெலுங்கு",demo_step:"படி {n} / {t}",demo_say:"சொல்லுங்கள்",demo_why:"ஏன்",demo_next:"அடுத்த படி",demo_back:"பின்செல்",demo_again:"மீண்டும் தொடங்கு",demo_done_h:"இதுதான் யோசனை.",demo_done_p:"முழு ஆப்பில் ஒவ்வொரு பண்டிகையின் ஒவ்வொரு படியும், ஆடியோ, உங்கள் ஊரின் நேரம், உங்கள் குடும்பக் குறிப்புகளுடன் இருக்கும்.",demo_add:"உங்கள் குடும்ப முறையைச் சேர்க்கவும்",demo_add_ph:"உ.தா: கலசத்தில் பாட்டியின் வெள்ளிக் காசு வைப்போம்",demo_save:"குறிப்பைச் சேமி",demo_note:"உங்கள் குடும்ப முறை",
+s1_kn_t:"நீரு தும்புவது, எண்ணெய் ஸ்நானம்",s1_kn_d:"முந்தைய மாலை குளிக்கும் பாத்திரத்தை அலங்கரித்து நீர் நிரப்புங்கள். சூரிய உதயத்துக்கு முன் பெரியவர் அனைவருக்கும் வெதுவெதுப்பான எண்ணெய் தேய்க்க, அந்த நீரில் அனைவரும் குளிப்பார்கள்.",s1_kn_w:"நரக சதுர்த்தசி அன்று விடியலுக்கு முன் குளிப்பது கங்கையில் நீராடுவதற்குச் சமம் என்பார்கள்.",
+s1_ta_t:"கங்கா ஸ்நானம்",s1_ta_d:"விடியலுக்கு முன் எழுந்திருங்கள். பெரியவர் அனைவர் தலையிலும் எண்ணெய் வைப்பார்; குளித்து புத்தாடை அணிந்து, ஒரு ஸ்பூன் தீபாவளி மருந்து சாப்பிடுங்கள்.",s1_ta_w:"விடியலுக்கு முன் நரகாசுரனைக் கிருஷ்ணர் வென்றதன் நினைவு இது; இனிப்புகளுக்கு முன் மருந்து வயிற்றைச் சீராக வைக்கும்.",
+s1_te_t:"சூரிய உதயத்துக்கு முன் எண்ணெய் ஸ்நானம்",s1_te_d:"நரக சதுர்த்தசி அன்று சூரிய உதயத்துக்கு முன் எண்ணெய் தேய்த்துக் குளித்து, புத்தாடை அணிந்து, வாசலில் விளக்கேற்றுங்கள்.",s1_te_w:"நரகாசுரனை சத்யபாமாவும் கிருஷ்ணரும் வென்றதன் கொண்டாட்டம் இது.",
+s2_t:"விளக்கேற்றுங்கள்",s2_d:"முதலில் பிரதான விளக்கு, பிறகு வாசல் மற்றும் ஜன்னல்களில் அகல் விளக்குகள்.",s2_w:"முதல் விளக்கு பூஜைக்குச் சாட்சியாக இறுதிவரை எரியும்.",
+s3_t:"பிள்ளையாருடன் தொடக்கம்",s3_d:"பிள்ளையாருக்கு அட்சதை, பூ, குங்குமம் சமர்ப்பித்து, பூஜை தடையின்றி நடக்க வேண்டுங்கள்.",s3_w:"ஒவ்வொரு பூஜையும் விக்னங்களை நீக்குபவரிடமிருந்தே தொடங்குகிறது.",
+s4_t:"லக்ஷ்மியை அழைத்தல்",s4_d:"லக்ஷ்மியின் பாதங்களில் அட்சதை இட்டு, அவரை வீட்டுக்கு வரவேற்கவும்.",s4_w:"இங்கிருந்து அவர் மதிப்புமிக்க விருந்தினர்.",tip_ta:"பல தமிழ் குடும்பங்களில் முக்கிய பூஜை காலையில்; மாலை லக்ஷ்மி பூஜை விருப்பத்துக்கு உட்பட்டது.",
+s5_t:"ஆரத்தியும் பிரசாதமும்",s5_d:"கற்பூர ஆரத்தியை வலமாகச் சுற்றி, அனைவரும் சேர்ந்து பாடி, பிறகு பிரசாதம் பகிருங்கள்.",s5_w:"அனைவரும் பகிரும் ஒளியுடன் ஆரத்தி பூஜையை நிறைவு செய்கிறது.",
+how_kicker:"எப்படி வேலை செய்கிறது",how_h:"முதல் ஏற்பாட்டிலிருந்து கடைசி விளக்கு வரை",how1_n:"ஒருமுறை",how1_t:"உங்கள் சம்பிரதாயத்தைச் சொல்லுங்கள்",how1_p:"பகுதி, சமூகம், நீங்கள் படிக்கும் எழுத்து. அதன் பிறகு எல்லாமே உங்கள் குடும்ப முறைப்படி.",how2_n:"சில நாட்கள் முன்",how2_t:"திட்டம் பெறுங்கள்",how2_p:"நாள்வாரியான கவுண்ட்டவுன், உங்கள் வீட்டுக்கு ஏற்ற பொருள் பட்டியல், உங்கள் ஊரின் சரியான முகூர்த்தம்.",how3_n:"பண்டிகை அன்று",how3_t:"கூடவே செய்யுங்கள்",how3_p:"ஒவ்வொரு படியாக, உங்கள் எழுத்தில் மந்திரமும் ஆடியோவும், ஒவ்வொரு படியின் காரணமும். இணையம் இல்லாமலும் வேலை செய்யும்.",
+fam_kicker:"உங்கள் குடும்ப முறை",fam_h:"அம்மாவுக்குத் தெரிந்ததை எல்லோருக்குமாகச் சேமியுங்கள்",fam_p:"சடங்குகளை உண்மையில் அறிந்தவர்கள் உங்கள் குடும்பத்திலேயே இருக்கிறார்கள். விதி-விதானம் அவர்களுக்கு ஒரு இடம் தருகிறது.",fam1_b:"பெரியவர்களிடம் கேளுங்கள்.",fam1:"WhatsApp-இல் கேள்வி அனுப்புங்கள். அவர்களின் வாய்ஸ் நோட் பதில் அதே படியில் சேமிக்கப்படும்.",fam2_b:"குடும்பக் குறிப்புகள்.",fam2:"“நாங்கள் சிலை அல்ல, மஞ்சள் பிள்ளையார் பிடிப்போம்.” இதுபோன்ற குறிப்புகள் குடும்பத்தில் அனைவருக்கும் தெரியும்.",fam3_b:"இரு குடும்பம், ஒரு வீடு.",fam3:"வேறு சம்பிரதாயக் குடும்பத்தில் திருமணமா? இரண்டு முறைகளையும் அருகருகே பார்த்துத் தேர்ந்தெடுங்கள்.",
+feat_kicker:"ஆப்பில் என்ன இருக்கிறது",feat_h:"சடங்குக்குத் தேவையான அனைத்தும்",f1_t:"பூஜைப் பொருள்கள் தயார்",f1_p:"உங்கள் வீட்டுக்கேற்ற பட்டியல், கிடைக்காதவற்றுக்கு மாற்று, ஒரே தட்டலில் ஆர்டர்.",f2_t:"உங்கள் ஊரின் முகூர்த்தம்",f2_p:"நீங்கள் வாழும் இடத்தின் பஞ்சாங்க நேரம், வெளிநாட்டிலும், நினைவூட்டல்களுடன்.",f3_t:"வாழ்க்கைச் சடங்குகள்",f3_p:"கிரகப்பிரவேசம், பெயர் சூட்டல், உபநயனம், சிரார்த்தம்: யார் என்ன செய்வது, எப்போது.",f4_t:"பகிர்ந்த வேலைகள்",f4_p:"பூ யார் வாங்குவது, விளக்கு யார் துலக்குவது, கோலம் யார் போடுவது.",f5_t:"விரதங்களும் திதிகளும்",f5_p:"ஏகாதசி, சங்கடஹர சதுர்த்தி, சிரார்த்த திதிகள்: உங்களுக்காகக் கணக்கிட்டு நினைவில் வைக்கும்.",f6_t:"குழந்தைகளுக்குக் காரணங்கள்",f6_p:"ஒவ்வொரு பண்டிகைக்குப் பின்னாலும் உள்ள சிறு கதைகள், அடுத்த தலைமுறைக்காக.",
+trust_kicker:"சரியாக வைத்திருப்பது எப்படி",trust_h:"அவசரமாக அல்ல, அக்கறையுடன் உருவாக்கியது",tr1_t:"அறிந்தவர்களால் சரிபார்ப்பு",tr1_p:"ஒவ்வொரு வழிகாட்டியும் வெளியாகும் முன் அந்த சம்பிரதாயத்தின் புரோகிதர்களும் பெரியவர்களும் சரிபார்ப்பார்கள்.",tr2_t:"வேறுபாடு, தவறல்ல",tr2_p:"குடும்பங்கள் வேறுபடும். முறைகளை அருகருகே காட்டுவோம், எதையும் தவறு என்று சொல்ல மாட்டோம்.",tr3_t:"அமைதியான வடிவமைப்பு",tr3_p:"ஜாதகப் பலன் இல்லை, பணம் கேட்கும் பரிகாரம் இல்லை, பயமுறுத்தல் இல்லை. பூஜைத் திரையில் ஒருபோதும் விளம்பரம் இல்லை.",tr4_t:"உங்கள் குடும்பத்துக்கு மட்டும்",tr4_p:"உங்கள் குறிப்புகளும் பதிவுகளும் நீங்கள் சேர்க்கும் குடும்பத்தினருடன் மட்டுமே பகிரப்படும். உங்கள் தரவை நாங்கள் ஒருபோதும் விற்க மாட்டோம்.",
+road_kicker:"எப்போது",road_h:"2027 திட்டம்",r1_d:"இப்போது",r1_t:"முன்பதிவுப் பட்டியலும் சோதனையும்",r1_p:"இந்தத் தீபாவளிக்கு குடும்பங்கள் முன்மாதிரியைப் பயன்படுத்தி தங்களுக்கு என்ன தேவை என்று சொல்கின்றன.",r2_d:"யுகாதி, ஏப்ரல் 2027",r2_t:"பெங்களூரில் பைலட்",r2_p:"முதல் குடும்பங்கள் யுகாதி, ஸ்ரீராம நவமிக்குப் பயன்படுத்தும்.",r3_d:"ஆகஸ்ட்–நவம்பர் 2027",r3_t:"பண்டிகைக் காலம்",r3_p:"வரலக்ஷ்மி, விநாயகர், நவராத்திரி, தீபாவளி: கன்னட, தமிழ், தெலுங்கு சம்பிரதாயங்களில்.",trad_line:"முதல் சம்பிரதாயங்கள்: கன்னடம், தமிழ், தெலுங்கு. அடுத்தது உங்களுடையதா? சேரும்போது சொல்லுங்கள்.",
+faq_kicker:"கேள்விகள்",faq_h:"அடிக்கடி கேட்கப்படும் கேள்விகள்",
+q1:"இது இலவசமா?",a1:"முன்பதிவுப் பட்டியலில் சேர்வது இலவசம், பண்டிகை வழிகாட்டிகளும் இலவசம். கூடுதல் வசதிகளுடன் கட்டணக் குடும்பத் திட்டம் பின்னர் வரலாம்.",
+q2:"எந்த சம்பிரதாயங்கள் இருக்கும்?",a2:"கன்னட, தமிழ், தெலுங்கு குடும்பங்களுடன் தொடங்கி, ஒவ்வொன்றாக மேலும் சேர்ப்போம். சேரும்போது உங்களுடையதைச் சொல்லுங்கள்.",
+q3:"இது எங்கள் புரோகிதருக்கு மாற்றா?",a3:"இல்லை. நீங்களே வீட்டில் செய்யும் சடங்குகளுக்கு உதவும்; பெரிய நிகழ்வுகளில் குடும்பம் என்ன செய்யும், புரோகிதர் என்ன செய்வார் என்று காட்டும்.",
+q4:"எங்கள் வீட்டில் வேறு மாதிரி செய்தால்?",a4:"அதுதான் முக்கியம். படிகளை ஆன் அல்லது ஆஃப் செய்யலாம், குடும்பக் குறிப்புகள் சேர்க்கலாம், தெரியாததைப் பெரியவர்களிடம் கேட்கலாம்.",
+q5:"எந்த மொழிகள்?",a5:"ஆப் ஆங்கிலம், இந்தி, கன்னடம், தமிழ், தெலுங்கில் இருக்கும். மந்திரங்கள் உங்கள் எழுத்தில், ஆங்கில ஒலிபெயர்ப்புடன்.",
+q6:"வெளிநாட்டில் இருந்தாலும் வேலை செய்யுமா?",a6:"ஆம். நேரம் இந்திய நேரப்படி அல்ல, உங்கள் ஊரின்படி. பொருள் பட்டியல் அங்கே கிடைக்கும் மாற்றுகளைப் பரிந்துரைக்கும்.",
+q7:"எப்போது பயன்படுத்தலாம்?",a7:"யுகாதி 2027-க்கு பெங்களூரில் பைலட், ஆகஸ்ட் 2027 முதல் முழுப் பண்டிகைக் காலம். முன்பதிவுப் பட்டியலில் உள்ளவர்களுக்கு முதல் வாய்ப்பு.",
+q8:"இதை யார் உருவாக்குகிறார்கள்?",a8:"விதி-விதானம் பெங்களூரில் உருவாகும் ஒரு சுயாதீனத் திட்டம். புதுப்பிப்புகளுக்கு LinkedIn-இல் தொடருங்கள்.",
+cta_kicker:"முன்கூட்டிய அணுகல்",cta_h:"இதைப் பயன்படுத்தும் முதல் குடும்பங்களில் ஒன்றாக இருங்கள்",cta_p:"ஆப்பை முதலில் பெற, சோதிக்க உதவ, உங்களுக்கு முக்கியமான பண்டிகைகளைச் சொல்ல முன்பதிவுப் பட்டியலில் சேருங்கள்.",cta_pending:"பதிவு ஓரிரு நாட்களில் திறக்கும். விரைவில் மீண்டும் பாருங்கள்.",
+share_lead:"ஒவ்வொரு பண்டிகைக்கும் முன் வீட்டுக்கு போன் செய்பவர் யாராவது தெரியுமா?",share_li:"LinkedIn-இல் பகிர்",share_x:"X-இல் பகிர்",share_wa:"WhatsApp-இல் பகிர்",foot1:"பெங்களூரில் உருவானது",foot2:"சடங்குகள் குடும்பத்துக்குக் குடும்பம் மாறும். சந்தேகம் இருந்தால் பெரியவர்களையும் புரோகிதரையும் பின்பற்றுங்கள்.",
+ph_step:"படி 4 / 5 · லக்ஷ்மி பூஜை",ph_fam_b:"அம்மாவின் முறை",ph_fam:"கலசத்தில் பாட்டியின் வெள்ளிக் காசு வைப்போம்.",share_text:"விதி-விதானம்: ஒவ்வொரு சடங்கும், உங்கள் குடும்ப முறைப்படி. பண்டிகைத் திட்டம், பூஜைப் பொருள் பட்டியல், படிப்படியான பூஜை."},
+
+te:{lang:"భాష",nav_join:"ముందస్తు జాబితాలో చేరండి",hero_h1:"ప్రతి ఆచారం, <em>మీ కుటుంబ పద్ధతిలో.</em>",hero_sub:"పండుగ ప్రణాళిక, పూజా సామగ్రి జాబితా, దశలవారీ పూజ: మీ కుటుంబం నిజంగా పాటించే సంప్రదాయంలో. తర్వాత ఏం చేయాలో అడగడానికి ఇక ఇంటికి ఫోన్ చేయక్కర్లేదు.",hero_try:"పూజను ప్రయత్నించండి",hero_note:"మొదట కన్నడ, తమిళ, తెలుగు కుటుంబాల కోసం. చేరడం ఉచితం.",
+prob_kicker:"సమస్య",prob_h:"ప్రతి పండుగ అమ్మకు ఫోన్‌తోనే మొదలవుతుంది.",prob_p1:"మన పండుగలు ఎలా చేయాలో తెలిసినవారికి మనలో చాలామంది ఇప్పుడు దూరంగా ఉంటున్నాం. అందుకే సగం గుర్తుతో, YouTube చూసి, ఎవరిదో సంప్రదాయాన్ని పాటిస్తున్నాం.",prob_p2:"ఇతర యాప్‌లు ప్రతి పూజకు ఒకే సాధారణ పద్ధతి ఇస్తాయి. <strong>కానీ మీ దీపావళి పక్కింటివారి దీపావళి కాదు</strong>, ఇంటర్నెట్‌ది అసలే కాదు.",
+chat1:"అమ్మా, ఈ ఏడాది తలంటు స్నానం శనివారమా ఆదివారమా?",chat2:"కలశంలో నాణెం వేస్తామా? 🙏",chat3:"ఇక్కడ లక్ష్మీ పూజ ఎన్నింటికి?",chat4:"సారీ, ఏ ఆకులన్నావు? 😅",chat_online:"ఆన్‌లైన్",chat_name:"అమ్మ",
+demo_kicker:"ప్రయత్నించండి",demo_h:"మీ దీపావళి, మీ పద్ధతిలో",demo_p:"మీ కుటుంబ సంప్రదాయం ఎంచుకుని పూజ దశలను చూడండి. దశలు ఎలా మారుతాయో గమనించండి.",demo_trad:"మీ సంప్రదాయం",t_kn:"కన్నడ",t_ta:"తమిళం",t_te:"తెలుగు",demo_step:"దశ {n} / {t}",demo_say:"చెప్పండి",demo_why:"ఎందుకు",demo_next:"తర్వాతి దశ",demo_back:"వెనక్కి",demo_again:"మళ్ళీ మొదలుపెట్టండి",demo_done_h:"ఇదే ఆలోచన.",demo_done_p:"పూర్తి యాప్‌లో ప్రతి పండుగ ప్రతి దశ, ఆడియో, మీ ఊరి సమయాలు, మీ కుటుంబ నోట్స్‌తో ఉంటుంది.",demo_add:"మీ కుటుంబ పద్ధతిని జోడించండి",demo_add_ph:"ఉదా: కలశంలో నానమ్మ వెండి నాణెం ఉంచుతాం",demo_save:"నోట్ సేవ్ చేయండి",demo_note:"మీ కుటుంబ పద్ధతి",
+s1_kn_t:"నీరు నింపడం, తలంటు స్నానం",s1_kn_d:"ముందు రోజు సాయంత్రం స్నానపు పాత్రను అలంకరించి నీళ్ళు నింపండి. సూర్యోదయానికి ముందు పెద్దలు అందరికీ గోరువెచ్చని నూనె పెడతారు, ఆ నీళ్ళతో అందరూ స్నానం చేస్తారు.",s1_kn_w:"నరక చతుర్దశి నాడు తెల్లవారుజామున స్నానం గంగాస్నానంతో సమానం అంటారు.",
+s1_ta_t:"గంగా స్నానం",s1_ta_d:"తెల్లవారకముందే లేవండి. పెద్దలు అందరి తలకు నూనె పెడతారు; స్నానం చేసి కొత్త బట్టలు కట్టుకుని, ఒక చెంచా దీపావళి మరుందు తీసుకోండి.",s1_ta_w:"తెల్లవారకముందే నరకాసురుడిపై కృష్ణుడి విజయానికి ఇది గుర్తు; స్వీట్లకు ముందు మరుందు కడుపును సరిగా ఉంచుతుంది.",
+s1_te_t:"సూర్యోదయానికి ముందు తలంటు స్నానం",s1_te_d:"నరక చతుర్దశి నాడు సూర్యోదయానికి ముందు నూనెతో తలంటు స్నానం చేసి, కొత్త బట్టలు కట్టుకుని, గుమ్మం దగ్గర దీపాలు వెలిగించండి.",s1_te_w:"నరకాసురుడిపై సత్యభామ, కృష్ణుల విజయాన్ని ఇది జరుపుకుంటుంది.",
+s2_t:"దీపాలు వెలిగించండి",s2_d:"ముందు ప్రధాన దీపం, తర్వాత గుమ్మం, కిటికీల దగ్గర ప్రమిదలు వెలిగించండి.",s2_w:"మొదటి దీపం పూజకు సాక్షిగా చివరిదాకా వెలుగుతుంది.",
+s3_t:"గణపతితో ప్రారంభం",s3_d:"గణపతికి అక్షతలు, పువ్వు, కుంకుమ సమర్పించి, పూజ నిర్విఘ్నంగా జరగాలని ప్రార్థించండి.",s3_w:"ప్రతి పూజ విఘ్నాలను తొలగించేవాడితోనే మొదలవుతుంది.",
+s4_t:"లక్ష్మీ ఆవాహన",s4_d:"లక్ష్మీదేవి పాదాల వద్ద అక్షతలు సమర్పించి ఇంటికి ఆహ్వానించండి.",s4_w:"ఇక్కడి నుంచి ఆమెను గౌరవనీయమైన అతిథిగా చూస్తాం.",tip_ta:"చాలా తమిళ కుటుంబాల్లో ప్రధాన పూజ ఉదయం; సాయంత్రం లక్ష్మీ పూజ ఐచ్ఛికం.",
+s5_t:"హారతి, ప్రసాదం",s5_d:"కర్పూర హారతిని సవ్యదిశలో తిప్పి, అందరూ కలిసి పాడి, తర్వాత ప్రసాదం పంచండి.",s5_w:"అందరూ పంచుకునే వెలుగుతో హారతి పూజను ముగిస్తుంది.",
+how_kicker:"ఇది ఎలా పనిచేస్తుంది",how_h:"మొదటి ఏర్పాటు నుంచి చివరి దీపం వరకు",how1_n:"ఒక్కసారి",how1_t:"మీ సంప్రదాయం చెప్పండి",how1_p:"ప్రాంతం, సమాజం, మీరు చదివే లిపి. ఆ తర్వాత అంతా మీ కుటుంబ పద్ధతిలోనే.",how2_n:"కొన్ని రోజుల ముందు",how2_t:"ప్రణాళిక పొందండి",how2_p:"రోజువారీ కౌంట్‌డౌన్, మీ ఇంటికి తగిన సామగ్రి జాబితా, మీ ఊరి సరైన ముహూర్తం.",how3_n:"పండుగ రోజు",how3_t:"తోడుగా చేయండి",how3_p:"ఒక్కో దశ, మీ లిపిలో మంత్రాలు, ఆడియో, ప్రతి దశ ఎందుకో వివరణ. ఇంటర్నెట్ లేకున్నా పనిచేస్తుంది.",
+fam_kicker:"మీ కుటుంబ పద్ధతి",fam_h:"అమ్మకు తెలిసింది అందరి కోసం దాచుకోండి",fam_p:"ఆచారాలు నిజంగా తెలిసినవారు మీ కుటుంబంలోనే ఉన్నారు. విధి-విధానం వారికి ఒక చోటు ఇస్తుంది.",fam1_b:"పెద్దలను అడగండి.",fam1:"WhatsAppలో ప్రశ్న పంపండి. వారి వాయిస్ నోట్ జవాబు అదే దశలో సేవ్ అవుతుంది.",fam2_b:"కుటుంబ నోట్స్.",fam2:"“మేం విగ్రహం కాదు, పసుపు గణపతిని చేస్తాం.” ఇలాంటి నోట్స్ కుటుంబంలో అందరికీ కనిపిస్తాయి.",fam3_b:"రెండు కుటుంబాలు, ఒకే ఇల్లు.",fam3:"వేరే సంప్రదాయం ఉన్న కుటుంబంలో పెళ్ళయిందా? రెండు పద్ధతులనూ పక్కపక్కనే చూసి ఎంచుకోండి.",
+feat_kicker:"యాప్‌లో ఏముంది",feat_h:"ఆచారానికి కావాల్సినవన్నీ",f1_t:"సామగ్రి సిద్ధం",f1_p:"మీ ఇంటికి తగిన జాబితా, దొరకని వాటికి ప్రత్యామ్నాయాలు, ఒక్క ట్యాప్‌తో ఆర్డర్.",f2_t:"మీ ఊరి ముహూర్తం",f2_p:"మీరు ఉండే చోటి పంచాంగ సమయాలు, విదేశాల్లో కూడా, రిమైండర్లతో.",f3_t:"జీవిత సంస్కారాలు",f3_p:"గృహప్రవేశం, నామకరణం, ఉపనయనం, శ్రాద్ధం: ఎవరు ఏం చేయాలి, ఎప్పుడు.",f4_t:"పంచుకున్న పనులు",f4_p:"పువ్వులు ఎవరు తెస్తారు, దీపాలు ఎవరు తోముతారు, ముగ్గు ఎవరు వేస్తారు.",f5_t:"వ్రతాలు, తిథులు",f5_p:"ఏకాదశి, సంకష్టి, శ్రాద్ధ తిథులు: మీ కోసం లెక్కించి గుర్తుంచుతుంది.",f6_t:"పిల్లలకు కారణాలు",f6_p:"ప్రతి పండుగ వెనుక ఉన్న చిన్న కథలు, తర్వాతి తరం కోసం.",
+trust_kicker:"సరిగ్గా ఎలా ఉంచుతాం",trust_h:"హడావుడిగా కాదు, శ్రద్ధతో చేసింది",tr1_t:"తెలిసినవారి పరిశీలన",tr1_p:"ప్రతి గైడ్ ప్రచురించే ముందు ఆ సంప్రదాయపు పురోహితులు, పెద్దలు పరిశీలిస్తారు.",tr2_t:"తేడాలు, తప్పులు కావు",tr2_p:"కుటుంబాలు వేరువేరు. పద్ధతులను పక్కపక్కనే చూపిస్తాం, దేన్నీ తప్పు అనం.",tr3_t:"ప్రశాంతమైన రూపకల్పన",tr3_p:"జాతక ఫలాలు లేవు, డబ్బు అడిగే పరిహారాలు లేవు, భయపెట్టడం లేదు. పూజ స్క్రీన్‌పై ఎప్పుడూ ప్రకటనలు ఉండవు.",tr4_t:"మీ కుటుంబానికి మాత్రమే",tr4_p:"మీ నోట్స్, రికార్డింగ్‌లు మీరు చేర్చే కుటుంబ సభ్యులతో మాత్రమే పంచుకుంటాం. మీ డేటాను ఎప్పటికీ అమ్మం.",
+road_kicker:"ఎప్పుడు",road_h:"2027 ప్రణాళిక",r1_d:"ఇప్పుడు",r1_t:"ముందస్తు జాబితా, పరీక్ష",r1_p:"ఈ దీపావళికి కుటుంబాలు నమూనాను వాడి తమకేం కావాలో చెబుతాయి.",r2_d:"ఉగాది, ఏప్రిల్ 2027",r2_t:"బెంగళూరులో పైలట్",r2_p:"మొదటి కుటుంబాలు ఉగాది, శ్రీరామ నవమికి వాడతాయి.",r3_d:"ఆగస్టు–నవంబర్ 2027",r3_t:"పండుగల కాలం",r3_p:"వరలక్ష్మి, వినాయక, నవరాత్రి, దీపావళి: కన్నడ, తమిళ, తెలుగు సంప్రదాయాల్లో.",trad_line:"మొదటి సంప్రదాయాలు: కన్నడ, తమిళం, తెలుగు. తర్వాత మీదే కావాలా? చేరేటప్పుడు చెప్పండి.",
+faq_kicker:"ప్రశ్నలు",faq_h:"తరచుగా అడిగే ప్రశ్నలు",
+q1:"ఇది ఉచితమా?",a1:"ముందస్తు జాబితాలో చేరడం ఉచితం, పండుగ గైడ్‌లు కూడా ఉచితమే. అదనపు సదుపాయాలతో చెల్లింపు కుటుంబ ప్లాన్ తర్వాత రావచ్చు.",
+q2:"ఏ సంప్రదాయాలు ఉంటాయి?",a2:"కన్నడ, తమిళ, తెలుగు కుటుంబాలతో మొదలుపెట్టి, ఒక్కొక్కటిగా మరిన్ని చేరుస్తాం. చేరేటప్పుడు మీది చెప్పండి.",
+q3:"ఇది మా పురోహితుడికి బదులా?",a3:"కాదు. మీరే ఇంట్లో చేసే ఆచారాలకు సాయపడుతుంది; పెద్ద కార్యక్రమాల్లో కుటుంబం ఏం చేయాలి, పురోహితుడు ఏం చేస్తారు అని చూపిస్తుంది.",
+q4:"మా ఇంట్లో వేరేలా చేస్తే?",a4:"అదే ముఖ్యం. దశలను ఆన్ లేదా ఆఫ్ చేయొచ్చు, కుటుంబ నోట్స్ జోడించొచ్చు, తెలియనిది పెద్దలను అడగొచ్చు.",
+q5:"ఏ భాషలు?",a5:"యాప్ ఇంగ్లీష్, హిందీ, కన్నడ, తమిళం, తెలుగులో ఉంటుంది. మంత్రాలు మీ లిపిలో, ఇంగ్లీష్ లిప్యంతరణతో.",
+q6:"విదేశాల్లో ఉన్నా పనిచేస్తుందా?",a6:"అవును. సమయాలు భారత కాలమానం ప్రకారం కాదు, మీ ఊరి ప్రకారం. సామగ్రి జాబితా అక్కడ దొరికే ప్రత్యామ్నాయాలు సూచిస్తుంది.",
+q7:"ఎప్పుడు వాడొచ్చు?",a7:"ఉగాది 2027కి బెంగళూరులో పైలట్, ఆగస్టు 2027 నుంచి పూర్తి పండుగల కాలం. ముందస్తు జాబితాలో ఉన్నవారికి మొదటి అవకాశం.",
+q8:"దీన్ని ఎవరు తయారు చేస్తున్నారు?",a8:"విధి-విధానం బెంగళూరులో రూపొందుతున్న ఒక స్వతంత్ర ప్రాజెక్ట్. అప్‌డేట్‌ల కోసం LinkedInలో అనుసరించండి.",
+cta_kicker:"ముందస్తు ప్రవేశం",cta_h:"దీన్ని వాడే మొదటి కుటుంబాల్లో ఒకరవ్వండి",cta_p:"యాప్‌ను ముందుగా పొందడానికి, పరీక్షించడంలో సాయపడటానికి, మీకు ముఖ్యమైన పండుగలు చెప్పడానికి ముందస్తు జాబితాలో చేరండి.",cta_pending:"నమోదు ఒకటి రెండు రోజుల్లో మొదలవుతుంది. త్వరలో మళ్ళీ చూడండి.",
+share_lead:"ప్రతి పండుగకు ముందు ఇంటికి ఫోన్ చేసేవారు ఎవరైనా తెలుసా?",share_li:"LinkedInలో షేర్ చేయండి",share_x:"Xలో షేర్ చేయండి",share_wa:"WhatsAppలో షేర్ చేయండి",foot1:"బెంగళూరులో తయారైంది",foot2:"ఆచారాలు కుటుంబానికో రకంగా ఉంటాయి. సందేహం ఉంటే పెద్దలు, పురోహితుల మాట పాటించండి.",
+ph_step:"దశ 4 / 5 · లక్ష్మీ పూజ",ph_fam_b:"అమ్మ పద్ధతి",ph_fam:"కలశంలో నానమ్మ వెండి నాణెం ఉంచుతాం.",share_text:"విధి-విధానం: ప్రతి ఆచారం, మీ కుటుంబ పద్ధతిలో. పండుగ ప్రణాళిక, సామగ్రి జాబితా, దశలవారీ పూజ."}
+};
+
+/* ---------- State ---------- */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let L = "en", trad = "kn", step = 0;
+const notes = {};
+try{ const s = localStorage.getItem("vv-lang"); if(s && T[s]) L = s; else { const n = (navigator.language||"").slice(0,2); if(T[n]) L = n; } }catch(e){}
+const t = k => (T[L][k] ?? T.en[k] ?? "");
+const loaded = new Set();
+function loadFont(code){ if(!FONTS[code] || loaded.has(code)) return; loaded.add(code); const l = document.createElement("link"); l.rel = "stylesheet"; l.href = "https://fonts.googleapis.com/css2?family=" + FONTS[code] + "&display=swap"; document.head.appendChild(l); }
+
+/* ---------- Demo ---------- */
+const STEPS = [
+  {k:"s1", per:true},
+  {k:"s2"},
+  {k:"s3", m:"g"},
+  {k:"s4", m:"l", tip:true},
+  {k:"s5"}
+];
+function stepText(s, part){ return s.per ? t(`s1_${trad}_${part}`) : t(`${s.k}_${part}`); }
+function renderDemo(){
+  document.querySelectorAll("#tradSeg button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.t===trad));
+  const N = STEPS.length, p = $("dpanel");
+  if(step >= N){
+    p.innerHTML = `<div class="pbar">${STEPS.map(()=>`<i class="on"></i>`).join("")}</div>
+      <svg width="90" viewBox="0 0 120 105" style="align-self:center;margin-top:20px" aria-hidden="true"><defs><radialGradient id="dg" cx="50%" cy="60%" r="50%"><stop offset="0" stop-color="#FFD873" stop-opacity=".55"/><stop offset="1" stop-color="#FFD873" stop-opacity="0"/></radialGradient></defs><circle cx="60" cy="45" r="44" fill="url(#dg)"/><path class="flame" d="M60 18c-7 11-9 17-9 22a9 9 0 0 0 18 0c0-5-2-11-9-22z" fill="#FFC54D"/><path d="M18 62h84c-4 18-20 30-42 30S22 80 18 62z" fill="#B8742A"/></svg>
+      <h3 style="text-align:center">${esc(t("demo_done_h"))}</h3><p class="do" style="text-align:center">${esc(t("demo_done_p"))}</p>
+      <div class="dnav" style="grid-template-columns:1fr"><button class="n" data-d="again">${esc(t("demo_again"))}</button></div>`;
+    $("addnote").innerHTML = ""; return;
+  }
+  const s = STEPS[step], key = trad + "-" + s.k, mine = notes[key] || [];
+  const m = s.m ? `<div class="mantra"><span class="l">${esc(t("demo_say"))}</span><span class="s" style="font-family:var(--${trad})">${MANTRA[s.m][trad]}</span><span class="t">${MANTRA[s.m].tr}</span></div>` : "";
+  p.innerHTML = `<div class="pbar">${STEPS.map((_,i)=>`<i class="${i<=step?"on":""}"></i>`).join("")}</div>
+    <div class="st">${esc(t("demo_step").replace("{n}",step+1).replace("{t}",N))} · ${esc(t("t_"+trad))}</div>
+    <h3>${esc(stepText(s,"t"))}</h3>
+    <p class="do">${esc(stepText(s,"d"))}</p>
+    ${m}
+    ${s.tip && trad==="ta" ? `<div class="tip">${esc(t("tip_ta"))}</div>` : ""}
+    <p class="why"><b>${esc(t("demo_why"))} · </b>${esc(stepText(s,"w"))}</p>
+    ${mine.map(n=>`<div class="fam"><b>${esc(t("demo_note"))}</b>${esc(n)}</div>`).join("")}
+    <div class="dnav"><button class="b" data-d="back" ${step===0?"disabled":""}>${esc(t("demo_back"))}</button><button class="n" data-d="next">${esc(t("demo_next"))}</button></div>`;
+  $("addnote").innerHTML = `<button class="linkbtn" data-d="addopen" aria-expanded="false">+ ${esc(t("demo_add"))}</button>`;
+}
+document.addEventListener("click", e=>{
+  const tb = e.target.closest("#tradSeg button"); if(tb){ trad = tb.dataset.t; loadFont(trad); renderDemo(); return; }
+  const d = e.target.closest("[data-d]"); if(!d) return;
+  const a = d.dataset.d;
+  if(a==="next"){ step++; renderDemo(); }
+  else if(a==="back"){ step = Math.max(0, step-1); renderDemo(); }
+  else if(a==="again"){ step = 0; renderDemo(); }
+  else if(a==="addopen"){
+    $("addnote").innerHTML = `<label class="dlabel" for="noteIn" style="margin:0">${esc(t("demo_add"))}</label><div class="row"><input id="noteIn" type="text" maxlength="140" placeholder="${esc(t("demo_add_ph"))}"><button data-d="save">${esc(t("demo_save"))}</button></div>`;
+    $("noteIn").focus();
+  }
+  else if(a==="save"){ const v = $("noteIn").value.trim(); if(!v) return; const key = trad + "-" + STEPS[step].k; (notes[key] ||= []).push(v); renderDemo(); }
+});
+document.addEventListener("keydown", e=>{ if(e.key==="Enter" && e.target.id==="noteIn"){ e.preventDefault(); document.querySelector('[data-d="save"]').click(); } });
+
+/* ---------- Language ---------- */
+function applyLang(){
+  document.documentElement.lang = L;
+  if(L !== "en" && L !== "hi") loadFont(L);
+  document.querySelectorAll("[data-i]").forEach(el=>{ el.textContent = t(el.dataset.i); });
+  document.querySelectorAll("[data-ih]").forEach(el=>{ el.innerHTML = t(el.dataset.ih); });
+  $("brandSub").textContent = BRAND[L]; $("footBrand").textContent = BRAND[L]; $("kicker").textContent = KICK[L];
+  const ps = (L==="ta"||L==="te"||L==="kn") ? L : "kn"; loadFont(ps);
+  $("phMantra").textContent = MANTRA.l[ps]; $("phMantra").style.fontFamily = `var(--${ps})`;
+  $("phone").setAttribute("aria-label", t("s4_t") + ". " + t("s4_d"));
+  $("faq").innerHTML = [1,2,3,4,5,6,7,8].map(i=>`<details><summary>${esc(t("q"+i))}</summary><p>${esc(t("a"+i))}</p></details>`).join("");
+  $("langSel").value = L;
+  const url = location.href.split("#")[0], txt = t("share_text");
+  $("shareLi").href = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(url);
+  $("shareX").href = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(txt) + "&url=" + encodeURIComponent(url);
+  $("shareWa").href = "https://wa.me/?text=" + encodeURIComponent(txt + " " + url);
+  renderDemo();
+}
+$("langSel").addEventListener("change", e=>{ L = e.target.value; try{ localStorage.setItem("vv-lang", L); }catch(err){} applyLang(); });
+
+/* ---------- Join ---------- */
+document.querySelectorAll(".js-form, .js-join").forEach(a=>{
+  if(FORM_URL){ a.href = FORM_URL; a.target = "_blank"; a.rel = "noopener"; }
+  else if(a.classList.contains("js-form")) a.addEventListener("click", e=>{ e.preventDefault(); $("pending").classList.add("show"); });
+});
+
+/* ---------- Decorations ---------- */
+function toran(){
+  const svg = $("toran"), W = 1200, n = 30, parts = [];
+  parts.push(`<path d="M0 10 Q600 30 1200 10" fill="none" stroke="#B8742A" stroke-width="2"/>`);
+  for(let i=0;i<n;i++){
+    const x = (i+.5)*W/n, s = x/W, y = 10 + 40*s*(1-s);
+    const leafy = i % 3 !== 1;
+    if(leafy){ const c = i%2 ? "#3F7D3A" : "#2E6A3E", len = 30 + (i%2)*6;
+      parts.push(`<path d="M${x} ${y} C${x-9} ${y+len*.35} ${x-6} ${y+len*.8} ${x} ${y+len} C${x+6} ${y+len*.8} ${x+9} ${y+len*.35} ${x} ${y}Z" fill="${c}"/><path d="M${x} ${y+3} L${x} ${y+len-3}" stroke="#9BC48F" stroke-width=".8" opacity=".7"/>`); }
+    else { parts.push(`<circle cx="${x}" cy="${y+7}" r="6" fill="#E9A21B"/><circle cx="${x}" cy="${y+18}" r="5.5" fill="#F0B830"/><circle cx="${x}" cy="${y+28}" r="5" fill="#E9A21B"/>`); }
+  }
+  svg.innerHTML = parts.join("");
+}
+function kolam(svg){
+  const g = [], step = 50, o = 50, N = 7;
+  for(let r=0;r<N;r++) for(let c=0;c<N;c++){ const x = o + c*step, y = o + r*step; if(Math.abs(r-3)+Math.abs(c-3) <= 3) g.push(`<circle cx="${x}" cy="${y}" r="3.2" fill="currentColor"/>`); }
+  const loops = [];
+  for(let r=0;r<N;r++) for(let c=0;c<N;c++){ if(Math.abs(r-3)+Math.abs(c-3) > 3) continue; const x = o + c*step, y = o + r*step;
+    loops.push(`<path d="M${x-25} ${y} Q${x} ${y-25} ${x+25} ${y} Q${x} ${y+25} ${x-25} ${y}Z" fill="none" stroke="currentColor" stroke-width="1.6"/>`); }
+  svg.innerHTML = `<g>${loops.join("")}${g.join("")}<circle cx="200" cy="200" r="178" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 8"/></g>`;
+}
+function lamps(){
+  const one = (w, d) => `<svg width="${w}" viewBox="0 0 120 110"><defs><radialGradient id="lg${w}${d}" cx="50%" cy="60%" r="50%"><stop offset="0" stop-color="#FFD873" stop-opacity=".5"/><stop offset="1" stop-color="#FFD873" stop-opacity="0"/></radialGradient></defs><circle cx="60" cy="45" r="44" fill="url(#lg${w}${d})"/><path class="flame" style="animation-delay:${d}s" d="M60 18c-7 11-9 17-9 22a9 9 0 0 0 18 0c0-5-2-11-9-22z" fill="#FFC54D"/><path d="M60 30c-3 5-4 8-4 10a4 4 0 0 0 8 0c0-2-1-5-4-10z" fill="#FFF3C4"/><path d="M18 62h84c-4 18-20 30-42 30S22 80 18 62z" fill="#B8742A"/><path d="M18 62h84" stroke="#E9B850" stroke-width="3" stroke-linecap="round"/></svg>`;
+  $("lamps").innerHTML = one(52,0) + one(74,.4) + one(110,.8) + one(74,1.2) + one(52,1.6);
+  const el = $("lamps");
+  if("IntersectionObserver" in window){ const io = new IntersectionObserver(es=>{ es.forEach(x=>{ if(x.isIntersecting){ el.classList.add("lit"); io.disconnect(); } }); }, {threshold:.4}); io.observe(el); }
+  else el.classList.add("lit");
+  setTimeout(()=>el.classList.add("lit"), 4000);
+}
+const half = FESTS.map(f=>`<span>${f}</span>`).join("");
+$("track").innerHTML = half + half;
+toran(); kolam($("kolam")); kolam($("kolam2")); lamps();
+applyLang();
+const nav = $("nav");
+addEventListener("scroll", ()=>nav.classList.toggle("scrolled", scrollY > 8), {passive:true});
+</script>
+
+</body>
+</html>

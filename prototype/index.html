@@ -1,0 +1,1018 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Rasam</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gotu&family=Hind:wght@400;500;600&family=Noto+Sans+Kannada:wght@400;600&display=swap">
+<style>
+/* Layout: a single phone-width app column, centred on wide screens; bottom tab bar; sheets slide up from the bottom; guided puja takes over the full screen in night colours. */
+:root{
+  --ground:#F2F4EC; --surface:#FFFFFF; --ink:#1C231E; --muted:#5D695F; --line:#D9DED2;
+  --leaf:#2E6A3E; --leaf-soft:#E2EDE0; --haldi:#C98A06; --haldi-soft:#FAEFCF; --kumkum:#AE1530; --kumkum-soft:#F8E1E4;
+  --scrim:rgba(20,24,20,.45);
+  --night:#15110C; --brass:#E9B850; --brass-dim:#9C7B3A; --night-ink:#F4EBDD; --night-muted:#B8A88E;
+  --display:"Gotu", "Hind", Georgia, serif;
+  --body:"Hind", "Noto Sans Kannada", system-ui, sans-serif;
+  --kn:"Noto Sans Kannada", "Hind", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --ground:#111511; --surface:#1A201B; --ink:#E8ECE4; --muted:#9BA69D; --line:#2B332D;
+  --leaf:#7DC28F; --leaf-soft:#1E3325; --haldi:#F0BA3D; --haldi-soft:#3A2D10; --kumkum:#F0687E; --kumkum-soft:#3C1A20; --scrim:rgba(0,0,0,.6); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --ground:#111511; --surface:#1A201B; --ink:#E8ECE4; --muted:#9BA69D; --line:#2B332D;
+  --leaf:#7DC28F; --leaf-soft:#1E3325; --haldi:#F0BA3D; --haldi-soft:#3A2D10; --kumkum:#F0687E; --kumkum-soft:#3C1A20; --scrim:rgba(0,0,0,.6); color-scheme:dark}
+
+html,body{height:100%}
+body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+*{box-sizing:border-box}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:var(--leaf)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--haldi);outline-offset:2px}
+.app{max-width:440px;margin:0 auto;padding-block:20px 104px;display:flex;flex-direction:column;gap:20px}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance;line-height:1.2}
+h1{font-size:1.75rem} h2{font-size:1.3rem} h3{font-size:1.05rem}
+p{margin:0}
+.eyebrow{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.muted{color:var(--muted)}
+.small{font-size:.875rem}
+.row{display:flex;align-items:center;gap:12px}
+.wrap-row{display:flex;flex-wrap:wrap;gap:8px}
+.stack{display:flex;flex-direction:column;gap:12px}
+.between{justify-content:space-between}
+.proto{font-size:.75rem;color:var(--muted);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.proto button{background:none;border:0;padding:0;color:var(--leaf);text-decoration:underline;font-size:.75rem}
+.back{background:none;border:0;padding:0;color:var(--leaf);font-weight:600;display:inline-flex;align-items:center;gap:4px;align-self:flex-start}
+.sample{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:6px;padding:1px 6px}
+
+.fest{background:var(--leaf);color:#F6F3E6;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+.fest .eyebrow{color:#CFE3CF}
+.fest .count{font-family:var(--display);font-size:3rem;line-height:1;font-variant-numeric:tabular-nums;color:var(--brass)}
+.fest .lamps{position:absolute;right:-6px;top:14px;opacity:.9}
+.days{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.day{background:rgba(255,255,255,.1);border-radius:10px;padding:8px 6px;text-align:center;font-size:.75rem;line-height:1.3}
+.day b{display:block;font-size:.95rem;font-weight:600}
+.day.main{background:var(--brass);color:#2A1E07}
+.btn{border:0;border-radius:999px;padding:12px 18px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.btn.primary{background:var(--kumkum);color:#fff}
+.btn.green{background:var(--leaf);color:var(--surface)}
+.btn.light{background:#FFF8E6;color:#1C231E}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.btn.sm{padding:8px 14px;font-size:.88rem}
+.btn.block{width:100%}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px}
+.section-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.link{background:none;border:0;padding:0;color:var(--leaf);font-weight:600;font-size:.9rem;text-align:left}
+
+.task{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line)}
+.task:first-child{border-top:0;padding-top:0}
+.task:last-child{padding-bottom:0}
+.check{flex:none;width:24px;height:24px;border-radius:7px;border:1.5px solid var(--muted);background:transparent;display:grid;place-items:center;padding:0;margin-top:2px}
+.check[aria-checked="true"]{background:var(--leaf);border-color:var(--leaf)}
+.check svg{opacity:0}
+.check[aria-checked="true"] svg{opacity:1}
+.task.done .t-title,.item.done .t-title{text-decoration:line-through;color:var(--muted)}
+.t-title{font-weight:600}
+.t-body{font-size:.9rem;color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;font-weight:600;border-radius:999px;padding:3px 10px;border:0}
+.chip.time{background:var(--haldi-soft);color:var(--ink)}
+.chip.family{background:var(--kumkum-soft);color:var(--ink)}
+.chip.today{background:var(--leaf);color:var(--surface)}
+.chip.who{background:var(--leaf-soft);color:var(--ink)}
+.chip.assign{background:transparent;border:1px dashed var(--line);color:var(--muted)}
+button.chip{cursor:pointer}
+
+.tl-day{display:grid;grid-template-columns:56px 1fr;gap:12px;position:relative}
+.tl-date{text-align:center;padding-top:2px}
+.tl-date .d{font-family:var(--display);font-size:1.5rem;line-height:1;font-variant-numeric:tabular-nums}
+.tl-date .w{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.tl-day::before{content:"";position:absolute;left:27px;top:44px;bottom:-4px;width:1.5px;background:var(--line)}
+.tl-day:last-child::before{display:none}
+.tl-body{padding-bottom:20px;min-width:0}
+.tl-day.fest-day .tl-date .d{color:var(--kumkum)}
+.note{background:var(--kumkum-soft);border-radius:12px;padding:10px 12px;font-size:.9rem;display:flex;flex-direction:column;gap:2px}
+.note .who{font-weight:600;font-size:.8rem}
+
+.toggle{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.toggle:first-child{border-top:0;padding-top:0}
+.switch{flex:none;width:44px;height:26px;border-radius:99px;border:0;background:var(--line);position:relative;padding:0}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--surface);transition:left .2s}
+.switch[aria-checked="true"]{background:var(--leaf)}
+.switch[aria-checked="true"]::after{left:21px}
+
+.progress{height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.progress span{display:block;height:100%;background:var(--leaf);transition:width .3s}
+.item{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line)}
+.item:first-child{border-top:0;padding-top:4px}
+.item:last-child{padding-bottom:0}
+.item .qty{margin-left:auto;font-size:.85rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}
+.sub{font-size:.8rem;color:var(--muted)}
+.seg{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px}
+.seg button{flex:1;border:0;background:transparent;border-radius:999px;padding:7px 10px;font-size:.85rem;font-weight:600;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--leaf-soft);color:var(--ink)}
+
+.ob{display:flex;flex-direction:column;gap:20px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{border:1.5px solid var(--line);background:var(--surface);border-radius:14px;padding:12px;text-align:left;display:flex;flex-direction:column;gap:2px;min-width:0}
+.opt[aria-pressed="true"]{border-color:var(--leaf);background:var(--leaf-soft)}
+.opt b{font-weight:600}
+.opt span{font-size:.8rem;color:var(--muted)}
+.dots{display:flex;gap:6px}
+.dots i{width:24px;height:4px;border-radius:4px;background:var(--line)}
+.dots i.on{background:var(--leaf)}
+.kn{font-family:var(--kn)}
+
+.member{display:flex;align-items:center;gap:12px}
+.avatar{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:600;background:var(--haldi-soft);color:var(--ink);flex:none;font-size:.9rem}
+textarea,select,input[type=text],input[type=number]{width:100%;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:10px 12px;font:inherit}
+textarea{min-height:80px;resize:vertical}
+label.lbl{font-size:.85rem;font-weight:600;display:block;margin-bottom:6px}
+
+/* Compare two family ways */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.side{border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:10px;text-align:left;font-size:.85rem;display:flex;flex-direction:column;gap:4px;min-width:0}
+.side b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase}
+.side[aria-pressed="true"]{border-color:var(--leaf);background:var(--leaf-soft)}
+
+/* Voice note */
+.vn{display:flex;align-items:center;gap:10px;background:var(--leaf-soft);border-radius:999px;padding:6px 14px 6px 6px}
+.vn button{width:34px;height:34px;border-radius:50%;border:0;background:var(--leaf);color:var(--surface);display:grid;place-items:center;padding:0;flex:none}
+.vn .wave{flex:1;height:22px;display:flex;align-items:center;gap:2px}
+.vn .wave i{flex:1;background:var(--muted);border-radius:2px;opacity:.5}
+.vn .wave i.on{background:var(--leaf);opacity:1}
+.vn .len{font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* More grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;text-align:left;display:flex;flex-direction:column;gap:6px;min-width:0}
+.tile svg{width:26px;height:26px;color:var(--leaf)}
+.tile b{font-weight:600;line-height:1.25}
+.tile span{font-size:.8rem;color:var(--muted);line-height:1.35}
+
+table.t{width:100%;border-collapse:collapse;font-size:.9rem}
+table.t td,table.t th{padding:8px 4px;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+table.t tr:first-child td,table.t tr:first-child th{border-top:0}
+table.t th{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
+.num{font-variant-numeric:tabular-nums;text-align:right!important;white-space:nowrap}
+.budget input{text-align:right;padding:6px 8px;width:110px;font-variant-numeric:tabular-nums}
+
+.story{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:16px;min-height:300px}
+.story p.page{font-family:var(--display);font-size:1.25rem;line-height:1.5}
+
+nav.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);
+  padding:8px max(16px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));z-index:5}
+nav.tabs .in{max-width:440px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+nav.tabs button{background:none;border:0;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.7rem;font-weight:600;color:var(--muted);padding:6px 0}
+nav.tabs button[aria-current="page"]{color:var(--leaf)}
+nav.tabs svg{width:22px;height:22px}
+
+/* Bottom sheet */
+.sheet{position:fixed;inset:0;background:var(--scrim);z-index:30;display:flex;align-items:flex-end;justify-content:center}
+.sheet-in{background:var(--surface);color:var(--ink);width:100%;max-width:480px;max-height:88%;overflow-y:auto;border-radius:22px 22px 0 0;
+  padding:20px max(20px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:14px}
+.sheet-in .grab{width:40px;height:4px;border-radius:4px;background:var(--line);align-self:center}
+.choice{border:1.5px solid var(--line);background:var(--surface);border-radius:14px;padding:12px 14px;text-align:left;display:flex;flex-direction:column;gap:2px}
+.choice[aria-pressed="true"]{border-color:var(--leaf);background:var(--leaf-soft)}
+
+/* Guided puja mode */
+.puja{position:fixed;inset:0;background:radial-gradient(120% 70% at 50% 100%, #3A2A12 0%, var(--night) 60%);color:var(--night-ink);z-index:20;display:flex;flex-direction:column;
+  padding:calc(16px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));color-scheme:dark}
+.puja .wrap{max-width:520px;width:100%;margin:0 auto;display:flex;flex-direction:column;height:100%;gap:14px}
+.puja .top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.pbtn{background:rgba(255,255,255,.08);border:0;border-radius:999px;padding:8px 14px;color:var(--night-ink);font-size:.85rem;font-weight:600}
+.pbtn[aria-pressed="true"]{background:var(--brass);color:#2A1E07}
+.puja .bar{display:flex;gap:4px;flex:1}
+.puja .bar i{flex:1;height:3px;border-radius:3px;background:rgba(233,184,80,.22)}
+.puja .bar i.on{background:var(--brass)}
+.puja .scroll{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:18px;min-height:0;padding-bottom:8px}
+.puja .num{font-family:var(--display);color:var(--brass);font-size:.95rem;text-align:left!important}
+.puja h2{font-size:2rem;color:#FFF5E0}
+.puja .do{font-size:1.2rem;line-height:1.55}
+.mantra{border:1px solid rgba(233,184,80,.35);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:6px;background:rgba(233,184,80,.06)}
+.mantra .script{font-size:1.45rem;line-height:1.5;color:#FFF1CF}
+.mantra .tr{font-style:italic;color:var(--night-muted)}
+.mantra .lab{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brass)}
+.why{color:var(--night-muted);font-size:.98rem;border-left:2px solid var(--brass-dim);padding-left:12px}
+.why b{color:var(--brass);font-weight:600}
+.puja .fnote{background:rgba(240,104,126,.12);border-radius:12px;padding:10px 12px;font-size:.95rem}
+.puja .fnote .who{font-weight:600;color:#F7B3BE;font-size:.8rem}
+.puja .tools{display:flex;gap:8px;flex-wrap:wrap}
+.puja .nav{display:grid;grid-template-columns:1fr 2fr;gap:10px}
+.puja .nav button{border:0;border-radius:999px;padding:16px;font-weight:600;font-size:1rem}
+.puja .prev{background:rgba(255,255,255,.08);color:var(--night-ink)}
+.puja .next{background:var(--brass);color:#2A1E07}
+.puja .hint{text-align:center;font-size:.75rem;color:var(--night-muted)}
+.diya{display:block;margin:0 auto}
+.flame{transform-origin:50% 100%;animation:flick 2.4s ease-in-out infinite}
+@keyframes flick{0%,100%{transform:scaleY(1) rotate(-1deg)}50%{transform:scaleY(1.08) rotate(1.5deg)}}
+@media (prefers-reduced-motion: reduce){.flame{animation:none}.progress span,.switch::after{transition:none}}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(88px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--ground);padding:10px 16px;border-radius:999px;font-size:.9rem;z-index:40;max-width:90%;text-align:center}
+</style>
+
+<div class="app" id="app"></div>
+<nav class="tabs" id="tabs" aria-label="Main">
+  <div class="in">
+    <button data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c-2 3-3 4.5-3 6.5a3 3 0 0 0 6 0C15 7.5 14 6 12 3z"/><path d="M4 15h16l-2 5H6z"/></svg>Today</button>
+    <button data-go="prepare"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Prepare</button>
+    <button data-go="samagri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Samagri</button>
+    <button data-go="family"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.3"/><path d="M3 20c.5-3.5 3-5.5 6-5.5s5.5 2 6 5.5M15 15.5c2.5-.3 5 1 5.5 4.5"/></svg>Family</button>
+    <button data-go="more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg>More</button>
+  </div>
+</nav>
+<div id="puja" class="puja" hidden></div>
+<div id="sheet" class="sheet" hidden><div class="sheet-in" id="sheetIn" role="dialog" aria-modal="true"></div></div>
+
+<script>
+/* ================= Content (sample: Rao family, Kannada Smartha, Bengaluru) ================= */
+const FEST = {name:"Deepavali", mainDate:"2026-11-08", days:[
+  {date:"2026-11-06", w:"Fri", label:"Neeru tumbuva"},
+  {date:"2026-11-07", w:"Sat", label:"Naraka Chaturdashi"},
+  {date:"2026-11-08", w:"Sun", label:"Lakshmi puja", main:true},
+  {date:"2026-11-09", w:"Mon", label:"Bali Padyami"}]};
+
+const MEMBERS = [
+  {n:"Anand", r:"You · Bengaluru", i:"An"},
+  {n:"Kavya", r:"Spouse · grew up in a Tamil Iyer family", i:"K"},
+  {n:"Meera", r:"Sister · Pune", i:"M"},
+  {n:"Amma", r:"Mysuru · keeper of the family way", i:"A"}
+];
+
+const PLAN = [
+  {date:"2026-10-31", w:"Sat", title:"Clean and set up", tasks:[
+    {id:"t1", t:"Deep-clean the house and puja room", b:"Start with the puja shelf and the entrance."},
+    {id:"t2", t:"Polish the brass lamps and vessels", b:"Tamarind and a little salt brings back the shine on brass."},
+    {id:"t3", t:"Wash the bathing vessel (hande)", b:"You will decorate and fill it on Friday evening.", opt:"neeru"}]},
+  {date:"2026-11-02", w:"Mon", title:"Shopping", tasks:[
+    {id:"t4", t:"Buy everything on the samagri list", b:"Flowers and fruits come later; buy the rest now.", link:"samagri"},
+    {id:"t5", t:"Buy earthen diyas and wicks", b:"Soak new diyas in water overnight so they don't drink the oil."},
+    {id:"t6", t:"New clothes for the family", b:"Worn after the oil bath."}]},
+  {date:"2026-11-05", w:"Thu", title:"Sweets and snacks", tasks:[
+    {id:"t7", t:"Make karjikai and chakli", b:"Both keep well for a week.", recipe:true},
+    {id:"t7b", t:"Make Mysore pak and murukku", b:"From Kavya's side of the family.", side:"sweets"}]},
+  {date:"2026-11-06", w:"Fri", title:"Neeru tumbuva habba", fest:true, tasks:[
+    {id:"t8", t:"Decorate the bathing vessel", b:"Draw rangoli, apply haldi and kumkum, tie a garland around its neck.", time:"Evening", opt:"neeru"},
+    {id:"t9", t:"Fill it with fresh water", b:"This water is used for tomorrow's oil bath.", time:"After sunset", opt:"neeru"},
+    {id:"t10", t:"Buy flowers, fruits and betel leaves", b:"Fresh for the weekend."},
+    {id:"t10b", t:"Draw the Deepavali rangoli", b:"A 7-dot diya design takes about 20 minutes.", rangoli:true}]},
+  {date:"2026-11-07", w:"Sat", title:"Naraka Chaturdashi", fest:true, tasks:[
+    {id:"t11", t:"Oil bath before sunrise (abhyanga snana)", b:"An elder applies warm oil on each person's head before the bath.", time:"Before ~6:15 AM", noteWhere:"Oil bath"},
+    {id:"t11b", t:"Take Deepavali marundhu after the bath", b:"A digestive legiyam made with ginger and pepper, from Kavya's side.", side:"oil"},
+    {id:"t12", t:"Wear new clothes and light the lamps", b:"The main lamp first, then the diyas at the entrance."},
+    {id:"t13", t:"Read the Narakasura story with the kids", b:"Three short pages.", story:"naraka"}]},
+  {date:"2026-11-08", w:"Sun", title:"Lakshmi puja", fest:true, main:true, tasks:[
+    {id:"t14", t:"Set up the puja area in the afternoon", b:"Kalasha, Lakshmi image, Ganapati, flowers and naivedya ready by 5 PM."},
+    {id:"t15", t:"Do the Lakshmi puja with guided mode", b:"Full version about 40 minutes, short version about 15.", time:"Pradosh kaal, ~6:00–8:30 PM", puja:true},
+    {id:"t16", t:"Light diyas around the house", b:"Entrance, windows and the tulasi katte."}]},
+  {date:"2026-11-09", w:"Mon", title:"Bali Padyami", fest:true, tasks:[
+    {id:"t17", t:"Bali Chakravarti puja", b:"Practices vary a lot between families.", family:true, ask:"How did Ajji do the Bali puja?"},
+    {id:"t18", t:"Gopuja", b:"Offer haldi, kumkum and a fruit to a cow, if one is nearby.", opt:"gopuja"},
+    {id:"t19", t:"Make Balindra figures", b:"Small figures of Bali shaped from clay or cow dung, placed at the threshold.", opt:"balifig"}]}
+];
+
+const VARIANTS = [
+  {k:"neeru", t:"Neeru tumbuva habba", b:"Filling the bath water vessel the evening before"},
+  {k:"gopuja", t:"Gopuja on Bali Padyami", b:"Worship of the cow"},
+  {k:"balifig", t:"Balindra figures at the threshold", b:"Common in some coastal and rural families"}
+];
+
+const WAYS = [
+  {k:"oil", t:"The morning bath", rao:"Oil bath with water filled the night before (neeru tumbuva).", iyer:"Ganga snanam before dawn, then Deepavali marundhu."},
+  {k:"sweets", t:"Sweets", rao:"Holige, karjikai and chakli.", iyer:"Mysore pak, murukku and ribbon pakoda."},
+  {k:"puja", t:"Main puja", rao:"Lakshmi puja on Amavasya evening.", iyer:"Morning puja on Naraka Chaturdashi; Lakshmi puja is optional."}
+];
+
+const SAMAGRI = [
+  {group:"Puja essentials", items:[
+    {id:"s1", n:"Lakshmi image or idol", q:"1", p:0},
+    {id:"s2", n:"Small Ganapati idol", q:"1", sub:"Or a cone of turmeric paste shaped as Ganapati", p:60},
+    {id:"s3", n:"Kalasha (copper or silver)", q:"1", p:0},
+    {id:"s4", n:"Coconut with tuft", q:"1", p:45},
+    {id:"s5", n:"Mango leaves", q:"5", p:20},
+    {id:"s6", n:"Rice for akshata", q:"1 cup", sub:"Mix with a pinch of turmeric", p:0},
+    {id:"s7", n:"Arishina (haldi) and kumkum", q:"1 pack each", p:40},
+    {id:"s8", n:"Gandha (sandalwood paste)", q:"1 small", p:50},
+    {id:"s9", n:"Betel leaves and nuts", q:"10 + 5", p:40},
+    {id:"s10", n:"Blouse piece or new cloth", q:"1", p:120},
+    {id:"s11", n:"Coins (silver if you have)", q:"5", p:0}]},
+  {group:"Lamps and fragrance", items:[
+    {id:"s12", n:"Brass lamps", q:"2", p:0},
+    {id:"s13", n:"Earthen diyas", q:"21", sub:"Abroad: tealights in holders", p:105},
+    {id:"s14", n:"Ghee", q:"200 g", p:140},
+    {id:"s15", n:"Sesame oil", q:"500 ml", p:170},
+    {id:"s16", n:"Cotton wicks", q:"1 pack", p:20},
+    {id:"s17", n:"Camphor and agarbatti", q:"1 box each", p:90}]},
+  {group:"Flowers and leaves", items:[
+    {id:"s18", n:"Lotus", q:"2", sub:"Any pink or red flower works if lotus is hard to find", p:60},
+    {id:"s19", n:"Marigold garlands", q:"2", p:120},
+    {id:"s20", n:"Loose flowers for archana", q:"1 basket", p:80},
+    {id:"s21", n:"Tulasi leaves", q:"A handful", p:10}]},
+  {group:"Naivedya", items:[
+    {id:"s22", n:"Holige (obbattu)", q:"8", sub:"Make at home, or any sweet your family makes", p:0},
+    {id:"s23", n:"Fruits: banana, apple, pomegranate", q:"5 kinds", p:250},
+    {id:"s24", n:"Panchamrita: milk, curd, ghee, honey, sugar", q:"1 bowl", p:90},
+    {id:"s25", n:"Banana leaf", q:"2", sub:"Abroad: a steel plate", p:20}]}
+];
+
+const SUBS = [
+  ["Lotus","Any pink or red flower, such as a rose or hibiscus."],
+  ["Kalasha","A clean steel or brass tumbler (lota)."],
+  ["Coconut with tuft","A whole fruit placed on the mango leaves."],
+  ["Mango leaves","Betel leaves or any fresh, clean leaves."],
+  ["Gandha","A little haldi mixed with water."],
+  ["Camphor","Do the arati with a ghee lamp instead."],
+  ["Panchamrita","Warm milk with a spoon of sugar."],
+  ["Betel leaves","Offer akshata with a flower instead."]
+];
+
+const STEPS = [
+  {t:"Get ready", core:true, do:"Bathe and wear clean clothes. Sit facing east in front of the puja area. Light the main lamp before you begin.",
+   why:"The lamp is the witness to the puja, so it is lit first and kept burning until the end."},
+  {t:"Achamana", do:"Take a little water in your right palm and sip it three times, once with each name.",
+   m:{kn:"ಓಂ ಕೇಶವಾಯ ಸ್ವಾಹಾ । ಓಂ ನಾರಾಯಣಾಯ ಸ್ವಾಹಾ । ಓಂ ಮಾಧವಾಯ ಸ್ವಾಹಾ", dv:"ॐ केशवाय स्वाहा । ॐ नारायणाय स्वाहा । ॐ माधवाय स्वाहा", tr:"Om Keshavaya svaha. Om Narayanaya svaha. Om Madhavaya svaha."},
+   why:"A small act of inner cleansing before you begin."},
+  {t:"Sankalpa", core:true, do:"Hold a little akshata and water in your right hand. Say your name, your gotra and why you are doing this puja, in your own words. Then let the rice and water fall on the plate.",
+   why:"The sankalpa is your intention. Saying it aloud makes the ritual your own offering."},
+  {t:"Ganapati puja", core:true, do:"Offer akshata, a flower and kumkum to Ganapati. Ask that the puja goes without obstacles.",
+   m:{kn:"ಓಂ ಗಂ ಗಣಪತಯೇ ನಮಃ", dv:"ॐ गं गणपतये नमः", tr:"Om Gam Ganapataye namaha"},
+   why:"Every puja begins with Ganapati, the remover of obstacles."},
+  {t:"Set the kalasha", do:"Fill the kalasha with water and add a coin, akshata and a flower. Place the mango leaves around the mouth and the coconut on top. Apply haldi and kumkum on the kalasha.",
+   why:"The filled kalasha stands for abundance, which is what Lakshmi is welcomed as."},
+  {t:"Invite Lakshmi", core:true, do:"Offer akshata at the feet of the Lakshmi image and invite her into your home.",
+   m:{kn:"ಓಂ ಶ್ರೀಂ ಮಹಾಲಕ್ಷ್ಮ್ಯೈ ನಮಃ । ಆವಾಹಯಾಮಿ", dv:"ॐ श्रीं महालक्ष्म्यै नमः । आवाहयामि", tr:"Om Shreem Mahalakshmyai namaha. Avahayami."},
+   why:"Avahana means invitation. From here, you treat her as an honoured guest."},
+  {t:"Offerings", do:"Offer, one by one: water, haldi and kumkum, gandha, flowers, the blouse piece and coins. Repeat the mantra with each offering.",
+   m:{kn:"ಓಂ ಶ್ರೀಂ ಮಹಾಲಕ್ಷ್ಮ್ಯೈ ನಮಃ", dv:"ॐ श्रीं महालक्ष्म्यै नमः", tr:"Om Shreem Mahalakshmyai namaha"},
+   why:"These are the courtesies you would offer a guest: water to wash, fragrance, flowers and gifts."},
+  {t:"Dhoopa and deepa", do:"Wave the lit agarbatti three times in a clockwise circle, then the lamp.",
+   m:{kn:"ಧೂಪಮಾಘ್ರಾಪಯಾಮಿ । ದೀಪಂ ದರ್ಶಯಾಮಿ", dv:"धूपमाघ्रापयामि । दीपं दर्शयामि", tr:"Dhoopam aaghraapayaami. Deepam darshayaami."},
+   why:"Fragrance and light, offered to the senses of the deity."},
+  {t:"Naivedya", core:true, do:"Place the holige, fruits and panchamrita in front of the image. Sprinkle water around the plate and offer it.",
+   m:{kn:"ಓಂ ಮಹಾಲಕ್ಷ್ಮ್ಯೈ ನಮಃ । ನೈವೇದ್ಯಂ ಸಮರ್ಪಯಾಮಿ", dv:"ॐ महालक्ष्म्यै नमः । नैवेद्यं समर्पयामि", tr:"Om Mahalakshmyai namaha. Naivedyam samarpayaami."},
+   why:"Food is offered first and then shared as prasada."},
+  {t:"Mangalarati", core:true, do:"Light camphor on the arati plate and wave it clockwise. The family can sing a Lakshmi song together. Then pass the arati around so each person can take its warmth.",
+   why:"Arati closes the puja with light, shared by everyone in the room."},
+  {t:"Lamps around the home", core:true, do:"Take the flame from the main lamp and light the diyas at the entrance, windows and tulasi katte. Distribute prasada.",
+   why:"Lighting every corner welcomes Lakshmi into the whole house, not only the puja room."}
+];
+
+const RECIPES = [
+  {id:"holige", n:"Holige (bele obbattu)", base:12, unit:"pieces", time:"1 hr 30 min", ing:[
+    ["Chana dal",200,"g"],["Jaggery, grated",200,"g"],["Cardamom powder",0.5,"tsp"],["Maida",125,"g"],["Turmeric",0.25,"tsp"],["Oil",60,"ml"],["Ghee, to serve",50,"g"]],
+   steps:["Make a soft dough with maida, turmeric, a pinch of salt and water. Pour the oil over it and rest it for an hour.","Cook the chana dal until soft but not mushy. Drain well.","Cook the dal with jaggery until it thickens, add cardamom, cool and grind into a smooth filling.","Flatten a small ball of dough, place a larger ball of filling inside and seal it.","Roll out gently on a greased banana leaf or butter paper.","Cook on a hot tawa until golden spots appear on both sides. Serve with ghee."]},
+  {id:"karjikai", n:"Karjikai", base:20, unit:"pieces", time:"1 hr", ing:[
+    ["Maida",250,"g"],["Dry coconut, grated",100,"g"],["Roasted gram (putani)",50,"g"],["Sugar, powdered",100,"g"],["Poppy seeds",1,"tbsp"],["Oil for frying",500,"ml"]],
+   steps:["Make a stiff dough with maida, a little hot oil and water. Rest for 30 minutes.","Dry-roast the coconut and poppy seeds; mix with powdered roasted gram and sugar.","Roll small circles, fill, fold into half-moons and crimp the edges.","Deep-fry on a medium flame until golden. Cool fully before storing."]}
+];
+
+const STORIES = {
+  naraka:{t:"Krishna, Satyabhama and Narakasura", pages:[
+    "Long ago, a king called Narakasura grew proud and cruel. He took away people's treasures and locked up thousands of princesses.",
+    "Krishna rode out to stop him, with Satyabhama beside him. When Krishna was hurt in the battle, Satyabhama took up the bow herself.",
+    "Narakasura was defeated before dawn. The freed people lit lamps and bathed early to celebrate. That is why we take the oil bath before sunrise on Naraka Chaturdashi."]},
+  bali:{t:"King Bali and Vamana", pages:[
+    "King Bali was generous and strong, and he ruled all three worlds. The devas worried that his power had grown too great.",
+    "Vishnu came to Bali as Vamana, a small boy, and asked for just three steps of land. Bali happily agreed.",
+    "Vamana grew enormous. With two steps he covered the earth and the sky. For the third, Bali bowed and offered his own head.",
+    "Pleased by his humility, Vishnu blessed Bali to return to his people once a year. On Bali Padyami, families welcome him home."]},
+  lakshmi:{t:"Lakshmi rises from the ocean", pages:[
+    "The devas and asuras churned the ocean of milk, looking for amrita, the nectar of life.",
+    "Out of the ocean rose many wonders, and at last Lakshmi, seated on a lotus and glowing with light.",
+    "Wherever she goes, prosperity follows. On the Amavasya of Deepavali, families light lamps so she can find her way into every home."]}
+};
+
+const EVENTS = [
+  {k:"griha", n:"Griha pravesha", b:"Moving into a new home", ready:true},
+  {k:"namakarana", n:"Namakarana", b:"Naming ceremony for a baby"},
+  {k:"upanayana", n:"Upanayana", b:"Sacred thread ceremony"},
+  {k:"wedding", n:"Wedding", b:"Rituals from nischitartha to the wedding day"},
+  {k:"shraddha", n:"Shraddha", b:"Annual rites for ancestors"}
+];
+
+const PRIESTS = [
+  {n:"Vidwan R. Subramanya Bhat", trad:"Smartha", lang:"Kannada, Sanskrit", area:"Jayanagar", from:5100, ev:"Griha pravesha, Satyanarayana, Upanayana"},
+  {n:"K. Venkatesha Acharya", trad:"Madhva", lang:"Kannada, Sanskrit", area:"Basavanagudi", from:4500, ev:"Griha pravesha, Namakarana, Shraddha"},
+  {n:"S. Raghavan Bhattar", trad:"Sri Vaishnava", lang:"Tamil, Sanskrit", area:"Malleswaram", from:6000, ev:"Weddings, Griha pravesha, Shraddha"},
+  {n:"N. Ganesh Sharma", trad:"Smartha", lang:"Kannada, Telugu", area:"HSR Layout", from:4000, ev:"Ganapati homa, Namakarana, Shraddha"}
+];
+
+const NRI = {London:"~4:20–6:50 PM", "New Jersey":"~4:50–7:20 PM", Singapore:"~6:55–9:25 PM", Dubai:"~5:35–8:05 PM", Sydney:"~7:35–10:05 PM"};
+
+/* ================= State ================= */
+const KEY = "rasam-proto-v2";
+const defaultState = {
+  onboarded:false, region:"karnataka", community:"smartha", lang:"kn",
+  tasks:{t1:true, t2:true}, items:{s3:true, s7:true, s12:true, s16:true}, extra:[],
+  assign:{t4:0, t5:1, t10:2, t7:3},
+  opts:{neeru:true, gopuja:true, balifig:false},
+  ways:{oil:"both", sweets:"rao", puja:"rao"},
+  notes:[
+    {id:"n1", who:"Amma", where:"Ganapati puja", text:"We always make Ganapati from turmeric, not an idol. Keep him on a betel leaf.", ex:true},
+    {id:"n2", who:"Amma", where:"Oil bath", text:"Wake everyone by 5. Your Ajji always put a little turmeric in the oil.", ex:true}
+  ],
+  asks:[{id:"q1", to:"Amma", q:"How did Ajji do the Bali puja?", where:"Bali Chakravarti puja", reply:{len:"0:48", text:"We drew Bali with rice flour at the threshold, offered flowers and a lamp, and said 'Bali raja, come again next year.' Nothing elaborate."}}],
+  samView:"all", pujaLen:"full", aloud:false, servings:{holige:12, karjikai:20},
+  budget:[["Priest dakshina",11000],["Puja samagri",4500],["Flowers and decoration",6000],["Lunch for 40 guests",28000],["Return gifts",6000],["Other",3000]],
+  griha:{}, vrats:{ekadashi:true, pradosha:false, sankashti:true},
+  shraddha:[{n:"Ajja (Narayana Rao)", masa:"Ashwayuja", paksha:"Krishna", tithi:"Dashami", next:"Tue 3 Nov 2026"}],
+  nri:{on:false, city:"London"}, priestFilter:"All"
+};
+let S = load();
+function load(){ try{ const v = JSON.parse(localStorage.getItem(KEY)); if(v) return Object.assign(JSON.parse(JSON.stringify(defaultState)), v); }catch(e){} return JSON.parse(JSON.stringify(defaultState)); }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+
+/* ================= Helpers ================= */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const CHECK = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="2"><path d="M3 7.5l2.5 2.5L11 4.5"/></svg>';
+const rupee = n => "₹" + Number(n).toLocaleString("en-IN");
+function daysUntil(iso){ const t = new Date(iso+"T00:00:00"); const n = new Date(); n.setHours(0,0,0,0); return Math.round((t-n)/864e5); }
+const dnum = iso => Number(iso.slice(8));
+const mon = iso => ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"].at(Number(iso.slice(5,7))-1);
+function toast(msg){ const t=document.createElement("div"); t.className="toast"; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2200); }
+const REGION = {karnataka:"Karnataka", tamil:"Tamil Nadu", telugu:"Andhra & Telangana", maharashtra:"Maharashtra", gujarat:"Gujarat", north:"North India"};
+const COMM = {smartha:"Smartha", madhva:"Madhva", srivaishnava:"Sri Vaishnava", other:"Other / not sure"};
+const LANG = {kn:"ಕನ್ನಡ", en:"English", hi:"हिन्दी"};
+const back = (to="more", label="More") => `<button class="back" data-go="${to}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3L5 8l5 5"/></svg>${label}</button>`;
+const sw = (on, act, extra="") => `<button class="switch" role="switch" aria-checked="${!!on}" data-act="${act}" ${extra}></button>`;
+function speak(text){
+  try{ if(!("speechSynthesis" in window)) throw 0; speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.lang = "en-IN"; u.rate = .9; speechSynthesis.speak(u); }
+  catch(e){ toast("Audio isn't available in this browser. The app will use recorded voices."); }
+}
+function stopSpeak(){ try{ speechSynthesis.cancel(); }catch(e){} }
+function allTasks(){ return PLAN.flatMap(p => visibleTasks(p)); }
+function visibleTasks(p){ return p.tasks.filter(t => (!t.opt || S.opts[t.opt]) && (!t.side || S.ways[t.side] !== "rao")); }
+
+const diya = (w=110) => `<svg class="diya" width="${w}" viewBox="0 0 120 110" aria-hidden="true"><defs><radialGradient id="g${w}" cx="50%" cy="60%" r="50%"><stop offset="0" stop-color="#FFD873" stop-opacity=".55"/><stop offset="1" stop-color="#FFD873" stop-opacity="0"/></radialGradient></defs><circle cx="60" cy="45" r="44" fill="url(#g${w})"/><path class="flame" d="M60 18c-7 11-9 17-9 22a9 9 0 0 0 18 0c0-5-2-11-9-22z" fill="#FFC54D"/><path class="flame" d="M60 30c-3 5-4 8-4 10a4 4 0 0 0 8 0c0-2-1-5-4-10z" fill="#FFF3C4"/><path d="M18 62h84c-4 18-20 30-42 30S22 80 18 62z" fill="#B8742A"/><path d="M18 62h84" stroke="#E9B850" stroke-width="3" stroke-linecap="round"/></svg>`;
+
+const ICON = {
+  events:'<path d="M4 11l8-6 8 6v9H4z"/><path d="M10 20v-5h4v5"/>',
+  priests:'<circle cx="12" cy="7" r="3"/><path d="M6 21c0-4 2.7-7 6-7s6 3 6 7"/><path d="M12 14v7"/>',
+  panchang:'<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/>',
+  vrats:'<path d="M18 14a7 7 0 1 1-8-10 6 6 0 0 0 8 10z"/>',
+  shraddha:'<path d="M12 3c-2 3-3 4.5-3 6.5a3 3 0 0 0 6 0C15 7.5 14 6 12 3z"/><path d="M7 21h10M9 17h6l-1 4h-4z"/>',
+  recipes:'<path d="M4 13h16a8 8 0 0 1-16 0z"/><path d="M9 9c0-2 1-2 1-4M14 9c0-2 1-2 1-4"/>',
+  rangoli:'<circle cx="12" cy="12" r="2"/><path d="M12 3c2 3 2 4 0 7-2-3-2-4 0-7zM12 21c-2-3-2-4 0-7 2 3 2 4 0 7zM3 12c3-2 4-2 7 0-3 2-4 2-7 0zM21 12c-3 2-4 2-7 0 3-2 4-2 7 0z"/>',
+  stories:'<path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/>',
+  nearby:'<path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/>',
+  abroad:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'
+};
+const ic = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">${ICON[k]}</svg>`;
+
+/* ================= Router ================= */
+const VIEWS = ["home","prepare","samagri","family","more","welcome","events","griha","priests","panchang","vrats","shraddha","recipes","rangoli","stories","nearby","abroad"];
+function route(){ const h = location.hash.replace("#",""); return VIEWS.includes(h) ? h : (S.onboarded ? "home" : "welcome"); }
+function go(v){ if(location.hash !== "#"+v) location.hash = v; else render(); }
+window.addEventListener("hashchange", render);
+const TAB_OF = {events:"more",griha:"more",priests:"more",panchang:"more",vrats:"more",shraddha:"more",recipes:"more",rangoli:"more",stories:"more",nearby:"more",abroad:"more"};
+
+function render(){
+  const v = route();
+  $("#tabs").hidden = v === "welcome";
+  const tab = TAB_OF[v] || v;
+  document.querySelectorAll("#tabs button").forEach(b => { if(b.dataset.go===tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
+  const map = {home:viewHome, prepare:viewPrepare, samagri:viewSamagri, family:viewFamily, more:viewMore, welcome:viewWelcome, events:viewEvents, griha:viewGriha, priests:viewPriests, panchang:viewPanchang, vrats:viewVrats, shraddha:viewShraddha, recipes:viewRecipes, rangoli:viewRangoli, stories:viewStories, nearby:viewNearby, abroad:viewAbroad};
+  $("#app").innerHTML = map[v]();
+  if(!render.keep) window.scrollTo(0,0);
+  render.keep = false;
+}
+function rerender(){ render.keep = true; const y = window.scrollY; render(); window.scrollTo(0,y); }
+
+function protoBar(){ return `<div class="proto"><span>Prototype · sample content, not yet reviewed by a priest</span><button data-act="restart">Restart setup</button></div>`; }
+
+/* ================= Onboarding ================= */
+let obStep = 0;
+function viewWelcome(){
+  const steps = [
+    {q:"Where is your family from?", h:"Rasams change from region to region. We'll show yours.", key:"region", opts:Object.entries(REGION).map(([k,v])=>[k,v, k==="karnataka"?"Sample ready":""])},
+    {q:"Which tradition does your family follow?", h:"Not sure? Pick “Other”. You can ask an elder and change it later.", key:"community", opts:Object.entries(COMM).map(([k,v])=>[k,v, k==="smartha"?"Sample ready":""])},
+    {q:"Mantras in which script?", h:"Every mantra also shows a transliteration in English letters.", key:"lang", opts:Object.entries(LANG).map(([k,v])=>[k,v, k==="kn"?"Kannada script":k==="hi"?"Devanagari":"Transliteration only"])}
+  ];
+  if(obStep === 0) return `
+    <div class="ob" style="padding-top:24px">
+      ${diya(120)}
+      <div class="stack" style="text-align:center;align-items:center">
+        <p class="eyebrow">Rasam</p>
+        <h1>Every festival, done your family's way</h1>
+        <p class="muted">What to prepare, when to do it, and how, step by step. Set up once in under a minute.</p>
+      </div>
+      <button class="btn primary block" data-act="ob-next">Get started</button>
+      <button class="btn ghost block" data-act="ob-skip">Skip and use the sample family</button>
+      <p class="small muted" style="text-align:center">Prototype. Content shown is sample content for a Kannada Smartha household in Bengaluru.</p>
+    </div>`;
+  const s = steps[obStep-1];
+  return `
+    <div class="ob">
+      <div class="row between"><button class="link" data-act="ob-back">Back</button><div class="dots">${steps.map((_,i)=>`<i class="${i<obStep?"on":""}"></i>`).join("")}</div></div>
+      <div class="stack"><h1>${s.q}</h1><p class="muted">${s.h}</p></div>
+      <div class="opts">${s.opts.map(([k,v,sub])=>`<button class="opt" aria-pressed="${S[s.key]===k}" data-act="ob-pick" data-key="${s.key}" data-val="${k}"><b class="${k==="kn"?"kn":""}">${v}</b><span>${sub||"&nbsp;"}</span></button>`).join("")}</div>
+      <button class="btn primary block" data-act="ob-next">${obStep===3?"Show my festivals":"Continue"}</button>
+    </div>`;
+}
+
+/* ================= Today ================= */
+function viewHome(){
+  const d = daysUntil(FEST.mainDate);
+  const tasks = allTasks(), done = tasks.filter(t=>S.tasks[t.id]).length;
+  const next = PLAN.find(p => visibleTasks(p).some(t=>!S.tasks[t.id]));
+  const nextTasks = next ? visibleTasks(next).filter(t=>!S.tasks[t.id]).slice(0,3) : [];
+  const all = samagriAll(), itemsDone = all.filter(i=>S.items[i.id]).length;
+  const countLabel = d > 1 ? `${d}<span style="font-size:1rem;color:#F6F3E6"> days to Lakshmi puja</span>` : d===1 ? `1<span style="font-size:1rem;color:#F6F3E6"> day to Lakshmi puja</span>` : d===0 ? `Today` : `Done`;
+  const pending = S.asks.filter(a=>!a.reply).length, replied = S.asks.filter(a=>a.reply).length;
+  return `
+    ${protoBar()}
+    <div class="stack" style="gap:4px"><p class="eyebrow">Namaskara, Anand</p><h1>Deepavali is almost here</h1></div>
+    <button class="card row" style="text-align:left;gap:14px" data-go="panchang">
+      <span style="color:var(--haldi)">${ic("panchang")}</span>
+      <span style="flex:1;min-width:0"><span class="t-title" style="display:block">Ashwayuja Krishna Panchami</span><span class="small muted">Today in Bengaluru · Rahu kala 1:30–3:00 PM</span></span>
+      <span class="sample">Sample</span>
+    </button>
+    <section class="fest" aria-label="Deepavali 2026">
+      <svg class="lamps" width="96" height="60" viewBox="0 0 96 60" aria-hidden="true"><g fill="#E9B850"><path d="M14 20c-4 6-5 9-5 11a5 5 0 0 0 10 0c0-2-1-5-5-11z"/><path d="M48 8c-5 8-6 11-6 14a6 6 0 0 0 12 0c0-3-1-6-6-14z"/><path d="M82 20c-4 6-5 9-5 11a5 5 0 0 0 10 0c0-2-1-5-5-11z"/></g><g fill="#B8742A"><path d="M2 38h24c-1 6-6 10-12 10S3 44 2 38z"/><path d="M34 30h28c-1 8-7 13-14 13s-13-5-14-13z"/><path d="M70 38h24c-1 6-6 10-12 10s-11-4-12-10z"/></g></svg>
+      <p class="eyebrow">Deepavali · ${REGION[S.region]} · ${COMM[S.community]}</p>
+      <div class="count">${countLabel}</div>
+      <div class="days">${FEST.days.map(x=>`<div class="day ${x.main?"main":""}"><b>${x.w} ${dnum(x.date)}</b>${x.label}</div>`).join("")}</div>
+      <div class="row" style="flex-wrap:wrap"><button class="btn light" data-act="puja">Preview guided puja</button><button class="btn" style="background:transparent;color:#FFF8E6;border:1px solid rgba(255,255,255,.35)" data-go="prepare">See the full plan</button></div>
+    </section>
+
+    <section class="card stack">
+      <div class="section-head"><h2>Up next</h2><span class="small muted">${done} of ${tasks.length} done</span></div>
+      ${next ? `<p class="small muted">${next.w}, ${dnum(next.date)} ${mon(next.date)} · ${next.title}</p><div>${nextTasks.map(taskRow).join("")}</div>` : `<p>Everything is done. Shubha Deepavali!</p>`}
+    </section>
+
+    <section class="card stack">
+      <div class="section-head"><h2>Ask an elder</h2><button class="link" data-go="family">Open</button></div>
+      <p class="small muted">${replied} answer${replied===1?"":"s"} saved${pending?`, ${pending} waiting for a reply`:""}. Not sure how your family does a step? Ask on WhatsApp and keep the answer here.</p>
+      <button class="btn ghost sm" style="align-self:flex-start" data-act="ask" data-q="">Ask a question</button>
+    </section>
+
+    <section class="card stack">
+      <div class="section-head"><h2>Samagri</h2><button class="link" data-go="samagri">Open list</button></div>
+      <div class="progress" aria-label="${itemsDone} of ${all.length} items ready"><span style="width:${itemsDone/all.length*100}%"></span></div>
+      <p class="small muted">${itemsDone} of ${all.length} items ready for 4 people. Order the rest in one tap.</p>
+    </section>
+
+    <section class="stack">
+      <div class="section-head"><h2>Also planning</h2><button class="link" data-go="events">Life events</button></div>
+      <button class="card row" style="text-align:left" data-go="griha"><span style="color:var(--leaf)">${ic("events")}</span><span style="flex:1"><span class="t-title" style="display:block">Griha pravesha</span><span class="small muted">Muhurat, checklist, priest and budget in one place</span></span></button>
+    </section>`;
+}
+
+function taskRow(t){
+  const done = !!S.tasks[t.id];
+  const a = S.assign[t.id];
+  const notes = S.notes.filter(n => t.noteWhere && n.where === t.noteWhere);
+  return `<div class="task ${done?"done":""}">
+    <button class="check" role="checkbox" aria-checked="${done}" aria-label="${esc(t.t)}" data-act="task" data-id="${t.id}">${CHECK}</button>
+    <div class="stack" style="gap:6px;min-width:0;flex:1">
+      <div class="t-title">${t.t}</div>
+      ${t.b?`<div class="t-body">${t.b}</div>`:""}
+      <div class="wrap-row" style="gap:6px">
+        ${t.time?`<span class="chip time">${t.time}</span>`:""}
+        ${t.family?`<span class="chip family">Family-specific</span>`:""}
+        ${t.side?`<span class="chip family">Kavya's side</span>`:""}
+        <button class="chip ${a===undefined?"assign":"who"}" data-act="assign" data-id="${t.id}" aria-label="Assign this task">${a===undefined?"+ Assign":MEMBERS[a].n}</button>
+      </div>
+      ${notes.map(n=>`<div class="note"><span class="who">${esc(n.who)}'s note</span>${esc(n.text)}</div>`).join("")}
+      ${t.puja?`<button class="btn primary sm" style="align-self:flex-start" data-act="puja">Open guided puja</button>`:""}
+      ${t.link?`<button class="link" style="align-self:flex-start" data-go="${t.link}">Open samagri list</button>`:""}
+      ${t.recipe?`<button class="link" style="align-self:flex-start" data-go="recipes">See recipes</button>`:""}
+      ${t.rangoli?`<button class="link" style="align-self:flex-start" data-go="rangoli">Open rangoli guide</button>`:""}
+      ${t.story?`<button class="link" style="align-self:flex-start" data-act="story" data-k="${t.story}">Read the story</button>`:""}
+      ${t.ask?`<button class="link" style="align-self:flex-start" data-act="ask" data-q="${esc(t.ask)}">Ask an elder about this</button>`:""}
+    </div></div>`;
+}
+
+/* ================= Prepare ================= */
+function viewPrepare(){
+  return `
+    ${protoBar()}
+    <div class="stack" style="gap:6px"><p class="eyebrow">Deepavali 2026 · your plan</p><h1>From clean-up to Bali Padyami</h1><p class="muted">Times are for ${S.nri.on?S.nri.city:"Bengaluru"}. Confirm with your family's panchang.</p></div>
+    <section class="card stack" style="gap:4px">
+      <div class="section-head" style="margin-bottom:6px"><h3>Does your family do these?</h3></div>
+      ${VARIANTS.map(v=>`<div class="toggle"><div><div class="t-title">${v.t}</div><div class="sub">${v.b}</div></div>${sw(S.opts[v.k],"variant",`data-k="${v.k}" aria-label="${v.t}"`)}</div>`).join("")}
+    </section>
+    <p class="small muted">Tap “Assign” on any task to share the work. Everyone in the family sees who's doing what.</p>
+    <div>${PLAN.map(p=>{
+      const ts = visibleTasks(p); if(!ts.length) return "";
+      const d = daysUntil(p.date);
+      return `<div class="tl-day ${p.fest?"fest-day":""}">
+        <div class="tl-date"><div class="d">${dnum(p.date)}</div><div class="w">${p.w}</div></div>
+        <div class="tl-body"><div class="row" style="gap:8px;flex-wrap:wrap;margin-bottom:8px"><h3>${p.title}</h3>${d===0?`<span class="chip today">Today</span>`:""}</div>
+          <div class="card">${ts.map(taskRow).join("")}</div></div></div>`;}).join("")}</div>`;
+}
+
+/* ================= Samagri ================= */
+function samagriAll(){ return SAMAGRI.flatMap(g=>g.items).concat(S.extra); }
+function viewSamagri(){
+  const all = samagriAll(), done = all.filter(i=>S.items[i.id]).length;
+  const groups = S.extra.length ? SAMAGRI.concat([{group:"From recipes", items:S.extra}]) : SAMAGRI;
+  return `
+    ${protoBar()}
+    <div class="stack" style="gap:6px"><p class="eyebrow">Lakshmi puja · 4 people</p><h1>Samagri</h1></div>
+    <div class="card stack">
+      <div class="row between"><span class="t-title">${done} of ${all.length} ready</span><span class="small muted">${all.length-done} to buy</span></div>
+      <div class="progress"><span style="width:${done/all.length*100}%"></span></div>
+      <button class="btn primary" data-act="order">Order what's missing</button>
+    </div>
+    ${S.nri.on?`<div class="note" style="background:var(--haldi-soft)"><span class="who">Abroad mode · ${S.nri.city}</span>Substitutes are shown under each item. <button class="link" data-go="abroad">Find Indian stores near you</button></div>`:""}
+    <div class="seg" role="group" aria-label="Filter"><button aria-pressed="${S.samView==="all"}" data-act="filter" data-v="all">All items</button><button aria-pressed="${S.samView==="buy"}" data-act="filter" data-v="buy">Still to buy</button></div>
+    ${groups.map(g=>{
+      const items = g.items.filter(i => S.samView==="all" || !S.items[i.id]);
+      if(!items.length) return "";
+      return `<section class="stack" style="gap:8px"><h3>${g.group}</h3><div class="card">${items.map(i=>{
+        const d=!!S.items[i.id];
+        return `<div class="item ${d?"done":""}"><button class="check" role="checkbox" aria-checked="${d}" aria-label="${esc(i.n)}" data-act="item" data-id="${i.id}">${CHECK}</button><div style="min-width:0"><div class="t-title">${esc(i.n)}</div>${i.sub?`<div class="sub">${esc(i.sub)}</div>`:""}</div><span class="qty">${esc(i.q)}</span></div>`;}).join("")}</div></section>`;}).join("")}
+    <button class="btn ghost block" data-act="share">Copy list to send on WhatsApp</button>`;
+}
+function orderSheet(store){
+  const missing = samagriAll().filter(i=>!S.items[i.id] && i.p);
+  const total = missing.reduce((s,i)=>s+i.p,0);
+  const stores = [["Blinkit","~15 min"],["Zepto","~12 min"],["Your local puja store","Today by 6 PM"]];
+  store = store || "Blinkit";
+  sheet(`
+    <h2>Order what's missing</h2>
+    <p class="small muted">Items you'll make at home or already own aren't included.</p>
+    <div class="stack" style="gap:8px">${stores.map(([n,t])=>`<button class="choice" aria-pressed="${n===store}" data-act="store" data-v="${n}"><b>${n}</b><span class="small muted">Delivery ${t}</span></button>`).join("")}</div>
+    <table class="t">${missing.map(i=>`<tr><td>${esc(i.n)}</td><td class="num">${rupee(i.p)}</td></tr>`).join("")}<tr><th>Estimated total</th><th class="num">${rupee(total)}</th></tr></table>
+    <button class="btn primary block" data-act="place">Place order with ${store}</button>
+    <p class="small muted">Prices are sample estimates. In the prototype, no order is placed.</p>`);
+}
+
+/* ================= Family ================= */
+function viewFamily(){
+  return `
+    ${protoBar()}
+    <div class="stack" style="gap:6px"><p class="eyebrow">Rao family</p><h1>Your family's way</h1><p class="muted">What you save here changes what everyone sees, in the plan and during the puja.</p></div>
+    <section class="card stack">
+      ${MEMBERS.map(m=>`<div class="member"><div class="avatar">${m.i}</div><div><div class="t-title">${m.n}</div><div class="small muted">${m.r}</div></div></div>`).join("")}
+      <button class="btn ghost sm" style="align-self:flex-start" data-act="invite">Invite a family member</button>
+    </section>
+
+    <section class="stack">
+      <div class="section-head"><h2>Ask an elder</h2><button class="link" data-act="ask" data-q="">New question</button></div>
+      ${S.asks.map(a=>`<div class="card stack" style="gap:10px">
+        <div class="small muted">You asked ${esc(a.to)} · ${esc(a.where)}</div>
+        <div class="t-title">${esc(a.q)}</div>
+        ${a.reply?`<div class="vn" data-vn="${a.id}"><button data-act="play" data-id="${a.id}" aria-label="Play voice note"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 2l9 5-9 5z"/></svg></button><div class="wave">${Array.from({length:28},(_,i)=>`<i style="height:${6+Math.round(14*Math.abs(Math.sin(i*1.7+a.id.length)))}px"></i>`).join("")}</div><span class="len">${a.reply.len}</span></div>
+          <div class="note"><span class="who">${esc(a.to)} said</span>${esc(a.reply.text)}</div>
+          <div class="sub">Saved to “${esc(a.where)}”, so it shows up on that step.</div>`
+        :`<div class="row"><span class="chip time">Waiting for a reply</span><button class="link" data-act="simreply" data-id="${a.id}">Simulate a reply</button></div>`}
+      </div>`).join("")}
+    </section>
+
+    <section class="stack">
+      <h2>Two families, one home</h2>
+      <p class="small muted">Anand's side (Rao) and Kavya's side (Iyer) celebrate Deepavali differently. Pick what your home follows; the plan updates.</p>
+      ${WAYS.map(w=>`<div class="stack" style="gap:8px"><h3>${w.t}</h3>
+        <div class="cmp"><button class="side" aria-pressed="${S.ways[w.k]==="rao"}" data-act="way" data-k="${w.k}" data-v="rao"><b>Rao</b>${w.rao}</button><button class="side" aria-pressed="${S.ways[w.k]==="iyer"}" data-act="way" data-k="${w.k}" data-v="iyer"><b>Iyer</b>${w.iyer}</button></div>
+        <button class="choice" style="padding:8px 12px" aria-pressed="${S.ways[w.k]==="both"}" data-act="way" data-k="${w.k}" data-v="both"><span class="small"><b>Both</b> · do a bit of each</span></button></div>`).join("")}
+    </section>
+
+    <section class="stack">
+      <h2>Family notes</h2>
+      ${S.notes.map(n=>`<div class="note"><span class="who">${esc(n.who)} · ${esc(n.where)}${n.ex?" · example":""}</span>${esc(n.text)}</div>`).join("")}
+    </section>
+    <section class="card stack">
+      <h3>Add how your family does it</h3>
+      <div><label class="lbl" for="nwho">Who is this from?</label><select id="nwho">${MEMBERS.map(m=>`<option>${m.n}</option>`).join("")}</select></div>
+      <div><label class="lbl" for="nwhere">Which rasam or step?</label><select id="nwhere">${["Oil bath","Neeru tumbuva",...STEPS.map(s=>s.t),"Bali Chakravarti puja"].map(x=>`<option>${x}</option>`).join("")}</select></div>
+      <div><label class="lbl" for="ntext">Note</label><textarea id="ntext" placeholder="For example: we offer a silver coin in the kalasha"></textarea></div>
+      <button class="btn primary" data-act="addnote">Save note</button>
+    </section>`;
+}
+function askSheet(q){
+  sheet(`
+    <h2>Ask an elder</h2>
+    <p class="small muted">Your question goes out on WhatsApp. When they reply with a voice note or text, it's saved on the step for the whole family.</p>
+    <div><label class="lbl" for="ato">Ask</label><select id="ato">${MEMBERS.filter(m=>m.n!=="Anand").map(m=>`<option ${m.n==="Amma"?"selected":""}>${m.n}</option>`).join("")}</select></div>
+    <div><label class="lbl" for="awhere">About</label><select id="awhere">${["Bali Chakravarti puja","Oil bath","Neeru tumbuva",...STEPS.map(s=>s.t)].map(x=>`<option>${x}</option>`).join("")}</select></div>
+    <div><label class="lbl" for="aq">Question</label><textarea id="aq">${esc(q||"How did we do the kalasha at home? Do we put a coin inside?")}</textarea></div>
+    <button class="btn green block" data-act="sendask">Send on WhatsApp</button>
+    <p class="small muted">In the prototype this saves the question here and opens WhatsApp with the message ready.</p>`);
+}
+
+/* ================= More hub ================= */
+function viewMore(){
+  const tiles = [
+    ["events","Life events","Griha pravesha, naming, upanayana, weddings"],
+    ["priests","Book a priest","Verified priests who follow your tradition"],
+    ["panchang","Daily panchang","Tithi, nakshatra, rahu kala for your city"],
+    ["vrats","Vrats","Ekadashi, Pradosha, Sankashti reminders"],
+    ["shraddha","Shraddha dates","Yearly tithi reminders for ancestors"],
+    ["recipes","Festival recipes","Scaled to your household"],
+    ["rangoli","Rangoli","Step-by-step designs for beginners"],
+    ["stories","Stories for kids","Why we celebrate, in a few pages"],
+    ["nearby","Near you","Temple timings and community pujas"],
+    ["abroad","Living abroad","Local timings, substitutes, stores"]
+  ];
+  return `${protoBar()}
+    <div class="stack" style="gap:6px"><p class="eyebrow">More</p><h1>Everything else</h1></div>
+    <div class="grid">${tiles.map(([k,t,b])=>`<button class="tile" data-go="${k}">${ic(k)}<b>${t}</b><span>${b}</span></button>`).join("")}</div>`;
+}
+
+/* ================= Life events ================= */
+function viewEvents(){
+  return `${back()}
+    <div class="stack" style="gap:6px"><p class="eyebrow">Life events</p><h1>Plan the big days</h1><p class="muted">Each event gets a muhurat, a checklist split between your family and the priest, a timeline for the day and a budget.</p></div>
+    <div class="card">${EVENTS.map(e=>`<div class="item"><div style="min-width:0;flex:1"><div class="t-title">${e.n}</div><div class="sub">${e.b}</div></div>${e.ready?`<button class="btn green sm" data-go="${e.k}">Plan</button>`:e.k==="shraddha"?`<button class="btn ghost sm" data-go="shraddha">Dates</button>`:`<span class="qty">Coming soon</span>`}</div>`).join("")}</div>`;
+}
+const GRIHA_LIST = [
+  ["g1","Fix the muhurat with the priest","Family"],["g2","Send invitations","Family"],["g3","Clean and paint the new home","Family"],
+  ["g4","Buy a new vessel for boiling milk","Family"],["g5","Book lunch for guests","Family"],["g6","Mango leaf torana for the door","Family"],
+  ["g7","Homa kunda, samidhe and ghee","Priest brings"],["g8","Kalasha and navadhanya","Priest brings"],["g9","Mantras and the vastu shanti","Priest"]
+];
+function viewGriha(){
+  const total = S.budget.reduce((s,b)=>s+Number(b[1]||0),0);
+  return `${back("events","Life events")}
+    <div class="stack" style="gap:6px"><p class="eyebrow">Life event</p><h1>Griha pravesha</h1></div>
+    <section class="stack"><div class="section-head"><h2>Muhurat</h2><span class="sample">Sample dates</span></div>
+      <div class="card">${[["Thu 3 Dec 2026","6:42–8:10 AM","Good"],["Mon 14 Dec 2026","7:05–8:30 AM","Good"],["Fri 22 Jan 2027","6:58–9:12 AM","Very good"]].map(([d,t,q])=>`<div class="item"><div style="flex:1"><div class="t-title">${d}</div><div class="sub">${t}</div></div><span class="chip ${q==="Very good"?"today":"time"}">${q}</span></div>`).join("")}</div>
+      <p class="small muted">Muhurats depend on the family's nakshatras. Your priest confirms the final one.</p></section>
+    <section class="stack"><h2>Checklist</h2>
+      <div class="card">${GRIHA_LIST.map(([id,t,who])=>{const d=!!S.griha[id];return `<div class="item ${d?"done":""}"><button class="check" role="checkbox" aria-checked="${d}" aria-label="${t}" data-act="griha" data-id="${id}">${CHECK}</button><div style="flex:1;min-width:0"><div class="t-title">${t}</div></div><span class="chip ${who==="Family"?"who":"time"}">${who}</span></div>`;}).join("")}</div></section>
+    <section class="stack"><h2>On the day</h2>
+      <div class="card"><table class="t">${[["5:30 AM","Priest arrives, set up the homa"],["6:42 AM","Enter at the muhurat, right foot first, carrying the kalasha"],["7:00 AM","Boil milk until it overflows"],["7:30 AM","Ganapati homa and vastu shanti"],["10:00 AM","Arati, blessings from elders"],["12:30 PM","Lunch for guests"]].map(([t,x])=>`<tr><td class="num" style="text-align:left!important;width:80px">${t}</td><td>${x}</td></tr>`).join("")}</table></div></section>
+    <section class="stack"><div class="section-head"><h2>Budget</h2><span class="small muted">Edit any amount</span></div>
+      <div class="card budget"><table class="t">${S.budget.map(([n,v],i)=>`<tr><td><label for="b${i}">${n}</label></td><td class="num"><input id="b${i}" type="number" inputmode="numeric" min="0" step="500" value="${v}" data-budget="${i}"></td></tr>`).join("")}<tr><th>Total</th><th class="num" id="btotal">${rupee(total)}</th></tr></table></div></section>
+    <button class="btn primary block" data-go="priests">Find a priest for this</button>`;
+}
+
+function viewPriests(){
+  const trads = ["All","Smartha","Madhva","Sri Vaishnava"];
+  const list = PRIESTS.filter(p=>S.priestFilter==="All"||p.trad===S.priestFilter);
+  return `${back()}
+    <div class="stack" style="gap:6px"><p class="eyebrow">Book a priest</p><h1>Priests in Bengaluru</h1><p class="muted">Every priest is verified and lists the traditions they follow. <span class="sample">Sample listings</span></p></div>
+    <div class="wrap-row">${trads.map(t=>`<button class="chip ${S.priestFilter===t?"today":"assign"}" style="padding:6px 12px" data-act="pfilter" data-v="${t}">${t}</button>`).join("")}</div>
+    ${list.map((p,i)=>`<div class="card stack" style="gap:8px">
+      <div class="row between" style="align-items:flex-start"><div><div class="t-title">${p.n}</div><div class="small muted">${p.trad} · ${p.lang} · ${p.area}</div></div><span class="qty" style="font-size:.85rem">from ${rupee(p.from)}</span></div>
+      <div class="sub">${p.ev}</div>
+      <button class="btn green sm" style="align-self:flex-start" data-act="book" data-i="${PRIESTS.indexOf(p)}">Request booking</button></div>`).join("")}`;
+}
+function bookSheet(i){
+  const p = PRIESTS[i];
+  sheet(`<h2>Request ${esc(p.n)}</h2>
+    <div><label class="lbl" for="bev">Event</label><select id="bev">${["Griha pravesha","Satyanarayana puja","Namakarana","Upanayana","Shraddha"].map(x=>`<option>${x}</option>`).join("")}</select></div>
+    <div><label class="lbl" for="bdate">Date</label><select id="bdate"><option>Thu 3 Dec 2026, 6:42 AM</option><option>Mon 14 Dec 2026, 7:05 AM</option><option>Fri 22 Jan 2027, 6:58 AM</option></select></div>
+    <div class="note" style="background:var(--leaf-soft)"><span class="who">Shared checklist</span>Once accepted, you and the priest share one list of who brings what, so nothing is missed on the day.</div>
+    <button class="btn primary block" data-act="sendbook">Send request</button>
+    <p class="small muted">Prototype: no request is sent.</p>`);
+}
+
+/* ================= Panchang & vrats & shraddha ================= */
+function viewPanchang(){
+  const rows = [["Masa","Ashwayuja"],["Paksha","Krishna"],["Tithi","Panchami"],["Nakshatra","Ardra"],["Sunrise","6:10 AM"],["Sunset","5:56 PM"],["Rahu kala","1:30–3:00 PM"],["Yamaganda","6:10–7:40 AM"]];
+  return `${back()}
+    <div class="stack" style="gap:6px"><p class="eyebrow">Thursday 29 October · Bengaluru</p><h1>Today's panchang</h1><p class="muted">Only what matters for daily life. <span class="sample">Sample data</span></p></div>
+    <div class="card"><table class="t">${rows.map(([k,v])=>`<tr><th style="width:40%">${k}</th><td>${v}</td></tr>`).join("")}</table></div>
+    <div class="note" style="background:var(--haldi-soft)"><span class="who">Coming up</span>Ekadashi on Wed 4 Nov. Deepavali starts Fri 6 Nov.</div>
+    <p class="small muted">In the full app, the panchang is calculated for your exact location, including abroad.</p>`;
+}
+function viewVrats(){
+  const V = [["ekadashi","Ekadashi","Twice a month. Your family's rule: no rice; fruit and milk are fine.","Wed 4 Nov"],["pradosha","Pradosha","Evening Shiva puja on the 13th tithi.","Fri 6 Nov"],["sankashti","Sankashti Chaturthi","Ganapati vrat, broken after seeing the moon.","Fri 27 Nov"]];
+  return `${back()}
+    <div class="stack" style="gap:6px"><p class="eyebrow">Vrats</p><h1>The fasts your family keeps</h1><p class="muted">Turn on the ones you follow. You get a reminder the evening before. <span class="sample">Sample dates</span></p></div>
+    <div class="card">${V.map(([k,t,b,d])=>`<div class="toggle" style="align-items:flex-start"><div style="min-width:0"><div class="t-title">${t}</div><div class="sub">${b}</div>${S.vrats[k]?`<div class="sub" style="color:var(--leaf);font-weight:600;margin-top:4px">Next: ${d} · reminder at 8 PM the night before</div>`:""}</div>${sw(S.vrats[k],"vrat",`data-k="${k}" aria-label="${t}"`)}</div>`).join("")}</div>`;
+}
+function viewShraddha(){
+  return `${back()}
+    <div class="stack" style="gap:6px"><p class="eyebrow">Shraddha</p><h1>Remembering ancestors</h1><p class="muted">Shraddha follows the tithi, so its date moves every year. Add a family member once; the app works out the date each year and reminds the household.</p></div>
+    ${S.shraddha.map(s=>`<div class="card stack" style="gap:6px"><div class="t-title">${esc(s.n)}</div><div class="small muted">${esc(s.masa)} ${esc(s.paksha)} ${esc(s.tithi)}</div><div class="row" style="gap:8px;flex-wrap:wrap"><span class="chip time">Next: ${esc(s.next)}</span><span class="sample">Sample</span></div><div class="sub">Reminders 7 days and 1 day before. Checklist and priest booking open a week ahead.</div></div>`).join("")}
+    <section class="card stack"><h3>Add a family member</h3>
+      <div><label class="lbl" for="sname">Name</label><input id="sname" type="text" placeholder="For example: Ajji (Saraswati)"></div>
+      <div class="opts" style="grid-template-columns:1fr 1fr 1fr">
+        <div><label class="lbl" for="smasa">Masa</label><select id="smasa">${["Chaitra","Vaishakha","Jyeshtha","Ashadha","Shravana","Bhadrapada","Ashwayuja","Kartika","Margashira","Pushya","Magha","Phalguna"].map(x=>`<option>${x}</option>`).join("")}</select></div>
+        <div><label class="lbl" for="spaksha">Paksha</label><select id="spaksha"><option>Shukla</option><option>Krishna</option></select></div>
+        <div><label class="lbl" for="stithi">Tithi</label><select id="stithi">${["Prathama","Dvitiya","Tritiya","Chaturthi","Panchami","Shashthi","Saptami","Ashtami","Navami","Dashami","Ekadashi","Dvadashi","Trayodashi","Chaturdashi","Amavasya / Purnima"].map(x=>`<option>${x}</option>`).join("")}</select></div>
+      </div>
+      <p class="small muted">Don't know the tithi? Enter the date they passed away and the app finds it.</p>
+      <button class="btn primary" data-act="addshraddha">Save</button></section>`;
+}
+
+/* ================= Recipes ================= */
+function fmtQty(v,u){ const r = v>=10?Math.round(v/5)*5:Math.round(v*4)/4; return (r%1===0?r:r.toFixed(2).replace(/0$/,"")) + " " + u; }
+function viewRecipes(){
+  return `${back()}
+    <div class="stack" style="gap:6px"><p class="eyebrow">Deepavali recipes</p><h1>Festival kitchen</h1><p class="muted">Quantities scale to how many you make. Add the ingredients to your shopping list in one tap.</p></div>
+    ${RECIPES.map(r=>{ const n=S.servings[r.id], k=n/r.base; return `<section class="card stack">
+      <div class="row between" style="align-items:flex-start"><div><h2>${r.n}</h2><div class="small muted">${r.time}</div></div></div>
+      <div class="row"><button class="btn ghost sm" data-act="serv" data-id="${r.id}" data-d="-${r.base/2}" aria-label="Fewer">−</button><span class="t-title" style="font-variant-numeric:tabular-nums">${n} ${r.unit}</span><button class="btn ghost sm" data-act="serv" data-id="${r.id}" data-d="${r.base/2}" aria-label="More">+</button></div>
+      <table class="t">${r.ing.map(([x,v,u])=>`<tr><td>${x}</td><td class="num">${fmtQty(v*k,u)}</td></tr>`).join("")}</table>
+      <ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px">${r.steps.map(s=>`<li>${s}</li>`).join("")}</ol>
+      <button class="btn green sm" style="align-self:flex-start" data-act="addrecipe" data-id="${r.id}">Add ingredients to shopping list</button>
+    </section>`;}).join("")}`;
+}
+
+/* ================= Rangoli ================= */
+let rStep = 0;
+function rangoliSVG(layer){
+  const pts=[]; for(let y=0;y<7;y++) for(let x=0;x<7;x++) pts.push([30+x*30,30+y*30]);
+  const dots = pts.map(([x,y])=>`<circle cx="${x}" cy="${y}" r="3" fill="var(--muted)"/>`).join("");
+  const outline = `<path d="M120 30L210 120L120 210L30 120Z" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"/><circle cx="120" cy="120" r="48" fill="none" stroke="var(--ink)" stroke-width="2.5"/>`;
+  const petals = [0,90,180,270].map(a=>`<ellipse cx="120" cy="56" rx="14" ry="22" transform="rotate(${a} 120 120)" fill="${layer>=4?"var(--kumkum)":"none"}" fill-opacity=".85" stroke="var(--ink)" stroke-width="2"/>`).join("") + [45,135,225,315].map(a=>`<ellipse cx="120" cy="64" rx="9" ry="15" transform="rotate(${a} 120 120)" fill="${layer>=4?"var(--haldi)":"none"}" stroke="var(--ink)" stroke-width="2"/>`).join("");
+  const lamp = `<path d="M96 126h48c-2 12-12 20-24 20s-22-8-24-20z" fill="${layer>=4?"#B8742A":"none"}" stroke="var(--ink)" stroke-width="2.5"/><path d="M120 92c-7 10-8 14-8 18a8 8 0 0 0 16 0c0-4-1-8-8-18z" fill="${layer>=4?"var(--haldi)":"none"}" stroke="var(--ink)" stroke-width="2.5"/>`;
+  const fill = layer>=4?`<circle cx="120" cy="120" r="46" fill="var(--leaf)" fill-opacity=".25"/>`:"";
+  return `<svg viewBox="0 0 240 240" width="100%" style="max-width:300px;display:block;margin:0 auto" role="img" aria-label="Diya rangoli, step ${layer}">${fill}${layer>=2?outline:""}${layer>=3?petals+lamp:""}${dots}</svg>`;
+}
+function viewRangoli(){
+  const steps = [
+    ["Place the dots","Make a 7 by 7 grid of dots, about two fingers apart. Start from the centre dot so the design stays even."],
+    ["Draw the frame","Join the middle dot of each edge to make a diamond. Draw a circle around the centre, passing between the inner dots."],
+    ["Add the diya and petals","Draw the diya in the centre: a bowl, then the flame. Add four large petals on the diamond's points and four small ones between them."],
+    ["Fill in the colours","Red for the large petals, yellow for the small ones and the flame, green inside the circle. Outline again in white at the end."]
+  ];
+  const s = steps[rStep];
+  return `${back()}
+    <div class="stack" style="gap:6px"><p class="eyebrow">Rangoli · beginner · 20 min</p><h1>Diya rangoli, 7 dots</h1></div>
+    <div class="card stack">${rangoliSVG(rStep+1)}
+      <div class="dots" style="justify-content:center">${steps.map((_,i)=>`<i class="${i<=rStep?"on":""}"></i>`).join("")}</div>
+      <h3>${rStep+1}. ${s[0]}</h3><p>${s[1]}</p>
+      <div class="row"><button class="btn ghost" data-act="rprev" ${rStep===0?"disabled":""}>Back</button><button class="btn green" style="flex:1" data-act="rnext">${rStep===3?"Start again":"Next step"}</button></div>
+    </div>
+    <p class="small muted">More designs for each festival come in the full app, including padi kolam for Tamil households.</p>`;
+}
+
+/* ================= Stories ================= */
+let story = null, sPage = 0;
+function viewStories(){
+  if(story){ const st = STORIES[story]; return `<button class="back" data-act="storyclose"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3L5 8l5 5"/></svg>All stories</button>
+    <div class="story"><p class="eyebrow">${st.t} · ${sPage+1} of ${st.pages.length}</p>${sPage===st.pages.length-1?diya(80):""}<p class="page">${st.pages[sPage]}</p>
+    <div class="row" style="margin-top:auto"><button class="btn ghost" data-act="sprev" ${sPage===0?"disabled":""}>Back</button><button class="btn green" style="flex:1" data-act="snext">${sPage===st.pages.length-1?"The end":"Next page"}</button><button class="btn ghost" data-act="sread" aria-label="Read aloud">Read aloud</button></div></div>`; }
+  return `${back()}
+    <div class="stack" style="gap:6px"><p class="eyebrow">For kids</p><h1>Why we celebrate Deepavali</h1><p class="muted">Short stories to read together, a few lines a page.</p></div>
+    ${Object.entries(STORIES).map(([k,s])=>`<button class="card row" style="text-align:left" data-act="story" data-k="${k}"><span style="color:var(--haldi)">${ic("stories")}</span><span style="flex:1"><span class="t-title" style="display:block">${s.t}</span><span class="small muted">${s.pages.length} pages</span></span></button>`).join("")}`;
+}
+
+/* ================= Nearby & abroad ================= */
+function viewNearby(){
+  const ev = [["Deepotsava at the neighbourhood temple","Sat 7 Nov · 6:30 PM","Lamps lit around the temple tank"],["Community Lakshmi puja","Sun 8 Nov · 6:15 PM","Apartment clubhouse, all welcome"],["Akasha butti making for kids","Sun 1 Nov · 4:00 PM","Bring old newspapers and glue"],["Temple timings during Deepavali","6 to 9 Nov","Open 5:30 AM to 9:30 PM"]];
+  return `${back()}
+    <div class="stack" style="gap:6px"><p class="eyebrow">Near you · Bengaluru</p><h1>Around the neighbourhood</h1><p class="muted"><span class="sample">Sample listings</span></p></div>
+    <div class="card">${ev.map(([t,w,b])=>`<div class="item"><div style="min-width:0"><div class="t-title">${t}</div><div class="small" style="color:var(--leaf);font-weight:600">${w}</div><div class="sub">${b}</div></div></div>`).join("")}</div>
+    <p class="small muted">Temples and communities will be able to post their own events.</p>`;
+}
+function viewAbroad(){
+  return `${back()}
+    <div class="stack" style="gap:6px"><p class="eyebrow">Living abroad</p><h1>Deepavali away from home</h1></div>
+    <section class="card stack" style="gap:4px"><div class="toggle"><div><div class="t-title">Abroad mode</div><div class="sub">Shows timings for your city and substitutes on the samagri list</div></div>${sw(S.nri.on,"nri",'aria-label="Abroad mode"')}</div>
+      <div style="padding-top:8px"><label class="lbl" for="ncity">Your city</label><select id="ncity" data-act-change="city">${Object.keys(NRI).map(c=>`<option ${c===S.nri.city?"selected":""}>${c}</option>`).join("")}</select></div></section>
+    <section class="stack"><h2>Lakshmi puja in ${S.nri.city}</h2>
+      <div class="card stack"><div class="row between"><span class="t-title">Sun 8 Nov</span><span class="chip time">${NRI[S.nri.city]}</span></div>
+      <p class="small muted">The muhurat follows sunset in ${S.nri.city}, not India time. Don't just convert the Bengaluru timing. <span class="sample">Approximate</span></p></div></section>
+    <section class="stack"><h2>Hard to find?</h2><div class="card"><table class="t">${SUBS.map(([a,b])=>`<tr><th style="width:36%;text-transform:none;letter-spacing:0;font-size:.9rem;color:var(--ink)">${a}</th><td>${b}</td></tr>`).join("")}</table></div></section>
+    <a class="btn ghost block" href="https://www.google.com/maps/search/indian+grocery+store+near+me" target="_blank" rel="noopener">Find Indian stores near you</a>`;
+}
+
+/* ================= Sheet ================= */
+function sheet(html){ $("#sheetIn").innerHTML = `<div class="grab"></div>${html}`; $("#sheet").hidden = false; }
+function closeSheet(){ $("#sheet").hidden = true; }
+
+/* ================= Guided puja ================= */
+let step = 0, lock = null;
+const pujaSteps = () => S.pujaLen === "short" ? STEPS.filter(s=>s.core) : STEPS;
+function startSheet(){
+  const skipped = STEPS.filter(s=>!s.core).map(s=>s.t).join(", ");
+  sheet(`<h2>Lakshmi puja</h2>
+    <div class="stack" style="gap:8px">
+      <button class="choice" aria-pressed="${S.pujaLen==="full"}" data-act="plen" data-v="full"><b>Full puja</b><span class="small muted">${STEPS.length} steps · about 40 minutes</span></button>
+      <button class="choice" aria-pressed="${S.pujaLen==="short"}" data-act="plen" data-v="short"><b>Short puja</b><span class="small muted">${STEPS.filter(s=>s.core).length} steps · about 15 minutes · skips ${skipped}</span></button>
+    </div>
+    <div class="toggle"><div><div class="t-title">Guide me aloud</div><div class="sub">Each step and its mantra are read out. Repeat after the voice.</div></div>${sw(S.aloud,"aloud",'aria-label="Guide me aloud"')}</div>
+    <button class="btn primary block" data-act="begin">Begin the puja</button>`);
+}
+function openPuja(){ closeSheet(); step = 0; $("#puja").hidden = false; document.body.style.overflow="hidden"; renderPuja();
+  try{ navigator.wakeLock && navigator.wakeLock.request("screen").then(l=>lock=l).catch(()=>{}); }catch(e){} }
+function closePuja(){ stopSpeak(); $("#puja").hidden = true; document.body.style.overflow=""; try{ lock && lock.release(); }catch(e){} lock=null; }
+function stepText(s){ return s.t + ". " + s.do + (s.m ? " Repeat after me. " + s.m.tr : ""); }
+function renderPuja(){
+  const L = pujaSteps(), N = L.length, end = step >= N;
+  const s = L[Math.min(step,N-1)];
+  const fam = S.notes.filter(n => n.where === s.t);
+  const m = s.m ? `<div class="mantra"><span class="lab">Say</span>${S.lang!=="en"?`<div class="script ${S.lang==="kn"?"kn":""}">${S.lang==="kn"?s.m.kn:s.m.dv}</div>`:""}<div class="tr">${s.m.tr}</div></div>` : "";
+  $("#puja").innerHTML = `<div class="wrap">
+    <div class="top"><div class="bar" aria-hidden="true">${L.map((_,i)=>`<i class="${i<=step?"on":""}"></i>`).join("")}</div><button class="pbtn" data-act="close">Close</button></div>
+    ${end ? `<div class="scroll" style="justify-content:center;text-align:center;align-items:center">${diya(140)}<h2>Shubha Deepavali</h2><p class="do">Lakshmi puja is complete. Share the prasada and enjoy the evening with your family.</p><button class="btn" style="background:var(--brass);color:#2A1E07" data-act="close">Back to the plan</button></div>` : `
+    <div class="scroll">
+      ${step===0?diya(90):""}
+      <div class="num">Step ${step+1} of ${N} · ${S.pujaLen==="short"?"Short":"Full"} Lakshmi puja</div>
+      <h2>${s.t}</h2>
+      <p class="do">${s.do}</p>
+      ${m}
+      <p class="why"><b>Why · </b>${s.why}</p>
+      ${fam.map(n=>`<div class="fnote"><div class="who">${esc(n.who)}'s way</div>${esc(n.text)}</div>`).join("")}
+      <div class="tools">
+        <button class="pbtn" data-act="listen">Listen</button>
+        <button class="pbtn" aria-pressed="${S.aloud}" data-act="aloud2">Guide me aloud</button>
+        <button class="pbtn" data-act="missing">Missing an item?</button>
+        <button class="pbtn" data-act="ask" data-q="How do we do ${esc(s.t)} at home?">Ask an elder</button>
+      </div>
+    </div>
+    <div class="nav"><button class="prev" data-act="prev" ${step===0?"disabled style='opacity:.4'":""}>Back</button><button class="next" data-act="next">${step===N-1?"Finish":"Next step"}</button></div>
+    <p class="hint">Screen stays on · in the app, say “next”, “repeat” or “why” · here, use the arrow keys</p>`}
+  </div>`;
+  if(!end && S.aloud) speak(stepText(s)); else if(end) stopSpeak();
+}
+function missingSheet(){
+  sheet(`<h2>Missing an item?</h2><p class="small muted">These substitutes are accepted in many homes. If your family has a rule, follow that.</p>
+    <div class="card" style="padding:12px"><table class="t">${SUBS.map(([a,b])=>`<tr><th style="width:38%;text-transform:none;letter-spacing:0;font-size:.9rem;color:var(--ink)">${a}</th><td>${b}</td></tr>`).join("")}</table></div>
+    <button class="btn ghost block" data-act="closesheet">Back to the puja</button>`);
+}
+
+/* ================= Events ================= */
+let vnTimer = null;
+document.addEventListener("click", e => {
+  if(e.target.id === "sheet"){ closeSheet(); return; }
+  const g = e.target.closest("[data-go]"); if(g){ closeSheet(); if(!$("#puja").hidden) closePuja(); go(g.dataset.go); return; }
+  const a = e.target.closest("[data-act]"); if(!a) return;
+  const act = a.dataset.act, id = a.dataset.id;
+  switch(act){
+    case "task": S.tasks[id] = !S.tasks[id]; save(); rerender(); break;
+    case "item": S.items[id] = !S.items[id]; save(); rerender(); break;
+    case "griha": S.griha[id] = !S.griha[id]; save(); rerender(); break;
+    case "assign": { const c = S.assign[id]; const n = c===undefined ? 0 : c+1; if(n>=MEMBERS.length) delete S.assign[id]; else S.assign[id]=n; save(); rerender(); break; }
+    case "variant": S.opts[a.dataset.k] = !S.opts[a.dataset.k]; save(); rerender(); break;
+    case "way": S.ways[a.dataset.k] = a.dataset.v; save(); rerender(); toast("Plan updated"); break;
+    case "filter": S.samView = a.dataset.v; save(); rerender(); break;
+    case "order": orderSheet(); break;
+    case "store": orderSheet(a.dataset.v); break;
+    case "place": closeSheet(); toast("Prototype: no order placed"); break;
+    case "puja": startSheet(); break;
+    case "plen": S.pujaLen = a.dataset.v; save(); startSheet(); break;
+    case "aloud": S.aloud = !S.aloud; save(); startSheet(); break;
+    case "begin": openPuja(); break;
+    case "close": closePuja(); break;
+    case "next": step++; renderPuja(); break;
+    case "prev": if(step>0){ step--; renderPuja(); } break;
+    case "listen": speak(stepText(pujaSteps()[step])); break;
+    case "aloud2": S.aloud = !S.aloud; save(); if(!S.aloud) stopSpeak(); renderPuja(); break;
+    case "missing": missingSheet(); break;
+    case "closesheet": closeSheet(); break;
+    case "ask": askSheet(a.dataset.q); break;
+    case "sendask": {
+      const to=$("#ato").value, where=$("#awhere").value, q=$("#aq").value.trim(); if(!q){ toast("Write the question first"); return; }
+      S.asks.unshift({id:"q"+Date.now(), to, where, q}); save(); closeSheet();
+      const link = document.createElement("a"); link.href = "https://wa.me/?text=" + encodeURIComponent(q + "\n\n(Sent from Rasam)"); link.target="_blank"; link.rel="noopener"; document.body.appendChild(link); link.click(); link.remove();
+      toast("Question saved. Replies will appear in Family."); if(route()==="family") rerender(); break; }
+    case "simreply": { const q = S.asks.find(x=>x.id===id); q.reply = {len:"0:31", text:"Yes, a small coin, some akshata and a flower go inside. Your Ajji used a silver coin from her wedding."}; S.notes.push({id:"n"+Date.now(), who:q.to, where:q.where, text:q.reply.text}); save(); rerender(); toast("Reply saved to the step"); break; }
+    case "play": {
+      const box = document.querySelector(`[data-vn="${id}"]`); const bars = box.querySelectorAll(".wave i"); let i = 0; clearInterval(vnTimer);
+      bars.forEach(b=>b.classList.remove("on"));
+      vnTimer = setInterval(()=>{ if(i>=bars.length){ clearInterval(vnTimer); return; } bars[i++].classList.add("on"); }, 120);
+      const q = S.asks.find(x=>x.id===id); speak(q.reply.text); break; }
+    case "invite": toast("Invites come in the full app"); break;
+    case "addnote": { const text = $("#ntext").value.trim(); if(!text){ toast("Write the note first"); return; }
+      S.notes.push({id:"n"+Date.now(), who:$("#nwho").value, where:$("#nwhere").value, text}); save(); rerender(); toast("Note saved for the family"); break; }
+    case "share": {
+      const txt = "Lakshmi puja samagri\n" + SAMAGRI.concat(S.extra.length?[{group:"From recipes",items:S.extra}]:[]).map(g=>g.group+":\n"+g.items.filter(i=>!S.items[i.id]).map(i=>"- "+i.n+" ("+i.q+")").join("\n")).join("\n");
+      try{ navigator.clipboard.writeText(txt).then(()=>toast("List copied"), ()=>toast("Copy isn't available here")); }catch(err){ toast("Copy isn't available here"); } break; }
+    case "restart": S.onboarded=false; obStep=0; save(); go("welcome"); break;
+    case "ob-next": if(obStep>=3){ S.onboarded=true; save(); obStep=0; go("home"); } else { obStep++; render(); } break;
+    case "ob-back": obStep=Math.max(0,obStep-1); render(); break;
+    case "ob-pick": S[a.dataset.key]=a.dataset.val; save(); render(); break;
+    case "ob-skip": S.onboarded=true; save(); obStep=0; go("home"); break;
+    case "pfilter": S.priestFilter = a.dataset.v; save(); rerender(); break;
+    case "book": bookSheet(Number(a.dataset.i)); break;
+    case "sendbook": closeSheet(); toast("Prototype: no request sent"); break;
+    case "vrat": S.vrats[a.dataset.k] = !S.vrats[a.dataset.k]; save(); rerender(); break;
+    case "addshraddha": { const n = $("#sname").value.trim(); if(!n){ toast("Add a name first"); return; }
+      S.shraddha.push({n, masa:$("#smasa").value, paksha:$("#spaksha").value, tithi:$("#stithi").value, next:"worked out from the panchang"}); save(); rerender(); toast("Saved. You'll be reminded each year."); break; }
+    case "serv": { const r = RECIPES.find(x=>x.id===id); S.servings[id] = Math.max(r.base/2, S.servings[id] + Number(a.dataset.d)); save(); rerender(); break; }
+    case "addrecipe": { const r = RECIPES.find(x=>x.id===id), k = S.servings[id]/r.base; let added=0;
+      r.ing.forEach(([x,v,u])=>{ const iid = "x-"+id+"-"+x; if(!S.extra.find(e=>e.id===iid)){ S.extra.push({id:iid, n:x, q:fmtQty(v*k,u), sub:"For "+r.n, p:Math.max(20,Math.round(v*k/5)*5)}); added++; } });
+      save(); toast(added ? `${added} ingredients added to Samagri` : "Already on your list"); break; }
+    case "rnext": rStep = rStep===3 ? 0 : rStep+1; rerender(); break;
+    case "rprev": rStep = Math.max(0,rStep-1); rerender(); break;
+    case "story": story = a.dataset.k; sPage = 0; stopSpeak(); if(route()!=="stories") go("stories"); else render(); break;
+    case "storyclose": story = null; stopSpeak(); render(); break;
+    case "snext": { const st = STORIES[story]; if(sPage < st.pages.length-1){ sPage++; } else { story=null; } stopSpeak(); render(); break; }
+    case "sprev": sPage = Math.max(0,sPage-1); stopSpeak(); render(); break;
+    case "sread": speak(STORIES[story].pages[sPage]); break;
+    case "nri": S.nri.on = !S.nri.on; save(); rerender(); toast(S.nri.on?"Abroad mode on":"Abroad mode off"); break;
+  }
+});
+document.addEventListener("change", e => {
+  if(e.target.id === "ncity"){ S.nri.city = e.target.value; save(); rerender(); }
+});
+document.addEventListener("input", e => {
+  const i = e.target.dataset && e.target.dataset.budget; if(i===undefined) return;
+  S.budget[Number(i)][1] = Number(e.target.value) || 0; save();
+  const t = $("#btotal"); if(t) t.textContent = rupee(S.budget.reduce((s,b)=>s+Number(b[1]||0),0));
+});
+document.addEventListener("keydown", e => {
+  if(e.key==="Escape" && !$("#sheet").hidden){ closeSheet(); return; }
+  if($("#puja").hidden || !$("#sheet").hidden) return;
+  if(e.key==="ArrowRight"){ if(step<pujaSteps().length){ step++; renderPuja(); } }
+  else if(e.key==="ArrowLeft"){ if(step>0){ step--; renderPuja(); } }
+  else if(e.key==="Escape") closePuja();
+});
+render();
+</script>
+
+</body>
+</html>
