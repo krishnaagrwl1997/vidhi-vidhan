@@ -6,7 +6,7 @@
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
-<title>Rasam</title>
+<title>Vidhi-Vidhan App</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gotu&family=Hind:wght@400;500;600&family=Noto+Sans+Kannada:wght@400;600&display=swap">
@@ -484,13 +484,13 @@ function render(){
 }
 function rerender(){ render.keep = true; const y = window.scrollY; render(); window.scrollTo(0,y); }
 
-function protoBar(){ return `<div class="proto"><span>Prototype · sample content, not yet reviewed by a priest</span><button data-act="restart">Restart setup</button></div>`; }
+function protoBar(){ return `<div class="proto"><span>Early preview · sample content, not yet reviewed by a priest</span><span style="display:flex;gap:12px"><button data-act="restart">Start over</button><a href="../#join" style="color:var(--leaf);font-weight:600">Join the early list</a></span></div>`; }
 
 /* ================= Onboarding ================= */
 let obStep = 0;
 function viewWelcome(){
   const steps = [
-    {q:"Where is your family from?", h:"Rasams change from region to region. We'll show yours.", key:"region", opts:Object.entries(REGION).map(([k,v])=>[k,v, k==="karnataka"?"Sample ready":""])},
+    {q:"Where is your family from?", h:"Rituals change from region to region. We'll show yours.", key:"region", opts:Object.entries(REGION).map(([k,v])=>[k,v, k==="karnataka"?"Sample ready":""])},
     {q:"Which tradition does your family follow?", h:"Not sure? Pick “Other”. You can ask an elder and change it later.", key:"community", opts:Object.entries(COMM).map(([k,v])=>[k,v, k==="smartha"?"Sample ready":""])},
     {q:"Mantras in which script?", h:"Every mantra also shows a transliteration in English letters.", key:"lang", opts:Object.entries(LANG).map(([k,v])=>[k,v, k==="kn"?"Kannada script":k==="hi"?"Devanagari":"Transliteration only"])}
   ];
@@ -498,13 +498,13 @@ function viewWelcome(){
     <div class="ob" style="padding-top:24px">
       ${diya(120)}
       <div class="stack" style="text-align:center;align-items:center">
-        <p class="eyebrow">Rasam</p>
+        <p class="eyebrow">Vidhi-Vidhan · early preview</p>
         <h1>Every festival, done your family's way</h1>
         <p class="muted">What to prepare, when to do it, and how, step by step. Set up once in under a minute.</p>
       </div>
       <button class="btn primary block" data-act="ob-next">Get started</button>
       <button class="btn ghost block" data-act="ob-skip">Skip and use the sample family</button>
-      <p class="small muted" style="text-align:center">Prototype. Content shown is sample content for a Kannada Smartha household in Bengaluru.</p>
+      <p class="small muted" style="text-align:center">This preview uses sample content for a Kannada Smartha household in Bengaluru. Nothing you do here is sent anywhere; it stays on your phone.</p><a class="btn ghost block" href="../" style="text-decoration:none">Back to the website</a>
     </div>`;
   const s = steps[obStep-1];
   return `
@@ -762,7 +762,7 @@ function bookSheet(i){
     <div><label class="lbl" for="bdate">Date</label><select id="bdate"><option>Thu 3 Dec 2026, 6:42 AM</option><option>Mon 14 Dec 2026, 7:05 AM</option><option>Fri 22 Jan 2027, 6:58 AM</option></select></div>
     <div class="note" style="background:var(--leaf-soft)"><span class="who">Shared checklist</span>Once accepted, you and the priest share one list of who brings what, so nothing is missed on the day.</div>
     <button class="btn primary block" data-act="sendbook">Send request</button>
-    <p class="small muted">Prototype: no request is sent.</p>`);
+    <p class="small muted">Preview: no request is sent.</p>`);
 }
 
 /* ================= Panchang & vrats & shraddha ================= */
@@ -941,7 +941,7 @@ document.addEventListener("click", e => {
     case "filter": S.samView = a.dataset.v; save(); rerender(); break;
     case "order": orderSheet(); break;
     case "store": orderSheet(a.dataset.v); break;
-    case "place": closeSheet(); toast("Prototype: no order placed"); break;
+    case "place": closeSheet(); toast("Preview: no order is placed"); break;
     case "puja": startSheet(); break;
     case "plen": S.pujaLen = a.dataset.v; save(); startSheet(); break;
     case "aloud": S.aloud = !S.aloud; save(); startSheet(); break;
@@ -957,7 +957,7 @@ document.addEventListener("click", e => {
     case "sendask": {
       const to=$("#ato").value, where=$("#awhere").value, q=$("#aq").value.trim(); if(!q){ toast("Write the question first"); return; }
       S.asks.unshift({id:"q"+Date.now(), to, where, q}); save(); closeSheet();
-      const link = document.createElement("a"); link.href = "https://wa.me/?text=" + encodeURIComponent(q + "\n\n(Sent from Rasam)"); link.target="_blank"; link.rel="noopener"; document.body.appendChild(link); link.click(); link.remove();
+      const link = document.createElement("a"); link.href = "https://wa.me/?text=" + encodeURIComponent(q + "\n\n(Sent from Vidhi-Vidhan)"); link.target="_blank"; link.rel="noopener"; document.body.appendChild(link); link.click(); link.remove();
       toast("Question saved. Replies will appear in Family."); if(route()==="family") rerender(); break; }
     case "simreply": { const q = S.asks.find(x=>x.id===id); q.reply = {len:"0:31", text:"Yes, a small coin, some akshata and a flower go inside. Your Ajji used a silver coin from her wedding."}; S.notes.push({id:"n"+Date.now(), who:q.to, where:q.where, text:q.reply.text}); save(); rerender(); toast("Reply saved to the step"); break; }
     case "play": {
@@ -978,7 +978,7 @@ document.addEventListener("click", e => {
     case "ob-skip": S.onboarded=true; save(); obStep=0; go("home"); break;
     case "pfilter": S.priestFilter = a.dataset.v; save(); rerender(); break;
     case "book": bookSheet(Number(a.dataset.i)); break;
-    case "sendbook": closeSheet(); toast("Prototype: no request sent"); break;
+    case "sendbook": closeSheet(); toast("Preview: no request is sent"); break;
     case "vrat": S.vrats[a.dataset.k] = !S.vrats[a.dataset.k]; save(); rerender(); break;
     case "addshraddha": { const n = $("#sname").value.trim(); if(!n){ toast("Add a name first"); return; }
       S.shraddha.push({n, masa:$("#smasa").value, paksha:$("#spaksha").value, tithi:$("#stithi").value, next:"worked out from the panchang"}); save(); rerender(); toast("Saved. You'll be reminded each year."); break; }
