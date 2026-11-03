@@ -292,11 +292,80 @@ section.band{position:relative;overflow:hidden;padding-block:96px}
 .share a{color:#FFF3D6;font-weight:600}
 footer{background:var(--indigo);color:#CFC3EA;padding-block:30px;font-size:.88rem;border-top:3px solid var(--marigold)}
 footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* ---------- Interactions ---------- */
+.fxc{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:30}
+.hint{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;font-size:.92rem;padding:6px 14px 6px 10px;border-radius:999px;border:2px dashed currentColor;opacity:.92}
+.hint .tapi{animation:tap 1.6s ease-in-out infinite}
+@keyframes tap{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+.hintrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.minibtn{font:700 .9rem var(--display);border:0;background:var(--ink);color:var(--cream);border-radius:999px;padding:7px 14px;cursor:pointer}
+.sndbtn{display:inline-flex;align-items:center;gap:6px;font:600 .9rem "Hind","Noto Sans Kannada","Noto Sans Tamil","Noto Sans Telugu",sans-serif;color:var(--cream);background:rgba(255,255,255,.1);border:2px solid rgba(255,246,230,.35);border-radius:999px;padding:6px 12px;cursor:pointer}
+.sndbtn[aria-pressed="false"] .w1{display:none}
+.sndbtn[aria-pressed="false"]{opacity:.7}
+@media (max-width:700px){.sndbtn .sl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+.shout{position:fixed;transform:translate(-50%,-100%);font-family:"Baloo 2",sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2rem);white-space:nowrap;pointer-events:none;z-index:31;text-shadow:0 0 0 #fff,2px 2px 0 #fff,-2px 2px 0 #fff,2px -2px 0 #fff,-2px -2px 0 #fff,0 6px 14px rgba(0,0,0,.25);animation:shout 1.8s ease-out forwards}
+@keyframes shout{0%{opacity:0;transform:translate(-50%,-80%) scale(.6)}15%{opacity:1;transform:translate(-50%,-110%) scale(1.08)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-190%) scale(1)}}
+.diyas svg{cursor:pointer}
+.sankranti .in{pointer-events:none}.sankranti .in > *{pointer-events:auto}
+.kite{pointer-events:auto;cursor:pointer}
+.kite.cut{animation:cut 2.4s ease-in forwards}
+@keyframes cut{0%{transform:rotate(0)}20%{transform:rotate(-20deg) translate(-10px,10px)}100%{transform:rotate(40deg) translate(260px,-420px);opacity:0}}
+.bellrow{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.bell{width:58px;height:86px;border:0;background:none;padding:0;cursor:pointer;transform-origin:50% 0}
+.bell svg{width:100%;height:100%}
+.bell.ring{animation:ring 1.6s ease-out}
+@keyframes ring{0%{transform:rotate(0)}10%{transform:rotate(22deg)}25%{transform:rotate(-18deg)}40%{transform:rotate(12deg)}55%{transform:rotate(-8deg)}70%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+.holi-c{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.holi .gulal{z-index:0}
+.holi{cursor:crosshair;touch-action:pan-y}
+.holi .in{z-index:1}
+.holi .head .hintrow{color:var(--rani-deep)}
+.rakhi-wrap{display:flex;flex-direction:column;align-items:center;gap:6px;color:#FFF1C2}
+.rakhi-art{cursor:pointer;transform-origin:50% 50%}
+.rakhi-art.spin{animation:rspin 1s cubic-bezier(.3,1.4,.5,1)}
+@keyframes rspin{0%{transform:scale(1) rotate(0)}40%{transform:scale(1.12) rotate(-8deg)}100%{transform:scale(1) rotate(0)}}
+.onam .in{pointer-events:none}.onam .in > *{pointer-events:auto}
+.pookalam{cursor:pointer}
+.pookalam.whirl{animation:whirl 1.6s cubic-bezier(.2,.8,.2,1)}
+@keyframes whirl{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.onam .head > div{color:#FFF1C2}
+.dbtn{display:inline-flex;align-items:center;gap:8px;font:700 1rem var(--display);border:0;border-radius:999px;padding:9px 16px;background:var(--sindoor);color:#fff;cursor:pointer;box-shadow:0 4px 0 #8E0F16}
+.dbtn.thump{animation:thump .9s ease-out}
+@keyframes thump{0%,100%{transform:scale(1)}15%{transform:scale(1.12)}30%{transform:scale(.96)}45%{transform:scale(1.08)}60%{transform:scale(.98)}}
+.durga .hint{color:var(--kumkum)}
+.modaks button{border:0;background:none;padding:0;width:44px;height:44px;cursor:pointer}
+.modaks button svg{width:100%;height:100%}
+.modaks button.hop{animation:hop .6s cubic-bezier(.3,1.6,.5,1)}
+@keyframes hop{0%{transform:translateY(0)}40%{transform:translateY(-22px) rotate(-10deg)}100%{transform:translateY(0)}}
+.ganesh .hint{color:#3A1804}
+.potrow{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px;width:100%}
+.pongal .head{max-width:none}
+.potwrap{display:flex;flex-direction:column;align-items:center;gap:8px;color:#3A2400}
+.pot{width:130px;height:auto;cursor:pointer;overflow:visible}
+.pot .froth{transition:transform .35s cubic-bezier(.3,1.5,.5,1);transform-box:view-box;transform-origin:80px 56px}
+.pot[data-heat="1"] .froth{transform:translateY(-3px)}
+.pot[data-heat="2"] .froth{transform:translateY(-6px) scale(1.04)}
+.pot[data-heat="3"] .froth{transform:translateY(-9px) scale(1.08)}
+.pot.boil .froth{transform:translateY(-16px) scale(1.25)}
+.pot .drips{opacity:0;transition:opacity .4s}
+.pot.boil .drips{opacity:1}
+.pot .steam{opacity:0;transition:opacity .4s}
+.pot[data-heat="2"] .steam,.pot[data-heat="3"] .steam,.pot.boil .steam{opacity:.85;animation:steam 1.4s ease-in-out infinite}
+@keyframes steam{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.pot .fire{transform-box:fill-box;transform-origin:50% 100%;animation:flick 1.2s ease-in-out infinite}
+.pongal .sugarcane{top:auto;bottom:40px}
+button.mode{border:0;cursor:pointer}
+button.mode[aria-pressed="false"] i{background:rgba(27,15,58,.35)}
+button.mode[aria-pressed="false"] i::after{right:auto;left:3px}
+.cta .hint{color:#FFF3D6}
+@media (prefers-reduced-motion: reduce){.hint .tapi,.pot .steam,.pot .fire,.kite.cut,.bell.ring,.rakhi-art.spin,.pookalam.whirl,.modaks button.hop,.dbtn.thump{animation:none}}
 </style>
 
 <nav class="top" id="nav"><div class="in">
   <a class="mark" href="#top" aria-label="Vidhi-Vidhan"><span class="dv" id="brandSub">विधि-विधान</span><span class="w">Vidhi-Vidhan</span></a>
   <div class="navr">
+    <button class="sndbtn" id="soundBtn" aria-pressed="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path class="w1" d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></svg><span class="on sl" data-i="sound_on">Sound on</span><span class="off sl" data-i="sound_off" hidden>Sound off</span></button>
     <label class="lang"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)" data-i="lang">Language</span>
       <svg class="g" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>
       <select id="langSel"><option value="en">English</option><option value="hi">हिन्दी</option><option value="kn">ಕನ್ನಡ</option><option value="ta">தமிழ்</option><option value="te">తెలుగు</option></select>
@@ -320,6 +389,7 @@ footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <a class="btn line js-join" href="#join" data-i="nav_join">Join the early list</a>
       </div>
       <p class="note" data-i="hero_note"></p>
+      <div style="margin-top:18px"><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_diwali"></span></span></div>
     </div>
     <div class="stage">
       <div class="card-back" aria-hidden="true"></div><div class="card-back b2" aria-hidden="true"></div>
@@ -362,6 +432,7 @@ footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <h2 id="amma-h" data-i="prob_h"></h2>
       <p data-i="prob_p1"></p>
       <p data-ih="prob_p2"></p>
+      <div><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_kite"></span></span></div>
     </div>
   </div>
 </section>
@@ -371,7 +442,7 @@ footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="in">
     <div class="demo">
       <div class="head" style="margin-bottom:0">
-        <span class="tag" style="align-self:flex-start"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c2 3 5 5 5 9a5 5 0 0 1-10 0c0-4 3-6 5-9z"/></svg></i><span data-i="tag_lakshmi">Lakshmi Puja</span></span>
+        <div class="bellrow"><span class="tag" style="margin:0"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c2 3 5 5 5 9a5 5 0 0 1-10 0c0-4 3-6 5-9z"/></svg></i><span data-i="tag_lakshmi">Lakshmi Puja</span></span><button class="bell" id="bell" aria-label="Temple bell"><svg viewBox="0 0 80 120" aria-hidden="true"><path d="M40 0v18" stroke="#FFB21E" stroke-width="3"/><circle cx="40" cy="22" r="6" fill="none" stroke="#FFB21E" stroke-width="3"/><path d="M40 28c-16 0-22 14-22 34 0 12-6 20-10 26h64c-4-6-10-14-10-26 0-20-6-34-22-34z" fill="#FFB21E"/><path d="M8 88h64v8H8z" fill="#E5960B"/><path d="M24 50c2-10 6-14 12-16" stroke="#FFF1C2" stroke-width="3" fill="none" stroke-linecap="round"/><circle class="clapper" cx="40" cy="104" r="8" fill="#C27A06"/></svg></button><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_bell"></span></span></div>
         <h2 id="try-h" data-i="demo_h"></h2>
         <p class="lead" data-i="demo_p"></p>
         <div style="margin-top:8px"><span class="dlabel" data-i="demo_trad"></span>
@@ -388,12 +459,13 @@ footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </section>
 
 <section class="band holi" aria-labelledby="how-h">
+  <canvas class="holi-c" id="holiCanvas" aria-hidden="true"></canvas>
   <span class="gulal" style="width:260px;height:260px;left:-80px;top:40px;background:#FF3D8B"></span>
   <span class="gulal" style="width:220px;height:220px;right:6%;top:-60px;background:#2BC46B"></span>
   <span class="gulal" style="width:240px;height:240px;right:-60px;bottom:-60px;background:#3B82F6"></span>
   <span class="gulal" style="width:180px;height:180px;left:38%;bottom:-70px;background:#FFC21E"></span>
   <div class="in">
-    <div class="head"><span class="tag" style="align-self:flex-start"><i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="8" cy="10" r="4"/><circle cx="15" cy="8" r="3"/><circle cx="14" cy="16" r="4"/></svg></i><span data-i="tag_holi">Holi</span></span><h2 id="how-h" data-i="how_h"></h2></div>
+    <div class="head"><span class="tag" style="align-self:flex-start"><i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="8" cy="10" r="4"/><circle cx="15" cy="8" r="3"/><circle cx="14" cy="16" r="4"/></svg></i><span data-i="tag_holi">Holi</span></span><h2 id="how-h" data-i="how_h"></h2><div class="hintrow"><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_holi"></span></span><button class="minibtn" id="clearHoli" data-i="clear_holi">Clean up</button></div></div>
     <div class="steps">
       <div class="step-c"><span class="dot">1</span><span class="n" data-i="how1_n"></span><h3 data-i="how1_t"></h3><p data-i="how1_p"></p></div>
       <div class="step-c"><span class="dot">2</span><span class="n" data-i="how2_n"></span><h3 data-i="how2_t"></h3><p data-i="how2_p"></p></div>
@@ -413,13 +485,13 @@ footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <li><span class="ic"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="#7E0A1E" stroke-width="2.4"><path d="M3 9.5l4 4L15 5"/></svg></span><div><b data-i="fam3_b"></b> <span data-i="fam3"></span></div></li>
     </ul>
   </div>
-  <svg class="rakhi-art" id="rakhiArt" viewBox="0 0 420 300" aria-hidden="true"></svg>
+  <div class="rakhi-wrap"><svg class="rakhi-art" id="rakhiArt" viewBox="0 0 420 300"></svg><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_rakhi"></span></span></div>
 </div></section>
 
 <section class="band onam" aria-labelledby="feat-h">
-  <svg class="pookalam" id="pookalam" viewBox="0 0 400 400" aria-hidden="true"></svg>
+  <svg class="pookalam" id="pookalam" viewBox="0 0 400 400"></svg>
   <div class="in">
-    <div class="head"><span class="tag" style="align-self:flex-start"><i style="background:var(--saffron)"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="4.5" r="2.5"/><circle cx="12" cy="19.5" r="2.5"/><circle cx="4.5" cy="12" r="2.5"/><circle cx="19.5" cy="12" r="2.5"/></svg></i><span data-i="tag_onam">Onam</span></span><h2 id="feat-h" data-i="feat_h"></h2></div>
+    <div class="head"><span class="tag" style="align-self:flex-start"><i style="background:var(--saffron)"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="4.5" r="2.5"/><circle cx="12" cy="19.5" r="2.5"/><circle cx="4.5" cy="12" r="2.5"/><circle cx="19.5" cy="12" r="2.5"/></svg></i><span data-i="tag_onam">Onam</span></span><h2 id="feat-h" data-i="feat_h"></h2><div><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_onam"></span></span></div></div>
     <div class="feats">
       <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><h3 data-i="f1_t"></h3><p data-i="f1_p"></p></div>
       <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg><h3 data-i="f2_t"></h3><p data-i="f2_p"></p></div>
@@ -434,7 +506,7 @@ footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <section class="band durga" aria-labelledby="trust-h">
   <div class="paar"></div><div class="alpona"></div>
   <div class="in">
-    <div class="head"><span class="tag" style="align-self:flex-start"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17l-5.5 4L8 13.5 3 9l6.5-.5z"/></svg></i><span data-i="tag_durga">Durga Puja</span></span><h2 id="trust-h" data-i="trust_h"></h2></div>
+    <div class="head"><span class="tag" style="align-self:flex-start"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17l-5.5 4L8 13.5 3 9l6.5-.5z"/></svg></i><span data-i="tag_durga">Durga Puja</span></span><h2 id="trust-h" data-i="trust_h"></h2><div class="hintrow"><button class="dbtn" id="dhakBtn"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3" fill="#FFF1C2"/><path d="M4 6v10c0 2 3.5 3.5 8 3.5s8-1.5 8-3.5V6" fill="#E1251B"/><path d="M4 9l16 6M20 9L4 15" stroke="#FFB21E" stroke-width="1.4"/><path d="M14 2l7-2M17 4l6-1" stroke="#FFB21E" stroke-width="1.6"/></svg><span data-i="btn_dhak">Dhak</span></button><button class="dbtn" id="shankhBtn"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 14c0-6 6-11 13-11 3 0 5 2 5 4 0 6-7 13-13 13-3 0-5-3-5-6z" fill="#FFF6E6" stroke="#E1251B" stroke-width="1.5"/><path d="M8 13c2-3 5-5 9-6M9 16c3-2 6-4 9-8" stroke="#E1251B" stroke-width="1.2" fill="none"/></svg><span data-i="btn_shankh">Shankh</span></button><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_durga"></span></span></div></div>
     <div class="trust">
       <div class="tcard"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span><h3 data-i="tr1_t"></h3><p data-i="tr1_p"></p></div>
       <div class="tcard"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="5" width="7.5" height="14" rx="2"/><rect x="13.5" y="5" width="7.5" height="14" rx="2"/></svg></span><h3 data-i="tr2_t"></h3><p data-i="tr2_p"></p></div>
@@ -447,8 +519,8 @@ footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <section class="band ganesh" aria-labelledby="when-h"><div class="in">
   <div class="head"><span class="tag" style="align-self:flex-start"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2 3 7 8 7 13a7 7 0 0 1-14 0c0-5 5-10 7-13z"/></svg></i><span data-i="tag_ganesh">Ganesh Chaturthi</span></span>
-    <div class="modaks" id="modaks" aria-hidden="true"></div>
-    <h2 id="when-h" data-i="road_h"></h2></div>
+    <div class="modaks" id="modaks"></div>
+    <h2 id="when-h" data-i="road_h"></h2><div><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_ganesh"></span></span></div></div>
   <div class="tl">
     <div class="now"><span class="d" data-i="r1_d"></span><h3 data-i="r1_t"></h3><p data-i="r1_p"></p></div>
     <div><span class="d" data-i="r2_d"></span><h3 data-i="r2_t"></h3><p data-i="r2_p"></p></div>
@@ -461,14 +533,14 @@ footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <svg class="kolam" id="kolam" viewBox="0 0 400 400" aria-hidden="true"></svg>
   <svg class="sugarcane" viewBox="0 0 90 260" aria-hidden="true"><g stroke-linecap="round"><path d="M30 255V40" stroke="#5B7F2A" stroke-width="12"/><path d="M58 255V60" stroke="#6E8F33" stroke-width="12"/><path d="M24 90h12M24 140h12M24 190h12M52 110h12M52 160h12M52 210h12" stroke="#3E5A1C" stroke-width="3"/></g><path d="M30 42c-14-18-24-22-28-38 12 6 22 14 28 30 4-16 14-26 28-32-6 14-18 22-28 40z" fill="#2E8A4E"/><path d="M58 62c10-20 22-26 30-40-14 2-24 12-30 28-6-14-16-22-30-22 10 8 22 16 30 34z" fill="#1D6A3A"/></svg>
   <div class="in">
-    <div class="head"><span class="tag" style="align-self:flex-start"><i style="background:var(--leaf)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 10h14l-1 9a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/><path d="M8 9c0-3 2-3 2-6M12 9c0-3 2-3 2-6M16 9c0-3 2-3 2-6" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></i><span data-i="tag_pongal">Pongal</span></span><h2 id="faq-h" data-i="faq_h"></h2></div>
+    <div class="head"><span class="tag" style="align-self:flex-start"><i style="background:var(--leaf)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 10h14l-1 9a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/><path d="M8 9c0-3 2-3 2-6M12 9c0-3 2-3 2-6M16 9c0-3 2-3 2-6" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></i><span data-i="tag_pongal">Pongal</span></span><div class="potrow"><h2 id="faq-h" data-i="faq_h"></h2><div class="potwrap"><svg class="pot" id="pot" viewBox="0 0 160 190" role="button" tabindex="0" aria-label="Pongal pot" data-heat="0"><g class="steam" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"><path d="M60 30c-6-8 6-12 0-20"/><path d="M80 26c-6-8 6-12 0-20"/><path d="M100 30c-6-8 6-12 0-20"/></g><g class="drips" fill="#FFFFFF"><path d="M44 54c-4 10-2 22 2 26 3-6 2-16-2-26z"/><path d="M116 54c4 12 2 24-2 30-3-8-2-18 2-30z"/><path d="M60 58c-2 8 0 14 2 16 2-4 1-10-2-16z"/></g><g class="froth"><ellipse cx="80" cy="52" rx="40" ry="10" fill="#FFFFFF"/><circle cx="56" cy="48" r="7" fill="#FFFFFF"/><circle cx="70" cy="44" r="8" fill="#FFFFFF"/><circle cx="88" cy="44" r="8" fill="#FFFFFF"/><circle cx="104" cy="48" r="7" fill="#FFFFFF"/></g><path d="M38 62C10 92 18 152 80 162 142 152 150 92 122 62Z" fill="#B9622A"/><rect x="38" y="50" width="84" height="14" rx="6" fill="#9E4F1E"/><path d="M26 104q54 22 108 0" fill="none" stroke="#FFF6E6" stroke-width="3" stroke-dasharray="1 7" stroke-linecap="round"/><path d="M30 122q50 20 100 0" fill="none" stroke="#FFF6E6" stroke-width="2.5"/><path d="M38 60c-14-6-22-20-20-34 10 6 18 18 20 34zM122 60c14-6 22-20 20-34-10 6-18 18-20 34z" fill="#2E8A4E"/><circle cx="80" cy="100" r="9" fill="#F7C536"/><circle cx="80" cy="100" r="4" fill="#E1251B"/><g class="fire"><path d="M50 182c-6-10 2-14 4-22 4 8 8 12 4 22z" fill="#F2761E"/><path d="M76 184c-8-12 2-18 4-28 6 10 10 16 4 28z" fill="#FFB21E"/><path d="M104 182c-6-10 2-14 4-22 4 8 8 12 4 22z" fill="#F2761E"/></g></svg><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_pongal"></span></span></div></div></div>
     <div class="faq" id="faq"></div>
   </div>
 </section>
 
 <section class="cta" id="join" aria-labelledby="join-h"><div class="in">
   <div class="garland">
-    <span class="mode"><span data-i="mode">Festival mode</span><i></i></span>
+    <button class="mode" id="modeBtn" aria-pressed="false"><span data-i="mode">Festival mode</span><i></i></button><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_mode"></span></span>
     <div class="lockup"><span class="dv" id="ctaBrand">विधि-विधान</span><span class="w">Vidhi-Vidhan</span><span class="sub" data-i="lock_sub">Rituals, your family's way</span></div>
     <h2 id="join-h" data-i="cta_h"></h2>
     <p data-i="cta_p"></p>
@@ -498,7 +570,7 @@ const MANTRA = {
 const FESTS = ["Ugadi","Varamahalakshmi","Gowri-Ganesha","Bombe Habba","Deepavali","Thai Pongal","Golu","Karthigai Deepam","Varalakshmi Vratham","Bathukamma","Bonalu","Sankranti","Vinayaka Chavithi","Atla Taddi","Tulasi Habba","Sri Rama Navami","Puthandu","Aadi Perukku"];
 
 const T = {
-en:{tag_diwali:"Deepavali",tag_sankranti:"Makar Sankranti",tag_lakshmi:"Lakshmi Puja",tag_holi:"Holi",tag_rakhi:"Raksha Bandhan",tag_onam:"Onam",tag_durga:"Durga Puja",tag_ganesh:"Ganesh Chaturthi",tag_pongal:"Pongal",mode:"Festival mode",lock_sub:"Rituals, your family's way",try_app:"Try the app",demo_full:"Open the full app preview",app_note:"The app preview is in English for now.",lang:"Language",nav_join:"Join the early list",hero_h1:"Every ritual, done <em>your family's way.</em>",hero_sub:"Festival plans, samagri lists and step-by-step pujas in the tradition your family actually follows. No more calling home to ask what comes next.",hero_try:"Try a puja",hero_note:"First for Kannada, Tamil and Telugu families. Free to join.",
+en:{sound_on:"Sound on",sound_off:"Sound off",hint_diwali:"Tap the sky to light a rocket",hint_kite:"Tap a kite to cut it loose",hint_bell:"Ring the bell",hint_holi:"Tap or drag to throw colour",clear_holi:"Clean up",hint_rakhi:"Tap the rakhi",hint_onam:"Tap the pookalam to play the chenda",hint_durga:"Play the dhak, blow the shankh",btn_dhak:"Dhak",btn_shankh:"Shankh",hint_ganesh:"Tap a modak",hint_pongal:"Tap the pot till it boils over",hint_mode:"Switch on festival mode",tag_diwali:"Deepavali",tag_sankranti:"Makar Sankranti",tag_lakshmi:"Lakshmi Puja",tag_holi:"Holi",tag_rakhi:"Raksha Bandhan",tag_onam:"Onam",tag_durga:"Durga Puja",tag_ganesh:"Ganesh Chaturthi",tag_pongal:"Pongal",mode:"Festival mode",lock_sub:"Rituals, your family's way",try_app:"Try the app",demo_full:"Open the full app preview",app_note:"The app preview is in English for now.",lang:"Language",nav_join:"Join the early list",hero_h1:"Every ritual, done <em>your family's way.</em>",hero_sub:"Festival plans, samagri lists and step-by-step pujas in the tradition your family actually follows. No more calling home to ask what comes next.",hero_try:"Try a puja",hero_note:"First for Kannada, Tamil and Telugu families. Free to join.",
 prob_kicker:"The problem",prob_h:"Every festival starts with a call to Amma.",prob_p1:"Most of us now live far from the people who know how our festivals are done. So we half-remember, search YouTube, and end up following someone else's tradition.",prob_p2:"Other apps give you one generic version of each puja. <strong>But your Deepavali is not your neighbour's Deepavali</strong>, and it's certainly not the internet's.",
 chat1:"Amma, is the oil bath on Saturday or Sunday this year?",chat2:"And do we put a coin in the kalasha? 🙏",chat3:"What time is Lakshmi puja here?",chat4:"Sorry, which leaves did you say? 😅",chat_online:"online",chat_name:"Amma",
 demo_kicker:"Try it",demo_h:"See your Deepavali, your way",demo_p:"Pick your family's tradition and walk through the puja. Notice how the steps change.",demo_trad:"Your tradition",t_kn:"Kannada",t_ta:"Tamil",t_te:"Telugu",demo_step:"Step {n} of {t}",demo_say:"Say",demo_why:"Why",demo_next:"Next step",demo_back:"Back",demo_again:"Start again",demo_done_h:"That's the idea.",demo_done_p:"The full app covers every step of every festival, with audio, timings for your city and your family's notes.",demo_add:"Add your family's way",demo_add_ph:"For example: we keep Ajji's silver coin in the kalasha",demo_save:"Save note",demo_note:"Your family's way",
@@ -527,7 +599,7 @@ cta_kicker:"Early access",cta_h:"Be one of the first families to use it",cta_p:"
 share_lead:"Know someone who always calls home before a festival?",share_li:"Share on LinkedIn",share_x:"Share on X",share_wa:"Share on WhatsApp",foot1:"Made in Bengaluru",foot2:"Rituals differ between families. When in doubt, follow your elders and your priest.",
 ph_step:"Step 4 of 5 · Lakshmi puja",ph_fam_b:"Amma's way",ph_fam:"We keep Ajji's silver coin in the kalasha.",share_text:"Vidhi-Vidhan: every ritual, done your family's way. Festival plans, samagri lists and step-by-step pujas in your own tradition."},
 
-hi:{tag_diwali:"दीपावली",tag_sankranti:"मकर संक्रांति",tag_lakshmi:"लक्ष्मी पूजा",tag_holi:"होली",tag_rakhi:"रक्षा बंधन",tag_onam:"ओणम",tag_durga:"दुर्गा पूजा",tag_ganesh:"गणेश चतुर्थी",tag_pongal:"पोंगल",mode:"त्योहार मोड",lock_sub:"रस्में, आपके परिवार के तरीके से",try_app:"ऐप आज़माएँ",demo_full:"पूरा ऐप प्रीव्यू खोलें",app_note:"ऐप प्रीव्यू अभी अंग्रेज़ी में है।",lang:"भाषा",nav_join:"शुरुआती सूची से जुड़ें",hero_h1:"हर रस्म, <em>आपके परिवार के तरीके से।</em>",hero_sub:"त्योहार की योजना, सामग्री सूची और क्रम से पूजा, उसी परंपरा में जो आपका परिवार सच में मानता है। आगे क्या करना है, यह पूछने के लिए अब घर फ़ोन नहीं करना पड़ेगा।",hero_try:"पूजा आज़माएँ",hero_note:"पहले कन्नड़, तमिल और तेलुगु परिवारों के लिए। जुड़ना मुफ़्त है।",
+hi:{sound_on:"आवाज़ चालू",sound_off:"आवाज़ बंद",hint_diwali:"आसमान पर टैप करें, रॉकेट छोड़ें",hint_kite:"पतंग पर टैप करें, पेंच काटें",hint_bell:"घंटी बजाएँ",hint_holi:"रंग फेंकने के लिए टैप करें या खींचें",clear_holi:"साफ़ करें",hint_rakhi:"राखी पर टैप करें",hint_onam:"चेंडा बजाने के लिए पूक्कलम पर टैप करें",hint_durga:"ढाक बजाएँ, शंख फूँकें",btn_dhak:"ढाक",btn_shankh:"शंख",hint_ganesh:"मोदक पर टैप करें",hint_pongal:"बर्तन पर टैप करें, जब तक उफान न आए",hint_mode:"त्योहार मोड चालू करें",tag_diwali:"दीपावली",tag_sankranti:"मकर संक्रांति",tag_lakshmi:"लक्ष्मी पूजा",tag_holi:"होली",tag_rakhi:"रक्षा बंधन",tag_onam:"ओणम",tag_durga:"दुर्गा पूजा",tag_ganesh:"गणेश चतुर्थी",tag_pongal:"पोंगल",mode:"त्योहार मोड",lock_sub:"रस्में, आपके परिवार के तरीके से",try_app:"ऐप आज़माएँ",demo_full:"पूरा ऐप प्रीव्यू खोलें",app_note:"ऐप प्रीव्यू अभी अंग्रेज़ी में है।",lang:"भाषा",nav_join:"शुरुआती सूची से जुड़ें",hero_h1:"हर रस्म, <em>आपके परिवार के तरीके से।</em>",hero_sub:"त्योहार की योजना, सामग्री सूची और क्रम से पूजा, उसी परंपरा में जो आपका परिवार सच में मानता है। आगे क्या करना है, यह पूछने के लिए अब घर फ़ोन नहीं करना पड़ेगा।",hero_try:"पूजा आज़माएँ",hero_note:"पहले कन्नड़, तमिल और तेलुगु परिवारों के लिए। जुड़ना मुफ़्त है।",
 prob_kicker:"समस्या",prob_h:"हर त्योहार की शुरुआत अम्मा को फ़ोन से होती है।",prob_p1:"हम में से ज़्यादातर अब उन लोगों से दूर रहते हैं जो जानते हैं कि हमारे त्योहार कैसे मनाए जाते हैं। तो हम आधा याद करते हैं, YouTube देखते हैं, और किसी और की परंपरा निभा बैठते हैं।",prob_p2:"दूसरे ऐप हर पूजा का एक ही आम तरीका बताते हैं। <strong>लेकिन आपकी दीपावली आपके पड़ोसी की दीपावली नहीं है</strong>, और इंटरनेट वाली तो बिल्कुल नहीं।",
 chat1:"अम्मा, इस साल तेल स्नान शनिवार को है या रविवार को?",chat2:"और क्या कलश में सिक्का डालते हैं? 🙏",chat3:"यहाँ लक्ष्मी पूजा का समय क्या है?",chat4:"माफ़ करना, कौन से पत्ते बोले थे? 😅",chat_online:"ऑनलाइन",chat_name:"अम्मा",
 demo_kicker:"आज़माकर देखें",demo_h:"अपनी दीपावली, अपने तरीके से",demo_p:"अपने परिवार की परंपरा चुनें और पूजा के चरण देखें। ध्यान दें कि चरण कैसे बदलते हैं।",demo_trad:"आपकी परंपरा",t_kn:"कन्नड़",t_ta:"तमिल",t_te:"तेलुगु",demo_step:"चरण {n} / {t}",demo_say:"बोलें",demo_why:"क्यों",demo_next:"अगला चरण",demo_back:"पीछे",demo_again:"फिर से शुरू करें",demo_done_h:"बस यही विचार है।",demo_done_p:"पूरे ऐप में हर त्योहार का हर चरण होगा, ऑडियो, आपके शहर के समय और आपके परिवार के नोट्स के साथ।",demo_add:"अपने परिवार का तरीका जोड़ें",demo_add_ph:"जैसे: हम कलश में दादी का चाँदी का सिक्का रखते हैं",demo_save:"नोट सहेजें",demo_note:"आपके परिवार का तरीका",
@@ -556,7 +628,7 @@ cta_kicker:"शुरुआती पहुँच",cta_h:"इसे इस्त
 share_lead:"कोई ऐसा जानते हैं जो हर त्योहार से पहले घर फ़ोन करता है?",share_li:"LinkedIn पर शेयर करें",share_x:"X पर शेयर करें",share_wa:"WhatsApp पर शेयर करें",foot1:"बेंगलुरु में बना",foot2:"हर परिवार की रस्में अलग होती हैं। शक हो तो अपने बड़ों और पुरोहित की बात मानें।",
 ph_step:"चरण 4 / 5 · लक्ष्मी पूजा",ph_fam_b:"अम्मा का तरीका",ph_fam:"हम कलश में दादी का चाँदी का सिक्का रखते हैं।",share_text:"विधि-विधान: हर रस्म, आपके परिवार के तरीके से। त्योहार की योजना, सामग्री सूची और क्रम से पूजा, आपकी अपनी परंपरा में।"},
 
-kn:{tag_diwali:"ದೀಪಾವಳಿ",tag_sankranti:"ಮಕರ ಸಂಕ್ರಾಂತಿ",tag_lakshmi:"ಲಕ್ಷ್ಮೀ ಪೂಜೆ",tag_holi:"ಹೋಳಿ",tag_rakhi:"ರಕ್ಷಾ ಬಂಧನ",tag_onam:"ಓಣಂ",tag_durga:"ದುರ್ಗಾ ಪೂಜೆ",tag_ganesh:"ಗಣೇಶ ಚತುರ್ಥಿ",tag_pongal:"ಪೊಂಗಲ್",mode:"ಹಬ್ಬದ ಮೋಡ್",lock_sub:"ಆಚರಣೆಗಳು, ನಿಮ್ಮ ಮನೆತನದ ರೀತಿಯಲ್ಲಿ",try_app:"ಆ್ಯಪ್ ಪ್ರಯತ್ನಿಸಿ",demo_full:"ಪೂರ್ಣ ಆ್ಯಪ್ ಪ್ರಿವ್ಯೂ ತೆರೆಯಿರಿ",app_note:"ಆ್ಯಪ್ ಪ್ರಿವ್ಯೂ ಸದ್ಯಕ್ಕೆ ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿದೆ.",lang:"ಭಾಷೆ",nav_join:"ಮೊದಲ ಪಟ್ಟಿಗೆ ಸೇರಿ",hero_h1:"ಪ್ರತಿ ಆಚರಣೆ, <em>ನಿಮ್ಮ ಮನೆತನದ ರೀತಿಯಲ್ಲಿ.</em>",hero_sub:"ಹಬ್ಬದ ಯೋಜನೆ, ಪೂಜಾ ಸಾಮಗ್ರಿ ಪಟ್ಟಿ ಮತ್ತು ಹಂತ ಹಂತವಾಗಿ ಪೂಜೆ, ನಿಮ್ಮ ಕುಟುಂಬ ನಿಜವಾಗಿ ಪಾಲಿಸುವ ಸಂಪ್ರದಾಯದಲ್ಲಿ. ಮುಂದೇನು ಎಂದು ಕೇಳಲು ಇನ್ನು ಮನೆಗೆ ಫೋನ್ ಮಾಡಬೇಕಿಲ್ಲ.",hero_try:"ಪೂಜೆಯನ್ನು ಪ್ರಯತ್ನಿಸಿ",hero_note:"ಮೊದಲು ಕನ್ನಡ, ತಮಿಳು ಮತ್ತು ತೆಲುಗು ಕುಟುಂಬಗಳಿಗೆ. ಸೇರುವುದು ಉಚಿತ.",
+kn:{sound_on:"ಧ್ವನಿ ಆನ್",sound_off:"ಧ್ವನಿ ಆಫ್",hint_diwali:"ಆಕಾಶದ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ, ರಾಕೆಟ್ ಹಾರಿಸಿ",hint_kite:"ಗಾಳಿಪಟದ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ, ದಾರ ಕತ್ತರಿಸಿ",hint_bell:"ಘಂಟೆ ಬಾರಿಸಿ",hint_holi:"ಬಣ್ಣ ಎರಚಲು ಟ್ಯಾಪ್ ಮಾಡಿ ಅಥವಾ ಎಳೆಯಿರಿ",clear_holi:"ಸ್ವಚ್ಛಗೊಳಿಸಿ",hint_rakhi:"ರಾಖಿಯ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ",hint_onam:"ಚೆಂಡೆ ಬಾರಿಸಲು ಪೂಕ್ಕಳಂ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ",hint_durga:"ಢಾಕ್ ಬಾರಿಸಿ, ಶಂಖ ಊದಿ",btn_dhak:"ಢಾಕ್",btn_shankh:"ಶಂಖ",hint_ganesh:"ಮೋದಕದ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ",hint_pongal:"ಮಡಕೆ ಉಕ್ಕುವವರೆಗೆ ಟ್ಯಾಪ್ ಮಾಡಿ",hint_mode:"ಹಬ್ಬದ ಮೋಡ್ ಆನ್ ಮಾಡಿ",tag_diwali:"ದೀಪಾವಳಿ",tag_sankranti:"ಮಕರ ಸಂಕ್ರಾಂತಿ",tag_lakshmi:"ಲಕ್ಷ್ಮೀ ಪೂಜೆ",tag_holi:"ಹೋಳಿ",tag_rakhi:"ರಕ್ಷಾ ಬಂಧನ",tag_onam:"ಓಣಂ",tag_durga:"ದುರ್ಗಾ ಪೂಜೆ",tag_ganesh:"ಗಣೇಶ ಚತುರ್ಥಿ",tag_pongal:"ಪೊಂಗಲ್",mode:"ಹಬ್ಬದ ಮೋಡ್",lock_sub:"ಆಚರಣೆಗಳು, ನಿಮ್ಮ ಮನೆತನದ ರೀತಿಯಲ್ಲಿ",try_app:"ಆ್ಯಪ್ ಪ್ರಯತ್ನಿಸಿ",demo_full:"ಪೂರ್ಣ ಆ್ಯಪ್ ಪ್ರಿವ್ಯೂ ತೆರೆಯಿರಿ",app_note:"ಆ್ಯಪ್ ಪ್ರಿವ್ಯೂ ಸದ್ಯಕ್ಕೆ ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿದೆ.",lang:"ಭಾಷೆ",nav_join:"ಮೊದಲ ಪಟ್ಟಿಗೆ ಸೇರಿ",hero_h1:"ಪ್ರತಿ ಆಚರಣೆ, <em>ನಿಮ್ಮ ಮನೆತನದ ರೀತಿಯಲ್ಲಿ.</em>",hero_sub:"ಹಬ್ಬದ ಯೋಜನೆ, ಪೂಜಾ ಸಾಮಗ್ರಿ ಪಟ್ಟಿ ಮತ್ತು ಹಂತ ಹಂತವಾಗಿ ಪೂಜೆ, ನಿಮ್ಮ ಕುಟುಂಬ ನಿಜವಾಗಿ ಪಾಲಿಸುವ ಸಂಪ್ರದಾಯದಲ್ಲಿ. ಮುಂದೇನು ಎಂದು ಕೇಳಲು ಇನ್ನು ಮನೆಗೆ ಫೋನ್ ಮಾಡಬೇಕಿಲ್ಲ.",hero_try:"ಪೂಜೆಯನ್ನು ಪ್ರಯತ್ನಿಸಿ",hero_note:"ಮೊದಲು ಕನ್ನಡ, ತಮಿಳು ಮತ್ತು ತೆಲುಗು ಕುಟುಂಬಗಳಿಗೆ. ಸೇರುವುದು ಉಚಿತ.",
 prob_kicker:"ಸಮಸ್ಯೆ",prob_h:"ಪ್ರತಿ ಹಬ್ಬ ಅಮ್ಮನಿಗೆ ಫೋನ್ ಮಾಡುವುದರಿಂದಲೇ ಶುರು.",prob_p1:"ನಮ್ಮ ಹಬ್ಬಗಳನ್ನು ಹೇಗೆ ಮಾಡಬೇಕೆಂದು ಗೊತ್ತಿರುವವರಿಂದ ನಮ್ಮಲ್ಲಿ ಹಲವರು ಈಗ ದೂರದಲ್ಲಿದ್ದೇವೆ. ಹಾಗಾಗಿ ಅರ್ಧ ನೆನಪಿನಿಂದ, YouTube ನೋಡಿ, ಬೇರೆ ಯಾರದೋ ಸಂಪ್ರದಾಯವನ್ನು ಪಾಲಿಸುತ್ತೇವೆ.",prob_p2:"ಇತರ ಆ್ಯಪ್‌ಗಳು ಪ್ರತಿ ಪೂಜೆಗೆ ಒಂದೇ ಸಾಮಾನ್ಯ ವಿಧಾನ ಕೊಡುತ್ತವೆ. <strong>ಆದರೆ ನಿಮ್ಮ ದೀಪಾವಳಿ ಪಕ್ಕದ ಮನೆಯವರ ದೀಪಾವಳಿ ಅಲ್ಲ</strong>, ಇಂಟರ್ನೆಟ್‌ನದ್ದಂತೂ ಅಲ್ಲವೇ ಅಲ್ಲ.",
 chat1:"ಅಮ್ಮ, ಈ ವರ್ಷ ಎಣ್ಣೆ ಸ್ನಾನ ಶನಿವಾರನಾ ಭಾನುವಾರನಾ?",chat2:"ಕಳಶದಲ್ಲಿ ನಾಣ್ಯ ಹಾಕ್ತೀವಾ? 🙏",chat3:"ಇಲ್ಲಿ ಲಕ್ಷ್ಮೀ ಪೂಜೆ ಎಷ್ಟು ಗಂಟೆಗೆ?",chat4:"ಸಾರಿ, ಯಾವ ಎಲೆ ಅಂದೆ? 😅",chat_online:"ಆನ್‌ಲೈನ್",chat_name:"ಅಮ್ಮ",
 demo_kicker:"ಪ್ರಯತ್ನಿಸಿ",demo_h:"ನಿಮ್ಮ ದೀಪಾವಳಿ, ನಿಮ್ಮ ರೀತಿಯಲ್ಲಿ",demo_p:"ನಿಮ್ಮ ಕುಟುಂಬದ ಸಂಪ್ರದಾಯ ಆರಿಸಿ ಪೂಜೆಯ ಹಂತಗಳನ್ನು ನೋಡಿ. ಹಂತಗಳು ಹೇಗೆ ಬದಲಾಗುತ್ತವೆ ಗಮನಿಸಿ.",demo_trad:"ನಿಮ್ಮ ಸಂಪ್ರದಾಯ",t_kn:"ಕನ್ನಡ",t_ta:"ತಮಿಳು",t_te:"ತೆಲುಗು",demo_step:"ಹಂತ {n} / {t}",demo_say:"ಹೇಳಿ",demo_why:"ಏಕೆ",demo_next:"ಮುಂದಿನ ಹಂತ",demo_back:"ಹಿಂದೆ",demo_again:"ಮತ್ತೆ ಶುರು ಮಾಡಿ",demo_done_h:"ಇದೇ ಆಲೋಚನೆ.",demo_done_p:"ಪೂರ್ಣ ಆ್ಯಪ್‌ನಲ್ಲಿ ಪ್ರತಿ ಹಬ್ಬದ ಪ್ರತಿ ಹಂತ, ಆಡಿಯೋ, ನಿಮ್ಮ ಊರಿನ ಸಮಯ ಮತ್ತು ನಿಮ್ಮ ಕುಟುಂಬದ ಟಿಪ್ಪಣಿಗಳೊಂದಿಗೆ ಇರುತ್ತದೆ.",demo_add:"ನಿಮ್ಮ ಕುಟುಂಬದ ರೀತಿ ಸೇರಿಸಿ",demo_add_ph:"ಉದಾ: ಕಳಶದಲ್ಲಿ ಅಜ್ಜಿಯ ಬೆಳ್ಳಿ ನಾಣ್ಯ ಇಡುತ್ತೇವೆ",demo_save:"ಟಿಪ್ಪಣಿ ಉಳಿಸಿ",demo_note:"ನಿಮ್ಮ ಕುಟುಂಬದ ರೀತಿ",
@@ -585,7 +657,7 @@ cta_kicker:"ಮೊದಲ ಪ್ರವೇಶ",cta_h:"ಇದನ್ನು ಬಳಸ
 share_lead:"ಪ್ರತಿ ಹಬ್ಬಕ್ಕೂ ಮುಂಚೆ ಮನೆಗೆ ಫೋನ್ ಮಾಡುವವರು ನಿಮಗೆ ಗೊತ್ತೇ?",share_li:"LinkedIn‌ನಲ್ಲಿ ಹಂಚಿ",share_x:"X‌ನಲ್ಲಿ ಹಂಚಿ",share_wa:"WhatsApp‌ನಲ್ಲಿ ಹಂಚಿ",foot1:"ಬೆಂಗಳೂರಿನಲ್ಲಿ ತಯಾರಾದದ್ದು",foot2:"ಆಚರಣೆಗಳು ಕುಟುಂಬದಿಂದ ಕುಟುಂಬಕ್ಕೆ ಬೇರೆ. ಸಂದೇಹವಿದ್ದರೆ ಹಿರಿಯರು ಮತ್ತು ಪುರೋಹಿತರ ಮಾತು ಪಾಲಿಸಿ.",
 ph_step:"ಹಂತ 4 / 5 · ಲಕ್ಷ್ಮೀ ಪೂಜೆ",ph_fam_b:"ಅಮ್ಮನ ರೀತಿ",ph_fam:"ಕಳಶದಲ್ಲಿ ಅಜ್ಜಿಯ ಬೆಳ್ಳಿ ನಾಣ್ಯ ಇಡುತ್ತೇವೆ.",share_text:"ವಿಧಿ-ವಿಧಾನ: ಪ್ರತಿ ಆಚರಣೆ, ನಿಮ್ಮ ಮನೆತನದ ರೀತಿಯಲ್ಲಿ. ಹಬ್ಬದ ಯೋಜನೆ, ಸಾಮಗ್ರಿ ಪಟ್ಟಿ ಮತ್ತು ಹಂತ ಹಂತವಾಗಿ ಪೂಜೆ."},
 
-ta:{tag_diwali:"தீபாவளி",tag_sankranti:"மகர சங்கராந்தி",tag_lakshmi:"லக்ஷ்மி பூஜை",tag_holi:"ஹோலி",tag_rakhi:"ரக்ஷா பந்தன்",tag_onam:"ஓணம்",tag_durga:"துர்கா பூஜை",tag_ganesh:"விநாயகர் சதுர்த்தி",tag_pongal:"பொங்கல்",mode:"பண்டிகை மோட்",lock_sub:"சடங்குகள், உங்கள் குடும்ப முறைப்படி",try_app:"ஆப்பை முயற்சிக்கவும்",demo_full:"முழு ஆப் முன்னோட்டத்தைத் திறக்கவும்",app_note:"ஆப் முன்னோட்டம் இப்போது ஆங்கிலத்தில் மட்டும்.",lang:"மொழி",nav_join:"முன்பதிவுப் பட்டியலில் சேருங்கள்",hero_h1:"ஒவ்வொரு சடங்கும், <em>உங்கள் குடும்ப முறைப்படி.</em>",hero_sub:"பண்டிகைத் திட்டம், பூஜைப் பொருள் பட்டியல், படிப்படியான பூஜை: உங்கள் குடும்பம் உண்மையில் பின்பற்றும் சம்பிரதாயத்தில். அடுத்து என்ன என்று கேட்க இனி வீட்டுக்கு போன் செய்ய வேண்டாம்.",hero_try:"பூஜையை முயற்சிக்கவும்",hero_note:"முதலில் கன்னட, தமிழ், தெலுங்கு குடும்பங்களுக்கு. சேர்வது இலவசம்.",
+ta:{sound_on:"ஒலி இயக்கம்",sound_off:"ஒலி நிறுத்தம்",hint_diwali:"வானத்தைத் தட்டி ராக்கெட் விடுங்கள்",hint_kite:"பட்டத்தைத் தட்டி அறுத்து விடுங்கள்",hint_bell:"மணியை அடியுங்கள்",hint_holi:"வண்ணம் வீச தட்டுங்கள் அல்லது இழுங்கள்",clear_holi:"சுத்தம் செய்",hint_rakhi:"ராக்கியைத் தட்டுங்கள்",hint_onam:"செண்டை முழங்க பூக்கோலத்தைத் தட்டுங்கள்",hint_durga:"டாக் முழங்குங்கள், சங்கு ஊதுங்கள்",btn_dhak:"டாக்",btn_shankh:"சங்கு",hint_ganesh:"மோதகத்தைத் தட்டுங்கள்",hint_pongal:"பானை பொங்கும் வரை தட்டுங்கள்",hint_mode:"பண்டிகை மோடை இயக்குங்கள்",tag_diwali:"தீபாவளி",tag_sankranti:"மகர சங்கராந்தி",tag_lakshmi:"லக்ஷ்மி பூஜை",tag_holi:"ஹோலி",tag_rakhi:"ரக்ஷா பந்தன்",tag_onam:"ஓணம்",tag_durga:"துர்கா பூஜை",tag_ganesh:"விநாயகர் சதுர்த்தி",tag_pongal:"பொங்கல்",mode:"பண்டிகை மோட்",lock_sub:"சடங்குகள், உங்கள் குடும்ப முறைப்படி",try_app:"ஆப்பை முயற்சிக்கவும்",demo_full:"முழு ஆப் முன்னோட்டத்தைத் திறக்கவும்",app_note:"ஆப் முன்னோட்டம் இப்போது ஆங்கிலத்தில் மட்டும்.",lang:"மொழி",nav_join:"முன்பதிவுப் பட்டியலில் சேருங்கள்",hero_h1:"ஒவ்வொரு சடங்கும், <em>உங்கள் குடும்ப முறைப்படி.</em>",hero_sub:"பண்டிகைத் திட்டம், பூஜைப் பொருள் பட்டியல், படிப்படியான பூஜை: உங்கள் குடும்பம் உண்மையில் பின்பற்றும் சம்பிரதாயத்தில். அடுத்து என்ன என்று கேட்க இனி வீட்டுக்கு போன் செய்ய வேண்டாம்.",hero_try:"பூஜையை முயற்சிக்கவும்",hero_note:"முதலில் கன்னட, தமிழ், தெலுங்கு குடும்பங்களுக்கு. சேர்வது இலவசம்.",
 prob_kicker:"பிரச்சனை",prob_h:"ஒவ்வொரு பண்டிகையும் அம்மாவுக்கு ஒரு போன் காலில்தான் தொடங்குகிறது.",prob_p1:"நம் பண்டிகைகளை எப்படிச் செய்வது என்று தெரிந்தவர்களிடமிருந்து நம்மில் பலர் இப்போது தொலைவில் வாழ்கிறோம். அதனால் பாதி நினைவில், YouTube பார்த்து, வேறு யாருடைய சம்பிரதாயத்தையோ பின்பற்றுகிறோம்.",prob_p2:"மற்ற ஆப்கள் ஒவ்வொரு பூஜைக்கும் ஒரே பொதுவான முறையைத் தருகின்றன. <strong>ஆனால் உங்கள் தீபாவளி பக்கத்து வீட்டுத் தீபாவளி அல்ல</strong>, இணையத்தின் தீபாவளி நிச்சயமாக அல்ல.",
 chat1:"அம்மா, இந்த வருஷம் எண்ணெய் ஸ்நானம் சனிக்கிழமையா ஞாயிற்றுக்கிழமையா?",chat2:"கலசத்துல காசு போடணுமா? 🙏",chat3:"இங்க லக்ஷ்மி பூஜை எத்தனை மணிக்கு?",chat4:"சாரி, எந்த இலைன்னு சொன்ன? 😅",chat_online:"ஆன்லைன்",chat_name:"அம்மா",
 demo_kicker:"முயற்சித்துப் பாருங்கள்",demo_h:"உங்கள் தீபாவளி, உங்கள் முறையில்",demo_p:"உங்கள் குடும்ப சம்பிரதாயத்தைத் தேர்ந்தெடுத்து பூஜையின் படிகளைப் பாருங்கள். படிகள் எப்படி மாறுகின்றன என்று கவனியுங்கள்.",demo_trad:"உங்கள் சம்பிரதாயம்",t_kn:"கன்னடம்",t_ta:"தமிழ்",t_te:"தெலுங்கு",demo_step:"படி {n} / {t}",demo_say:"சொல்லுங்கள்",demo_why:"ஏன்",demo_next:"அடுத்த படி",demo_back:"பின்செல்",demo_again:"மீண்டும் தொடங்கு",demo_done_h:"இதுதான் யோசனை.",demo_done_p:"முழு ஆப்பில் ஒவ்வொரு பண்டிகையின் ஒவ்வொரு படியும், ஆடியோ, உங்கள் ஊரின் நேரம், உங்கள் குடும்பக் குறிப்புகளுடன் இருக்கும்.",demo_add:"உங்கள் குடும்ப முறையைச் சேர்க்கவும்",demo_add_ph:"உ.தா: கலசத்தில் பாட்டியின் வெள்ளிக் காசு வைப்போம்",demo_save:"குறிப்பைச் சேமி",demo_note:"உங்கள் குடும்ப முறை",
@@ -614,7 +686,7 @@ cta_kicker:"முன்கூட்டிய அணுகல்",cta_h:"இத�
 share_lead:"ஒவ்வொரு பண்டிகைக்கும் முன் வீட்டுக்கு போன் செய்பவர் யாராவது தெரியுமா?",share_li:"LinkedIn-இல் பகிர்",share_x:"X-இல் பகிர்",share_wa:"WhatsApp-இல் பகிர்",foot1:"பெங்களூரில் உருவானது",foot2:"சடங்குகள் குடும்பத்துக்குக் குடும்பம் மாறும். சந்தேகம் இருந்தால் பெரியவர்களையும் புரோகிதரையும் பின்பற்றுங்கள்.",
 ph_step:"படி 4 / 5 · லக்ஷ்மி பூஜை",ph_fam_b:"அம்மாவின் முறை",ph_fam:"கலசத்தில் பாட்டியின் வெள்ளிக் காசு வைப்போம்.",share_text:"விதி-விதானம்: ஒவ்வொரு சடங்கும், உங்கள் குடும்ப முறைப்படி. பண்டிகைத் திட்டம், பூஜைப் பொருள் பட்டியல், படிப்படியான பூஜை."},
 
-te:{tag_diwali:"దీపావళి",tag_sankranti:"మకర సంక్రాంతి",tag_lakshmi:"లక్ష్మీ పూజ",tag_holi:"హోళీ",tag_rakhi:"రక్షా బంధన్",tag_onam:"ఓణం",tag_durga:"దుర్గా పూజ",tag_ganesh:"వినాయక చవితి",tag_pongal:"పొంగల్",mode:"పండుగ మోడ్",lock_sub:"ఆచారాలు, మీ కుటుంబ పద్ధతిలో",try_app:"యాప్‌ను ప్రయత్నించండి",demo_full:"పూర్తి యాప్ ప్రివ్యూ తెరవండి",app_note:"యాప్ ప్రివ్యూ ప్రస్తుతం ఇంగ్లీష్‌లో మాత్రమే ఉంది.",lang:"భాష",nav_join:"ముందస్తు జాబితాలో చేరండి",hero_h1:"ప్రతి ఆచారం, <em>మీ కుటుంబ పద్ధతిలో.</em>",hero_sub:"పండుగ ప్రణాళిక, పూజా సామగ్రి జాబితా, దశలవారీ పూజ: మీ కుటుంబం నిజంగా పాటించే సంప్రదాయంలో. తర్వాత ఏం చేయాలో అడగడానికి ఇక ఇంటికి ఫోన్ చేయక్కర్లేదు.",hero_try:"పూజను ప్రయత్నించండి",hero_note:"మొదట కన్నడ, తమిళ, తెలుగు కుటుంబాల కోసం. చేరడం ఉచితం.",
+te:{sound_on:"శబ్దం ఆన్",sound_off:"శబ్దం ఆఫ్",hint_diwali:"ఆకాశంపై తట్టి రాకెట్ వదలండి",hint_kite:"గాలిపటంపై తట్టి దారం తెంపండి",hint_bell:"గంట మోగించండి",hint_holi:"రంగు చల్లడానికి తట్టండి లేదా లాగండి",clear_holi:"శుభ్రం చేయండి",hint_rakhi:"రాఖీపై తట్టండి",hint_onam:"చెండ వాయించడానికి పూక్కళంపై తట్టండి",hint_durga:"ఢాక్ వాయించండి, శంఖం ఊదండి",btn_dhak:"ఢాక్",btn_shankh:"శంఖం",hint_ganesh:"మోదకంపై తట్టండి",hint_pongal:"కుండ పొంగే వరకు తట్టండి",hint_mode:"పండుగ మోడ్ ఆన్ చేయండి",tag_diwali:"దీపావళి",tag_sankranti:"మకర సంక్రాంతి",tag_lakshmi:"లక్ష్మీ పూజ",tag_holi:"హోళీ",tag_rakhi:"రక్షా బంధన్",tag_onam:"ఓణం",tag_durga:"దుర్గా పూజ",tag_ganesh:"వినాయక చవితి",tag_pongal:"పొంగల్",mode:"పండుగ మోడ్",lock_sub:"ఆచారాలు, మీ కుటుంబ పద్ధతిలో",try_app:"యాప్‌ను ప్రయత్నించండి",demo_full:"పూర్తి యాప్ ప్రివ్యూ తెరవండి",app_note:"యాప్ ప్రివ్యూ ప్రస్తుతం ఇంగ్లీష్‌లో మాత్రమే ఉంది.",lang:"భాష",nav_join:"ముందస్తు జాబితాలో చేరండి",hero_h1:"ప్రతి ఆచారం, <em>మీ కుటుంబ పద్ధతిలో.</em>",hero_sub:"పండుగ ప్రణాళిక, పూజా సామగ్రి జాబితా, దశలవారీ పూజ: మీ కుటుంబం నిజంగా పాటించే సంప్రదాయంలో. తర్వాత ఏం చేయాలో అడగడానికి ఇక ఇంటికి ఫోన్ చేయక్కర్లేదు.",hero_try:"పూజను ప్రయత్నించండి",hero_note:"మొదట కన్నడ, తమిళ, తెలుగు కుటుంబాల కోసం. చేరడం ఉచితం.",
 prob_kicker:"సమస్య",prob_h:"ప్రతి పండుగ అమ్మకు ఫోన్‌తోనే మొదలవుతుంది.",prob_p1:"మన పండుగలు ఎలా చేయాలో తెలిసినవారికి మనలో చాలామంది ఇప్పుడు దూరంగా ఉంటున్నాం. అందుకే సగం గుర్తుతో, YouTube చూసి, ఎవరిదో సంప్రదాయాన్ని పాటిస్తున్నాం.",prob_p2:"ఇతర యాప్‌లు ప్రతి పూజకు ఒకే సాధారణ పద్ధతి ఇస్తాయి. <strong>కానీ మీ దీపావళి పక్కింటివారి దీపావళి కాదు</strong>, ఇంటర్నెట్‌ది అసలే కాదు.",
 chat1:"అమ్మా, ఈ ఏడాది తలంటు స్నానం శనివారమా ఆదివారమా?",chat2:"కలశంలో నాణెం వేస్తామా? 🙏",chat3:"ఇక్కడ లక్ష్మీ పూజ ఎన్నింటికి?",chat4:"సారీ, ఏ ఆకులన్నావు? 😅",chat_online:"ఆన్‌లైన్",chat_name:"అమ్మ",
 demo_kicker:"ప్రయత్నించండి",demo_h:"మీ దీపావళి, మీ పద్ధతిలో",demo_p:"మీ కుటుంబ సంప్రదాయం ఎంచుకుని పూజ దశలను చూడండి. దశలు ఎలా మారుతాయో గమనించండి.",demo_trad:"మీ సంప్రదాయం",t_kn:"కన్నడ",t_ta:"తమిళం",t_te:"తెలుగు",demo_step:"దశ {n} / {t}",demo_say:"చెప్పండి",demo_why:"ఎందుకు",demo_next:"తర్వాతి దశ",demo_back:"వెనక్కి",demo_again:"మళ్ళీ మొదలుపెట్టండి",demo_done_h:"ఇదే ఆలోచన.",demo_done_p:"పూర్తి యాప్‌లో ప్రతి పండుగ ప్రతి దశ, ఆడియో, మీ ఊరి సమయాలు, మీ కుటుంబ నోట్స్‌తో ఉంటుంది.",demo_add:"మీ కుటుంబ పద్ధతిని జోడించండి",demo_add_ph:"ఉదా: కలశంలో నానమ్మ వెండి నాణెం ఉంచుతాం",demo_save:"నోట్ సేవ్ చేయండి",demo_note:"మీ కుటుంబ పద్ధతి",
@@ -779,12 +851,189 @@ function diyas(){
 }
 function modaks(){
   const m = `<svg viewBox="0 0 40 40"><path d="M20 3c3 6 14 14 14 24a14 8 0 0 1-28 0C6 17 17 9 20 3z" fill="#FFF1C2"/><path d="M20 4v31M13 12c-2 8-1 16 1 23M27 12c2 8 1 16-1 23" stroke="#E2B66B" stroke-width="1.6" fill="none"/></svg>`;
-  $("modaks").innerHTML = m.repeat(5);
+  $("modaks").innerHTML = Array.from({length:5},()=>`<button aria-label="Modak">${m}</button>`).join("");
 }
 const half = FESTS.map(f=>`<span>${f}</span>`).join("");
 $("track").innerHTML = half + half;
 toran(); kolam($("kolam")); rangoli(); pookalam(); rakhiArt(); diyas(); modaks();
 applyLang();
+/* ================= Festival interactions ================= */
+const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- Sound: everything is synthesised with Web Audio ---------- */
+let AC = null, MASTER = null, NOISE = null, soundOn = true;
+try{ soundOn = localStorage.getItem("vv-sound") !== "off"; }catch(e){}
+function ac(){
+  if(!soundOn) return null;
+  if(!AC){ const C = window.AudioContext || window.webkitAudioContext; if(!C) return null;
+    AC = new C(); MASTER = AC.createGain(); MASTER.gain.value = .55; const comp = AC.createDynamicsCompressor(); MASTER.connect(comp); comp.connect(AC.destination);
+    NOISE = AC.createBuffer(1, AC.sampleRate, AC.sampleRate); const d = NOISE.getChannelData(0); for(let i=0;i<d.length;i++) d[i] = Math.random()*2-1; }
+  if(AC.state === "suspended") AC.resume();
+  return AC;
+}
+function env(g, t, a, peak, dec){ g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(peak, t + a); g.gain.exponentialRampToValueAtTime(0.0001, t + a + dec); }
+function noise(t, dur, filterType, freq, q, peak, dec, freqEnd){
+  const a = AC, s = a.createBufferSource(); s.buffer = NOISE; const f = a.createBiquadFilter(); f.type = filterType; f.frequency.setValueAtTime(freq, t); if(freqEnd) f.frequency.exponentialRampToValueAtTime(freqEnd, t + dur); f.Q.value = q;
+  const g = a.createGain(); env(g, t, .004, peak, dec); s.connect(f); f.connect(g); g.connect(MASTER); s.start(t); s.stop(t + dur + .05);
+}
+function tone(t, type, f0, f1, peak, a, dec, dest){
+  const o = AC.createOscillator(), g = AC.createGain(); o.type = type; o.frequency.setValueAtTime(f0, t); if(f1) o.frequency.exponentialRampToValueAtTime(f1, t + a + dec);
+  env(g, t, a, peak, dec); o.connect(g); g.connect(dest || MASTER); o.start(t); o.stop(t + a + dec + .05); return o;
+}
+const SND = {
+  whistle(){ if(!ac()) return; const t = AC.currentTime; tone(t, "sine", 900, 2600, .08, .05, .7); },
+  boom(delay=0){ if(!ac()) return; const t = AC.currentTime + delay; noise(t, 1, "lowpass", 900, .7, .9, .9); tone(t, "sine", 90, 38, .7, .005, .5);
+    for(let i=0;i<14;i++){ const tt = t + .25 + Math.random()*.7; noise(tt, .03, "highpass", 3000, 1, .12 + Math.random()*.12, .03); } },
+  bell(f=523, vol=.45){ if(!ac()) return; const t = AC.currentTime; [[1,1],[2.76,.45],[5.4,.22],[8.93,.12],[0.5,.3]].forEach(([r,a])=>tone(t, "sine", f*r, 0, vol*a, .003, 3.2*(r<1?1.4:1/Math.sqrt(r)))); noise(t, .02, "highpass", 4000, 1, .15, .02); },
+  chime(){ SND.bell(1046, .2); },
+  drum(f=140, vol=.85, dec=.32, delay=0){ if(!ac()) return; const t = AC.currentTime + delay; tone(t, "sine", f, f*.45, vol, .003, dec); noise(t, .04, "bandpass", f*8, 1.5, vol*.35, .04); },
+  stick(delay=0){ if(!ac()) return; const t = AC.currentTime + delay; noise(t, .05, "bandpass", 2600, 3, .45, .05); tone(t, "square", 620, 420, .05, .002, .05); },
+  pop(){ if(!ac()) return; const t = AC.currentTime; noise(t, .18, "bandpass", 700 + Math.random()*500, 1.2, .55, .16); tone(t, "sine", 220, 90, .25, .002, .1); },
+  whoosh(){ if(!ac()) return; const t = AC.currentTime; noise(t, .7, "bandpass", 300, 2, .35, .65, 2400); },
+  bubble(delay=0){ if(!ac()) return; const t = AC.currentTime + delay; tone(t, "sine", 260 + Math.random()*200, 900, .18, .005, .08); },
+  shankh(){ if(!ac()) return; const t = AC.currentTime, dur = 2.2, f = AC.createBiquadFilter(); f.type = "lowpass"; f.frequency.value = 1100; f.Q.value = 2;
+    const g = AC.createGain(); g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.28, t + .35); g.gain.setValueAtTime(.28, t + dur - .5); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+    const lfo = AC.createOscillator(), lg = AC.createGain(); lfo.frequency.value = 5.2; lg.gain.value = 4; lfo.connect(lg);
+    [233, 234.5, 466].forEach((fr,i)=>{ const o = AC.createOscillator(); o.type = i===2 ? "triangle" : "sawtooth"; o.frequency.setValueAtTime(fr*.94, t); o.frequency.linearRampToValueAtTime(fr, t + .4); lg.connect(o.frequency); o.connect(f); o.start(t); o.stop(t + dur); });
+    lfo.start(t); lfo.stop(t + dur); f.connect(g); g.connect(MASTER); },
+  rhythm(pattern, step){ pattern.forEach((p,i)=>{ if(p==="D") SND.drum(95, .9, .4, i*step); else if(p==="d") SND.drum(170, .6, .22, i*step); else if(p==="t") SND.stick(i*step); }); }
+};
+
+/* ---------- Music for festival mode: tanpura-like drone, a simple melody, and a dhol ---------- */
+let music = null;
+function startMusic(){
+  if(!ac()) return;
+  const bus = AC.createGain(); bus.gain.value = .0001; bus.connect(MASTER); bus.gain.exponentialRampToValueAtTime(.7, AC.currentTime + 1.2);
+  const drones = [146.83, 220, 293.66].map((f,i)=>{ const o = AC.createOscillator(), g = AC.createGain(); o.type = i ? "sine" : "triangle"; o.frequency.value = f; g.gain.value = i===2 ? .025 : .05; o.connect(g); g.connect(bus); o.start(); return o; });
+  const SA = 293.66, scale = [1, 9/8, 5/4, 3/2, 5/3, 2];               // Sa Re Ga Pa Dha Sa'
+  const phrase = [0,1,2,3, 4,3,2,1, 2,3,4,5, 4,3,2,0];
+  const beat = 60/104/2; let i = 0, next = AC.currentTime + .2;
+  const timer = setInterval(()=>{
+    while(next < AC.currentTime + .25){
+      const k = i % 16, f = SA * scale[phrase[k]];
+      if(k % 2 === 0 || Math.random() < .35){ const o = AC.createOscillator(), g = AC.createGain(), lp = AC.createBiquadFilter(); o.type = "triangle"; o.frequency.value = f; lp.type = "lowpass"; lp.frequency.value = 2200;
+        g.gain.setValueAtTime(.0001, next); g.gain.exponentialRampToValueAtTime(.16, next + .01); g.gain.exponentialRampToValueAtTime(.0001, next + beat*1.8); o.connect(lp); lp.connect(g); g.connect(bus); o.start(next); o.stop(next + beat*2); }
+      const dh = AC.currentTime; const off = next - dh;
+      if(k % 8 === 0) SND.drum(90, .55, .38, off); else if(k % 8 === 3 || k % 8 === 6) SND.drum(175, .32, .2, off); else if(k % 2 === 1) SND.stick(off);
+      i++; next += beat;
+    }
+  }, 60);
+  music = {bus, drones, timer};
+}
+function stopMusic(){ if(!music) return; clearInterval(music.timer); const t = AC.currentTime; music.bus.gain.cancelScheduledValues(t); music.bus.gain.setValueAtTime(music.bus.gain.value, t); music.bus.gain.exponentialRampToValueAtTime(.0001, t + .8); const m = music; setTimeout(()=>m.drones.forEach(o=>o.stop()), 900); music = null; }
+
+/* ---------- Particle overlay ---------- */
+const FX = document.createElement("canvas"); FX.className = "fxc"; FX.setAttribute("aria-hidden","true"); document.body.appendChild(FX);
+const ctx = FX.getContext("2d"); let W = 0, H = 0, DPR = 1, parts = [], rockets = [], raining = false, running = false;
+function size(){ DPR = Math.min(2, window.devicePixelRatio || 1); W = innerWidth; H = innerHeight; FX.width = W*DPR; FX.height = H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); }
+size(); addEventListener("resize", size);
+const COLORS = ["#FFB21E","#FF5C9E","#FFF1C2","#7DE38D","#8EC5FF","#FF7A2E","#D7A6FF"];
+function burst(x, y, n=70, palette=COLORS, speed=4.2, kind="spark"){
+  const c1 = palette[Math.floor(Math.random()*palette.length)], c2 = palette[Math.floor(Math.random()*palette.length)];
+  for(let i=0;i<n;i++){ const a = Math.PI*2*i/n + Math.random()*.2, v = speed*(.55 + Math.random()*.6);
+    parts.push({x, y, vx:Math.cos(a)*v, vy:Math.sin(a)*v, life:1, decay:.012 + Math.random()*.012, c: i%2 ? c1 : c2, r: kind==="spark" ? 2.2 : 3.5, g:.06, kind}); }
+  loop();
+}
+function rocket(x, y){
+  const sx = x + (Math.random()-.5)*60, sy = H + 10;
+  rockets.push({x:sx, y:sy, tx:x, ty:y, t:0}); loop();
+}
+function petals(on){ raining = on; if(on){ for(let i=0;i<70;i++) parts.push(petal(true)); loop(); } }
+function petal(anywhere){ return {x:Math.random()*W, y: anywhere ? Math.random()*-H : -20, vx:(Math.random()-.5)*.6, vy:1 + Math.random()*1.4, rot:Math.random()*6, vr:(Math.random()-.5)*.08, life:1, decay:0, c: Math.random()<.5 ? "#FFB21E" : (Math.random()<.5 ? "#F2761E" : "#FFD34D"), kind:"petal"}; }
+function loop(){ if(running) return; running = true; requestAnimationFrame(frame); }
+function frame(){
+  ctx.clearRect(0,0,W,H);
+  rockets = rockets.filter(r=>{ r.t += .045; const p = Math.min(1, r.t), ease = 1 - Math.pow(1-p, 2);
+    const x = r.x + (r.tx - r.x)*ease, y = r.y + (r.ty - r.y)*ease;
+    ctx.fillStyle = "#FFE7A3"; ctx.beginPath(); ctx.arc(x, y, 2.4, 0, 7); ctx.fill();
+    if(!RM) for(let k=0;k<2;k++) parts.push({x, y, vx:(Math.random()-.5)*.6, vy:1 + Math.random(), life:.7, decay:.05, c:"#FFB21E", r:1.4, g:0, kind:"spark"});
+    if(p >= 1){ burst(r.tx, r.ty, RM ? 30 : 80); if(!r.silent) SND.boom(); return false; } return true; });
+  parts = parts.filter(p=>{
+    if(p.kind === "petal"){ p.x += p.vx + Math.sin(p.y/40)*.4; p.y += p.vy; p.rot += p.vr;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.fillStyle = p.c; ctx.beginPath(); ctx.ellipse(0,0,6,3.4,0,0,7); ctx.fill(); ctx.restore();
+      if(p.y > H + 20){ if(raining){ Object.assign(p, petal(false)); return true; } return false; } return true; }
+    p.vy += p.g; p.vx *= .985; p.vy *= .985; p.x += p.vx; p.y += p.vy; p.life -= p.decay;
+    if(p.life <= 0) return false;
+    ctx.globalAlpha = Math.max(0, p.life); ctx.fillStyle = p.c; ctx.beginPath(); ctx.arc(p.x, p.y, p.r*(.6 + p.life*.6), 0, 7); ctx.fill(); ctx.globalAlpha = 1; return true; });
+  if(parts.length || rockets.length) requestAnimationFrame(frame); else { running = false; ctx.clearRect(0,0,W,H); }
+}
+
+/* ---------- Floating shout text ---------- */
+function shout(text, x, y, color="#D0115C"){
+  const el = document.createElement("div"); el.className = "shout"; el.textContent = text; el.style.left = x + "px"; el.style.top = y + "px"; el.style.color = color;
+  document.body.appendChild(el); setTimeout(()=>el.remove(), 1800);
+}
+const isUI = el => el.closest("a,button,select,input,label,.phone,.chat,.dpanel,.step-c,.feat,.tcard,.tl > div,.faq,.garland,.addnote,.seg");
+
+/* 1 · Deepavali: tap the sky, launch a rocket */
+const hero = document.querySelector(".hero");
+hero.addEventListener("click", e=>{ if(isUI(e.target)) return; SND.whistle(); rocket(e.clientX, e.clientY); });
+$("diyas").addEventListener("click", e=>{ const s = e.target.closest("svg"); if(!s) return; const r = s.getBoundingClientRect(); burst(r.left + r.width/2, r.top + r.height*.3, 24, ["#FFB21E","#FFE7A3","#FF7A2E"], 2.4); SND.chime(); });
+$("diyas").style.pointerEvents = "auto";
+if(!RM) [[.72,.28,500],[.86,.2,1300]].forEach(([fx,fy,d])=>setTimeout(()=>{ const r = hero.getBoundingClientRect(); if(r.bottom > 0) { rockets.push({x:r.left + r.width*fx, y:r.bottom, tx:r.left + r.width*fx, ty:r.top + r.height*fy, t:0, silent:true}); loop(); } }, d));
+
+/* 2 · Sankranti: cut a kite loose */
+document.querySelectorAll(".kite").forEach(k=>{ k.setAttribute("role","button"); k.setAttribute("tabindex","0"); k.setAttribute("aria-label","Kite");
+  const go = ()=>{ if(k.classList.contains("cut")) return; const r = k.getBoundingClientRect(); k.classList.add("cut"); SND.whoosh(); shout("Kai po che!", r.left + r.width/2, r.top, "#3E1585"); setTimeout(()=>k.classList.remove("cut"), 2600); };
+  k.addEventListener("click", go); k.addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); go(); } }); });
+
+/* 3 · Lakshmi Puja: ring the temple bell; a soft bell on each demo step */
+$("bell").addEventListener("click", ()=>{ const b = $("bell"); b.classList.remove("ring"); void b.offsetWidth; b.classList.add("ring"); SND.bell(392, .5); const r = b.getBoundingClientRect(); burst(r.left + r.width/2, r.bottom - 10, 16, ["#FFB21E","#FFF1C2"], 2); });
+$("dpanel").addEventListener("click", e=>{ if(e.target.closest('[data-d="next"]')) SND.bell(784, .14); });
+
+/* 4 · Holi: throw gulal */
+const holi = document.querySelector(".holi"), hc = $("holiCanvas"), hx = hc.getContext("2d"); let hcol = 0, lastSplat = 0;
+const GULAL = ["#FF3D8B","#2BC46B","#3B82F6","#FFC21E","#9B4DFF","#FF7A2E"];
+function sizeHoli(){ const r = holi.getBoundingClientRect(), d = Math.min(2, devicePixelRatio || 1); const img = hc.width ? hx.getImageData(0,0,hc.width,hc.height) : null; hc.width = r.width*d; hc.height = r.height*d; hx.setTransform(d,0,0,d,0,0); if(img) hx.putImageData(img,0,0); }
+sizeHoli(); addEventListener("resize", sizeHoli);
+function splat(x, y, big){
+  const c = GULAL[hcol++ % GULAL.length], R = big ? 46 + Math.random()*30 : 16 + Math.random()*10;
+  hx.globalAlpha = .55; hx.fillStyle = c;
+  const g = hx.createRadialGradient(x, y, 0, x, y, R*1.4); g.addColorStop(0, c); g.addColorStop(1, "rgba(255,255,255,0)"); hx.fillStyle = g; hx.beginPath(); hx.arc(x, y, R*1.4, 0, 7); hx.fill();
+  hx.fillStyle = c; for(let i=0;i<(big?18:5);i++){ const a = Math.random()*7, d = R*(.6 + Math.random()*1.4); hx.globalAlpha = .35 + Math.random()*.4; hx.beginPath(); hx.arc(x + Math.cos(a)*d, y + Math.sin(a)*d, 2 + Math.random()*(big?9:4), 0, 7); hx.fill(); }
+  hx.globalAlpha = 1;
+}
+let drawing = false;
+holi.addEventListener("pointerdown", e=>{ if(isUI(e.target)) return; drawing = true; const r = holi.getBoundingClientRect(); splat(e.clientX - r.left, e.clientY - r.top, true); SND.pop(); burst(e.clientX, e.clientY, 22, [GULAL[(hcol-1+GULAL.length)%GULAL.length]], 3, "dust"); });
+holi.addEventListener("pointermove", e=>{ if(!drawing || isUI(e.target)) return; const now = performance.now(); if(now - lastSplat < 40) return; lastSplat = now; const r = holi.getBoundingClientRect(); hcol--; splat(e.clientX - r.left, e.clientY - r.top, false); hcol++; });
+addEventListener("pointerup", ()=>drawing = false);
+$("clearHoli").addEventListener("click", ()=>{ hx.clearRect(0,0,hc.width,hc.height); });
+
+/* 5 · Raksha Bandhan: tap the rakhi */
+const rk = $("rakhiArt"); rk.setAttribute("role","button"); rk.setAttribute("tabindex","0"); rk.setAttribute("aria-label","Rakhi");
+const tie = ()=>{ rk.classList.remove("spin"); void rk.getBoundingClientRect(); rk.classList.add("spin"); const r = rk.getBoundingClientRect(); burst(r.left + r.width/2, r.top + r.height*.5, 40, ["#FFB21E","#FF5C9E","#FFF1C2"], 3.4); SND.chime(); setTimeout(()=>SND.bell(1318, .12), 160); };
+rk.addEventListener("click", tie); rk.addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); tie(); } });
+
+/* 6 · Onam: the pookalam plays the chenda */
+const pk = $("pookalam"); pk.setAttribute("role","button"); pk.setAttribute("tabindex","0"); pk.setAttribute("aria-label","Pookalam");
+const chenda = ()=>{ pk.classList.remove("whirl"); void pk.getBoundingClientRect(); pk.classList.add("whirl"); SND.rhythm(["D","t","d","t","D","D","t","d","D","t","d","d","D"], .11); const r = pk.getBoundingClientRect(); burst(Math.min(r.left + r.width/2, W - 60), Math.max(r.top + r.height/2, 60), 40, ["#FFB21E","#F2761E","#E1251B","#FFF1C2"], 3.6, "dust"); };
+pk.addEventListener("click", chenda); pk.addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); chenda(); } });
+
+/* 7 · Durga Puja: dhak and shankh */
+$("dhakBtn").addEventListener("click", e=>{ SND.rhythm(["D","d","d","t","D","d","d","t","D","D","d","t","D"], .13); const b = e.currentTarget; b.classList.remove("thump"); void b.offsetWidth; b.classList.add("thump"); });
+$("shankhBtn").addEventListener("click", e=>{ SND.shankh(); const r = e.currentTarget.getBoundingClientRect(); burst(r.left + r.width/2, r.top, 18, ["#FFFFFF","#FFE3B0"], 2); });
+
+/* 8 · Ganesh Chaturthi: modaks */
+let morya = 0;
+$("modaks").addEventListener("click", e=>{ const m = e.target.closest("button"); if(!m) return; m.classList.remove("hop"); void m.offsetWidth; m.classList.add("hop"); SND.rhythm(["D","d"], .12);
+  const r = m.getBoundingClientRect(); burst(r.left + r.width/2, r.top + r.height/2, 14, ["#FFF1C2","#FFB21E"], 2.2); if(++morya % 3 === 0) shout("Ganpati Bappa Morya!", r.left + r.width/2, r.top - 10, "#3A1804"); });
+
+/* 9 · Pongal: tap the pot till it boils over */
+let heat = 0;
+$("pot").addEventListener("click", ()=>{ const p = $("pot"); if(p.classList.contains("boil")) return; heat++; p.dataset.heat = heat; SND.bubble(); SND.bubble(.08);
+  if(heat >= 4){ p.classList.add("boil"); SND.rhythm(["D","d","D","d","D"], .14); [0,.1,.2,.3,.45].forEach(d=>SND.bubble(d)); const r = p.getBoundingClientRect(); shout("Pongalo Pongal!", r.left + r.width/2, r.top, "#1D6A3A"); burst(r.left + r.width/2, r.top + 20, 40, ["#FFFFFF","#FFF6E6","#FFE7A3"], 3, "dust");
+    setTimeout(()=>{ p.classList.remove("boil"); heat = 0; p.dataset.heat = 0; }, 4200); } });
+
+/* 10 · Festival mode: petal rain and music */
+$("modeBtn").addEventListener("click", ()=>{ const b = $("modeBtn"), on = b.getAttribute("aria-pressed") !== "true"; b.setAttribute("aria-pressed", on);
+  if(on){ if(!RM) petals(true); if(soundOn) startMusic(); const r = b.getBoundingClientRect(); burst(r.left + r.width/2, r.top, 50); SND.boom(); }
+  else { petals(false); stopMusic(); } });
+
+/* Sound switch */
+function paintSound(){ const b = $("soundBtn"); b.setAttribute("aria-pressed", soundOn); b.querySelector(".on").hidden = !soundOn; b.querySelector(".off").hidden = soundOn; }
+$("soundBtn").addEventListener("click", ()=>{ soundOn = !soundOn; try{ localStorage.setItem("vv-sound", soundOn ? "on" : "off"); }catch(e){} if(!soundOn) stopMusic(); else if($("modeBtn").getAttribute("aria-pressed")==="true") startMusic(); paintSound(); if(soundOn) SND.chime(); });
+paintSound();
+$("pot").addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); $("pot").dispatchEvent(new MouseEvent("click")); } });
 </script>
 
 </body>
