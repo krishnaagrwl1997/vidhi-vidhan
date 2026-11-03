@@ -3,31 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
-</head>
-<body>
 <title>Vidhi-Vidhan App</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gotu&family=Hind:wght@400;500;600&family=Noto+Sans+Kannada:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Hind:wght@400;500;600&family=Noto+Sans+Kannada:wght@400;600&display=swap">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
 <style>
 /* Layout: a single phone-width app column, centred on wide screens; bottom tab bar; sheets slide up from the bottom; guided puja takes over the full screen in night colours. */
 :root{
-  --ground:#F2F4EC; --surface:#FFFFFF; --ink:#1C231E; --muted:#5D695F; --line:#D9DED2;
-  --leaf:#2E6A3E; --leaf-soft:#E2EDE0; --haldi:#C98A06; --haldi-soft:#FAEFCF; --kumkum:#AE1530; --kumkum-soft:#F8E1E4;
-  --scrim:rgba(20,24,20,.45);
+  --ground:#FFF6E6; --surface:#FFFFFF; --ink:#22140A; --muted:#6B5646; --line:#F0DCC0;
+  --leaf:#D0115C; --leaf-soft:#FCE1EC; --haldi:#D98300; --haldi-soft:#FFEFC7; --kumkum:#D0115C; --kumkum-soft:#FCE1EC;
+  --purple:#3E1585; --purple-2:#5B25B5; --marigold:#FFB21E; --green:#1D6A3A;
+  --scrim:rgba(27,15,58,.55);
   --night:#15110C; --brass:#E9B850; --brass-dim:#9C7B3A; --night-ink:#F4EBDD; --night-muted:#B8A88E;
-  --display:"Gotu", "Hind", Georgia, serif;
+  --display:"Baloo 2", "Hind", system-ui, sans-serif;
   --body:"Hind", "Noto Sans Kannada", system-ui, sans-serif;
   --kn:"Noto Sans Kannada", "Hind", system-ui, sans-serif;
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --ground:#111511; --surface:#1A201B; --ink:#E8ECE4; --muted:#9BA69D; --line:#2B332D;
-  --leaf:#7DC28F; --leaf-soft:#1E3325; --haldi:#F0BA3D; --haldi-soft:#3A2D10; --kumkum:#F0687E; --kumkum-soft:#3C1A20; --scrim:rgba(0,0,0,.6); color-scheme:dark}}
-:root[data-theme="dark"]{
-  --ground:#111511; --surface:#1A201B; --ink:#E8ECE4; --muted:#9BA69D; --line:#2B332D;
-  --leaf:#7DC28F; --leaf-soft:#1E3325; --haldi:#F0BA3D; --haldi-soft:#3A2D10; --kumkum:#F0687E; --kumkum-soft:#3C1A20; --scrim:rgba(0,0,0,.6); color-scheme:dark}
-
 html,body{height:100%}
 body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -36,7 +31,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 a{color:var(--leaf)}
 button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--haldi);outline-offset:2px}
 .app{max-width:440px;margin:0 auto;padding-block:20px 104px;display:flex;flex-direction:column;gap:20px}
-h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance;line-height:1.2}
+h1,h2,h3{font-family:var(--display);font-weight:800;margin:0;text-wrap:balance;line-height:1.12}
 h1{font-size:1.75rem} h2{font-size:1.3rem} h3{font-size:1.05rem}
 p{margin:0}
 .eyebrow{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
@@ -51,8 +46,8 @@ p{margin:0}
 .back{background:none;border:0;padding:0;color:var(--leaf);font-weight:600;display:inline-flex;align-items:center;gap:4px;align-self:flex-start}
 .sample{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:6px;padding:1px 6px}
 
-.fest{background:var(--leaf);color:#F6F3E6;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
-.fest .eyebrow{color:#CFE3CF}
+.fest{background:repeating-conic-gradient(from 0deg at 85% 20%,rgba(255,255,255,.06) 0 8deg,transparent 8deg 16deg),radial-gradient(90% 90% at 85% 15%,var(--purple-2),var(--purple));box-shadow:0 0 0 3px var(--ground),0 0 0 5px var(--marigold);color:#FFF3D6;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+.fest .eyebrow{color:#D7C6FF}
 .fest .count{font-family:var(--display);font-size:3rem;line-height:1;font-variant-numeric:tabular-nums;color:var(--brass)}
 .fest .lamps{position:absolute;right:-6px;top:14px;opacity:.9}
 .days{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
@@ -166,7 +161,7 @@ table.t th{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:
 .story{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:16px;min-height:300px}
 .story p.page{font-family:var(--display);font-size:1.25rem;line-height:1.5}
 
-nav.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);
+nav.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:3px solid var(--marigold);
   padding:8px max(16px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));z-index:5}
 nav.tabs .in{max-width:440px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
 nav.tabs button{background:none;border:0;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.7rem;font-weight:600;color:var(--muted);padding:6px 0}
@@ -214,6 +209,34 @@ nav.tabs svg{width:22px;height:22px}
 @keyframes flick{0%,100%{transform:scaleY(1) rotate(-1deg)}50%{transform:scaleY(1.08) rotate(1.5deg)}}
 @media (prefers-reduced-motion: reduce){.flame{animation:none}.progress span,.switch::after{transition:none}}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(88px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--ground);padding:10px 16px;border-radius:999px;font-size:.9rem;z-index:40;max-width:90%;text-align:center}
+
+/* ---- Festive app chrome ---- */
+.btn{font-family:var(--display);font-weight:700}
+.btn.primary{box-shadow:0 3px 0 #A80B49}
+.appbar{background:var(--purple);color:#FFF3D6;border-radius:18px;padding:10px 12px 10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 0 0 3px var(--ground),0 0 0 5px var(--marigold)}
+.appbar .lk{display:flex;flex-direction:column;line-height:1;text-decoration:none}
+.appbar .lk .d{font:700 .7rem "Baloo 2",sans-serif;color:var(--marigold)}
+.appbar .lk .w{font:800 1.15rem "Baloo 2",sans-serif;color:#FF5C9E;text-transform:uppercase;letter-spacing:.02em}
+.appbar .acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.appbar .acts button,.appbar .acts a{font:700 .8rem "Baloo 2",sans-serif;background:rgba(255,255,255,.12);color:#FFF3D6;border:0;border-radius:999px;padding:5px 11px;text-decoration:none;cursor:pointer}
+.appbar .acts .j{background:var(--marigold);color:var(--purple)}
+.prev-note{font-size:.75rem;color:var(--muted);margin-top:-12px}
+.notice{background:var(--haldi-soft);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;border:2px dashed var(--marigold)}
+.notice b{font-family:var(--display)}
+.fab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:6;border:0;border-radius:999px;background:var(--purple);color:#FFF3D6;font:700 .9rem "Baloo 2",sans-serif;padding:10px 16px;display:flex;align-items:center;gap:8px;box-shadow:0 8px 20px -6px rgba(27,15,58,.5),0 0 0 2px var(--marigold);cursor:pointer}
+@media (min-width:700px){.fab{right:calc(50% - 220px + 16px)}}
+.namein{width:100%;font:inherit;font-size:1.05rem;border:2px solid var(--line);background:var(--surface);border-radius:14px;padding:12px 14px;color:var(--ink)}
+.namein:focus{border-color:var(--leaf);outline:none}
+/* Tour */
+.tour{position:fixed;inset:0;z-index:50}
+.tour .spot{position:fixed;border-radius:18px;box-shadow:0 0 0 9999px rgba(27,15,58,.62),0 0 0 3px var(--marigold);transition:all .35s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.tour .tip{position:fixed;left:50%;transform:translateX(-50%);width:min(340px,calc(100vw - 32px));background:var(--surface);color:var(--ink);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px;box-shadow:0 20px 40px -10px rgba(0,0,0,.4);transition:top .35s cubic-bezier(.2,.8,.2,1)}
+.tour .tip .k{font:700 .75rem "Baloo 2",sans-serif;color:var(--leaf);letter-spacing:.06em;text-transform:uppercase}
+.tour .tip h3{font-size:1.2rem}
+.tour .tip p{color:var(--muted);font-size:.95rem}
+.tour .tip .row{justify-content:space-between}
+.tour .tip .dots i{width:16px}
+@media (prefers-reduced-motion: reduce){.tour .spot,.tour .tip{transition:none}}
 </style>
 
 <div class="app" id="app"></div>
@@ -226,10 +249,13 @@ nav.tabs svg{width:22px;height:22px}
     <button data-go="more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg>More</button>
   </div>
 </nav>
+<button class="fab" id="fab" data-act="feedback" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H9l-5 4z"/></svg>Feedback</button>
 <div id="puja" class="puja" hidden></div>
 <div id="sheet" class="sheet" hidden><div class="sheet-in" id="sheetIn" role="dialog" aria-modal="true"></div></div>
 
+<script src="../config.js"></script>
 <script>
+const FORM_URL = window.VV_FORM_URL || "";
 /* ================= Content (sample: Rao family, Kannada Smartha, Bengaluru) ================= */
 const FEST = {name:"Deepavali", mainDate:"2026-11-08", days:[
   {date:"2026-11-06", w:"Fri", label:"Neeru tumbuva"},
@@ -465,6 +491,42 @@ const ICON = {
 };
 const ic = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">${ICON[k]}</svg>`;
 
+
+/* ================= Greeting, readiness, tour ================= */
+const HELLO = {karnataka:"Namaskara", tamil:"Vanakkam", telugu:"Namaskaram", maharashtra:"Namaskar", gujarat:"Kem cho", north:"Namaste"};
+function greet(){ return `${HELLO[S.region] || "Namaste"}${S.name ? ", " + esc(S.name) : ""}`; }
+function notReady(){
+  if(S.region === "karnataka" && S.community === "smartha") return "";
+  return `<div class="notice"><b>${esc(REGION[S.region])} · ${esc(COMM[S.community])} is coming soon</b><span class="small">For now you're seeing a sample Kannada Smartha Deepavali, so you can try how everything works. Tell us your tradition and we'll prioritise it.</span><a class="btn primary sm" style="align-self:flex-start;text-decoration:none" href="${FORM_URL || "../#join"}" ${FORM_URL ? 'target="_blank" rel="noopener"' : ""}>Ask for my tradition</a></div>`;
+}
+const TOUR = [
+  {sel:".fest", k:"Your festival", t:"A countdown for your festival", p:"Every festival gets its own plan. Here it's Deepavali, with each day's rituals for your tradition."},
+  {sel:".fest + section.card", k:"Day by day", t:"Know what to do today", p:"Tick tasks off as you go. Tap “Assign” to share them with the family."},
+  {sel:'.fest [data-act="puja"]', k:"On the day", t:"Follow the puja step by step", p:"Mantras in your script, audio to repeat after, and why each step matters."},
+  {sel:'#tabs [data-go="samagri"]', k:"Samagri", t:"Everything you need to buy", p:"Sized for your household, with substitutes and one-tap ordering."},
+  {sel:'#tabs [data-go="family"]', k:"Your family's way", t:"Keep what Amma knows", p:"Ask an elder on WhatsApp and save their answer on the exact step."}
+];
+let tourI = 0, tourEl = null;
+function startTour(){ if(route() !== "home") return; tourI = 0; if(!tourEl){ tourEl = document.createElement("div"); tourEl.className = "tour"; tourEl.setAttribute("role","dialog"); tourEl.setAttribute("aria-modal","true"); tourEl.setAttribute("aria-label","Quick tour"); tourEl.innerHTML = `<div class="spot"></div><div class="tip"></div>`; document.body.appendChild(tourEl); } tourEl.hidden = false; showTour(); }
+function endTour(){ S.tourDone = true; save(); if(tourEl) tourEl.hidden = true; }
+function showTour(){
+  const st = TOUR[tourI], el = document.querySelector(st.sel);
+  if(!el){ if(tourI < TOUR.length - 1){ tourI++; return showTour(); } return endTour(); }
+  el.scrollIntoView({block:"center", behavior:"instant" in window ? "auto" : "auto"});
+  requestAnimationFrame(()=>{
+    const r = el.getBoundingClientRect(), pad = 6, sp = tourEl.querySelector(".spot"), tip = tourEl.querySelector(".tip");
+    Object.assign(sp.style, {left:(r.left-pad)+"px", top:(r.top-pad)+"px", width:(r.width+pad*2)+"px", height:(r.height+pad*2)+"px"});
+    tip.innerHTML = `<span class="k">${tourI+1} of ${TOUR.length} · ${st.k}</span><h3>${st.t}</h3><p>${st.p}</p><div class="row"><button class="link" data-tour="skip">Skip</button><div class="row" style="gap:8px">${tourI?'<button class="btn ghost sm" data-tour="back">Back</button>':""}<button class="btn primary sm" data-tour="next">${tourI === TOUR.length-1 ? "Start exploring" : "Next"}</button></div></div>`;
+    const below = r.bottom + 16, th = tip.offsetHeight || 190;
+    tip.style.top = (below + th < innerHeight - 8 ? below : Math.max(12, r.top - th - 16)) + "px";
+    tip.querySelector('[data-tour="next"]').focus();
+  });
+}
+document.addEventListener("click", e=>{ const b = e.target.closest("[data-tour]"); if(!b) return; const a = b.dataset.tour;
+  if(a === "skip") endTour(); else if(a === "back"){ tourI = Math.max(0, tourI-1); showTour(); } else if(tourI < TOUR.length-1){ tourI++; showTour(); } else endTour(); });
+document.addEventListener("keydown", e=>{ if(tourEl && !tourEl.hidden && e.key === "Escape") endTour(); });
+addEventListener("resize", ()=>{ if(tourEl && !tourEl.hidden) showTour(); });
+
 /* ================= Router ================= */
 const VIEWS = ["home","prepare","samagri","family","more","welcome","events","griha","priests","panchang","vrats","shraddha","recipes","rangoli","stories","nearby","abroad"];
 function route(){ const h = location.hash.replace("#",""); return VIEWS.includes(h) ? h : (S.onboarded ? "home" : "welcome"); }
@@ -478,13 +540,16 @@ function render(){
   const tab = TAB_OF[v] || v;
   document.querySelectorAll("#tabs button").forEach(b => { if(b.dataset.go===tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
   const map = {home:viewHome, prepare:viewPrepare, samagri:viewSamagri, family:viewFamily, more:viewMore, welcome:viewWelcome, events:viewEvents, griha:viewGriha, priests:viewPriests, panchang:viewPanchang, vrats:viewVrats, shraddha:viewShraddha, recipes:viewRecipes, rangoli:viewRangoli, stories:viewStories, nearby:viewNearby, abroad:viewAbroad};
+  MEMBERS[0].n = S.name || "You"; MEMBERS[0].i = (S.name || "You").slice(0,2);
   $("#app").innerHTML = map[v]();
+  $("#fab").hidden = v === "welcome";
+  if(v === "home" && S.onboarded && !S.tourDone) setTimeout(startTour, 350);
   if(!render.keep) window.scrollTo(0,0);
   render.keep = false;
 }
 function rerender(){ render.keep = true; const y = window.scrollY; render(); window.scrollTo(0,y); }
 
-function protoBar(){ return `<div class="proto"><span>Early preview · sample content, not yet reviewed by a priest</span><span style="display:flex;gap:12px"><button data-act="restart">Start over</button><a href="../#join" style="color:var(--leaf);font-weight:600">Join the early list</a></span></div>`; }
+function protoBar(){ return `<div class="appbar"><a class="lk" href="../" aria-label="Vidhi-Vidhan website"><span class="d">विधि-विधान</span><span class="w">Vidhi-Vidhan</span></a><div class="acts"><button data-act="tour">Tour</button><button data-act="restart">Start over</button><a class="j" href="${FORM_URL || "../#join"}" ${FORM_URL ? 'target="_blank" rel="noopener"' : ""}>Join</a></div></div><p class="prev-note">Early preview · sample content, not yet reviewed by a priest · stays on your phone</p>`; }
 
 /* ================= Onboarding ================= */
 let obStep = 0;
@@ -502,6 +567,7 @@ function viewWelcome(){
         <h1>Every festival, done your family's way</h1>
         <p class="muted">What to prepare, when to do it, and how, step by step. Set up once in under a minute.</p>
       </div>
+      <div><label class="lbl" for="nameIn">What should we call you?</label><input class="namein" id="nameIn" type="text" maxlength="30" autocomplete="given-name" placeholder="Your first name" value="${esc(S.name||"")}"></div>
       <button class="btn primary block" data-act="ob-next">Get started</button>
       <button class="btn ghost block" data-act="ob-skip">Skip and use the sample family</button>
       <p class="small muted" style="text-align:center">This preview uses sample content for a Kannada Smartha household in Bengaluru. Nothing you do here is sent anywhere; it stays on your phone.</p><a class="btn ghost block" href="../" style="text-decoration:none">Back to the website</a>
@@ -527,7 +593,8 @@ function viewHome(){
   const pending = S.asks.filter(a=>!a.reply).length, replied = S.asks.filter(a=>a.reply).length;
   return `
     ${protoBar()}
-    <div class="stack" style="gap:4px"><p class="eyebrow">Namaskara, Anand</p><h1>Deepavali is almost here</h1></div>
+    <div class="stack" style="gap:4px"><p class="eyebrow">${greet()}</p><h1>Deepavali is almost here</h1></div>
+    ${notReady()}
     <button class="card row" style="text-align:left;gap:14px" data-go="panchang">
       <span style="color:var(--haldi)">${ic("panchang")}</span>
       <span style="flex:1;min-width:0"><span class="t-title" style="display:block">Ashwayuja Krishna Panchami</span><span class="small muted">Today in Bengaluru · Rahu kala 1:30–3:00 PM</span></span>
@@ -669,7 +736,7 @@ function viewFamily(){
 
     <section class="stack">
       <h2>Two families, one home</h2>
-      <p class="small muted">Anand's side (Rao) and Kavya's side (Iyer) celebrate Deepavali differently. Pick what your home follows; the plan updates.</p>
+      <p class="small muted">Your side (Rao) and Kavya's side (Iyer) celebrate Deepavali differently. Pick what your home follows; the plan updates.</p>
       ${WAYS.map(w=>`<div class="stack" style="gap:8px"><h3>${w.t}</h3>
         <div class="cmp"><button class="side" aria-pressed="${S.ways[w.k]==="rao"}" data-act="way" data-k="${w.k}" data-v="rao"><b>Rao</b>${w.rao}</button><button class="side" aria-pressed="${S.ways[w.k]==="iyer"}" data-act="way" data-k="${w.k}" data-v="iyer"><b>Iyer</b>${w.iyer}</button></div>
         <button class="choice" style="padding:8px 12px" aria-pressed="${S.ways[w.k]==="both"}" data-act="way" data-k="${w.k}" data-v="both"><span class="small"><b>Both</b> · do a bit of each</span></button></div>`).join("")}
@@ -691,7 +758,7 @@ function askSheet(q){
   sheet(`
     <h2>Ask an elder</h2>
     <p class="small muted">Your question goes out on WhatsApp. When they reply with a voice note or text, it's saved on the step for the whole family.</p>
-    <div><label class="lbl" for="ato">Ask</label><select id="ato">${MEMBERS.filter(m=>m.n!=="Anand").map(m=>`<option ${m.n==="Amma"?"selected":""}>${m.n}</option>`).join("")}</select></div>
+    <div><label class="lbl" for="ato">Ask</label><select id="ato">${MEMBERS.filter((m,i)=>i!==0).map(m=>`<option ${m.n==="Amma"?"selected":""}>${m.n}</option>`).join("")}</select></div>
     <div><label class="lbl" for="awhere">About</label><select id="awhere">${["Bali Chakravarti puja","Oil bath","Neeru tumbuva",...STEPS.map(s=>s.t)].map(x=>`<option>${x}</option>`).join("")}</select></div>
     <div><label class="lbl" for="aq">Question</label><textarea id="aq">${esc(q||"How did we do the kalasha at home? Do we put a coin inside?")}</textarea></div>
     <button class="btn green block" data-act="sendask">Send on WhatsApp</button>
@@ -972,10 +1039,12 @@ document.addEventListener("click", e => {
       const txt = "Lakshmi puja samagri\n" + SAMAGRI.concat(S.extra.length?[{group:"From recipes",items:S.extra}]:[]).map(g=>g.group+":\n"+g.items.filter(i=>!S.items[i.id]).map(i=>"- "+i.n+" ("+i.q+")").join("\n")).join("\n");
       try{ navigator.clipboard.writeText(txt).then(()=>toast("List copied"), ()=>toast("Copy isn't available here")); }catch(err){ toast("Copy isn't available here"); } break; }
     case "restart": S.onboarded=false; obStep=0; save(); go("welcome"); break;
-    case "ob-next": if(obStep>=3){ S.onboarded=true; save(); obStep=0; go("home"); } else { obStep++; render(); } break;
+    case "ob-next": if(obStep===0){ const n=$("#nameIn"); if(n) S.name=n.value.trim().slice(0,30); } if(obStep>=3){ S.onboarded=true; S.tourDone=false; save(); obStep=0; go("home"); } else { obStep++; render(); } break;
     case "ob-back": obStep=Math.max(0,obStep-1); render(); break;
     case "ob-pick": S[a.dataset.key]=a.dataset.val; save(); render(); break;
-    case "ob-skip": S.onboarded=true; save(); obStep=0; go("home"); break;
+    case "ob-skip": { const n=$("#nameIn"); if(n) S.name=n.value.trim().slice(0,30); } S.region="karnataka"; S.community="smartha"; S.onboarded=true; S.tourDone=false; save(); obStep=0; go("home"); break;
+    case "tour": if(route()!=="home") go("home"); setTimeout(startTour, 60); break;
+    case "feedback": if(FORM_URL){ const l=document.createElement("a"); l.href=FORM_URL; l.target="_blank"; l.rel="noopener"; document.body.appendChild(l); l.click(); l.remove(); } else sheet(`<h2>Tell us what you think</h2><p class="muted">The feedback form opens in a day or two. Meanwhile, join the early list on the website and we'll ask you there.</p><a class="btn primary block" href="../#join" style="text-decoration:none">Go to the website</a><button class="btn ghost block" data-act="closesheet">Keep exploring</button>`); break;
     case "pfilter": S.priestFilter = a.dataset.v; save(); rerender(); break;
     case "book": bookSheet(Number(a.dataset.i)); break;
     case "sendbook": closeSheet(); toast("Preview: no request is sent"); break;

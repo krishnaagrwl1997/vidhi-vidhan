@@ -3,18 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
-</head>
-<body>
 <title>Vidhi-Vidhan</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Every ritual, done your family's way. Festival plans, samagri lists and step-by-step pujas in your family's own tradition.">
 <meta property="og:title" content="Vidhi-Vidhan: every ritual, done your family's way">
 <meta property="og:description" content="Festival plans, samagri lists and step-by-step pujas in your family's tradition. Try the app, or join the early list.">
-<meta name="twitter:card" content="summary">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://krishnaagrwl1997.github.io/vidhi-vidhan/">
+<meta property="og:image" content="https://krishnaagrwl1997.github.io/vidhi-vidhan/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Vidhi-Vidhan: every ritual, done your family's way">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://krishnaagrwl1997.github.io/vidhi-vidhan/og.png">
+<meta name="theme-color" content="#3E1585">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Hind:wght@400;500;600&family=Noto+Sans+Kannada:wght@400;600&display=swap">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
 <style>
 /* Layout: one long poster. Every band is a different festival, with its own colour and motif; content sits on cream cards with dotted marigold borders. A deliberate single (light, festive) look: every colour is set explicitly. */
 :root{
@@ -360,6 +368,85 @@ button.mode[aria-pressed="false"] i{background:rgba(27,15,58,.35)}
 button.mode[aria-pressed="false"] i::after{right:auto;left:3px}
 .cta .hint{color:#FFF3D6}
 @media (prefers-reduced-motion: reduce){.hint .tapi,.pot .steam,.pot .fire,.kite.cut,.bell.ring,.rakhi-art.spin,.pookalam.whirl,.modaks button.hop,.dbtn.thump{animation:none}}
+
+/* ---------- Walkthrough (How it works) ---------- */
+.walk{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:44px;align-items:center}
+@media (max-width:880px){.walk{grid-template-columns:1fr;gap:26px}.wside{order:-1}}
+.wlist{display:flex;flex-direction:column;gap:10px}
+.wstep{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;text-align:left;border:0;cursor:pointer;background:rgba(255,253,248,.72);border-radius:18px;padding:14px 16px;font:inherit;color:var(--ink);box-shadow:0 0 0 2px transparent;transition:background .2s,box-shadow .2s}
+.wstep .dot{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:800 1.25rem "Baloo 2",sans-serif;color:#fff;background:#C9B9A6}
+.wstep b{display:block;font-family:var(--display);font-weight:700;font-size:1.12rem;line-height:1.3}
+.wstep small{display:none;color:var(--ink-2);font-size:.95rem;margin-top:4px;line-height:1.5}
+.wstep[aria-selected="true"]{background:var(--paper);box-shadow:0 0 0 2px var(--marigold),0 14px 30px -18px rgba(60,20,10,.4)}
+.wstep[aria-selected="true"] small{display:block}
+.wstep[aria-selected="true"] .dot{background:var(--rani)}
+.wstep[data-w="1"][aria-selected="true"] .dot{background:var(--leaf-2)} .wstep[data-w="2"][aria-selected="true"] .dot{background:#2563C9}
+.wstep[data-w="3"][aria-selected="true"] .dot{background:var(--saffron)} .wstep[data-w="4"][aria-selected="true"] .dot{background:var(--purple-2)}
+@media (max-width:880px){.wlist{flex-direction:row;overflow-x:auto;gap:8px;padding-bottom:6px;scrollbar-width:none}.wstep{flex:0 0 auto;grid-template-columns:36px auto;align-items:center;padding:8px 14px 8px 8px}.wstep .dot{width:36px;height:36px;font-size:1.05rem}.wstep small{display:none!important}.wstep b{font-size:.98rem;white-space:nowrap}.wnow{display:block!important}}
+.wnow{display:none;background:var(--paper);border-radius:16px;padding:12px 16px;font-size:.98rem;color:var(--ink-2)}
+.wside{display:flex;flex-direction:column;align-items:center;gap:16px}
+.wphone{width:min(290px,82vw);aspect-ratio:9/17.5;background:#0B0805;border-radius:40px;padding:9px;box-shadow:0 0 0 4px var(--paper),0 0 0 7px var(--marigold),0 30px 50px -20px rgba(60,20,10,.5)}
+.wscreen{height:100%;border-radius:32px;overflow:hidden;background:#FFF6E6;color:#22140A;position:relative;font-size:12.5px;line-height:1.4}
+.wscreen .scr{position:absolute;inset:0;padding:22px 14px 14px;display:flex;flex-direction:column;gap:9px;animation:scrin .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes scrin{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+.scr .ey{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#7A6352;font-weight:600}
+.scr h5{font:800 1.15rem/1.15 "Baloo 2",sans-serif;margin:0}
+.scr .grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.scr .opt{border:1.5px solid #EED9BC;background:#fff;border-radius:10px;padding:7px 8px;font-weight:600}
+.scr .opt.on{border-color:#D0115C;background:#FCE1EC}
+.scr .opt small{display:block;font-weight:400;color:#7A6352;font-size:9.5px}
+.scr .cta{margin-top:auto;background:#D0115C;color:#fff;border-radius:999px;text-align:center;padding:9px;font-weight:700}
+.scr .fest{background:radial-gradient(80% 80% at 80% 20%,#5B25B5,#3E1585);color:#FFF3D6;border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.scr .fest .big{font:800 2rem/1 "Baloo 2",sans-serif;color:#FFB21E}
+.scr .days{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.scr .days span{background:rgba(255,255,255,.12);border-radius:7px;padding:4px 2px;text-align:center;font-size:8.5px;line-height:1.2}
+.scr .days span.m{background:#FFB21E;color:#22140A}
+.scr .card{background:#fff;border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:7px;border:1px solid #F0DCC0}
+.scr .it{display:flex;gap:8px;align-items:flex-start}
+.scr .ck{flex:none;width:15px;height:15px;border-radius:4px;border:1.5px solid #9A8574;margin-top:1px}
+.scr .ck.on{background:#D0115C;border-color:#D0115C;box-shadow:inset 0 0 0 2px #fff}
+.scr .it.done span:first-of-type{text-decoration:line-through;color:#9A8574}
+.scr .pill{display:inline-block;font-size:9px;font-weight:700;background:#FFEFC7;border-radius:99px;padding:1px 7px;margin-top:2px}
+.scr .qty{margin-left:auto;color:#7A6352;font-size:11px;white-space:nowrap}
+.scr .sub{display:block;font-size:10px;color:#7A6352}
+.scr .bar{height:6px;border-radius:9px;background:#F0DCC0;overflow:hidden}.scr .bar i{display:block;height:100%;width:48%;background:#D0115C}
+.scr.night{background:radial-gradient(120% 60% at 50% 105%,#4A3415 0%,#16110B 62%);color:#F4EBDD}
+.scr.night .ey{color:#E9B850}
+.scr.night h5{color:#FFF5E0}
+.scr .man{border:1px solid rgba(233,184,80,.4);border-radius:12px;padding:8px 10px;background:rgba(233,184,80,.07)}
+.scr .man b{display:block;font-family:"Noto Sans Kannada",sans-serif;color:#FFF1CF;font-size:13px;font-weight:400}
+.scr .man i{color:#B9A98F;font-size:10.5px}
+.scr .why{border-left:2px solid #9C7B3A;padding-left:8px;color:#B9A98F;font-size:11px}
+.scr .tools{display:flex;gap:5px;flex-wrap:wrap}.scr .tools span{background:rgba(255,255,255,.1);border-radius:99px;padding:3px 8px;font-size:9.5px}
+.scr .gold{margin-top:auto;background:#E9B850;color:#2A1E07;border-radius:999px;text-align:center;padding:9px;font-weight:700}
+.scr .note{background:#FCE1EC;border-radius:10px;padding:8px 10px}
+.scr .note b{display:block;font-size:10px}
+.scr .vn{display:flex;align-items:center;gap:6px;background:#E6F3E2;border-radius:99px;padding:5px 10px 5px 5px}
+.scr .vn em{width:20px;height:20px;border-radius:50%;background:#1D6A3A;display:grid;place-items:center;flex:none}
+.scr .vn .w{flex:1;height:12px;background:repeating-linear-gradient(90deg,#7A9C74 0 2px,transparent 2px 4px);border-radius:2px}
+.scr .avs{display:flex}.scr .avs span{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:10px;margin-right:-6px;border:2px solid #FFF6E6}
+.wctl{display:flex;align-items:center;gap:12px;width:min(380px,100%)}
+.wplay{flex:none;width:38px;height:38px;border-radius:50%;border:0;background:var(--ink);color:var(--cream);display:grid;place-items:center;cursor:pointer}
+.wplay .pl{display:none}.wplay[aria-pressed="false"] .pa{display:none}.wplay[aria-pressed="false"] .pl{display:inline}
+.wbar{flex:1;height:6px;border-radius:9px;background:rgba(34,20,10,.15);overflow:hidden}
+.wbar i{display:block;height:100%;width:0;background:var(--rani)}
+.wctl .btn{padding:10px 16px;font-size:.95rem}
+
+/* ---------- Sticky bar on phones ---------- */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:9;display:flex;gap:10px;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:var(--purple);border-top:3px solid var(--marigold);transform:translateY(110%);transition:transform .3s ease}
+.mbar.show{transform:none}
+.mbar .btn{flex:1;padding:12px 10px;font-size:.98rem;box-shadow:none}
+@media (min-width:701px){.mbar{display:none}}
+
+/* ---------- Festival dots ---------- */
+.fdots{position:fixed;right:max(14px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);z-index:7;display:flex;flex-direction:column;gap:10px}
+.fdots a{position:relative;display:block;width:14px;height:14px;border-radius:50%;background:var(--c);box-shadow:0 0 0 2px var(--paper),0 0 0 3px rgba(34,20,10,.25);transition:transform .2s}
+.fdots a[aria-current="true"]{transform:scale(1.45);box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--marigold)}
+.fdots a span{position:absolute;right:24px;top:50%;transform:translateY(-50%);white-space:nowrap;background:var(--ink);color:var(--cream);font:700 .82rem var(--display);padding:4px 10px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .15s}
+.fdots a:hover span,.fdots a:focus-visible span,.fdots a[aria-current="true"] span{opacity:1}
+.fdots a[aria-current="true"] span{opacity:0}.fdots a[aria-current="true"]:hover span{opacity:1}
+@media (max-width:1000px){.fdots{display:none}}
+@media (prefers-reduced-motion: reduce){.wscreen .scr{animation:none}.mbar{transition:none}}
 </style>
 
 <nav class="top" id="nav"><div class="in">
@@ -411,7 +498,7 @@ button.mode[aria-pressed="false"] i::after{right:auto;left:3px}
 </header>
 <div class="ticker" aria-hidden="true"><div class="track" id="track"></div></div>
 
-<section class="band sankranti" aria-labelledby="amma-h">
+<section class="band sankranti" id="why" aria-labelledby="amma-h">
   <div class="kites" aria-hidden="true">
     <svg class="kite" style="left:6%;top:7%;width:70px" viewBox="0 0 60 110"><path d="M30 2L56 34 30 66 4 34Z" fill="#D0115C"/><path d="M30 2L30 66M4 34L56 34" stroke="#FFF6E6" stroke-width="1.5"/><path d="M30 2L56 34 30 34Z" fill="#FFB21E"/><path d="M30 66c-6 10 6 16 0 26s6 12 0 18" fill="none" stroke="#3E1585" stroke-width="1.5"/><path d="M24 78l6 4 6-4M24 94l6 4 6-4" fill="#3E1585"/></svg>
     <svg class="kite" style="left:40%;top:4%;width:46px;animation-delay:-2s" viewBox="0 0 60 110"><path d="M30 2L56 34 30 66 4 34Z" fill="#1D6A3A"/><path d="M4 34L30 2 30 34Z" fill="#F7C536"/><path d="M30 2L30 66M4 34L56 34" stroke="#FFF6E6" stroke-width="1.5"/><path d="M30 66c-6 10 6 16 0 26s6 12 0 18" fill="none" stroke="#3E1585" stroke-width="1.5"/></svg>
@@ -437,6 +524,30 @@ button.mode[aria-pressed="false"] i::after{right:auto;left:3px}
   </div>
 </section>
 
+<section class="band holi" id="how" aria-labelledby="how-h">
+  <canvas class="holi-c" id="holiCanvas" aria-hidden="true"></canvas>
+  <span class="gulal" style="width:260px;height:260px;left:-80px;top:40px;background:#FF3D8B"></span>
+  <span class="gulal" style="width:220px;height:220px;right:6%;top:-60px;background:#2BC46B"></span>
+  <span class="gulal" style="width:240px;height:240px;right:-60px;bottom:-60px;background:#3B82F6"></span>
+  <span class="gulal" style="width:180px;height:180px;left:38%;bottom:-70px;background:#FFC21E"></span>
+  <div class="in">
+    <div class="head"><span class="tag" style="align-self:flex-start"><i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="8" cy="10" r="4"/><circle cx="15" cy="8" r="3"/><circle cx="14" cy="16" r="4"/></svg></i><span data-i="tag_holi">Holi</span></span><h2 id="how-h" data-i="how_h"></h2><div class="hintrow"><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_holi"></span></span><button class="minibtn" id="clearHoli" data-i="clear_holi">Clean up</button></div></div>
+    <div class="walk" id="walk">
+      <div class="wlist" role="tablist" aria-label="How it works">
+        <button class="wstep" role="tab" data-w="0"><span class="dot">1</span><span class="wt"><b data-i="how1_t"></b><small data-i="how1_p"></small></span></button>
+        <button class="wstep" role="tab" data-w="1"><span class="dot">2</span><span class="wt"><b data-i="how2_t"></b><small data-i="how2_p"></small></span></button>
+        <button class="wstep" role="tab" data-w="2"><span class="dot">3</span><span class="wt"><b data-i="f1_t"></b><small data-i="f1_p"></small></span></button>
+        <button class="wstep" role="tab" data-w="3"><span class="dot">4</span><span class="wt"><b data-i="how3_t"></b><small data-i="how3_p"></small></span></button>
+        <button class="wstep" role="tab" data-w="4"><span class="dot">5</span><span class="wt"><b data-i="fam_kicker"></b><small data-i="fam2"></small></span></button>
+      </div>
+      <div class="wside">
+        <div class="wphone"><div class="wscreen" id="wscreen" role="tabpanel" aria-live="polite"></div></div>
+        <div class="wctl"><button class="wplay" id="wplay" aria-label="Pause" aria-pressed="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><rect class="pa" x="2" y="1" width="3.5" height="12" rx="1"/><rect class="pa" x="8.5" y="1" width="3.5" height="12" rx="1"/><path class="pl" d="M3 1l10 6-10 6z"/></svg></button><div class="wbar"><i id="wbar"></i></div><a class="btn rani" href="app/index.html" data-i="try_app">Try the app</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="band lakshmi" id="try" aria-labelledby="try-h">
   <svg class="rangoli" id="rangoli" viewBox="0 0 400 400" aria-hidden="true"></svg>
   <div class="in">
@@ -458,23 +569,8 @@ button.mode[aria-pressed="false"] i::after{right:auto;left:3px}
   </div>
 </section>
 
-<section class="band holi" aria-labelledby="how-h">
-  <canvas class="holi-c" id="holiCanvas" aria-hidden="true"></canvas>
-  <span class="gulal" style="width:260px;height:260px;left:-80px;top:40px;background:#FF3D8B"></span>
-  <span class="gulal" style="width:220px;height:220px;right:6%;top:-60px;background:#2BC46B"></span>
-  <span class="gulal" style="width:240px;height:240px;right:-60px;bottom:-60px;background:#3B82F6"></span>
-  <span class="gulal" style="width:180px;height:180px;left:38%;bottom:-70px;background:#FFC21E"></span>
-  <div class="in">
-    <div class="head"><span class="tag" style="align-self:flex-start"><i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="8" cy="10" r="4"/><circle cx="15" cy="8" r="3"/><circle cx="14" cy="16" r="4"/></svg></i><span data-i="tag_holi">Holi</span></span><h2 id="how-h" data-i="how_h"></h2><div class="hintrow"><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_holi"></span></span><button class="minibtn" id="clearHoli" data-i="clear_holi">Clean up</button></div></div>
-    <div class="steps">
-      <div class="step-c"><span class="dot">1</span><span class="n" data-i="how1_n"></span><h3 data-i="how1_t"></h3><p data-i="how1_p"></p></div>
-      <div class="step-c"><span class="dot">2</span><span class="n" data-i="how2_n"></span><h3 data-i="how2_t"></h3><p data-i="how2_p"></p></div>
-      <div class="step-c"><span class="dot">3</span><span class="n" data-i="how3_n"></span><h3 data-i="how3_t"></h3><p data-i="how3_p"></p></div>
-    </div>
-  </div>
-</section>
 
-<section class="band rakhi" aria-labelledby="fam-h"><div class="in">
+<section class="band rakhi" id="family" aria-labelledby="fam-h"><div class="in">
   <div>
     <span class="tag"><i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/><path d="M1 12h6M17 12h6" stroke="currentColor" stroke-width="2"/></svg></i><span data-i="tag_rakhi">Raksha Bandhan</span></span>
     <h2 id="fam-h" data-i="fam_h"></h2>
@@ -488,7 +584,7 @@ button.mode[aria-pressed="false"] i::after{right:auto;left:3px}
   <div class="rakhi-wrap"><svg class="rakhi-art" id="rakhiArt" viewBox="0 0 420 300"></svg><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_rakhi"></span></span></div>
 </div></section>
 
-<section class="band onam" aria-labelledby="feat-h">
+<section class="band onam" id="features" aria-labelledby="feat-h">
   <svg class="pookalam" id="pookalam" viewBox="0 0 400 400"></svg>
   <div class="in">
     <div class="head"><span class="tag" style="align-self:flex-start"><i style="background:var(--saffron)"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="4.5" r="2.5"/><circle cx="12" cy="19.5" r="2.5"/><circle cx="4.5" cy="12" r="2.5"/><circle cx="19.5" cy="12" r="2.5"/></svg></i><span data-i="tag_onam">Onam</span></span><h2 id="feat-h" data-i="feat_h"></h2><div><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_onam"></span></span></div></div>
@@ -503,7 +599,7 @@ button.mode[aria-pressed="false"] i::after{right:auto;left:3px}
   </div>
 </section>
 
-<section class="band durga" aria-labelledby="trust-h">
+<section class="band durga" id="trust" aria-labelledby="trust-h">
   <div class="paar"></div><div class="alpona"></div>
   <div class="in">
     <div class="head"><span class="tag" style="align-self:flex-start"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17l-5.5 4L8 13.5 3 9l6.5-.5z"/></svg></i><span data-i="tag_durga">Durga Puja</span></span><h2 id="trust-h" data-i="trust_h"></h2><div class="hintrow"><button class="dbtn" id="dhakBtn"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3" fill="#FFF1C2"/><path d="M4 6v10c0 2 3.5 3.5 8 3.5s8-1.5 8-3.5V6" fill="#E1251B"/><path d="M4 9l16 6M20 9L4 15" stroke="#FFB21E" stroke-width="1.4"/><path d="M14 2l7-2M17 4l6-1" stroke="#FFB21E" stroke-width="1.6"/></svg><span data-i="btn_dhak">Dhak</span></button><button class="dbtn" id="shankhBtn"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 14c0-6 6-11 13-11 3 0 5 2 5 4 0 6-7 13-13 13-3 0-5-3-5-6z" fill="#FFF6E6" stroke="#E1251B" stroke-width="1.5"/><path d="M8 13c2-3 5-5 9-6M9 16c3-2 6-4 9-8" stroke="#E1251B" stroke-width="1.2" fill="none"/></svg><span data-i="btn_shankh">Shankh</span></button><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_durga"></span></span></div></div>
@@ -517,7 +613,7 @@ button.mode[aria-pressed="false"] i::after{right:auto;left:3px}
   <div class="alpona b"></div><div class="paar b"></div>
 </section>
 
-<section class="band ganesh" aria-labelledby="when-h"><div class="in">
+<section class="band ganesh" id="plan" aria-labelledby="when-h"><div class="in">
   <div class="head"><span class="tag" style="align-self:flex-start"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2 3 7 8 7 13a7 7 0 0 1-14 0c0-5 5-10 7-13z"/></svg></i><span data-i="tag_ganesh">Ganesh Chaturthi</span></span>
     <div class="modaks" id="modaks"></div>
     <h2 id="when-h" data-i="road_h"></h2><div><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_ganesh"></span></span></div></div>
@@ -529,7 +625,7 @@ button.mode[aria-pressed="false"] i::after{right:auto;left:3px}
   <p class="tradline" data-i="trad_line"></p>
 </div></section>
 
-<section class="band pongal" aria-labelledby="faq-h">
+<section class="band pongal" id="faq-s" aria-labelledby="faq-h">
   <svg class="kolam" id="kolam" viewBox="0 0 400 400" aria-hidden="true"></svg>
   <svg class="sugarcane" viewBox="0 0 90 260" aria-hidden="true"><g stroke-linecap="round"><path d="M30 255V40" stroke="#5B7F2A" stroke-width="12"/><path d="M58 255V60" stroke="#6E8F33" stroke-width="12"/><path d="M24 90h12M24 140h12M24 190h12M52 110h12M52 160h12M52 210h12" stroke="#3E5A1C" stroke-width="3"/></g><path d="M30 42c-14-18-24-22-28-38 12 6 22 14 28 30 4-16 14-26 28-32-6 14-18 22-28 40z" fill="#2E8A4E"/><path d="M58 62c10-20 22-26 30-40-14 2-24 12-30 28-6-14-16-22-30-22 10 8 22 16 30 34z" fill="#1D6A3A"/></svg>
   <div class="in">
@@ -556,9 +652,10 @@ button.mode[aria-pressed="false"] i::after{right:auto;left:3px}
 
 <footer><div class="in"><span>Vidhi-Vidhan · <span id="footBrand">विधि-विधान</span> · <span data-i="foot1"></span></span><span data-i="foot2"></span></div></footer>
 
+<script src="config.js"></script>
 <script>
 /* Paste the Google Form link here. Until then, the join button shows a "sign-ups open soon" note. */
-const FORM_URL = "";
+const FORM_URL = window.VV_FORM_URL || "";
 
 const BRAND = {en:"विधि-विधान", hi:"विधि-विधान", kn:"ವಿಧಿ-ವಿಧಾನ", ta:"விதி-விதானம்", te:"విధి-విధానం"};
 const KICK = {en:"विधि-विधान से", hi:"विधि-विधान से", kn:"ವಿಧಿ-ವಿಧಾನದಂತೆ", ta:"விதி-விதானப்படி", te:"విధి-విధానంగా"};
@@ -963,7 +1060,7 @@ function shout(text, x, y, color="#D0115C"){
   const el = document.createElement("div"); el.className = "shout"; el.textContent = text; el.style.left = x + "px"; el.style.top = y + "px"; el.style.color = color;
   document.body.appendChild(el); setTimeout(()=>el.remove(), 1800);
 }
-const isUI = el => el.closest("a,button,select,input,label,.phone,.chat,.dpanel,.step-c,.feat,.tcard,.tl > div,.faq,.garland,.addnote,.seg");
+const isUI = el => el.closest("a,button,select,input,label,.phone,.chat,.dpanel,.step-c,.feat,.tcard,.tl > div,.faq,.garland,.addnote,.seg,.walk,.mbar,.fdots");
 
 /* 1 · Deepavali: tap the sky, launch a rocket */
 const hero = document.querySelector(".hero");
@@ -1034,6 +1131,85 @@ function paintSound(){ const b = $("soundBtn"); b.setAttribute("aria-pressed", s
 $("soundBtn").addEventListener("click", ()=>{ soundOn = !soundOn; try{ localStorage.setItem("vv-sound", soundOn ? "on" : "off"); }catch(e){} if(!soundOn) stopMusic(); else if($("modeBtn").getAttribute("aria-pressed")==="true") startMusic(); paintSound(); if(soundOn) SND.chime(); });
 paintSound();
 $("pot").addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); $("pot").dispatchEvent(new MouseEvent("click")); } });
+
+/* ================= Walkthrough ================= */
+const WS = [
+`<div class="scr"><span class="ey">Setup · 1 of 3</span><h5>Where is your family from?</h5><p style="margin:0;color:#7A6352">Rituals change from region to region. We'll show yours.</p>
+ <div class="grid2"><span class="opt on">Karnataka<small>Sample ready</small></span><span class="opt">Tamil Nadu<small>&nbsp;</small></span><span class="opt">Andhra &amp; Telangana<small>&nbsp;</small></span><span class="opt">Maharashtra<small>&nbsp;</small></span><span class="opt">Gujarat<small>&nbsp;</small></span><span class="opt">North India<small>&nbsp;</small></span></div>
+ <div class="cta">Continue</div></div>`,
+`<div class="scr"><span class="ey">Namaskara, Priya</span>
+ <div class="fest"><span class="ey" style="color:#D7C6FF">Deepavali · Karnataka · Smartha</span><span class="big">5 <small style="font-size:12px;color:#FFF3D6">days to Lakshmi puja</small></span>
+  <div class="days"><span><b>Fri 6</b><br>Neeru tumbuva</span><span><b>Sat 7</b><br>Naraka Chaturdashi</span><span class="m"><b>Sun 8</b><br>Lakshmi puja</span><span><b>Mon 9</b><br>Bali Padyami</span></div></div>
+ <div class="card"><b>Up next · Thu 5 Nov</b>
+  <div class="it done"><span class="ck on"></span><span>Buy diyas and wicks</span></div>
+  <div class="it"><span class="ck"></span><span>Polish the brass lamps<span class="sub">Tamarind and a little salt</span></span></div>
+  <div class="it"><span class="ck"></span><span>Fill the bathing vessel<br><span class="pill">After sunset</span></span></div></div></div>`,
+`<div class="scr"><span class="ey">Lakshmi puja · 4 people</span><h5>Samagri</h5>
+ <div class="card"><b>12 of 25 ready</b><div class="bar"><i></i></div></div>
+ <div class="card">
+  <div class="it done"><span class="ck on"></span><span>Kalasha</span><span class="qty">1</span></div>
+  <div class="it"><span class="ck"></span><span>Coconut with tuft</span><span class="qty">1</span></div>
+  <div class="it"><span class="ck"></span><span>Lotus<span class="sub">Or any pink flower</span></span><span class="qty">2</span></div>
+  <div class="it"><span class="ck"></span><span>Ghee</span><span class="qty">200 g</span></div>
+  <div class="it"><span class="ck"></span><span>Earthen diyas<span class="sub">Abroad: tealights</span></span><span class="qty">21</span></div></div>
+ <div class="cta">Order what's missing</div></div>`,
+`<div class="scr night"><span class="ey">Step 6 of 11 · Lakshmi puja</span><h5>Invite Lakshmi</h5><p style="margin:0">Offer akshata at the feet of the Lakshmi image and welcome her into your home.</p>
+ <div class="man"><span class="ey">Say</span><b>ಓಂ ಶ್ರೀಂ ಮಹಾಲಕ್ಷ್ಮ್ಯೈ ನಮಃ</b><i>Om Shreem Mahalakshmyai namaha</i></div>
+ <div class="why"><b style="color:#E9B850">Why · </b>From here she is treated as an honoured guest.</div>
+ <div class="tools"><span>Listen</span><span>Guide me aloud</span><span>Missing an item?</span></div>
+ <div class="gold">Next step</div></div>`,
+`<div class="scr"><span class="ey">Rao family</span><h5>Your family's way</h5>
+ <div class="avs"><span style="background:#FFEFC7">A</span><span style="background:#FCE1EC">P</span><span style="background:#E6F3E2">K</span><span style="background:#E3E9FF">M</span></div>
+ <div class="card"><span style="color:#7A6352;font-size:10.5px">You asked Amma · Bali puja</span><b>How did Ajji do the Bali puja?</b>
+  <div class="vn"><em><svg width="8" height="8" viewBox="0 0 10 10" fill="#fff"><path d="M2 1l7 4-7 4z"/></svg></em><span class="w"></span><span style="font-size:10px">0:48</span></div>
+  <div class="note"><b>Amma said</b>We drew Bali with rice flour at the threshold and lit a lamp.</div></div>
+ <div class="note"><b>Amma's note · Oil bath</b>Wake everyone by 5. Ajji put a little turmeric in the oil.</div>
+ <div class="cta">Ask an elder</div></div>`
+];
+let wi = 0, wplay = !RM, wt0 = performance.now(), wseen = false;
+const WDUR = 5200;
+function wshow(i, user){
+  wi = (i + WS.length) % WS.length; wt0 = performance.now();
+  $("wscreen").innerHTML = WS[wi];
+  document.querySelectorAll(".wstep").forEach(b=>{ const on = Number(b.dataset.w) === wi; b.setAttribute("aria-selected", on); b.tabIndex = on ? 0 : -1; if(on && user) b.scrollIntoView({block:"nearest", inline:"center", behavior: RM ? "auto" : "smooth"}); });
+  const now = document.querySelector(".wnow"); if(now){ const b = document.querySelector(`.wstep[data-w="${wi}"] small`); now.textContent = b ? b.textContent : ""; }
+}
+function setPlay(on){ wplay = on; $("wplay").setAttribute("aria-pressed", on); $("wplay").setAttribute("aria-label", on ? "Pause" : "Play"); wt0 = performance.now(); }
+document.querySelector(".wlist").addEventListener("click", e=>{ const b = e.target.closest(".wstep"); if(!b) return; wshow(Number(b.dataset.w), true); setPlay(false); SND.chime(); });
+document.querySelector(".wlist").addEventListener("keydown", e=>{ if(e.key==="ArrowDown"||e.key==="ArrowRight"){ e.preventDefault(); wshow(wi+1,true); setPlay(false); document.querySelector(`.wstep[data-w="${wi}"]`).focus(); } if(e.key==="ArrowUp"||e.key==="ArrowLeft"){ e.preventDefault(); wshow(wi-1,true); setPlay(false); document.querySelector(`.wstep[data-w="${wi}"]`).focus(); } });
+$("wplay").addEventListener("click", ()=>setPlay(!wplay));
+(function wtick(){
+  if(wplay && wseen){ const p = (performance.now() - wt0) / WDUR; $("wbar").style.width = Math.min(100, p*100) + "%"; if(p >= 1) wshow(wi+1); }
+  else if(!wplay) $("wbar").style.width = "0%";
+  requestAnimationFrame(wtick);
+})();
+if("IntersectionObserver" in window){ new IntersectionObserver(es=>es.forEach(x=>{ wseen = x.isIntersecting; if(wseen) wt0 = performance.now() - (parseFloat($("wbar").style.width)||0)/100*WDUR; }), {threshold:.35}).observe($("walk")); } else wseen = true;
+const wnow = document.createElement("p"); wnow.className = "wnow"; document.querySelector(".wlist").after(wnow);
+wshow(0);
+const _applyLang = applyLang; applyLang = function(){ _applyLang(); wshow(wi); };
+
+/* ================= Sticky bar on phones ================= */
+const mbar = document.createElement("div"); mbar.className = "mbar"; mbar.id = "mbar";
+mbar.innerHTML = `<a class="btn gold" href="app/index.html" data-i="try_app">${t("try_app")}</a><a class="btn rani js-join2" href="#join" data-i="nav_join">${t("nav_join")}</a>`;
+document.body.appendChild(mbar);
+if(FORM_URL){ const j = mbar.querySelector(".js-join2"); j.href = FORM_URL; j.target = "_blank"; j.rel = "noopener"; }
+let heroOut = false, ctaIn = false;
+const paintBar = ()=> mbar.classList.toggle("show", heroOut && !ctaIn);
+if("IntersectionObserver" in window){
+  new IntersectionObserver(es=>es.forEach(x=>{ heroOut = !x.isIntersecting; paintBar(); }), {threshold:0}).observe(document.querySelector(".hero"));
+  new IntersectionObserver(es=>es.forEach(x=>{ ctaIn = x.isIntersecting; paintBar(); }), {threshold:.1}).observe($("join"));
+}
+
+/* ================= Festival dots ================= */
+const DOTS = [["top","tag_diwali","#5B25B5"],["why","tag_sankranti","#3A9FD6"],["how","tag_holi","#2BC46B"],["try","tag_lakshmi","#D0115C"],["family","tag_rakhi","#B5102C"],["features","tag_onam","#1D6A3A"],["trust","tag_durga","#E1251B"],["plan","tag_ganesh","#F2761E"],["faq-s","tag_pongal","#E0A800"],["join","mode","#FF5C9E"]];
+const fd = document.createElement("nav"); fd.className = "fdots"; fd.setAttribute("aria-label","Festivals");
+fd.innerHTML = DOTS.map(([id,k,c])=>`<a href="#${id}" style="--c:${c}" data-k="${k}"><span data-i="${k}">${t(k)}</span></a>`).join("");
+document.body.appendChild(fd);
+fd.querySelectorAll("a").forEach(a=>a.setAttribute("aria-label", t(a.dataset.k)));
+if("IntersectionObserver" in window){
+  const io = new IntersectionObserver(es=>es.forEach(x=>{ if(x.isIntersecting){ fd.querySelectorAll("a").forEach(a=>a.setAttribute("aria-current", a.getAttribute("href") === "#" + x.target.id)); } }), {rootMargin:"-45% 0px -50% 0px"});
+  DOTS.forEach(([id])=>{ const el = $(id); if(el) io.observe(el); });
+}
 </script>
 
 </body>

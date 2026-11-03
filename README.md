@@ -9,6 +9,8 @@ Vidhi-Vidhan helps families with festivals and life events: what to prepare, whe
 | Path | What it is |
 | --- | --- |
 | `index.html` | Soft-launch website in English, Hindi, Kannada, Tamil and Telugu, with an interactive puja demo |
+| `config.js` | Shared settings: the Google Form link |
+| `og.png` | Share preview image |
 | `app/` | The app preview visitors open from "Try the app": Deepavali plan, samagri, guided puja, family notes, life events. Everything a visitor does stays in their own browser. |
 
 Both are single static HTML files with no build step.
@@ -17,9 +19,13 @@ Both are single static HTML files with no build step.
 
 Settings → Pages → Source: "Deploy from a branch" → Branch: `main`, folder `/ (root)`. The site appears at `https://<username>.github.io/vidhi-vidhan/` and the app preview at `/app/`.
 
-## Sign-up form
+## Sign-up and feedback form
 
-Paste the Google Form link into `FORM_URL` near the top of the script in `index.html`. Until then the join button shows a "sign-ups open soon" note.
+Paste your Google Form link into `config.js`. The website's Join buttons and the app's Join, Feedback and "Ask for my tradition" buttons all use it. Until then they show a "sign-ups open soon" note.
+
+## Share preview
+
+`og.png` (1200×630) is the image LinkedIn, X and WhatsApp show when the site link is shared.
 
 ## Note on content
 
