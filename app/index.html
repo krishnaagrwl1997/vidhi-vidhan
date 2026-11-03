@@ -163,7 +163,7 @@ table.t th{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:
 
 nav.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:3px solid var(--marigold);
   padding:8px max(16px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));z-index:5}
-nav.tabs .in{max-width:440px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+nav.tabs .in{max-width:440px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
 nav.tabs button{background:none;border:0;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.7rem;font-weight:600;color:var(--muted);padding:6px 0}
 nav.tabs button[aria-current="page"]{color:var(--leaf)}
 nav.tabs svg{width:22px;height:22px}
@@ -216,7 +216,8 @@ nav.tabs svg{width:22px;height:22px}
 .appbar{background:var(--purple);color:#FFF3D6;border-radius:18px;padding:10px 12px 10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 0 0 3px var(--ground),0 0 0 5px var(--marigold)}
 .appbar .lk{display:flex;flex-direction:column;line-height:1;text-decoration:none}
 .appbar .lk .d{font:700 .7rem "Baloo 2",sans-serif;color:var(--marigold)}
-.appbar .lk .w{font:800 1.15rem "Baloo 2",sans-serif;color:#FF5C9E;text-transform:uppercase;letter-spacing:.02em}
+.appbar .lk .w{font:800 1.1rem "Baloo 2",sans-serif;color:#FF5C9E;text-transform:uppercase;letter-spacing:.02em;white-space:nowrap}
+.appbar .lk{flex:none}
 .appbar .acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
 .appbar .acts button,.appbar .acts a{font:700 .8rem "Baloo 2",sans-serif;background:rgba(255,255,255,.12);color:#FFF3D6;border:0;border-radius:999px;padding:5px 11px;text-decoration:none;cursor:pointer}
 .appbar .acts .j{background:var(--marigold);color:var(--purple)}
@@ -237,16 +238,30 @@ nav.tabs svg{width:22px;height:22px}
 .tour .tip .row{justify-content:space-between}
 .tour .tip .dots i{width:16px}
 @media (prefers-reduced-motion: reduce){.tour .spot,.tour .tip{transition:none}}
+
+/* ---- Review fixes ---- */
+.check[aria-checked="true"]{background:var(--green);border-color:var(--green)}
+.progress span{background:var(--green)}
+.switch[aria-checked="true"]{background:var(--green)}
+[data-sim]::after{content:"Demo";font:700 .62rem "Baloo 2",sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(0,0,0,.18);border-radius:6px;padding:1px 6px;margin-left:8px;vertical-align:2px}
+.seg button{font-family:var(--display)}
+.tipcard{background:var(--haldi-soft);border:2px solid var(--marigold);border-radius:14px;padding:12px 14px;display:flex;gap:12px;align-items:flex-start;justify-content:space-between;font-size:.92rem}
+.tipcard .link{white-space:nowrap}
+.remind .notif{background:var(--ground);border-radius:14px;padding:10px 12px;font-size:.92rem;border-left:4px solid var(--marigold)}
+.remind .notif b{display:block;font-size:.75rem;color:var(--muted);font-weight:600}
+.plist{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px}
+.plist li{padding-left:4px}
+.plist li span + .sample{margin-left:8px}
+.react{display:flex;flex-direction:column;gap:10px;align-items:center;background:rgba(255,255,255,.06);border-radius:16px;padding:14px;max-width:360px}
 </style>
 
 <div class="app" id="app"></div>
 <nav class="tabs" id="tabs" aria-label="Main">
   <div class="in">
     <button data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c-2 3-3 4.5-3 6.5a3 3 0 0 0 6 0C15 7.5 14 6 12 3z"/><path d="M4 15h16l-2 5H6z"/></svg>Today</button>
-    <button data-go="prepare"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Prepare</button>
-    <button data-go="samagri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Samagri</button>
+    <button data-go="prepare"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Plan</button>
+    <button data-go="pujaview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v3"/><circle cx="12" cy="8" r="1.6"/><path d="M12 10c-4 0-6 3-6 7 0 1-1 2-2 3h16c-1-1-2-2-2-3 0-4-2-7-6-7z"/></svg>Puja</button>
     <button data-go="family"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.3"/><path d="M3 20c.5-3.5 3-5.5 6-5.5s5.5 2 6 5.5M15 15.5c2.5-.3 5 1 5.5 4.5"/></svg>Family</button>
-    <button data-go="more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg>More</button>
   </div>
 </nav>
 <button class="fab" id="fab" data-act="feedback" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H9l-5 4z"/></svg>Feedback</button>
@@ -256,7 +271,12 @@ nav.tabs svg{width:22px;height:22px}
 <script src="../config.js"></script>
 <script>
 const FORM_URL = window.VV_FORM_URL || "";
-/* ================= Content (sample: Rao family, Kannada Smartha, Bengaluru) ================= */
+/* ================= Analytics (GoatCounter, from config.js) ================= */
+function track(name){ try{ const gc = window.goatcounter; if(gc && gc.count) gc.count({path:"app/event/" + name, title:name, event:true}); }catch(e){} }
+if(window.VV_GOATCOUNTER){ const g = document.createElement("script"); g.async = true; g.src = "https://gc.zgo.at/count.js"; g.dataset.goatcounter = "https://" + window.VV_GOATCOUNTER + ".goatcounter.com/count"; document.head.appendChild(g); }
+document.addEventListener("click", e=>{ const a = e.target.closest("a"); if(!a) return; const h = a.getAttribute("href") || ""; if(h === FORM_URL && FORM_URL) track("app-form-" + (a.closest(".notice") ? "tradition" : "join")); else if(h.includes("#join")) track("app-join-site"); }, true);
+
+/* ================= Content (sample: Rao family, Kannada household, Bengaluru) ================= */
 const FEST = {name:"Deepavali", mainDate:"2026-11-08", days:[
   {date:"2026-11-06", w:"Fri", label:"Neeru tumbuva"},
   {date:"2026-11-07", w:"Sat", label:"Naraka Chaturdashi"},
@@ -433,7 +453,7 @@ const NRI = {London:"~4:20–6:50 PM", "New Jersey":"~4:50–7:20 PM", Singapore
 /* ================= State ================= */
 const KEY = "rasam-proto-v2";
 const defaultState = {
-  onboarded:false, region:"karnataka", community:"smartha", lang:"kn",
+  onboarded:false, region:"karnataka", practice:"home", famNote:"", lang:"kn", tips:{},
   tasks:{t1:true, t2:true}, items:{s3:true, s7:true, s12:true, s16:true}, extra:[],
   assign:{t4:0, t5:1, t10:2, t7:3},
   opts:{neeru:true, gopuja:true, balifig:false},
@@ -463,7 +483,8 @@ const dnum = iso => Number(iso.slice(8));
 const mon = iso => ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"].at(Number(iso.slice(5,7))-1);
 function toast(msg){ const t=document.createElement("div"); t.className="toast"; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2200); }
 const REGION = {karnataka:"Karnataka", tamil:"Tamil Nadu", telugu:"Andhra & Telangana", maharashtra:"Maharashtra", gujarat:"Gujarat", north:"North India"};
-const COMM = {smartha:"Smartha", madhva:"Madhva", srivaishnava:"Sri Vaishnava", other:"Other / not sure"};
+const PRACTICE = {home:"Mostly at home, family-led", priest:"With a priest for the big pujas", temple:"Mostly at the temple", learning:"We're still learning"};
+const COMM = PRACTICE;
 const LANG = {kn:"ಕನ್ನಡ", en:"English", hi:"हिन्दी"};
 const back = (to="more", label="More") => `<button class="back" data-go="${to}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3L5 8l5 5"/></svg>${label}</button>`;
 const sw = (on, act, extra="") => `<button class="switch" role="switch" aria-checked="${!!on}" data-act="${act}" ${extra}></button>`;
@@ -496,19 +517,16 @@ const ic = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stro
 const HELLO = {karnataka:"Namaskara", tamil:"Vanakkam", telugu:"Namaskaram", maharashtra:"Namaskar", gujarat:"Kem cho", north:"Namaste"};
 function greet(){ return `${HELLO[S.region] || "Namaste"}${S.name ? ", " + esc(S.name) : ""}`; }
 function notReady(){
-  if(S.region === "karnataka" && S.community === "smartha") return "";
-  return `<div class="notice"><b>${esc(REGION[S.region])} · ${esc(COMM[S.community])} is coming soon</b><span class="small">For now you're seeing a sample Kannada Smartha Deepavali, so you can try how everything works. Tell us your tradition and we'll prioritise it.</span><a class="btn primary sm" style="align-self:flex-start;text-decoration:none" href="${FORM_URL || "../#join"}" ${FORM_URL ? 'target="_blank" rel="noopener"' : ""}>Ask for my tradition</a></div>`;
+  if(S.region === "karnataka") return "";
+  return `<div class="notice"><b>${esc(REGION[S.region])} is coming soon</b><span class="small">For now you're seeing a sample Kannada Deepavali, so you can try how everything works. Tell us your tradition and we'll prioritise it.</span><a class="btn primary sm" style="align-self:flex-start;text-decoration:none" href="${FORM_URL || "../#join"}" ${FORM_URL ? 'target="_blank" rel="noopener"' : ""}>Ask for my tradition</a></div>`;
 }
 const TOUR = [
-  {sel:".fest", k:"Your festival", t:"A countdown for your festival", p:"Every festival gets its own plan. Here it's Deepavali, with each day's rituals for your tradition."},
-  {sel:".fest + section.card", k:"Day by day", t:"Know what to do today", p:"Tick tasks off as you go. Tap “Assign” to share them with the family."},
-  {sel:'.fest [data-act="puja"]', k:"On the day", t:"Follow the puja step by step", p:"Mantras in your script, audio to repeat after, and why each step matters."},
-  {sel:'#tabs [data-go="samagri"]', k:"Samagri", t:"Everything you need to buy", p:"Sized for your household, with substitutes and one-tap ordering."},
-  {sel:'#tabs [data-go="family"]', k:"Your family's way", t:"Keep what Amma knows", p:"Ask an elder on WhatsApp and save their answer on the exact step."}
+  {sel:".fest", k:"Your festival", t:"Your Deepavali, day by day", p:"Every festival gets its own plan for your tradition, with what to do each day. Tick things off as you go."},
+  {sel:'.fest [data-act="puja"]', k:"On the day", t:"Follow the puja step by step", p:"Mantras in your script, audio to repeat after, and why each step matters. Try it now."}
 ];
 let tourI = 0, tourEl = null;
 function startTour(){ if(route() !== "home") return; tourI = 0; if(!tourEl){ tourEl = document.createElement("div"); tourEl.className = "tour"; tourEl.setAttribute("role","dialog"); tourEl.setAttribute("aria-modal","true"); tourEl.setAttribute("aria-label","Quick tour"); tourEl.innerHTML = `<div class="spot"></div><div class="tip"></div>`; document.body.appendChild(tourEl); } tourEl.hidden = false; showTour(); }
-function endTour(){ S.tourDone = true; save(); if(tourEl) tourEl.hidden = true; }
+function endTour(){ track(tourI >= TOUR.length - 1 ? "tour-done" : "tour-skip-" + (tourI+1)); S.tourDone = true; save(); if(tourEl) tourEl.hidden = true; }
 function showTour(){
   const st = TOUR[tourI], el = document.querySelector(st.sel);
   if(!el){ if(tourI < TOUR.length - 1){ tourI++; return showTour(); } return endTour(); }
@@ -527,21 +545,35 @@ document.addEventListener("click", e=>{ const b = e.target.closest("[data-tour]"
 document.addEventListener("keydown", e=>{ if(tourEl && !tourEl.hidden && e.key === "Escape") endTour(); });
 addEventListener("resize", ()=>{ if(tourEl && !tourEl.hidden) showTour(); });
 
+
+function planSeg(v){ return `<div class="seg" role="group" aria-label="Plan"><button aria-pressed="${v==="prepare"}" data-go="prepare">Day by day</button><button aria-pressed="${v==="samagri"}" data-go="samagri">Samagri</button></div>`; }
+function tip(key, text){ if(S.tips && S.tips[key]) return ""; return `<div class="tipcard"><span>${text}</span><button class="link" data-act="tipok" data-k="${key}">Got it</button></div>`; }
+function viewPuja(){
+  const core = STEPS.filter(s=>s.core).length;
+  return `${protoBar()}
+    <div class="stack" style="gap:6px"><p class="eyebrow">Sun 8 Nov · Pradosh kaal, about 6:00–8:30 PM</p><h1>Lakshmi puja</h1><p class="muted">Full puja ${STEPS.length} steps, about 40 minutes · Short puja ${core} steps, about 15 minutes.</p></div>
+    <button class="btn primary block" style="padding:16px;font-size:1.1rem" data-act="puja">Start Lakshmi puja</button>
+    <section class="card stack"><div class="section-head"><h2>The steps</h2><button class="link" data-go="samagri">What you need</button></div>
+      <ol class="plist">${STEPS.map(s=>`<li><span>${s.t}</span>${s.core?"":`<span class="sample">Full only</span>`}</li>`).join("")}</ol></section>
+    <p class="small muted">Audio in this preview uses your phone's voice. The full app will have a priest's recording of every mantra.</p>`;
+}
+
 /* ================= Router ================= */
-const VIEWS = ["home","prepare","samagri","family","more","welcome","events","griha","priests","panchang","vrats","shraddha","recipes","rangoli","stories","nearby","abroad"];
+const VIEWS = ["pujaview","home","prepare","samagri","family","more","welcome","events","griha","priests","panchang","vrats","shraddha","recipes","rangoli","stories","nearby","abroad"];
 function route(){ const h = location.hash.replace("#",""); return VIEWS.includes(h) ? h : (S.onboarded ? "home" : "welcome"); }
 function go(v){ if(location.hash !== "#"+v) location.hash = v; else render(); }
 window.addEventListener("hashchange", render);
-const TAB_OF = {events:"more",griha:"more",priests:"more",panchang:"more",vrats:"more",shraddha:"more",recipes:"more",rangoli:"more",stories:"more",nearby:"more",abroad:"more"};
+const TAB_OF = {samagri:"prepare",more:"home",events:"home",griha:"home",priests:"home",panchang:"home",vrats:"home",shraddha:"home",recipes:"home",rangoli:"home",stories:"home",nearby:"home",abroad:"home"};
 
 function render(){
   const v = route();
   $("#tabs").hidden = v === "welcome";
   const tab = TAB_OF[v] || v;
   document.querySelectorAll("#tabs button").forEach(b => { if(b.dataset.go===tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
-  const map = {home:viewHome, prepare:viewPrepare, samagri:viewSamagri, family:viewFamily, more:viewMore, welcome:viewWelcome, events:viewEvents, griha:viewGriha, priests:viewPriests, panchang:viewPanchang, vrats:viewVrats, shraddha:viewShraddha, recipes:viewRecipes, rangoli:viewRangoli, stories:viewStories, nearby:viewNearby, abroad:viewAbroad};
+  const map = {pujaview:viewPuja, home:viewHome, prepare:viewPrepare, samagri:viewSamagri, family:viewFamily, more:viewMore, welcome:viewWelcome, events:viewEvents, griha:viewGriha, priests:viewPriests, panchang:viewPanchang, vrats:viewVrats, shraddha:viewShraddha, recipes:viewRecipes, rangoli:viewRangoli, stories:viewStories, nearby:viewNearby, abroad:viewAbroad};
   MEMBERS[0].n = S.name || "You"; MEMBERS[0].i = (S.name || "You").slice(0,2);
   $("#app").innerHTML = map[v]();
+  if(v !== render.last){ track("view-" + v); render.last = v; }
   $("#fab").hidden = v === "welcome";
   if(v === "home" && S.onboarded && !S.tourDone) setTimeout(startTour, 350);
   if(!render.keep) window.scrollTo(0,0);
@@ -555,8 +587,8 @@ function protoBar(){ return `<div class="appbar"><a class="lk" href="../" aria-l
 let obStep = 0;
 function viewWelcome(){
   const steps = [
-    {q:"Where is your family from?", h:"Rituals change from region to region. We'll show yours.", key:"region", opts:Object.entries(REGION).map(([k,v])=>[k,v, k==="karnataka"?"Sample ready":""])},
-    {q:"Which tradition does your family follow?", h:"Not sure? Pick “Other”. You can ask an elder and change it later.", key:"community", opts:Object.entries(COMM).map(([k,v])=>[k,v, k==="smartha"?"Sample ready":""])},
+    {q:"Where is your family from?", h:"Rituals change from region to region. We'll show yours.", key:"region", opts:Object.entries(REGION).map(([k,v])=>[k,v, k==="karnataka"?"Sample ready":"Coming soon"])},
+    {q:"How does your family usually celebrate?", h:"Every family is different. Your own customs, family deity and ways get added as you go, with help from your elders.", key:"practice", opts:Object.entries(PRACTICE).map(([k,v])=>[k,v,""]), note:true},
     {q:"Mantras in which script?", h:"Every mantra also shows a transliteration in English letters.", key:"lang", opts:Object.entries(LANG).map(([k,v])=>[k,v, k==="kn"?"Kannada script":k==="hi"?"Devanagari":"Transliteration only"])}
   ];
   if(obStep === 0) return `
@@ -570,14 +602,15 @@ function viewWelcome(){
       <div><label class="lbl" for="nameIn">What should we call you?</label><input class="namein" id="nameIn" type="text" maxlength="30" autocomplete="given-name" placeholder="Your first name" value="${esc(S.name||"")}"></div>
       <button class="btn primary block" data-act="ob-next">Get started</button>
       <button class="btn ghost block" data-act="ob-skip">Skip and use the sample family</button>
-      <p class="small muted" style="text-align:center">This preview uses sample content for a Kannada Smartha household in Bengaluru. Nothing you do here is sent anywhere; it stays on your phone.</p><a class="btn ghost block" href="../" style="text-decoration:none">Back to the website</a>
+      <p class="small muted" style="text-align:center">This preview uses sample content for a Kannada household in Bengaluru. Nothing you do here is sent anywhere; it stays on your phone.</p><a class="btn ghost block" href="../" style="text-decoration:none">Back to the website</a>
     </div>`;
   const s = steps[obStep-1];
   return `
     <div class="ob">
       <div class="row between"><button class="link" data-act="ob-back">Back</button><div class="dots">${steps.map((_,i)=>`<i class="${i<obStep?"on":""}"></i>`).join("")}</div></div>
       <div class="stack"><h1>${s.q}</h1><p class="muted">${s.h}</p></div>
-      <div class="opts">${s.opts.map(([k,v,sub])=>`<button class="opt" aria-pressed="${S[s.key]===k}" data-act="ob-pick" data-key="${s.key}" data-val="${k}"><b class="${k==="kn"?"kn":""}">${v}</b><span>${sub||"&nbsp;"}</span></button>`).join("")}</div>
+      ${s.note ? "" : ""}<div class="opts">${s.opts.map(([k,v,sub])=>`<button class="opt" aria-pressed="${S[s.key]===k}" data-act="ob-pick" data-key="${s.key}" data-val="${k}"><b class="${k==="kn"?"kn":""}">${v}</b><span>${sub||"&nbsp;"}</span></button>`).join("")}</div>
+      ${s.note ? `<div><label class="lbl" for="famIn">Anything we should know? <span class="muted" style="font-weight:400">(optional)</span></label><input class="namein" id="famIn" type="text" maxlength="120" placeholder="For example: our family deity is Tirupati Venkateshwara" value="${esc(S.famNote||"")}"></div>` : ""}
       <button class="btn primary block" data-act="ob-next">${obStep===3?"Show my festivals":"Continue"}</button>
     </div>`;
 }
@@ -602,10 +635,10 @@ function viewHome(){
     </button>
     <section class="fest" aria-label="Deepavali 2026">
       <svg class="lamps" width="96" height="60" viewBox="0 0 96 60" aria-hidden="true"><g fill="#E9B850"><path d="M14 20c-4 6-5 9-5 11a5 5 0 0 0 10 0c0-2-1-5-5-11z"/><path d="M48 8c-5 8-6 11-6 14a6 6 0 0 0 12 0c0-3-1-6-6-14z"/><path d="M82 20c-4 6-5 9-5 11a5 5 0 0 0 10 0c0-2-1-5-5-11z"/></g><g fill="#B8742A"><path d="M2 38h24c-1 6-6 10-12 10S3 44 2 38z"/><path d="M34 30h28c-1 8-7 13-14 13s-13-5-14-13z"/><path d="M70 38h24c-1 6-6 10-12 10s-11-4-12-10z"/></g></svg>
-      <p class="eyebrow">Deepavali · ${REGION[S.region]} · ${COMM[S.community]}</p>
+      <p class="eyebrow">Deepavali · ${REGION[S.region]} · Bengaluru</p>
       <div class="count">${countLabel}</div>
       <div class="days">${FEST.days.map(x=>`<div class="day ${x.main?"main":""}"><b>${x.w} ${dnum(x.date)}</b>${x.label}</div>`).join("")}</div>
-      <div class="row" style="flex-wrap:wrap"><button class="btn light" data-act="puja">Preview guided puja</button><button class="btn" style="background:transparent;color:#FFF8E6;border:1px solid rgba(255,255,255,.35)" data-go="prepare">See the full plan</button></div>
+      <div class="row" style="flex-wrap:wrap"><button class="btn light" data-act="puja">Start Lakshmi puja</button><button class="btn" style="background:transparent;color:#FFF8E6;border:1px solid rgba(255,255,255,.35)" data-go="prepare">See the full plan</button></div>
     </section>
 
     <section class="card stack">
@@ -625,9 +658,18 @@ function viewHome(){
       <p class="small muted">${itemsDone} of ${all.length} items ready for 4 people. Order the rest in one tap.</p>
     </section>
 
+    <section class="card stack remind">
+      <div class="section-head"><h2>On your phone</h2><span class="sample">Coming</span></div>
+      <p class="small muted">In the full app, reminders arrive at the right moment, as notifications or on WhatsApp.</p>
+      <div class="notif"><b>Fri 6 Nov · 6:10 PM</b>Sunset now. Fill the bathing vessel for tomorrow's oil bath.</div>
+      <div class="notif"><b>Sat 7 Nov · 5:00 AM</b>Oil bath before 6:15 AM. Amma says: wake everyone by 5.</div>
+      <div class="notif"><b>Sun 8 Nov · 5:30 PM</b>Lakshmi puja muhurat starts at 6:00. Tap to begin.</div>
+    </section>
+
     <section class="stack">
       <div class="section-head"><h2>Also planning</h2><button class="link" data-go="events">Life events</button></div>
       <button class="card row" style="text-align:left" data-go="griha"><span style="color:var(--leaf)">${ic("events")}</span><span style="flex:1"><span class="t-title" style="display:block">Griha pravesha</span><span class="small muted">Muhurat, checklist, priest and budget in one place</span></span></button>
+      <button class="card row" style="text-align:left" data-go="more"><span style="color:var(--leaf)">${ic("stories")}</span><span style="flex:1"><span class="t-title" style="display:block">More in the preview</span><span class="small muted">Panchang, vrats, recipes, rangoli, stories, living abroad</span></span></button>
     </section>`;
 }
 
@@ -660,6 +702,7 @@ function taskRow(t){
 function viewPrepare(){
   return `
     ${protoBar()}
+    ${planSeg("prepare")}${tip("plan","Switch off rasams your family doesn't do, and tap “Assign” to share tasks with the family.")}
     <div class="stack" style="gap:6px"><p class="eyebrow">Deepavali 2026 · your plan</p><h1>From clean-up to Bali Padyami</h1><p class="muted">Times are for ${S.nri.on?S.nri.city:"Bengaluru"}. Confirm with your family's panchang.</p></div>
     <section class="card stack" style="gap:4px">
       <div class="section-head" style="margin-bottom:6px"><h3>Does your family do these?</h3></div>
@@ -682,6 +725,7 @@ function viewSamagri(){
   const groups = S.extra.length ? SAMAGRI.concat([{group:"From recipes", items:S.extra}]) : SAMAGRI;
   return `
     ${protoBar()}
+    ${planSeg("samagri")}
     <div class="stack" style="gap:6px"><p class="eyebrow">Lakshmi puja · 4 people</p><h1>Samagri</h1></div>
     <div class="card stack">
       <div class="row between"><span class="t-title">${done} of ${all.length} ready</span><span class="small muted">${all.length-done} to buy</span></div>
@@ -708,7 +752,7 @@ function orderSheet(store){
     <p class="small muted">Items you'll make at home or already own aren't included.</p>
     <div class="stack" style="gap:8px">${stores.map(([n,t])=>`<button class="choice" aria-pressed="${n===store}" data-act="store" data-v="${n}"><b>${n}</b><span class="small muted">Delivery ${t}</span></button>`).join("")}</div>
     <table class="t">${missing.map(i=>`<tr><td>${esc(i.n)}</td><td class="num">${rupee(i.p)}</td></tr>`).join("")}<tr><th>Estimated total</th><th class="num">${rupee(total)}</th></tr></table>
-    <button class="btn primary block" data-act="place">Place order with ${store}</button>
+    <button class="btn primary block" data-act="place" data-sim>Place order with ${store}</button>
     <p class="small muted">Prices are sample estimates. In the prototype, no order is placed.</p>`);
 }
 
@@ -716,10 +760,11 @@ function orderSheet(store){
 function viewFamily(){
   return `
     ${protoBar()}
+    ${tip("family","“Ask an elder” sends your question on WhatsApp. Their answer is saved on the exact step, for the whole family.")}
     <div class="stack" style="gap:6px"><p class="eyebrow">Rao family</p><h1>Your family's way</h1><p class="muted">What you save here changes what everyone sees, in the plan and during the puja.</p></div>
     <section class="card stack">
       ${MEMBERS.map(m=>`<div class="member"><div class="avatar">${m.i}</div><div><div class="t-title">${m.n}</div><div class="small muted">${m.r}</div></div></div>`).join("")}
-      <button class="btn ghost sm" style="align-self:flex-start" data-act="invite">Invite a family member</button>
+      <button class="btn ghost sm" style="align-self:flex-start" data-act="invite" data-sim>Invite a family member</button>
     </section>
 
     <section class="stack">
@@ -761,7 +806,7 @@ function askSheet(q){
     <div><label class="lbl" for="ato">Ask</label><select id="ato">${MEMBERS.filter((m,i)=>i!==0).map(m=>`<option ${m.n==="Amma"?"selected":""}>${m.n}</option>`).join("")}</select></div>
     <div><label class="lbl" for="awhere">About</label><select id="awhere">${["Bali Chakravarti puja","Oil bath","Neeru tumbuva",...STEPS.map(s=>s.t)].map(x=>`<option>${x}</option>`).join("")}</select></div>
     <div><label class="lbl" for="aq">Question</label><textarea id="aq">${esc(q||"How did we do the kalasha at home? Do we put a coin inside?")}</textarea></div>
-    <button class="btn green block" data-act="sendask">Send on WhatsApp</button>
+    <button class="btn green block" data-act="sendask" data-sim>Send on WhatsApp</button>
     <p class="small muted">In the prototype this saves the question here and opens WhatsApp with the message ready.</p>`);
 }
 
@@ -812,8 +857,8 @@ function viewGriha(){
 }
 
 function viewPriests(){
-  const trads = ["All","Smartha","Madhva","Sri Vaishnava"];
-  const list = PRIESTS.filter(p=>S.priestFilter==="All"||p.trad===S.priestFilter);
+  const trads = ["All","Kannada","Tamil","Telugu"];
+  const list = PRIESTS.filter(p=>S.priestFilter==="All"||p.lang.includes(S.priestFilter));
   return `${back()}
     <div class="stack" style="gap:6px"><p class="eyebrow">Book a priest</p><h1>Priests in Bengaluru</h1><p class="muted">Every priest is verified and lists the traditions they follow. <span class="sample">Sample listings</span></p></div>
     <div class="wrap-row">${trads.map(t=>`<button class="chip ${S.priestFilter===t?"today":"assign"}" style="padding:6px 12px" data-act="pfilter" data-v="${t}">${t}</button>`).join("")}</div>
@@ -828,7 +873,7 @@ function bookSheet(i){
     <div><label class="lbl" for="bev">Event</label><select id="bev">${["Griha pravesha","Satyanarayana puja","Namakarana","Upanayana","Shraddha"].map(x=>`<option>${x}</option>`).join("")}</select></div>
     <div><label class="lbl" for="bdate">Date</label><select id="bdate"><option>Thu 3 Dec 2026, 6:42 AM</option><option>Mon 14 Dec 2026, 7:05 AM</option><option>Fri 22 Jan 2027, 6:58 AM</option></select></div>
     <div class="note" style="background:var(--leaf-soft)"><span class="who">Shared checklist</span>Once accepted, you and the priest share one list of who brings what, so nothing is missed on the day.</div>
-    <button class="btn primary block" data-act="sendbook">Send request</button>
+    <button class="btn primary block" data-act="sendbook" data-sim>Send request</button>
     <p class="small muted">Preview: no request is sent.</p>`);
 }
 
@@ -950,13 +995,13 @@ function startSheet(){
       <button class="choice" aria-pressed="${S.pujaLen==="full"}" data-act="plen" data-v="full"><b>Full puja</b><span class="small muted">${STEPS.length} steps · about 40 minutes</span></button>
       <button class="choice" aria-pressed="${S.pujaLen==="short"}" data-act="plen" data-v="short"><b>Short puja</b><span class="small muted">${STEPS.filter(s=>s.core).length} steps · about 15 minutes · skips ${skipped}</span></button>
     </div>
-    <div class="toggle"><div><div class="t-title">Guide me aloud</div><div class="sub">Each step and its mantra are read out. Repeat after the voice.</div></div>${sw(S.aloud,"aloud",'aria-label="Guide me aloud"')}</div>
+    <div class="toggle"><div><div class="t-title">Guide me aloud</div><div class="sub">Each step is read out to you. This preview uses your phone's voice; the full app will have a priest's recording of the mantras.</div></div>${sw(S.aloud,"aloud",'aria-label="Guide me aloud"')}</div>
     <button class="btn primary block" data-act="begin">Begin the puja</button>`);
 }
 function openPuja(){ closeSheet(); step = 0; $("#puja").hidden = false; document.body.style.overflow="hidden"; renderPuja();
   try{ navigator.wakeLock && navigator.wakeLock.request("screen").then(l=>lock=l).catch(()=>{}); }catch(e){} }
 function closePuja(){ stopSpeak(); $("#puja").hidden = true; document.body.style.overflow=""; try{ lock && lock.release(); }catch(e){} lock=null; }
-function stepText(s){ return s.t + ". " + s.do + (s.m ? " Repeat after me. " + s.m.tr : ""); }
+function stepText(s){ return s.t + ". " + s.do + (s.m ? " Now say the mantra shown on screen." : ""); }
 function renderPuja(){
   const L = pujaSteps(), N = L.length, end = step >= N;
   const s = L[Math.min(step,N-1)];
@@ -964,7 +1009,9 @@ function renderPuja(){
   const m = s.m ? `<div class="mantra"><span class="lab">Say</span>${S.lang!=="en"?`<div class="script ${S.lang==="kn"?"kn":""}">${S.lang==="kn"?s.m.kn:s.m.dv}</div>`:""}<div class="tr">${s.m.tr}</div></div>` : "";
   $("#puja").innerHTML = `<div class="wrap">
     <div class="top"><div class="bar" aria-hidden="true">${L.map((_,i)=>`<i class="${i<=step?"on":""}"></i>`).join("")}</div><button class="pbtn" data-act="close">Close</button></div>
-    ${end ? `<div class="scroll" style="justify-content:center;text-align:center;align-items:center">${diya(140)}<h2>Shubha Deepavali</h2><p class="do">Lakshmi puja is complete. Share the prasada and enjoy the evening with your family.</p><button class="btn" style="background:var(--brass);color:#2A1E07" data-act="close">Back to the plan</button></div>` : `
+    ${end ? `<div class="scroll" style="justify-content:center;text-align:center;align-items:center">${diya(140)}<h2>Shubha Deepavali</h2><p class="do">Lakshmi puja is complete. Share the prasada and enjoy the evening with your family.</p>
+      <div class="react" id="react"><p><b>Was this how your family does it?</b></p><div class="row" style="justify-content:center;flex-wrap:wrap"><button class="pbtn" data-act="react" data-v="yes">Yes</button><button class="pbtn" data-act="react" data-v="mostly">Mostly</button><button class="pbtn" data-act="react" data-v="different">Quite different</button></div></div>
+      <button class="btn" style="background:var(--brass);color:#2A1E07" data-act="close">Back to the plan</button></div>` : `
     <div class="scroll">
       ${step===0?diya(90):""}
       <div class="num">Step ${step+1} of ${N} · ${S.pujaLen==="short"?"Short":"Full"} Lakshmi puja</div>
@@ -1012,9 +1059,9 @@ document.addEventListener("click", e => {
     case "puja": startSheet(); break;
     case "plen": S.pujaLen = a.dataset.v; save(); startSheet(); break;
     case "aloud": S.aloud = !S.aloud; save(); startSheet(); break;
-    case "begin": openPuja(); break;
+    case "begin": track("puja-start-" + S.pujaLen + (S.aloud ? "-aloud" : "")); openPuja(); break;
     case "close": closePuja(); break;
-    case "next": step++; renderPuja(); break;
+    case "next": step++; if(step === pujaSteps().length) track("puja-complete"); renderPuja(); break;
     case "prev": if(step>0){ step--; renderPuja(); } break;
     case "listen": speak(stepText(pujaSteps()[step])); break;
     case "aloud2": S.aloud = !S.aloud; save(); if(!S.aloud) stopSpeak(); renderPuja(); break;
@@ -1039,12 +1086,15 @@ document.addEventListener("click", e => {
       const txt = "Lakshmi puja samagri\n" + SAMAGRI.concat(S.extra.length?[{group:"From recipes",items:S.extra}]:[]).map(g=>g.group+":\n"+g.items.filter(i=>!S.items[i.id]).map(i=>"- "+i.n+" ("+i.q+")").join("\n")).join("\n");
       try{ navigator.clipboard.writeText(txt).then(()=>toast("List copied"), ()=>toast("Copy isn't available here")); }catch(err){ toast("Copy isn't available here"); } break; }
     case "restart": S.onboarded=false; obStep=0; save(); go("welcome"); break;
-    case "ob-next": if(obStep===0){ const n=$("#nameIn"); if(n) S.name=n.value.trim().slice(0,30); } if(obStep>=3){ S.onboarded=true; S.tourDone=false; save(); obStep=0; go("home"); } else { obStep++; render(); } break;
+    case "ob-next": { const f=$("#famIn"); if(f) S.famNote=f.value.trim().slice(0,120); } if(obStep===0){ const n=$("#nameIn"); if(n) S.name=n.value.trim().slice(0,30); } if(obStep>=3){ track("onboard-" + S.region + "-" + S.practice); S.onboarded=true; S.tourDone=false; save(); obStep=0; go("home"); } else { obStep++; render(); } break;
     case "ob-back": obStep=Math.max(0,obStep-1); render(); break;
     case "ob-pick": S[a.dataset.key]=a.dataset.val; save(); render(); break;
-    case "ob-skip": { const n=$("#nameIn"); if(n) S.name=n.value.trim().slice(0,30); } S.region="karnataka"; S.community="smartha"; S.onboarded=true; S.tourDone=false; save(); obStep=0; go("home"); break;
-    case "tour": if(route()!=="home") go("home"); setTimeout(startTour, 60); break;
-    case "feedback": if(FORM_URL){ const l=document.createElement("a"); l.href=FORM_URL; l.target="_blank"; l.rel="noopener"; document.body.appendChild(l); l.click(); l.remove(); } else sheet(`<h2>Tell us what you think</h2><p class="muted">The feedback form opens in a day or two. Meanwhile, join the early list on the website and we'll ask you there.</p><a class="btn primary block" href="../#join" style="text-decoration:none">Go to the website</a><button class="btn ghost block" data-act="closesheet">Keep exploring</button>`); break;
+    case "ob-skip": { const n=$("#nameIn"); if(n) S.name=n.value.trim().slice(0,30); } S.region="karnataka"; S.practice="home"; S.onboarded=true; S.tourDone=false; save(); obStep=0; go("home"); break;
+    case "tour": if(route()!=="home") go("home"); setTimeout(startTour, 60); track("tour-replay"); break;
+    case "tipok": S.tips = S.tips || {}; S.tips[a.dataset.k] = true; save(); rerender(); break;
+    case "react": { const v = a.dataset.v; track("puja-react-" + v); const box = $("#react");
+      box.innerHTML = v === "different" ? `<p><b>Thank you. That's exactly what we need to hear.</b></p><p class="small" style="color:var(--night-muted)">Tell us how your family does it, or ask an elder and save their way.</p><div class="row" style="justify-content:center;flex-wrap:wrap"><button class="pbtn" data-act="feedback">Tell us</button><button class="pbtn" data-act="ask" data-q="How do we do the Lakshmi puja at home?">Ask an elder</button></div>` : `<p><b>Thank you!</b> That helps us get every tradition right.</p>`; break; }
+    case "feedback": track("feedback-open"); if(FORM_URL){ const l=document.createElement("a"); l.href=FORM_URL; l.target="_blank"; l.rel="noopener"; document.body.appendChild(l); l.click(); l.remove(); } else sheet(`<h2>Tell us what you think</h2><p class="muted">The feedback form opens in a day or two. Meanwhile, join the early list on the website and we'll ask you there.</p><a class="btn primary block" href="../#join" style="text-decoration:none">Go to the website</a><button class="btn ghost block" data-act="closesheet">Keep exploring</button>`); break;
     case "pfilter": S.priestFilter = a.dataset.v; save(); rerender(); break;
     case "book": bookSheet(Number(a.dataset.i)); break;
     case "sendbook": closeSheet(); toast("Preview: no request is sent"); break;
