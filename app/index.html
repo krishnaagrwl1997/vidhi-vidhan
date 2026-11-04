@@ -253,6 +253,51 @@ nav.tabs svg{width:22px;height:22px}
 .plist li{padding-left:4px}
 .plist li span + .sample{margin-left:8px}
 .react{display:flex;flex-direction:column;gap:10px;align-items:center;background:rgba(255,255,255,.06);border-radius:16px;padding:14px;max-width:360px}
+
+/* ---- Family rituals editor: built for elders ---- */
+.elder{position:fixed;inset:0;z-index:40;background:var(--ground);overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding:calc(12px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(28px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));font-size:18px}
+.elder.big{font-size:22px}
+.elder .ein{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.elder h1{font-size:1.7em;line-height:1.2}
+.elder[lang="kn"]{font-family:"Noto Sans Kannada","Hind",sans-serif}
+.etop{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;position:sticky;top:0;background:var(--ground);padding:6px 0;z-index:2}
+.etop button{font:700 .85em "Baloo 2","Noto Sans Kannada",sans-serif;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 14px;cursor:pointer;min-height:44px}
+.elang{display:flex;gap:4px}
+.elder.big .etop{font-size:17px}
+.etop button{padding:7px 12px}
+.elang button[aria-pressed="true"],.ebig[aria-pressed="true"]{background:var(--purple);border-color:var(--purple);color:#FFF3D6}
+@media (max-width:420px){.ebig span{display:none}}
+.ef{display:flex;flex-direction:column;gap:8px}
+.ef label{font-weight:700;font-size:1em}
+.elder input,.elder textarea,.elder select{width:100%;font:inherit;font-size:1em;border:2px solid var(--line);background:var(--surface);border-radius:14px;padding:12px 14px;color:var(--ink);min-height:52px}
+.elder input:focus,.elder textarea:focus,.elder select:focus{border-color:var(--leaf);outline:none}
+.frow{display:flex;gap:8px;align-items:stretch}
+.frow > input,.frow > textarea{flex:1;min-width:0}
+.emic{flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:64px;border:2px solid var(--line);background:var(--surface);border-radius:14px;color:var(--leaf);font:700 .7em "Baloo 2","Noto Sans Kannada",sans-serif;cursor:pointer;padding:6px}
+.emic.on{background:var(--leaf);color:#fff;border-color:var(--leaf);animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px rgba(208,17,92,.2)}}
+.echips,.echoice{display:flex;flex-wrap:wrap;gap:8px}
+.echips button,.echoice button{font:inherit;font-size:.95em;font-weight:600;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:14px;padding:12px 16px;cursor:pointer;min-height:52px}
+.echips button[aria-pressed="true"],.echoice button[aria-pressed="true"]{border-color:var(--leaf);background:var(--leaf-soft)}
+.echoice button{flex:1 1 220px;text-align:left}
+.ebtn{font:700 1em "Baloo 2","Noto Sans Kannada",sans-serif;border:0;border-radius:999px;padding:14px 20px;cursor:pointer;min-height:56px;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.ebtn.primary{background:var(--leaf);color:#fff;box-shadow:0 3px 0 #A80B49}
+.ebtn.ghost{background:var(--surface);color:var(--ink);border:2px solid var(--line)}
+.ebtn.rec{background:#C81E1E;color:#fff;animation:pulse 1.2s ease-in-out infinite}
+.elink{align-self:flex-start;background:none;border:0;padding:6px 0;color:var(--leaf);font:700 .95em "Baloo 2","Noto Sans Kannada",sans-serif;cursor:pointer}
+.ehint{color:var(--muted);font-size:.9em}
+.estep{background:var(--surface);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:14px;box-shadow:0 0 0 2px var(--line)}
+.eh{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.enum{font:800 1.1em "Baloo 2","Noto Sans Kannada",sans-serif;color:var(--purple)}
+.ectl{display:flex;gap:6px}
+.ectl button{min-width:44px;min-height:44px;border:2px solid var(--line);background:var(--ground);border-radius:12px;font:inherit;font-size:.8em;font-weight:600;cursor:pointer;color:var(--ink)}
+.ectl button:disabled{opacity:.35}
+.estep details summary{cursor:pointer;font-weight:600;color:var(--leaf);padding:6px 0}
+.estep details[open] summary{margin-bottom:10px}
+.evoice{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.ritcard .t-title{font-size:1.05rem}
+@media (prefers-reduced-motion: reduce){.emic.on,.ebtn.rec{animation:none}}
 </style>
 
 <div class="app" id="app"></div>
@@ -266,6 +311,7 @@ nav.tabs svg{width:22px;height:22px}
 </nav>
 <button class="fab" id="fab" data-act="feedback" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H9l-5 4z"/></svg>Feedback</button>
 <div id="puja" class="puja" hidden></div>
+<div id="elder" class="elder" hidden role="dialog" aria-modal="true" aria-label="Add a family ritual"></div>
 <div id="sheet" class="sheet" hidden><div class="sheet-in" id="sheetIn" role="dialog" aria-modal="true"></div></div>
 
 <script src="../config.js"></script>
@@ -453,6 +499,12 @@ const NRI = {London:"~4:20–6:50 PM", "New Jersey":"~4:50–7:20 PM", Singapore
 /* ================= State ================= */
 const KEY = "rasam-proto-v2";
 const defaultState = {
+  rituals:[{id:"r-ex1", ex:true, title:"Bali Padyami puja", occ:"Deepavali", by:"Amma", steps:[
+    {t:"Draw Bali at the threshold", d:"In the morning, draw a simple figure of King Bali with rice flour at the main door.", w:"Bali comes home to his people once a year. We welcome him at the door.", i:"Rice flour", audio:""},
+    {t:"Offer flowers and a lamp", d:"Put haldi, kumkum and a few flowers on the figure. Light one lamp beside it.", w:"", i:"Haldi, kumkum, flowers, one lamp", audio:""},
+    {t:"Call him back next year", d:"Fold your hands and say: Bali raja, come again next year.", w:"Nothing elaborate. Your Ajji always said it simply.", i:"", audio:""},
+    {t:"Share something sweet", d:"Give everyone a little holige or any sweet made at home.", w:"", i:"", audio:""}]}],
+  elderLang:"en", elderBig:false,
   onboarded:false, region:"karnataka", practice:"home", famNote:"", lang:"kn", tips:{},
   tasks:{t1:true, t2:true}, items:{s3:true, s7:true, s12:true, s16:true}, extra:[],
   assign:{t4:0, t5:1, t10:2, t7:3},
@@ -489,7 +541,7 @@ const LANG = {kn:"ಕನ್ನಡ", en:"English", hi:"हिन्दी"};
 const back = (to="more", label="More") => `<button class="back" data-go="${to}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3L5 8l5 5"/></svg>${label}</button>`;
 const sw = (on, act, extra="") => `<button class="switch" role="switch" aria-checked="${!!on}" data-act="${act}" ${extra}></button>`;
 function speak(text){
-  try{ if(!("speechSynthesis" in window)) throw 0; speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.lang = "en-IN"; u.rate = .9; speechSynthesis.speak(u); }
+  try{ if(!("speechSynthesis" in window)) throw 0; speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.lang = /[\u0C80-\u0CFF]/.test(text) ? "kn-IN" : /[\u0900-\u097F]/.test(text) ? "hi-IN" : /[\u0B80-\u0BFF]/.test(text) ? "ta-IN" : /[\u0C00-\u0C7F]/.test(text) ? "te-IN" : "en-IN"; u.rate = .9; speechSynthesis.speak(u); }
   catch(e){ toast("Audio isn't available in this browser. The app will use recorded voices."); }
 }
 function stopSpeak(){ try{ speechSynthesis.cancel(); }catch(e){} }
@@ -557,6 +609,161 @@ function viewPuja(){
       <ol class="plist">${STEPS.map(s=>`<li><span>${s.t}</span>${s.core?"":`<span class="sample">Full only</span>`}</li>`).join("")}</ol></section>
     <p class="small muted">Audio in this preview uses your phone's voice. The full app will have a priest's recording of every mantra.</p>`;
 }
+
+
+/* ================= Family rituals: elders write the vidhi-vidhan ================= */
+const EL_T = {
+en:{title:"Add your family's vidhi-vidhan",who:"Who is adding this?",name:"Name of the ritual",name_ph:"For example: Bali puja",occ:"For which festival or occasion?",start:"Start from",blank:"A blank page",tmpl:"The usual Lakshmi puja, to change",next:"Next",back:"Back",steps_h:"The steps, in order",steps_hint:"Write each step the way you would tell it. Short is fine.",step:"Step",st_t:"What is this step called?",st_d:"What do we do?",more:"Add why, and things needed (optional)",st_w:"Why we do it",st_i:"Things needed",speak:"Speak",listening:"Listening…",rec:"Record your voice",stop:"Stop recording",play:"Play",redo:"Record again",add_step:"Add another step",up:"Move up",down:"Move down",del:"Remove",save:"Save for the family",close:"Close",bigger:"Bigger text",need_name:"Please give the ritual a name.",need_step:"Please write at least one step.",saved:"Saved for the family",mic_no:"The microphone isn't available here. You can type instead.",local_note:"In this preview, what you write stays on this phone. In the full app it is shared with your family.",other:"Other"},
+hi:{title:"अपने परिवार का विधि-विधान जोड़ें",who:"यह कौन जोड़ रहा है?",name:"रस्म का नाम",name_ph:"जैसे: बलि पूजा",occ:"किस त्योहार या अवसर के लिए?",start:"कहाँ से शुरू करें",blank:"खाली पन्ना",tmpl:"सामान्य लक्ष्मी पूजा, बदलने के लिए",next:"आगे",back:"पीछे",steps_h:"चरण, क्रम से",steps_hint:"हर चरण वैसे लिखें जैसे आप बताते। छोटा भी ठीक है।",step:"चरण",st_t:"इस चरण का नाम",st_d:"क्या करते हैं?",more:"क्यों और ज़रूरी सामान जोड़ें (वैकल्पिक)",st_w:"क्यों करते हैं",st_i:"ज़रूरी सामान",speak:"बोलें",listening:"सुन रहे हैं…",rec:"अपनी आवाज़ रिकॉर्ड करें",stop:"रिकॉर्डिंग रोकें",play:"सुनें",redo:"फिर से रिकॉर्ड करें",add_step:"एक और चरण जोड़ें",up:"ऊपर",down:"नीचे",del:"हटाएँ",save:"परिवार के लिए सहेजें",close:"बंद करें",bigger:"बड़े अक्षर",need_name:"कृपया रस्म का नाम लिखें।",need_step:"कम से कम एक चरण लिखें।",saved:"परिवार के लिए सहेज दिया",mic_no:"यहाँ माइक्रोफ़ोन उपलब्ध नहीं है। आप लिख सकते हैं।",local_note:"इस प्रीव्यू में आपका लिखा इसी फ़ोन पर रहता है। पूरे ऐप में यह आपके परिवार के साथ साझा होगा।",other:"अन्य"},
+kn:{title:"ನಿಮ್ಮ ಮನೆತನದ ವಿಧಿ-ವಿಧಾನ ಸೇರಿಸಿ",who:"ಇದನ್ನು ಯಾರು ಸೇರಿಸುತ್ತಿದ್ದಾರೆ?",name:"ಆಚರಣೆಯ ಹೆಸರು",name_ph:"ಉದಾ: ಬಲಿ ಪೂಜೆ",occ:"ಯಾವ ಹಬ್ಬ ಅಥವಾ ಸಂದರ್ಭಕ್ಕೆ?",start:"ಎಲ್ಲಿಂದ ಶುರು ಮಾಡಬೇಕು",blank:"ಖಾಲಿ ಪುಟ",tmpl:"ಸಾಮಾನ್ಯ ಲಕ್ಷ್ಮೀ ಪೂಜೆ, ಬದಲಾಯಿಸಲು",next:"ಮುಂದೆ",back:"ಹಿಂದೆ",steps_h:"ಹಂತಗಳು, ಕ್ರಮವಾಗಿ",steps_hint:"ಪ್ರತಿ ಹಂತವನ್ನು ನೀವು ಹೇಳುವಂತೆಯೇ ಬರೆಯಿರಿ. ಚಿಕ್ಕದಾದರೂ ಸರಿ.",step:"ಹಂತ",st_t:"ಈ ಹಂತದ ಹೆಸರು",st_d:"ಏನು ಮಾಡುತ್ತೇವೆ?",more:"ಏಕೆ ಮತ್ತು ಬೇಕಾದ ವಸ್ತುಗಳನ್ನು ಸೇರಿಸಿ (ಐಚ್ಛಿಕ)",st_w:"ಏಕೆ ಮಾಡುತ್ತೇವೆ",st_i:"ಬೇಕಾದ ವಸ್ತುಗಳು",speak:"ಮಾತನಾಡಿ",listening:"ಕೇಳುತ್ತಿದ್ದೇವೆ…",rec:"ನಿಮ್ಮ ಧ್ವನಿ ರೆಕಾರ್ಡ್ ಮಾಡಿ",stop:"ರೆಕಾರ್ಡಿಂಗ್ ನಿಲ್ಲಿಸಿ",play:"ಕೇಳಿ",redo:"ಮತ್ತೆ ರೆಕಾರ್ಡ್ ಮಾಡಿ",add_step:"ಇನ್ನೊಂದು ಹಂತ ಸೇರಿಸಿ",up:"ಮೇಲೆ",down:"ಕೆಳಗೆ",del:"ತೆಗೆದುಹಾಕಿ",save:"ಕುಟುಂಬಕ್ಕಾಗಿ ಉಳಿಸಿ",close:"ಮುಚ್ಚಿ",bigger:"ದೊಡ್ಡ ಅಕ್ಷರ",need_name:"ದಯವಿಟ್ಟು ಆಚರಣೆಗೆ ಹೆಸರು ನೀಡಿ.",need_step:"ಕನಿಷ್ಠ ಒಂದು ಹಂತ ಬರೆಯಿರಿ.",saved:"ಕುಟುಂಬಕ್ಕಾಗಿ ಉಳಿಸಲಾಗಿದೆ",mic_no:"ಇಲ್ಲಿ ಮೈಕ್ರೊಫೋನ್ ಲಭ್ಯವಿಲ್ಲ. ನೀವು ಟೈಪ್ ಮಾಡಬಹುದು.",local_note:"ಈ ಪ್ರಿವ್ಯೂನಲ್ಲಿ ನೀವು ಬರೆದದ್ದು ಈ ಫೋನ್‌ನಲ್ಲೇ ಇರುತ್ತದೆ. ಪೂರ್ಣ ಆ್ಯಪ್‌ನಲ್ಲಿ ಇದು ನಿಮ್ಮ ಕುಟುಂಬದೊಂದಿಗೆ ಹಂಚಿಕೆಯಾಗುತ್ತದೆ.",other:"ಇತರ"}
+};
+const et = k => ((EL_T[S.elderLang] || EL_T.en)[k] ?? EL_T.en[k]);
+const OCC = ["Deepavali","Ugadi","Makar Sankranti","Varamahalakshmi","Ganesha Chaturthi","Navaratri","Griha pravesha","Shraddha","Other"];
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+const CAN_REC = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder);
+let EDIT = null, ESCREEN = 0, FROM = "blank", REC = null, LISTEN = null, DEL_PENDING = null, RIT = null;
+
+/* Voice notes are kept in this browser's IndexedDB */
+function idb(){ return new Promise((res, rej)=>{ try{ const r = indexedDB.open("vv-audio", 1); r.onupgradeneeded = ()=>r.result.createObjectStore("clips"); r.onsuccess = ()=>res(r.result); r.onerror = ()=>rej(r.error); }catch(e){ rej(e); } }); }
+async function clipPut(k, blob){ const d = await idb(); return new Promise((res, rej)=>{ const tx = d.transaction("clips","readwrite"); tx.objectStore("clips").put(blob, k); tx.oncomplete = res; tx.onerror = ()=>rej(tx.error); }); }
+async function clipGet(k){ const d = await idb(); return new Promise((res, rej)=>{ const q = d.transaction("clips").objectStore("clips").get(k); q.onsuccess = ()=>res(q.result); q.onerror = ()=>rej(q.error); }); }
+async function playClip(k){ try{ const b = await clipGet(k); if(!b){ toast("This recording is on another phone"); return; } const a = new Audio(URL.createObjectURL(b)); a.play(); }catch(e){ toast("Couldn't play the recording"); } }
+
+function ritCard(r){
+  const confirm = DEL_PENDING === r.id;
+  return `<div class="card stack ritcard" style="gap:8px">
+    <div class="row between" style="align-items:flex-start"><div style="min-width:0"><div class="t-title">${esc(r.title)}</div><div class="small muted">${esc(r.occ)} · by ${esc(r.by)} · ${r.steps.length} step${r.steps.length===1?"":"s"}${r.steps.some(s=>s.audio)?" · with voice":""}</div></div>${r.ex?`<span class="sample">Example</span>`:""}</div>
+    <div class="row" style="flex-wrap:wrap;gap:8px"><button class="btn primary sm" data-act="ritplay" data-id="${r.id}">Follow along</button><button class="btn ghost sm" data-act="ritedit" data-id="${r.id}">Edit</button><button class="btn ghost sm" data-act="ritdel" data-id="${r.id}">${confirm ? "Tap again to remove" : "Remove"}</button></div>
+  </div>`;
+}
+function ritualsSection(){
+  return `<section class="stack" id="rituals">
+    <div class="section-head"><h2>Family rituals</h2><span class="small muted">${S.rituals.length} saved</span></div>
+    <p class="small muted">The whole vidhi-vidhan, written by your family in your family's way. Elders can type or just speak each step, and record their own voice.</p>
+    ${S.rituals.length ? S.rituals.map(ritCard).join("") : `<div class="card"><p class="muted">No family rituals yet. Amma, Ajji or anyone who knows can add one.</p></div>`}
+    <div class="row" style="flex-wrap:wrap;gap:8px"><button class="btn primary" data-act="ritnew">Add your family's vidhi-vidhan</button><button class="btn ghost sm" data-act="ritask" data-sim>Ask an elder to add one</button></div>
+  </section>`;
+}
+
+/* ---------- Editor ---------- */
+function openEditor(r){
+  EDIT = r ? JSON.parse(JSON.stringify(r)) : {id:"r" + Date.now(), title:"", occ:"Deepavali", by:(MEMBERS[3] && MEMBERS[3].n) || "Amma", steps:[]};
+  delete EDIT.ex; ESCREEN = r ? 1 : 0; FROM = "blank";
+  $("#elder").hidden = false; document.body.style.overflow = "hidden"; renderEditor(); track("ritual-editor-" + (r ? "edit" : "new"));
+}
+function closeEditor(){ stopRec(); stopListen(); $("#elder").hidden = true; document.body.style.overflow = ""; EDIT = null; }
+function micBtn(f, i){ return SR ? `<button class="emic ${LISTEN && LISTEN.f===f && LISTEN.i===i ? "on" : ""}" data-e="mic" data-f="${f}" data-ix="${i}" aria-label="${et("speak")}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span>${LISTEN && LISTEN.f===f && LISTEN.i===i ? et("listening") : et("speak")}</span></button>` : ""; }
+function renderEditor(){
+  const big = !!S.elderBig, langs = [["en","English"],["hi","हिन्दी"],["kn","ಕನ್ನಡ"]];
+  const top = `<div class="etop"><button class="ex" data-e="close">${et("close")}</button>
+    <div class="elang" role="group" aria-label="Language">${langs.map(([k,v])=>`<button aria-pressed="${(S.elderLang||"en")===k}" data-e="lang" data-v="${k}">${v}</button>`).join("")}</div>
+    <button class="ebig" aria-pressed="${big}" data-e="big">A+ <span>${et("bigger")}</span></button></div>`;
+  let body;
+  if(ESCREEN === 0){
+    body = `<h1>${et("title")}</h1>
+      <div class="ef"><label>${et("who")}</label><div class="echips">${MEMBERS.map(m=>`<button aria-pressed="${EDIT.by===m.n}" data-e="by" data-v="${esc(m.n)}">${esc(m.n)}</button>`).join("")}</div></div>
+      <div class="ef"><label for="e_title">${et("name")}</label><div class="frow"><input id="e_title" data-f="title" value="${esc(EDIT.title)}" placeholder="${esc(et("name_ph"))}" maxlength="60">${micBtn("title",-1)}</div></div>
+      <div class="ef"><label for="e_occ">${et("occ")}</label><select id="e_occ" data-f="occ">${OCC.map(o=>`<option ${EDIT.occ===o?"selected":""} value="${o}">${o==="Other"?et("other"):o}</option>`).join("")}</select></div>
+      <div class="ef"><label>${et("start")}</label><div class="echoice"><button aria-pressed="${FROM==="blank"}" data-e="from" data-v="blank">${et("blank")}</button><button aria-pressed="${FROM==="tmpl"}" data-e="from" data-v="tmpl">${et("tmpl")}</button></div></div>
+      <button class="ebtn primary" data-e="next">${et("next")}</button>`;
+  } else {
+    body = `<button class="elink" data-e="back">← ${et("back")}</button>
+      <h1>${esc(EDIT.title || et("title"))}</h1><p class="ehint">${et("steps_h")} · ${et("steps_hint")}</p>
+      ${EDIT.steps.map((s,i)=>`<div class="estep">
+        <div class="eh"><span class="enum">${et("step")} ${i+1}</span><div class="ectl"><button data-e="up" data-ix="${i}" aria-label="${et("up")}" ${i===0?"disabled":""}>↑</button><button data-e="down" data-ix="${i}" aria-label="${et("down")}" ${i===EDIT.steps.length-1?"disabled":""}>↓</button><button data-e="del" data-ix="${i}">${et("del")}</button></div></div>
+        <div class="ef"><label for="t${i}">${et("st_t")}</label><div class="frow"><input id="t${i}" data-f="t" data-ix="${i}" value="${esc(s.t)}" maxlength="80">${micBtn("t",i)}</div></div>
+        <div class="ef"><label for="d${i}">${et("st_d")}</label><div class="frow"><textarea id="d${i}" data-f="d" data-ix="${i}" rows="3" maxlength="600">${esc(s.d)}</textarea>${micBtn("d",i)}</div></div>
+        <details ${s.w || s.i ? "open" : ""}><summary>${et("more")}</summary>
+          <div class="ef"><label for="w${i}">${et("st_w")}</label><div class="frow"><textarea id="w${i}" data-f="w" data-ix="${i}" rows="2" maxlength="300">${esc(s.w||"")}</textarea>${micBtn("w",i)}</div></div>
+          <div class="ef"><label for="i${i}">${et("st_i")}</label><input id="i${i}" data-f="i" data-ix="${i}" value="${esc(s.i||"")}" maxlength="160"></div>
+        </details>
+        <div class="evoice">${REC && REC.i===i ? `<button class="ebtn rec" data-e="recstop" data-ix="${i}">● ${et("stop")}</button>`
+          : s.audio ? `<button class="ebtn ghost" data-e="play" data-ix="${i}">▶ ${et("play")}</button><button class="elink" data-e="rec" data-ix="${i}">${et("redo")}</button>`
+          : `<button class="ebtn ghost" data-e="rec" data-ix="${i}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg> ${et("rec")}</button>`}</div>
+      </div>`).join("")}
+      <button class="ebtn ghost" data-e="add">+ ${et("add_step")}</button>
+      <button class="ebtn primary" data-e="save">${et("save")}</button>
+      <p class="ehint">${et("local_note")}</p>`;
+  }
+  const el = $("#elder"); el.classList.toggle("big", big); el.setAttribute("lang", S.elderLang || "en");
+  el.innerHTML = `<div class="ein">${top}${body}</div>`;
+}
+function syncField(t){ if(!EDIT || !t.dataset.f) return; const f = t.dataset.f, i = Number(t.dataset.ix);
+  if(f === "title" || f === "occ") EDIT[f] = t.value; else if(EDIT.steps[i]) EDIT.steps[i][f] = t.value; }
+function stopListen(){ if(LISTEN){ try{ LISTEN.r.stop(); }catch(e){} LISTEN = null; } }
+function startListen(f, i){
+  stopListen();
+  const r = new SR(); r.lang = {en:"en-IN", hi:"hi-IN", kn:"kn-IN"}[S.elderLang || "en"]; r.interimResults = false; r.continuous = false;
+  LISTEN = {r, f, i}; renderEditor();
+  r.onresult = e=>{ const text = Array.from(e.results).map(x=>x[0].transcript).join(" ").trim(); if(!text) return;
+    if(f === "title") EDIT.title = (EDIT.title ? EDIT.title + " " : "") + text; else { const s = EDIT.steps[i]; s[f] = (s[f] ? s[f] + " " : "") + text; } };
+  r.onerror = ()=>{ toast(et("mic_no")); }; r.onend = ()=>{ LISTEN = null; renderEditor(); };
+  try{ r.start(); track("ritual-speak"); }catch(e){ LISTEN = null; toast(et("mic_no")); renderEditor(); }
+}
+function stopRec(){ if(REC){ try{ REC.mr.stop(); }catch(e){} } }
+async function startRec(i){
+  if(!CAN_REC){ toast(et("mic_no")); return; }
+  try{
+    const stream = await navigator.mediaDevices.getUserMedia({audio:true}), chunks = [], mr = new MediaRecorder(stream);
+    mr.ondataavailable = e=>{ if(e.data.size) chunks.push(e.data); };
+    mr.onstop = async ()=>{ stream.getTracks().forEach(t=>t.stop()); const key = EDIT.id + "-" + i + "-" + Date.now();
+      try{ await clipPut(key, new Blob(chunks, {type: mr.mimeType || "audio/webm"})); if(EDIT && EDIT.steps[i]) EDIT.steps[i].audio = key; track("ritual-voice"); }catch(e){ toast("Couldn't save the recording"); }
+      REC = null; if(EDIT) renderEditor(); };
+    REC = {mr, i}; mr.start(); renderEditor();
+  }catch(e){ REC = null; toast(et("mic_no")); }
+}
+function saveRitual(){
+  EDIT.title = (EDIT.title || "").trim();
+  EDIT.steps = EDIT.steps.map(s=>({t:(s.t||"").trim(), d:(s.d||"").trim(), w:(s.w||"").trim(), i:(s.i||"").trim(), audio:s.audio||""})).filter(s=>s.t || s.d || s.audio);
+  if(!EDIT.title){ ESCREEN = 0; renderEditor(); toast(et("need_name")); return; }
+  if(!EDIT.steps.length){ if(!EDIT.steps.length) EDIT.steps.push({t:"",d:"",w:"",i:""}); renderEditor(); toast(et("need_step")); return; }
+  const k = S.rituals.findIndex(r=>r.id === EDIT.id); EDIT.updated = Date.now();
+  if(k >= 0) S.rituals[k] = EDIT; else S.rituals.unshift(EDIT);
+  save(); track("ritual-saved-" + EDIT.steps.length); const msg = et("saved"); closeEditor(); if(route() !== "family") go("family"); else rerender(); toast(msg);
+}
+document.addEventListener("input", e=>{ if(e.target.closest("#elder")) syncField(e.target); });
+document.addEventListener("change", e=>{ if(e.target.closest("#elder")) syncField(e.target); });
+document.addEventListener("click", e=>{
+  const b = e.target.closest("#elder [data-e]"); if(!b) return;
+  const a = b.dataset.e, i = Number(b.dataset.ix);
+  switch(a){
+    case "close": closeEditor(); break;
+    case "lang": S.elderLang = b.dataset.v; save(); renderEditor(); break;
+    case "big": S.elderBig = !S.elderBig; save(); renderEditor(); break;
+    case "by": EDIT.by = b.dataset.v; renderEditor(); break;
+    case "from": FROM = b.dataset.v; renderEditor(); break;
+    case "next": { const t = $("#e_title"); if(t) EDIT.title = t.value; if(!EDIT.title.trim()){ toast(et("need_name")); $("#e_title").focus(); return; }
+      if(!EDIT.steps.length) EDIT.steps = FROM === "tmpl" ? STEPS.map(s=>({t:s.t, d:s.do, w:s.why, i:""})) : [{t:"",d:"",w:"",i:""}];
+      ESCREEN = 1; renderEditor(); $("#elder").scrollTop = 0; break; }
+    case "back": ESCREEN = 0; renderEditor(); break;
+    case "add": EDIT.steps.push({t:"",d:"",w:"",i:""}); renderEditor(); const last = $("#t" + (EDIT.steps.length-1)); if(last){ last.scrollIntoView({block:"center"}); last.focus(); } break;
+    case "del": EDIT.steps.splice(i,1); renderEditor(); break;
+    case "up": if(i>0){ [EDIT.steps[i-1], EDIT.steps[i]] = [EDIT.steps[i], EDIT.steps[i-1]]; renderEditor(); } break;
+    case "down": if(i<EDIT.steps.length-1){ [EDIT.steps[i+1], EDIT.steps[i]] = [EDIT.steps[i], EDIT.steps[i+1]]; renderEditor(); } break;
+    case "mic": if(LISTEN){ stopListen(); renderEditor(); } else startListen(b.dataset.f, i); break;
+    case "rec": startRec(i); break;
+    case "recstop": stopRec(); break;
+    case "play": playClip(EDIT.steps[i].audio); break;
+    case "save": saveRitual(); break;
+  }
+});
+document.addEventListener("keydown", e=>{ if(e.key === "Escape" && !$("#elder").hidden) closeEditor(); });
+
+/* ---------- Family-side actions ---------- */
+document.addEventListener("click", e=>{
+  const b = e.target.closest("[data-act]"); if(!b || b.closest("#elder")) return;
+  const act = b.dataset.act, id = b.dataset.id;
+  if(act === "ritnew"){ openEditor(null); }
+  else if(act === "ritedit"){ const r = S.rituals.find(x=>x.id===id); if(r) openEditor(r); }
+  else if(act === "ritdel"){ if(DEL_PENDING === id){ S.rituals = S.rituals.filter(x=>x.id!==id); DEL_PENDING = null; save(); } else { DEL_PENDING = id; setTimeout(()=>{ if(DEL_PENDING===id){ DEL_PENDING = null; if(route()==="family") rerender(); } }, 4000); } rerender(); }
+  else if(act === "ritplay"){ const r = S.rituals.find(x=>x.id===id); if(!r) return; RIT = r; track("ritual-play"); openPuja(); }
+  else if(act === "ritvoice"){ playClip(b.dataset.k); }
+  else if(act === "ritask"){ const url = location.href.split("#")[0] + "#elder"; const l = document.createElement("a"); l.href = "https://wa.me/?text=" + encodeURIComponent("Could you write down how we do one of our rituals, step by step? You can type or just speak: " + url); l.target = "_blank"; l.rel = "noopener"; document.body.appendChild(l); l.click(); l.remove(); track("ritual-ask"); }
+}, true);
+function ritExtras(s){
+  return `${s.items ? `<div class="fnote" style="background:rgba(233,184,80,.12)"><div class="who" style="color:#E9B850">Things needed</div>${esc(s.items)}</div>` : ""}${s.audio ? `<button class="pbtn" data-act="ritvoice" data-k="${esc(s.audio)}">▶ Play ${esc(RIT.by)}'s voice</button>` : ""}`;
+}
+if(location.hash === "#elder") setTimeout(()=>openEditor(null), 300);
 
 /* ================= Router ================= */
 const VIEWS = ["pujaview","home","prepare","samagri","family","more","welcome","events","griha","priests","panchang","vrats","shraddha","recipes","rangoli","stories","nearby","abroad"];
@@ -766,6 +973,8 @@ function viewFamily(){
       ${MEMBERS.map(m=>`<div class="member"><div class="avatar">${m.i}</div><div><div class="t-title">${m.n}</div><div class="small muted">${m.r}</div></div></div>`).join("")}
       <button class="btn ghost sm" style="align-self:flex-start" data-act="invite" data-sim>Invite a family member</button>
     </section>
+
+    ${ritualsSection()}
 
     <section class="stack">
       <div class="section-head"><h2>Ask an elder</h2><button class="link" data-act="ask" data-q="">New question</button></div>
@@ -987,7 +1196,7 @@ function closeSheet(){ $("#sheet").hidden = true; }
 
 /* ================= Guided puja ================= */
 let step = 0, lock = null;
-const pujaSteps = () => S.pujaLen === "short" ? STEPS.filter(s=>s.core) : STEPS;
+const pujaSteps = () => RIT ? RIT.steps.map(x=>({t:x.t || "", do:x.d || "", why:x.w || "", items:x.i || "", audio:x.audio || ""})) : (S.pujaLen === "short" ? STEPS.filter(s=>s.core) : STEPS);
 function startSheet(){
   const skipped = STEPS.filter(s=>!s.core).map(s=>s.t).join(", ");
   sheet(`<h2>Lakshmi puja</h2>
@@ -1000,7 +1209,7 @@ function startSheet(){
 }
 function openPuja(){ closeSheet(); step = 0; $("#puja").hidden = false; document.body.style.overflow="hidden"; renderPuja();
   try{ navigator.wakeLock && navigator.wakeLock.request("screen").then(l=>lock=l).catch(()=>{}); }catch(e){} }
-function closePuja(){ stopSpeak(); $("#puja").hidden = true; document.body.style.overflow=""; try{ lock && lock.release(); }catch(e){} lock=null; }
+function closePuja(){ RIT = null; stopSpeak(); $("#puja").hidden = true; document.body.style.overflow=""; try{ lock && lock.release(); }catch(e){} lock=null; }
 function stepText(s){ return s.t + ". " + s.do + (s.m ? " Now say the mantra shown on screen." : ""); }
 function renderPuja(){
   const L = pujaSteps(), N = L.length, end = step >= N;
@@ -1009,21 +1218,22 @@ function renderPuja(){
   const m = s.m ? `<div class="mantra"><span class="lab">Say</span>${S.lang!=="en"?`<div class="script ${S.lang==="kn"?"kn":""}">${S.lang==="kn"?s.m.kn:s.m.dv}</div>`:""}<div class="tr">${s.m.tr}</div></div>` : "";
   $("#puja").innerHTML = `<div class="wrap">
     <div class="top"><div class="bar" aria-hidden="true">${L.map((_,i)=>`<i class="${i<=step?"on":""}"></i>`).join("")}</div><button class="pbtn" data-act="close">Close</button></div>
-    ${end ? `<div class="scroll" style="justify-content:center;text-align:center;align-items:center">${diya(140)}<h2>Shubha Deepavali</h2><p class="do">Lakshmi puja is complete. Share the prasada and enjoy the evening with your family.</p>
+    ${end && RIT ? `<div class="scroll" style="justify-content:center;text-align:center;align-items:center">${diya(140)}<h2>${esc(RIT.title)}</h2><p class="do">Done, the way ${esc(RIT.by)} does it.</p><button class="btn" style="background:var(--brass);color:#2A1E07" data-act="close">Back to the family</button></div>` : end ? `<div class="scroll" style="justify-content:center;text-align:center;align-items:center">${diya(140)}<h2>Shubha Deepavali</h2><p class="do">Lakshmi puja is complete. Share the prasada and enjoy the evening with your family.</p>
       <div class="react" id="react"><p><b>Was this how your family does it?</b></p><div class="row" style="justify-content:center;flex-wrap:wrap"><button class="pbtn" data-act="react" data-v="yes">Yes</button><button class="pbtn" data-act="react" data-v="mostly">Mostly</button><button class="pbtn" data-act="react" data-v="different">Quite different</button></div></div>
       <button class="btn" style="background:var(--brass);color:#2A1E07" data-act="close">Back to the plan</button></div>` : `
     <div class="scroll">
       ${step===0?diya(90):""}
-      <div class="num">Step ${step+1} of ${N} · ${S.pujaLen==="short"?"Short":"Full"} Lakshmi puja</div>
-      <h2>${s.t}</h2>
-      <p class="do">${s.do}</p>
+      <div class="num">Step ${step+1} of ${N} · ${RIT ? esc(RIT.title) + " · " + esc(RIT.by) + "'s way" : (S.pujaLen==="short"?"Short":"Full") + " Lakshmi puja"}</div>
+      <h2>${RIT ? esc(s.t) : s.t}</h2>
+      <p class="do">${RIT ? esc(s.do) : s.do}</p>
       ${m}
-      <p class="why"><b>Why · </b>${s.why}</p>
+      ${RIT ? ritExtras(s) : ""}
+      ${s.why ? `<p class="why"><b>Why · </b>${RIT ? esc(s.why) : s.why}</p>` : ""}
       ${fam.map(n=>`<div class="fnote"><div class="who">${esc(n.who)}'s way</div>${esc(n.text)}</div>`).join("")}
       <div class="tools">
         <button class="pbtn" data-act="listen">Listen</button>
         <button class="pbtn" aria-pressed="${S.aloud}" data-act="aloud2">Guide me aloud</button>
-        <button class="pbtn" data-act="missing">Missing an item?</button>
+        ${RIT ? "" : `<button class="pbtn" data-act="missing">Missing an item?</button>`}
         <button class="pbtn" data-act="ask" data-q="How do we do ${esc(s.t)} at home?">Ask an elder</button>
       </div>
     </div>
