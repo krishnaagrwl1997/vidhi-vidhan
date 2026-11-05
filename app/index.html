@@ -6,7 +6,7 @@
 <title>Vidhi-Vidhan App</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Hind:wght@400;500;600&family=Noto+Sans+Kannada:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@500&family=Tiro+Devanagari+Hindi&family=Hind:wght@400;500;600&family=Noto+Sans+Kannada:wght@400;600&display=swap">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -325,6 +325,18 @@ nav.tabs button{font-size:.66rem}
 .cal-day i{display:flex;gap:2px;height:6px}
 .cal-day em,.dot{display:inline-block;width:6px;height:6px;border-radius:50%}
 .cal-day.sel em{box-shadow:0 0 0 1px #FFF3D6}
+
+/* ---- Design pass: editorial headings, floating tab pill, quieter cards ---- */
+:root{--serif:"Instrument Serif","Tiro Devanagari Hindi",Georgia,serif;--mono:"Geist Mono",ui-monospace,monospace}
+h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:-.015em}
+h1{font-size:2.15rem;line-height:1.05}
+h2{font-size:1.55rem;line-height:1.1}
+.card{border-color:rgba(34,20,10,.08);border-radius:20px;box-shadow:0 1px 0 rgba(34,20,10,.03)}
+nav.tabs{background:transparent!important;border:0!important;box-shadow:none!important;padding:0 12px calc(12px + env(safe-area-inset-bottom,0px))!important;pointer-events:none}
+nav.tabs .in{pointer-events:auto;background:rgba(27,15,58,.9);backdrop-filter:blur(14px) saturate(1.4);border-radius:999px;padding:5px;box-shadow:0 16px 36px -14px rgba(27,15,58,.6),0 0 0 1px rgba(255,255,255,.1);max-width:420px}
+nav.tabs button{color:#BBA8E8;border-radius:999px;padding:7px 0 6px}
+nav.tabs button[aria-current="page"]{color:#1B0F3A;background:var(--marigold)}
+.chip{font-family:inherit}
 </style>
 
 <div class="app" id="app"></div>

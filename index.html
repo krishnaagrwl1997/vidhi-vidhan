@@ -20,7 +20,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%233E1585%22/%3E%3Cpath d=%22M32 10c-5 8-7 12-7 16a7 7 0 0 0 14 0c0-4-2-8-7-16z%22 fill=%22%23FFB21E%22/%3E%3Cpath d=%22M10 36h44c-2 10-10 16-22 16S12 46 10 36z%22 fill=%22%23D0115C%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Hind:wght@400;500;600&family=Noto+Sans+Kannada:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Tiro+Devanagari+Hindi:ital@0;1&family=Hind:wght@400;500;600&family=Noto+Sans+Kannada:wght@400;600&display=swap">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -468,6 +468,178 @@ section.band{padding-block:80px}
 .fstory{font-size:1.18rem;line-height:1.6;color:#2A1405;max-width:36em}
 .fname{color:#3A1804}
 .off,.off *{animation-play-state:paused!important}
+
+/* =====================================================================
+   Design pass: calm canvas, festival panels, editorial type, product UI
+   ===================================================================== */
+:root{--canvas:#FFFBF5;--hair:rgba(34,20,10,.1);--serif:"Instrument Serif","Tiro Devanagari Hindi",Georgia,serif;--sans:"Geist","Hind",system-ui,sans-serif;--mono:"Geist Mono",ui-monospace,SFMono-Regular,monospace;
+  --display:var(--sans);--body:var(--sans);--head:var(--serif)}
+html[lang="hi"]{--head:"Tiro Devanagari Hindi",Georgia,serif;--body:"Hind",system-ui,sans-serif;--display:"Hind",system-ui,sans-serif}
+html[lang="kn"]{--head:"Noto Serif Kannada","Noto Sans Kannada",serif}
+html[lang="ta"]{--head:"Noto Serif Tamil","Noto Sans Tamil",serif}
+html[lang="te"]{--head:"Noto Serif Telugu","Noto Sans Telugu",serif}
+body{background:var(--canvas);font-family:var(--body);padding-bottom:96px}
+body::before{background:var(--canvas)}
+h1,h2{font-family:var(--head);font-weight:400;letter-spacing:-.02em}
+.wstep b,.faq summary,.tl .d,.seg button,.dnav button,.dbtn,.minibtn,.hint,.tag,.addnote button,.linkbtn{font-weight:600}
+h1{font-size:clamp(3rem,8.4vw,6.6rem);line-height:.96}
+h2{font-size:clamp(2.3rem,5.2vw,4.1rem);line-height:1}
+h1 em,h2 em{font-style:italic}
+html:not([lang="en"]) h1{font-size:clamp(2.2rem,5.6vw,4.4rem);line-height:1.2;letter-spacing:0}
+html:not([lang="en"]) h2{font-size:clamp(1.8rem,3.8vw,3rem);line-height:1.25;letter-spacing:0}
+h3{font-family:var(--sans);font-weight:600;letter-spacing:-.01em}
+html:not([lang="en"]) h3{font-family:var(--body)}
+.lead{font-size:1.1rem;line-height:1.6}
+.btn{font-family:var(--sans);font-weight:600;box-shadow:none!important;padding:13px 22px;letter-spacing:-.005em}
+.btn.gold{background:var(--marigold);color:#1B0F3A}
+.btn.rani{background:var(--rani)}
+
+/* Labels: small mono pills instead of chunky tags */
+.tag{font:500 .74rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:6px 12px 6px 6px;gap:8px;background:rgba(255,255,255,.75);border:1px solid var(--hair);box-shadow:none;margin-bottom:20px;backdrop-filter:blur(8px)}
+html:not([lang="en"]) .tag{font-family:var(--body);font-size:.85rem;letter-spacing:0}
+.tag i{width:22px;height:22px}.tag i svg{width:12px;height:12px}
+.hero .tag,.lakshmi .tag,.rakhi .tag,.cta .tag{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.28)}
+
+/* Nav: light glass */
+nav.top{background:rgba(255,251,245,.82);backdrop-filter:saturate(1.4) blur(14px);color:var(--ink);border-bottom:1px solid var(--hair)}
+.mark .dv{color:#B26A00}.mark .w{color:var(--rani)}
+.lang select,.sndbtn{color:var(--ink);background:#fff;border:1px solid var(--hair)}
+nav.top .btn.line{color:var(--ink);border:1px solid var(--hair)}
+
+/* Panels */
+header.hero,section.band,section.cta{background:none!important;padding:10px max(10px,env(safe-area-inset-left,0px)) 10px max(10px,env(safe-area-inset-right,0px))!important;overflow:visible}
+.panel{position:relative;overflow:hidden;border-radius:clamp(22px,3vw,40px);max-width:1380px;margin:0 auto;isolation:isolate}
+section.band .panel > .in{padding-block:clamp(60px,8vw,104px)}
+.panel > .in{z-index:1}
+.hero > .panel{color:var(--cream);background:repeating-conic-gradient(from 0deg at 50% 62%,rgba(255,255,255,.05) 0deg 6deg,transparent 6deg 12deg),radial-gradient(80% 70% at 50% 62%,var(--purple-2) 0%,var(--purple) 55%,var(--indigo) 100%)}
+.sankranti > .panel{background:linear-gradient(180deg,#9FD6F2 0%,#C9EAF9 100%)}
+.holi > .panel{background:#FFF1E6}
+.lakshmi > .panel{background:radial-gradient(80% 90% at 0% 100%,#E5267A 0%,var(--rani) 45%,var(--rani-deep) 100%)}
+.rakhi > .panel{background:radial-gradient(80% 100% at 100% 0%,#D3243F 0%,var(--kumkum) 50%,#7E0A1E 100%)}
+.durga > .panel{background:#fff;box-shadow:inset 0 0 0 1px var(--hair)}
+.ganesh > .panel{background:radial-gradient(70% 90% at 100% 100%,#FF9A3C 0%,var(--saffron) 50%,#D9580B 100%)}
+.pongal > .panel{background:var(--turmeric)}
+.cta > .panel{background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(255,255,255,.05) 0 8deg,transparent 8deg 16deg),radial-gradient(60% 80% at 50% 50%,var(--purple-2),var(--indigo));padding-block:clamp(60px,8vw,100px)}
+.durga .panel > .in{padding-block:clamp(56px,7vw,88px)}
+.head{gap:16px}
+.ticker{background:transparent;border:0;margin:6px 0}
+.ticker .track{font:500 .8rem var(--mono);letter-spacing:.14em;color:var(--ink-2);padding-block:14px}
+.ticker .track span::after{width:6px;height:6px;background:var(--marigold)}
+
+/* Hero */
+.hero .hero-in{display:block;text-align:center;padding-block:18px 150px}
+.hero-copy{display:flex;flex-direction:column;align-items:center;max-width:980px;margin:0 auto}
+.live{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 12px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.24);color:#FFF3D6;font:500 .88rem var(--sans);text-decoration:none;margin-bottom:22px;backdrop-filter:blur(6px)}
+.live:hover{background:rgba(255,255,255,.16)}
+.pulse{width:8px;height:8px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 0 rgba(74,222,128,.7);animation:pl 2s ease-out infinite}
+@keyframes pl{to{box-shadow:0 0 0 10px rgba(74,222,128,0)}}
+.hero .kicker{font-family:var(--serif);font-style:italic;font-size:1.4rem;margin-bottom:10px;justify-content:center}
+.hero .kicker::after{display:none}
+.hero h1{color:#FFF6E6}
+.hero h1 em{color:#FF6FA8}
+.hero .hook{background:none;color:var(--marigold);font-family:var(--serif);font-style:italic;font-size:1.5rem;margin:18px 0 0;padding:0}
+html:not([lang="en"]) .hero .hook{font-family:var(--body);font-style:normal;font-size:1.15rem}
+.hero .sub{margin:16px auto 0;color:#E4D6FF;max-width:34em}
+.hero .ctas{justify-content:center}
+.hero .note{color:#C3B1EE}
+.hero-hint{margin-top:22px;display:flex;justify-content:center}
+.stage{position:relative;margin:56px auto 0;max-width:1060px;min-height:560px;display:flex;justify-content:center;align-items:flex-start;padding:0}
+.card-back{display:none}
+.phone{width:290px}
+.float{position:absolute;width:250px;background:#FFFDF9;color:var(--ink);border-radius:20px;padding:14px 16px;text-align:left;box-shadow:0 30px 60px -24px rgba(10,0,30,.55),0 0 0 1px rgba(255,255,255,.4);font-size:.86rem;line-height:1.4;animation:float 8s ease-in-out infinite}
+.float .fl{display:block;font:500 .68rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#8A7563;margin-bottom:8px}
+.f-cal{left:2%;top:70px;transform:rotate(-4deg);animation-delay:-2s}
+.f-cal .fr{display:grid;grid-template-columns:30px 34px 1fr;align-items:baseline;gap:6px;padding:6px 0;border-top:1px solid #F1E4D2}
+.f-cal .fr:first-of-type{border-top:0}
+.f-cal .fr b{font:400 1.5rem var(--serif);color:var(--purple)}
+.f-cal .fr span{font:500 .7rem var(--mono);text-transform:uppercase;color:#8A7563}
+.f-cal .fr em{font-style:normal;font-weight:600}
+.f-cal .fr.hot b{color:var(--rani)}
+.f-note{right:1%;top:40px;transform:rotate(3deg);animation-delay:-5s}
+.f-note p{margin:0 0 10px}
+.fwave{display:flex;align-items:center;gap:8px}
+.fwave i{flex:1;height:14px;background:repeating-linear-gradient(90deg,#1D6A3A 0 2px,transparent 2px 5px);opacity:.6;border-radius:2px}
+.fwave span{font:500 .72rem var(--mono);color:#8A7563}
+.f-sam{right:6%;top:300px;width:220px;transform:rotate(-2deg);animation-delay:-3.5s}
+.f-sam b{display:block;margin-bottom:8px}
+.fbar{height:7px;border-radius:9px;background:#F1E4D2;overflow:hidden}.fbar i{display:block;width:72%;height:100%;background:var(--green,#1D6A3A)}
+@media (max-width:900px){.float{display:none}.stage{min-height:0}}
+.diyas{height:110px}
+
+/* Section heads */
+.sankranti h2,.pongal h2,.ganesh h2{color:var(--ink)}
+.durga h2{color:var(--kumkum)}
+
+/* Bento */
+.rakhi .in{display:block}
+.rakhi .head{max-width:44em;margin-bottom:36px}
+.bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+.bc{background:#FFF8F2;color:var(--ink);border-radius:26px;padding:20px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.bc h3{font-size:1.12rem;margin-top:6px}
+.bc p{color:var(--ink-2);font-size:.96rem;margin:0}
+.b-ask,.b-write{grid-column:span 3}
+.b-notes,.b-two,.b-rakhi{grid-column:span 2}
+.b-cal{grid-column:span 6;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:center;column-gap:28px}
+.b-cal .mini{grid-row:span 2}
+.b-rakhi{background:rgba(255,255,255,.08);border:1px solid rgba(255,178,30,.35);align-items:center;justify-content:center;color:#FFF1C2}
+.b-rakhi .rakhi-art{width:100%;max-width:300px}
+@media (max-width:900px){.bento{grid-template-columns:1fr 1fr}.b-ask,.b-write,.b-cal{grid-column:span 2}.b-notes,.b-two{grid-column:span 1}.b-rakhi{grid-column:span 2}.b-cal{display:flex}}
+@media (max-width:560px){.bento{grid-template-columns:1fr}.bc{grid-column:span 1!important}}
+.mini{background:#fff;border-radius:18px;padding:14px;box-shadow:0 0 0 1px #F1E4D2;display:flex;flex-direction:column;gap:8px;font-size:.88rem}
+.ml{font:500 .66rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#8A7563}
+.mvn{display:flex;align-items:center;gap:8px;background:#E7F3E3;border-radius:999px;padding:5px 12px 5px 5px}
+.mvn em{width:22px;height:22px;border-radius:50%;background:#1D6A3A;flex:none}
+.mvn i{flex:1;height:12px;background:repeating-linear-gradient(90deg,#5E8F57 0 2px,transparent 2px 5px)}
+.mvn span{font:500 .72rem var(--mono)}
+.mfield{border:1.5px solid #EEDCC4;border-radius:12px;padding:10px 12px;font-size:.95rem;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.mfield.lg{color:#8A7563;min-height:54px;align-items:flex-start}
+.mmic{font:600 .7rem var(--sans);color:var(--rani);border:1.5px solid #EEDCC4;border-radius:10px;padding:4px 8px;white-space:nowrap}
+.mrow{display:flex;gap:6px;flex-wrap:wrap}
+.mpill{font:600 .72rem var(--sans);background:var(--purple);color:#FFF3D6;border-radius:999px;padding:5px 10px}
+.mpill + .mpill{background:#C81E1E}
+.mini.quote{font:400 1.45rem/1.25 var(--serif);font-style:italic;color:var(--ink)}
+.mini.quote span{font:500 .68rem var(--mono);letter-spacing:.08em;text-transform:uppercase;font-style:normal;color:#8A7563}
+.mini.split{flex-direction:row;padding:0;overflow:hidden;gap:0}
+.mini.split > div{flex:1;padding:14px;display:flex;flex-direction:column;gap:6px}
+.mini.split > div + div{background:#FCE9EF}
+.mini.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center}
+.mini.week span{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 0;border-radius:12px;font:400 1.4rem var(--serif)}
+.mini.week span b{font:500 .62rem var(--mono);text-transform:uppercase;color:#8A7563}
+.mini.week span .f{width:6px;height:6px;border-radius:50%;background:var(--rani)}
+.mini.week span.on{background:var(--purple);color:#FFF3D6}.mini.week span.on b{color:#D7C6FF}.mini.week span.on .f{background:var(--marigold)}
+
+/* Trust, timeline, FAQ, founder */
+.tcard{background:#fff;border:1px solid var(--hair);border-radius:22px}
+.tcard .ic{border-radius:14px;box-shadow:none}
+.faq details{border:1px solid rgba(58,36,0,.12)}
+.faq summary{font-family:var(--sans);font-weight:600}
+.fstory{font-family:var(--serif);font-size:1.6rem;line-height:1.35}
+html:not([lang="en"]) .fstory{font-family:var(--body);font-size:1.2rem}
+
+/* Sign-up */
+.cta .garland{background:var(--rani)}
+.lockup .w{font-size:clamp(2.4rem,8vw,4.2rem)}
+
+/* Footer: the wordmark, big */
+footer{background:transparent;color:var(--ink-2);border-top:0;padding-block:40px 30px;overflow:hidden}
+.bigmark{display:flex;flex-direction:column;align-items:center;line-height:.82;margin-bottom:28px}
+.bigmark .dv{font:700 clamp(1.2rem,3vw,2.2rem) "Baloo 2","Noto Sans Kannada","Noto Sans Tamil","Noto Sans Telugu",sans-serif;color:#B26A00}
+footer .in{display:block;max-width:1380px}
+.bigmark .w{font:800 min(11.5vw,11rem) "Baloo 2",sans-serif;color:var(--rani);letter-spacing:-.02em;text-transform:uppercase;white-space:nowrap}
+.fline{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.88rem;border-top:1px solid var(--hair);padding-top:18px}
+
+/* Floating dock replaces the side dots and the phone bar */
+.mbar,.fdots{display:none!important}
+.dock{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:9;display:flex;align-items:center;gap:4px;padding:6px;border-radius:999px;background:rgba(27,15,58,.86);backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 16px 40px -12px rgba(27,15,58,.55),0 0 0 1px rgba(255,255,255,.12);max-width:calc(100vw - 20px)}
+.dock a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#D7C6FF;text-decoration:none;flex:none;transition:background .15s,color .15s}
+.dock a svg{width:20px;height:20px}
+.dock a:hover,.dock a.on{background:rgba(255,255,255,.14);color:#fff}
+.dock a.on{color:var(--marigold)}
+.dsep{width:1px;height:22px;background:rgba(255,255,255,.18);margin:0 4px}
+.dock a.dtry{width:auto;height:42px;border-radius:999px;padding:0 18px;background:var(--marigold);color:#1B0F3A;font:600 .92rem var(--sans);white-space:nowrap}
+.dock a.dtry:hover{background:#FFC24A}
+@media (max-width:380px){.dock a:not(.dtry){width:36px;height:36px}}
+@media (prefers-reduced-motion: reduce){.float,.pulse{animation:none}}
 </style>
 
 <nav class="top" id="nav"><div class="in">
@@ -484,24 +656,28 @@ section.band{padding-block:80px}
   </div>
 </div></nav>
 
-<header class="hero" id="top">
+<header class="hero" id="top"><div class="panel">
   <svg class="toran" id="toran" viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"></svg>
-  <div class="in">
-    <div>
-      <span class="tag"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-2 3-3 4.5-3 6.5a3 3 0 0 0 6 0C15 7.5 14 6 12 3z"/><path d="M4 14h16c-1 4-4 6-8 6s-7-2-8-6z"/></svg></i><span data-i="tag_diwali">Deepavali</span></span>
-      <p class="hook" id="hook" data-i="hero_hook" hidden>Doing Deepavali away from home this year?</p>
+  <div class="in hero-in">
+    <div class="hero-copy">
+      <a class="live" href="#how" id="live"><span class="pulse" aria-hidden="true"></span><span id="liveText">Deepavali</span></a>
       <p class="kicker" id="kicker">विधि-विधान से</p>
       <h1 data-ih="hero_h1">Every ritual, done <em>your family's way.</em></h1>
+      <p class="hook" id="hook" data-i="hero_hook" hidden>Doing Deepavali away from home this year?</p>
       <p class="sub" data-i="hero_sub">Festival plans, samagri lists and step-by-step pujas in the tradition your family actually follows. No more calling home to ask what comes next.</p>
       <div class="ctas">
         <a class="btn gold" href="app/index.html" data-i="try_app">Try the app</a>
         <a class="btn line js-join" href="#join" data-i="nav_join">Join the early list</a>
       </div>
       <p class="note" data-i="hero_note">First for Kannada, Tamil and Telugu families. Free to join.</p>
-      <div style="margin-top:18px"><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_diwali">Tap the sky to light a rocket</span></span></div>
     </div>
     <div class="stage">
-      <div class="card-back" aria-hidden="true"></div><div class="card-back b2" aria-hidden="true"></div>
+      <div class="float f-cal" aria-hidden="true"><span class="fl">Coming up</span>
+        <div class="fr"><b>7</b><span>Sat</span><em>Neeru tumbuva</em></div>
+        <div class="fr hot"><b>8</b><span>Sun</span><em>Lakshmi puja</em></div>
+        <div class="fr"><b>10</b><span>Tue</span><em>Bali Padyami</em></div></div>
+      <div class="float f-note" aria-hidden="true"><span class="fl">Amma's note · Oil bath</span><p>Wake everyone by 5. Ajji put a little turmeric in the oil.</p><div class="fwave"><i></i><span>0:31</span></div></div>
+      <div class="float f-sam" aria-hidden="true"><span class="fl">Samagri · 4 people</span><b>18 of 25 ready</b><div class="fbar"><i></i></div></div>
       <div class="phone" role="img" id="phone" aria-label="">
         <div class="screen">
           <div class="pbar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
@@ -515,12 +691,13 @@ section.band{padding-block:80px}
         </div>
       </div>
     </div>
+    <div class="hero-hint"><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_diwali">Tap the sky to light a rocket</span></span></div>
   </div>
   <div class="diyas" id="diyas" aria-hidden="true"></div>
-</header>
+</div></header>
 <div class="ticker" aria-hidden="true"><div class="track" id="track"></div></div>
 
-<section class="band sankranti" id="why" aria-labelledby="amma-h">
+<section class="band sankranti" id="why" aria-labelledby="amma-h"><div class="panel">
   <div class="kites" aria-hidden="true">
     <svg class="kite" style="left:6%;top:7%;width:70px" viewBox="0 0 60 110"><path d="M30 2L56 34 30 66 4 34Z" fill="#D0115C"/><path d="M30 2L30 66M4 34L56 34" stroke="#FFF6E6" stroke-width="1.5"/><path d="M30 2L56 34 30 34Z" fill="#FFB21E"/><path d="M30 66c-6 10 6 16 0 26s6 12 0 18" fill="none" stroke="#3E1585" stroke-width="1.5"/><path d="M24 78l6 4 6-4M24 94l6 4 6-4" fill="#3E1585"/></svg>
     <svg class="kite" style="left:40%;top:4%;width:46px;animation-delay:-2s" viewBox="0 0 60 110"><path d="M30 2L56 34 30 66 4 34Z" fill="#1D6A3A"/><path d="M4 34L30 2 30 34Z" fill="#F7C536"/><path d="M30 2L30 66M4 34L56 34" stroke="#FFF6E6" stroke-width="1.5"/><path d="M30 66c-6 10 6 16 0 26s6 12 0 18" fill="none" stroke="#3E1585" stroke-width="1.5"/></svg>
@@ -544,9 +721,9 @@ section.band{padding-block:80px}
       <div><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_kite">Tap a kite to cut it loose</span></span></div>
     </div>
   </div>
-</section>
+</div></section>
 
-<section class="band holi" id="how" aria-labelledby="how-h">
+<section class="band holi" id="how" aria-labelledby="how-h"><div class="panel">
   <canvas class="holi-c" id="holiCanvas" aria-hidden="true"></canvas>
   <span class="gulal" style="width:260px;height:260px;left:-80px;top:40px;background:#FF3D8B"></span>
   <span class="gulal" style="width:220px;height:220px;right:6%;top:-60px;background:#2BC46B"></span>
@@ -568,9 +745,9 @@ section.band{padding-block:80px}
       </div>
     </div>
   </div>
-</section>
+</div></section>
 
-<section class="band lakshmi" id="try" aria-labelledby="try-h">
+<section class="band lakshmi" id="try" aria-labelledby="try-h"><div class="panel">
   <svg class="rangoli" id="rangoli" viewBox="0 0 400 400" aria-hidden="true"></svg>
   <div class="in">
     <div class="demo">
@@ -589,26 +766,33 @@ section.band{padding-block:80px}
       </div>
     </div>
   </div>
-</section>
-
-
-<section class="band rakhi" id="family" aria-labelledby="fam-h"><div class="in">
-  <div>
-    <span class="tag"><i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/><path d="M1 12h6M17 12h6" stroke="currentColor" stroke-width="2"/></svg></i><span data-i="tag_rakhi">Raksha Bandhan</span></span>
-    <h2 id="fam-h" data-i="fam_h">Keep what Amma knows, for everyone</h2>
-    <p class="lead" style="margin-top:16px" data-i="fam_p">The people who really know the rituals are in your family. Vidhi-Vidhan gives them a place.</p>
-    <ul>
-      <li><span class="ic"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="#7E0A1E" stroke-width="2.4"><path d="M3 9.5l4 4L15 5"/></svg></span><div><b data-i="fam1_b">Ask an elder.</b> <span data-i="fam1">Send a question on WhatsApp. Their voice-note reply is saved on that exact step.</span></div></li>
-      <li><span class="ic"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="#7E0A1E" stroke-width="2.4"><path d="M3 9.5l4 4L15 5"/></svg></span><div><b data-i="fam2_b">Family notes.</b> <span data-i="fam2">“We use a turmeric Ganapati, not an idol.” Notes like this change what everyone in the family sees.</span></div></li>
-      <li><span class="ic"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="#7E0A1E" stroke-width="2.4"><path d="M3 9.5l4 4L15 5"/></svg></span><div><b data-i="fam3_b">Two families, one home.</b> <span data-i="fam3">Married into a different tradition? See both side by side and choose.</span></div></li>
-      <li><span class="ic"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="#7E0A1E" stroke-width="2.4"><path d="M3 9.5l4 4L15 5"/></svg></span><div><b data-i="fam4_b">Elders write the whole ritual.</b> <span data-i="fam4">Step by step, by typing or just speaking, in big easy text, with their own voice. It becomes a guided puja for the whole family.</span></div></li>
-    </ul>
-  </div>
-  <div class="rakhi-wrap"><svg class="rakhi-art" id="rakhiArt" viewBox="0 0 420 300"></svg><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_rakhi">Tap the rakhi</span></span></div>
 </div></section>
 
 
-<section class="band durga" id="trust" aria-labelledby="trust-h">
+<section class="band rakhi" id="family" aria-labelledby="fam-h"><div class="panel"><div class="in">
+  <div class="head">
+    <span class="tag" style="align-self:flex-start"><i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/><path d="M1 12h6M17 12h6" stroke="currentColor" stroke-width="2"/></svg></i><span data-i="tag_rakhi">Raksha Bandhan</span></span>
+    <h2 id="fam-h" data-i="fam_h">Keep what Amma knows, for everyone</h2>
+    <p class="lead" data-i="fam_p">The people who really know the rituals are in your family. Vidhi-Vidhan gives them a place.</p>
+  </div>
+  <div class="bento">
+    <div class="bc b-ask"><div class="mini" aria-hidden="true"><span class="ml">You asked Amma · Bali puja</span><b>How did Ajji do the Bali puja?</b><div class="mvn"><em></em><i></i><span>0:48</span></div></div>
+      <h3 data-i="fam1_b">Ask an elder.</h3><p data-i="fam1">Send a question on WhatsApp. Their voice-note reply is saved on that exact step.</p></div>
+    <div class="bc b-write"><div class="mini" aria-hidden="true"><span class="ml">Step 2 of 4 · Amma is writing</span><div class="mfield">Offer flowers and a lamp<span class="mmic">Speak</span></div><div class="mfield lg">Put haldi, kumkum and a few flowers…</div><div class="mrow"><span class="mpill">A+ Bigger text</span><span class="mpill">● Record voice</span></div></div>
+      <h3 data-i="fam4_b">Elders write the whole ritual.</h3><p data-i="fam4">Step by step, by typing or just speaking, in big easy text, with their own voice. It becomes a guided puja for the whole family.</p></div>
+    <div class="bc b-notes"><div class="mini quote" aria-hidden="true">“We use a turmeric Ganapati, not an idol.”<span>Amma</span></div>
+      <h3 data-i="fam2_b">Family notes.</h3><p data-i="fam2">“We use a turmeric Ganapati, not an idol.” Notes like this change what everyone in the family sees.</p></div>
+    <div class="bc b-rakhi"><svg class="rakhi-art" id="rakhiArt" viewBox="0 0 420 300"></svg><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_rakhi">Tap the rakhi</span></span></div>
+    <div class="bc b-two"><div class="mini split" aria-hidden="true"><div><span class="ml">Rao</span>Holige, karjikai</div><div><span class="ml">Iyer</span>Mysore pak, murukku</div></div>
+      <h3 data-i="fam3_b">Two families, one home.</h3><p data-i="fam3">Married into a different tradition? See both side by side and choose.</p></div>
+    <div class="bc b-cal"><div class="mini week" aria-hidden="true">
+        <span><b>Sat</b>7<i class="f"></i></span><span class="on"><b>Sun</b>8<i class="f"></i></span><span><b>Mon</b>9</span><span><b>Tue</b>10<i class="f"></i></span><span><b>Wed</b>11</span><span><b>Thu</b>12</span><span><b>Fri</b>13</span></div>
+      <h3 data-i="fam5_b">A calendar for your family.</h3><p data-i="fam5">Festivals, vrats and family dates, past and coming up, in one place.</p></div>
+  </div>
+</div></div></section>
+
+
+<section class="band durga" id="trust" aria-labelledby="trust-h"><div class="panel">
   <div class="paar"></div><div class="alpona"></div>
   <div class="in">
     <div class="head"><span class="tag" style="align-self:flex-start"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17l-5.5 4L8 13.5 3 9l6.5-.5z"/></svg></i><span data-i="tag_durga">Durga Puja</span></span><h2 id="trust-h" data-i="trust_h">Built with care, not shortcuts</h2><div class="hintrow"><button class="dbtn" id="dhakBtn"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3" fill="#FFF1C2"/><path d="M4 6v10c0 2 3.5 3.5 8 3.5s8-1.5 8-3.5V6" fill="#E1251B"/><path d="M4 9l16 6M20 9L4 15" stroke="#FFB21E" stroke-width="1.4"/><path d="M14 2l7-2M17 4l6-1" stroke="#FFB21E" stroke-width="1.6"/></svg><span data-i="btn_dhak">Dhak</span></button><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_durga">Play the dhak, blow the shankh</span></span></div></div>
@@ -621,9 +805,9 @@ section.band{padding-block:80px}
     </div>
   </div>
   <div class="alpona b"></div><div class="paar b"></div>
-</section>
+</div></section>
 
-<section class="band ganesh" id="founder" aria-labelledby="founder-h" hidden><div class="in">
+<section class="band ganesh" id="founder" aria-labelledby="founder-h" hidden><div class="panel"><div class="in">
   <div class="founder">
     <div class="fphoto" id="fphoto"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3c3 6 14 14 14 24a14 8 0 0 1-28 0C6 17 17 9 20 3z" fill="#FFF1C2"/><path d="M20 4v31M13 12c-2 8-1 16 1 23M27 12c2 8 1 16-1 23" stroke="#E2B66B" stroke-width="1.6" fill="none"/></svg></div>
     <div class="fcopy">
@@ -633,18 +817,18 @@ section.band{padding-block:80px}
       <p class="fname"><b id="fname"></b> <span id="frole"></span></p>
     </div>
   </div>
-</div></section>
+</div></div></section>
 
-<section class="band pongal" id="faq-s" aria-labelledby="faq-h">
+<section class="band pongal" id="faq-s" aria-labelledby="faq-h"><div class="panel">
   <svg class="kolam" id="kolam" viewBox="0 0 400 400" aria-hidden="true"></svg>
   <svg class="sugarcane" viewBox="0 0 90 260" aria-hidden="true"><g stroke-linecap="round"><path d="M30 255V40" stroke="#5B7F2A" stroke-width="12"/><path d="M58 255V60" stroke="#6E8F33" stroke-width="12"/><path d="M24 90h12M24 140h12M24 190h12M52 110h12M52 160h12M52 210h12" stroke="#3E5A1C" stroke-width="3"/></g><path d="M30 42c-14-18-24-22-28-38 12 6 22 14 28 30 4-16 14-26 28-32-6 14-18 22-28 40z" fill="#2E8A4E"/><path d="M58 62c10-20 22-26 30-40-14 2-24 12-30 28-6-14-16-22-30-22 10 8 22 16 30 34z" fill="#1D6A3A"/></svg>
   <div class="in">
     <div class="head"><span class="tag" style="align-self:flex-start"><i style="background:var(--leaf)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 10h14l-1 9a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/><path d="M8 9c0-3 2-3 2-6M12 9c0-3 2-3 2-6M16 9c0-3 2-3 2-6" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></i><span data-i="tag_pongal">Pongal</span></span><div class="potrow"><h2 id="faq-h" data-i="faq_h">Frequently asked</h2><div class="potwrap"><svg class="pot" id="pot" viewBox="0 0 160 190" role="button" tabindex="0" aria-label="Pongal pot" data-heat="0"><g class="steam" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"><path d="M60 30c-6-8 6-12 0-20"/><path d="M80 26c-6-8 6-12 0-20"/><path d="M100 30c-6-8 6-12 0-20"/></g><g class="drips" fill="#FFFFFF"><path d="M44 54c-4 10-2 22 2 26 3-6 2-16-2-26z"/><path d="M116 54c4 12 2 24-2 30-3-8-2-18 2-30z"/><path d="M60 58c-2 8 0 14 2 16 2-4 1-10-2-16z"/></g><g class="froth"><ellipse cx="80" cy="52" rx="40" ry="10" fill="#FFFFFF"/><circle cx="56" cy="48" r="7" fill="#FFFFFF"/><circle cx="70" cy="44" r="8" fill="#FFFFFF"/><circle cx="88" cy="44" r="8" fill="#FFFFFF"/><circle cx="104" cy="48" r="7" fill="#FFFFFF"/></g><path d="M38 62C10 92 18 152 80 162 142 152 150 92 122 62Z" fill="#B9622A"/><rect x="38" y="50" width="84" height="14" rx="6" fill="#9E4F1E"/><path d="M26 104q54 22 108 0" fill="none" stroke="#FFF6E6" stroke-width="3" stroke-dasharray="1 7" stroke-linecap="round"/><path d="M30 122q50 20 100 0" fill="none" stroke="#FFF6E6" stroke-width="2.5"/><path d="M38 60c-14-6-22-20-20-34 10 6 18 18 20 34zM122 60c14-6 22-20 20-34-10 6-18 18-20 34z" fill="#2E8A4E"/><circle cx="80" cy="100" r="9" fill="#F7C536"/><circle cx="80" cy="100" r="4" fill="#E1251B"/><g class="fire"><path d="M50 182c-6-10 2-14 4-22 4 8 8 12 4 22z" fill="#F2761E"/><path d="M76 184c-8-12 2-18 4-28 6 10 10 16 4 28z" fill="#FFB21E"/><path d="M104 182c-6-10 2-14 4-22 4 8 8 12 4 22z" fill="#F2761E"/></g></svg><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_pongal">Tap the pot till it boils over</span></span></div></div></div>
     <div class="faq" id="faq"></div>
   </div>
-</section>
+</div></section>
 
-<section class="cta" id="join" aria-labelledby="join-h"><div class="in">
+<section class="cta" id="join" aria-labelledby="join-h"><div class="panel"><div class="in">
   <div class="garland">
     <button class="mode" id="modeBtn" aria-pressed="false"><span data-i="mode">Festival mode</span><i></i></button><span class="hint"><svg class="tapi" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg><span data-i="hint_mode">Switch on festival mode</span></span>
     <div class="lockup"><span class="dv" id="ctaBrand">विधि-विधान</span><span class="w">Vidhi-Vidhan</span><span class="sub" data-i="lock_sub">Rituals, your family's way</span></div>
@@ -658,9 +842,21 @@ section.band{padding-block:80px}
       <a id="shareWa" href="#" target="_blank" rel="noopener" data-i="share_wa">Share on WhatsApp</a>
     </div>
   </div>
-</div></section>
+</div></div></section>
 
-<footer><div class="in"><span>Vidhi-Vidhan · <span id="footBrand">विधि-विधान</span> · <span data-i="foot1">Made in Bengaluru</span></span><span data-i="foot2">Rituals differ between families. When in doubt, follow your elders and your priest.</span></div></footer>
+<footer><div class="in">
+  <div class="bigmark" aria-hidden="true"><span class="dv" id="footBrand">विधि-विधान</span><span class="w">Vidhi-Vidhan</span></div>
+  <div class="fline"><span data-i="foot1">Made in Bengaluru</span><span data-i="foot2">Rituals differ between families. When in doubt, follow your elders and your priest.</span></div>
+</div></footer>
+<nav class="dock" id="dock" aria-label="Sections">
+  <a href="#top" data-k="tag_diwali" aria-label="Top"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-2 3-3 4.5-3 6.5a3 3 0 0 0 6 0C15 7.5 14 6 12 3z"/><path d="M4 14h16c-1 4-4 6-8 6s-7-2-8-6z"/></svg></a>
+  <a href="#how" data-k="how_kicker" aria-label="How it works"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.4" fill="currentColor"/><circle cx="4.5" cy="12" r="1.4" fill="currentColor"/><circle cx="4.5" cy="18" r="1.4" fill="currentColor"/></svg></a>
+  <a href="#try" data-k="demo_kicker" aria-label="Try a puja"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3"/><path d="M12 8c-4 0-6 3-6 7 0 1-1 2-2 3h16c-1-1-2-2-2-3 0-4-2-7-6-7z"/></svg></a>
+  <a href="#family" data-k="fam_kicker" aria-label="Family"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.3"/><path d="M3 20c.5-3.5 3-5.5 6-5.5s5.5 2 6 5.5M15 15.5c2.5-.3 5 1 5.5 4.5"/></svg></a>
+  <a href="#faq-s" data-k="faq_kicker" aria-label="Questions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7M12 17h.01"/></svg></a>
+  <span class="dsep" aria-hidden="true"></span>
+  <a class="dtry" href="app/index.html" data-i="try_app">Try the app</a>
+</nav>
 
 <script src="config.js"></script>
 <script>
@@ -669,7 +865,7 @@ const FORM_URL = window.VV_FORM_URL || "";
 
 const BRAND = {en:"विधि-विधान", hi:"विधि-विधान", kn:"ವಿಧಿ-ವಿಧಾನ", ta:"விதி-விதானம்", te:"విధి-విధానం"};
 const KICK = {en:"विधि-विधान से", hi:"विधि-विधान से", kn:"ವಿಧಿ-ವಿಧಾನದಂತೆ", ta:"விதி-விதானப்படி", te:"విధి-విధానంగా"};
-const FONTS = {kn:"Baloo+Tamma+2:wght@600;700;800&family=Noto+Sans+Kannada:wght@400;600", ta:"Baloo+Thambi+2:wght@600;700;800&family=Noto+Sans+Tamil:wght@400;600", te:"Baloo+Tammudu+2:wght@600;700;800&family=Noto+Sans+Telugu:wght@400;600"};
+const FONTS = {kn:"Noto+Serif+Kannada:wght@500;700&family=Noto+Sans+Kannada:wght@400;600", ta:"Noto+Serif+Tamil:wght@500;700&family=Noto+Sans+Tamil:wght@400;600", te:"Noto+Serif+Telugu:wght@500;700&family=Noto+Sans+Telugu:wght@400;600"};
 const MANTRA = {
   g:{kn:"ಓಂ ಗಂ ಗಣಪತಯೇ ನಮಃ", ta:"ஓம் கம் கணபதயே நம:", te:"ఓం గం గణపతయే నమః", tr:"Om Gam Ganapataye namaha"},
   l:{kn:"ಓಂ ಶ್ರೀಂ ಮಹಾಲಕ್ಷ್ಮ್ಯೈ ನಮಃ", ta:"ஓம் ஸ்ரீம் மஹாலக்ஷ்ம்யை நம:", te:"ఓం శ్రీం మహాలక్ష్మ్యై నమః", tr:"Om Shreem Mahalakshmyai namaha"}
@@ -677,7 +873,7 @@ const MANTRA = {
 const FESTS = ["Ugadi","Varamahalakshmi","Gowri-Ganesha","Bombe Habba","Deepavali","Thai Pongal","Golu","Karthigai Deepam","Varalakshmi Vratham","Bathukamma","Bonalu","Sankranti","Vinayaka Chavithi","Atla Taddi","Tulasi Habba","Sri Rama Navami","Puthandu","Aadi Perukku"];
 
 const T = {
-en:{fam4_b:"Elders write the whole ritual.",fam4:"Step by step, by typing or just speaking, in big easy text, with their own voice. It becomes a guided puja for the whole family.",hero_hook:"Doing Deepavali away from home this year?",hint_diwali:"Tap anywhere to light a diya",hint_durga:"Play the dhak",founder_h:"Why Vidhi-Vidhan",reviewed_by:"Content reviewed by",how3_p:"One step at a time, mantras in your script with audio, and a line on why each step matters.",sound_on:"Sound on",sound_off:"Sound off",hint_diwali:"Tap the sky to light a rocket",hint_kite:"Tap a kite to cut it loose",hint_bell:"Ring the bell",hint_holi:"Tap or drag to throw colour",clear_holi:"Clean up",hint_rakhi:"Tap the rakhi",hint_onam:"Tap the pookalam to play the chenda",hint_durga:"Play the dhak, blow the shankh",btn_dhak:"Dhak",btn_shankh:"Shankh",hint_ganesh:"Tap a modak",hint_pongal:"Tap the pot till it boils over",hint_mode:"Switch on festival mode",tag_diwali:"Deepavali",tag_sankranti:"Makar Sankranti",tag_lakshmi:"Lakshmi Puja",tag_holi:"Holi",tag_rakhi:"Raksha Bandhan",tag_onam:"Onam",tag_durga:"Durga Puja",tag_ganesh:"Ganesh Chaturthi",tag_pongal:"Pongal",mode:"Festival mode",lock_sub:"Rituals, your family's way",try_app:"Try the app",demo_full:"Open the full app preview",app_note:"The app preview is in English for now.",lang:"Language",nav_join:"Join the early list",hero_h1:"Every ritual, done <em>your family's way.</em>",hero_sub:"Festival plans, samagri lists and step-by-step pujas in the tradition your family actually follows. No more calling home to ask what comes next.",hero_try:"Try a puja",hero_note:"First for Kannada, Tamil and Telugu families. Free to join.",
+en:{fam5_b:"A calendar for your family.",fam5:"Festivals, vrats and family dates, past and coming up, in one place.",live_in:"{f} in {n} days",live_today:"{f} is today",fam4_b:"Elders write the whole ritual.",fam4:"Step by step, by typing or just speaking, in big easy text, with their own voice. It becomes a guided puja for the whole family.",hero_hook:"Doing Deepavali away from home this year?",hint_diwali:"Tap anywhere to light a diya",hint_durga:"Play the dhak",founder_h:"Why Vidhi-Vidhan",reviewed_by:"Content reviewed by",how3_p:"One step at a time, mantras in your script with audio, and a line on why each step matters.",sound_on:"Sound on",sound_off:"Sound off",hint_diwali:"Tap the sky to light a rocket",hint_kite:"Tap a kite to cut it loose",hint_bell:"Ring the bell",hint_holi:"Tap or drag to throw colour",clear_holi:"Clean up",hint_rakhi:"Tap the rakhi",hint_onam:"Tap the pookalam to play the chenda",hint_durga:"Play the dhak, blow the shankh",btn_dhak:"Dhak",btn_shankh:"Shankh",hint_ganesh:"Tap a modak",hint_pongal:"Tap the pot till it boils over",hint_mode:"Switch on festival mode",tag_diwali:"Deepavali",tag_sankranti:"Makar Sankranti",tag_lakshmi:"Lakshmi Puja",tag_holi:"Holi",tag_rakhi:"Raksha Bandhan",tag_onam:"Onam",tag_durga:"Durga Puja",tag_ganesh:"Ganesh Chaturthi",tag_pongal:"Pongal",mode:"Festival mode",lock_sub:"Rituals, your family's way",try_app:"Try the app",demo_full:"Open the full app preview",app_note:"The app preview is in English for now.",lang:"Language",nav_join:"Join the early list",hero_h1:"Every ritual, done <em>your family's way.</em>",hero_sub:"Festival plans, samagri lists and step-by-step pujas in the tradition your family actually follows. No more calling home to ask what comes next.",hero_try:"Try a puja",hero_note:"First for Kannada, Tamil and Telugu families. Free to join.",
 prob_kicker:"The problem",prob_h:"Every festival starts with a call to Amma.",prob_p1:"Most of us now live far from the people who know how our festivals are done. So we half-remember, search YouTube, and end up following someone else's tradition.",prob_p2:"Other apps give you one generic version of each puja. <strong>But your Deepavali is not your neighbour's Deepavali</strong>, and it's certainly not the internet's.",
 chat1:"Amma, is the oil bath on Saturday or Sunday this year?",chat2:"And do we put a coin in the kalasha? 🙏",chat3:"What time is Lakshmi puja here?",chat4:"Sorry, which leaves did you say? 😅",chat_online:"online",chat_name:"Amma",
 demo_kicker:"Try it",demo_h:"See your Deepavali, your way",demo_p:"Pick your family's tradition and walk through the puja. Notice how the steps change.",demo_trad:"Your tradition",t_kn:"Kannada",t_ta:"Tamil",t_te:"Telugu",demo_step:"Step {n} of {t}",demo_say:"Say",demo_why:"Why",demo_next:"Next step",demo_back:"Back",demo_again:"Start again",demo_done_h:"That's the idea.",demo_done_p:"The full app covers every step of every festival, with audio, timings for your city and your family's notes.",demo_add:"Add your family's way",demo_add_ph:"For example: we keep Ajji's silver coin in the kalasha",demo_save:"Save note",demo_note:"Your family's way",
@@ -706,7 +902,7 @@ cta_kicker:"Early access",cta_h:"Be one of the first families to use it",cta_p:"
 share_lead:"Know someone who always calls home before a festival?",share_li:"Share on LinkedIn",share_x:"Share on X",share_wa:"Share on WhatsApp",foot1:"Made in Bengaluru",foot2:"Rituals differ between families. When in doubt, follow your elders and your priest.",
 ph_step:"Step 4 of 5 · Lakshmi puja",ph_fam_b:"Amma's way",ph_fam:"We keep Ajji's silver coin in the kalasha.",share_text:"Vidhi-Vidhan: every ritual, done your family's way. Festival plans, samagri lists and step-by-step pujas in your own tradition."},
 
-hi:{fam4_b:"बड़े पूरी रस्म लिख सकते हैं।",fam4:"चरण-दर-चरण, लिखकर या सिर्फ़ बोलकर, बड़े आसान अक्षरों में, अपनी आवाज़ के साथ। यह पूरे परिवार के लिए गाइडेड पूजा बन जाती है।",hero_hook:"इस साल घर से दूर दीपावली मना रहे हैं?",hint_diwali:"दीया जलाने के लिए कहीं भी टैप करें",hint_durga:"ढाक बजाएँ",founder_h:"विधि-विधान क्यों",reviewed_by:"सामग्री की जाँच:",how3_p:"एक-एक चरण, आपकी लिपि में मंत्र और ऑडियो, और हर चरण का कारण।",sound_on:"आवाज़ चालू",sound_off:"आवाज़ बंद",hint_diwali:"आसमान पर टैप करें, रॉकेट छोड़ें",hint_kite:"पतंग पर टैप करें, पेंच काटें",hint_bell:"घंटी बजाएँ",hint_holi:"रंग फेंकने के लिए टैप करें या खींचें",clear_holi:"साफ़ करें",hint_rakhi:"राखी पर टैप करें",hint_onam:"चेंडा बजाने के लिए पूक्कलम पर टैप करें",hint_durga:"ढाक बजाएँ, शंख फूँकें",btn_dhak:"ढाक",btn_shankh:"शंख",hint_ganesh:"मोदक पर टैप करें",hint_pongal:"बर्तन पर टैप करें, जब तक उफान न आए",hint_mode:"त्योहार मोड चालू करें",tag_diwali:"दीपावली",tag_sankranti:"मकर संक्रांति",tag_lakshmi:"लक्ष्मी पूजा",tag_holi:"होली",tag_rakhi:"रक्षा बंधन",tag_onam:"ओणम",tag_durga:"दुर्गा पूजा",tag_ganesh:"गणेश चतुर्थी",tag_pongal:"पोंगल",mode:"त्योहार मोड",lock_sub:"रस्में, आपके परिवार के तरीके से",try_app:"ऐप आज़माएँ",demo_full:"पूरा ऐप प्रीव्यू खोलें",app_note:"ऐप प्रीव्यू अभी अंग्रेज़ी में है।",lang:"भाषा",nav_join:"शुरुआती सूची से जुड़ें",hero_h1:"हर रस्म, <em>आपके परिवार के तरीके से।</em>",hero_sub:"त्योहार की योजना, सामग्री सूची और क्रम से पूजा, उसी परंपरा में जो आपका परिवार सच में मानता है। आगे क्या करना है, यह पूछने के लिए अब घर फ़ोन नहीं करना पड़ेगा।",hero_try:"पूजा आज़माएँ",hero_note:"पहले कन्नड़, तमिल और तेलुगु परिवारों के लिए। जुड़ना मुफ़्त है।",
+hi:{fam5_b:"आपके परिवार का कैलेंडर।",fam5:"त्योहार, व्रत और परिवार की तिथियाँ, बीती और आने वाली, एक ही जगह।",live_in:"{f} {n} दिन में",live_today:"{f} आज है",fam4_b:"बड़े पूरी रस्म लिख सकते हैं।",fam4:"चरण-दर-चरण, लिखकर या सिर्फ़ बोलकर, बड़े आसान अक्षरों में, अपनी आवाज़ के साथ। यह पूरे परिवार के लिए गाइडेड पूजा बन जाती है।",hero_hook:"इस साल घर से दूर दीपावली मना रहे हैं?",hint_diwali:"दीया जलाने के लिए कहीं भी टैप करें",hint_durga:"ढाक बजाएँ",founder_h:"विधि-विधान क्यों",reviewed_by:"सामग्री की जाँच:",how3_p:"एक-एक चरण, आपकी लिपि में मंत्र और ऑडियो, और हर चरण का कारण।",sound_on:"आवाज़ चालू",sound_off:"आवाज़ बंद",hint_diwali:"आसमान पर टैप करें, रॉकेट छोड़ें",hint_kite:"पतंग पर टैप करें, पेंच काटें",hint_bell:"घंटी बजाएँ",hint_holi:"रंग फेंकने के लिए टैप करें या खींचें",clear_holi:"साफ़ करें",hint_rakhi:"राखी पर टैप करें",hint_onam:"चेंडा बजाने के लिए पूक्कलम पर टैप करें",hint_durga:"ढाक बजाएँ, शंख फूँकें",btn_dhak:"ढाक",btn_shankh:"शंख",hint_ganesh:"मोदक पर टैप करें",hint_pongal:"बर्तन पर टैप करें, जब तक उफान न आए",hint_mode:"त्योहार मोड चालू करें",tag_diwali:"दीपावली",tag_sankranti:"मकर संक्रांति",tag_lakshmi:"लक्ष्मी पूजा",tag_holi:"होली",tag_rakhi:"रक्षा बंधन",tag_onam:"ओणम",tag_durga:"दुर्गा पूजा",tag_ganesh:"गणेश चतुर्थी",tag_pongal:"पोंगल",mode:"त्योहार मोड",lock_sub:"रस्में, आपके परिवार के तरीके से",try_app:"ऐप आज़माएँ",demo_full:"पूरा ऐप प्रीव्यू खोलें",app_note:"ऐप प्रीव्यू अभी अंग्रेज़ी में है।",lang:"भाषा",nav_join:"शुरुआती सूची से जुड़ें",hero_h1:"हर रस्म, <em>आपके परिवार के तरीके से।</em>",hero_sub:"त्योहार की योजना, सामग्री सूची और क्रम से पूजा, उसी परंपरा में जो आपका परिवार सच में मानता है। आगे क्या करना है, यह पूछने के लिए अब घर फ़ोन नहीं करना पड़ेगा।",hero_try:"पूजा आज़माएँ",hero_note:"पहले कन्नड़, तमिल और तेलुगु परिवारों के लिए। जुड़ना मुफ़्त है।",
 prob_kicker:"समस्या",prob_h:"हर त्योहार की शुरुआत अम्मा को फ़ोन से होती है।",prob_p1:"हम में से ज़्यादातर अब उन लोगों से दूर रहते हैं जो जानते हैं कि हमारे त्योहार कैसे मनाए जाते हैं। तो हम आधा याद करते हैं, YouTube देखते हैं, और किसी और की परंपरा निभा बैठते हैं।",prob_p2:"दूसरे ऐप हर पूजा का एक ही आम तरीका बताते हैं। <strong>लेकिन आपकी दीपावली आपके पड़ोसी की दीपावली नहीं है</strong>, और इंटरनेट वाली तो बिल्कुल नहीं।",
 chat1:"अम्मा, इस साल तेल स्नान शनिवार को है या रविवार को?",chat2:"और क्या कलश में सिक्का डालते हैं? 🙏",chat3:"यहाँ लक्ष्मी पूजा का समय क्या है?",chat4:"माफ़ करना, कौन से पत्ते बोले थे? 😅",chat_online:"ऑनलाइन",chat_name:"अम्मा",
 demo_kicker:"आज़माकर देखें",demo_h:"अपनी दीपावली, अपने तरीके से",demo_p:"अपने परिवार की परंपरा चुनें और पूजा के चरण देखें। ध्यान दें कि चरण कैसे बदलते हैं।",demo_trad:"आपकी परंपरा",t_kn:"कन्नड़",t_ta:"तमिल",t_te:"तेलुगु",demo_step:"चरण {n} / {t}",demo_say:"बोलें",demo_why:"क्यों",demo_next:"अगला चरण",demo_back:"पीछे",demo_again:"फिर से शुरू करें",demo_done_h:"बस यही विचार है।",demo_done_p:"पूरे ऐप में हर त्योहार का हर चरण होगा, ऑडियो, आपके शहर के समय और आपके परिवार के नोट्स के साथ।",demo_add:"अपने परिवार का तरीका जोड़ें",demo_add_ph:"जैसे: हम कलश में दादी का चाँदी का सिक्का रखते हैं",demo_save:"नोट सहेजें",demo_note:"आपके परिवार का तरीका",
@@ -735,7 +931,7 @@ cta_kicker:"शुरुआती पहुँच",cta_h:"इसे इस्त
 share_lead:"कोई ऐसा जानते हैं जो हर त्योहार से पहले घर फ़ोन करता है?",share_li:"LinkedIn पर शेयर करें",share_x:"X पर शेयर करें",share_wa:"WhatsApp पर शेयर करें",foot1:"बेंगलुरु में बना",foot2:"हर परिवार की रस्में अलग होती हैं। शक हो तो अपने बड़ों और पुरोहित की बात मानें।",
 ph_step:"चरण 4 / 5 · लक्ष्मी पूजा",ph_fam_b:"अम्मा का तरीका",ph_fam:"हम कलश में दादी का चाँदी का सिक्का रखते हैं।",share_text:"विधि-विधान: हर रस्म, आपके परिवार के तरीके से। त्योहार की योजना, सामग्री सूची और क्रम से पूजा, आपकी अपनी परंपरा में।"},
 
-kn:{fam4_b:"ಹಿರಿಯರು ಇಡೀ ಆಚರಣೆಯನ್ನು ಬರೆಯಬಹುದು.",fam4:"ಹಂತ ಹಂತವಾಗಿ, ಟೈಪ್ ಮಾಡಿ ಅಥವಾ ಮಾತನಾಡಿ, ದೊಡ್ಡ ಸುಲಭ ಅಕ್ಷರಗಳಲ್ಲಿ, ತಮ್ಮ ಧ್ವನಿಯೊಂದಿಗೆ. ಅದು ಇಡೀ ಕುಟುಂಬಕ್ಕೆ ಮಾರ್ಗದರ್ಶಿತ ಪೂಜೆಯಾಗುತ್ತದೆ.",hero_hook:"ಈ ವರ್ಷ ಮನೆಯಿಂದ ದೂರ ದೀಪಾವಳಿ ಆಚರಿಸುತ್ತಿದ್ದೀರಾ?",hint_diwali:"ಹಣತೆ ಹಚ್ಚಲು ಎಲ್ಲಿಯಾದರೂ ಟ್ಯಾಪ್ ಮಾಡಿ",hint_durga:"ಢಾಕ್ ಬಾರಿಸಿ",founder_h:"ವಿಧಿ-ವಿಧಾನ ಏಕೆ",reviewed_by:"ವಿಷಯ ಪರಿಶೀಲನೆ:",how3_p:"ಒಂದೊಂದೇ ಹಂತ, ನಿಮ್ಮ ಲಿಪಿಯಲ್ಲಿ ಮಂತ್ರ ಮತ್ತು ಆಡಿಯೋ, ಪ್ರತಿ ಹಂತದ ಕಾರಣ.",sound_on:"ಧ್ವನಿ ಆನ್",sound_off:"ಧ್ವನಿ ಆಫ್",hint_diwali:"ಆಕಾಶದ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ, ರಾಕೆಟ್ ಹಾರಿಸಿ",hint_kite:"ಗಾಳಿಪಟದ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ, ದಾರ ಕತ್ತರಿಸಿ",hint_bell:"ಘಂಟೆ ಬಾರಿಸಿ",hint_holi:"ಬಣ್ಣ ಎರಚಲು ಟ್ಯಾಪ್ ಮಾಡಿ ಅಥವಾ ಎಳೆಯಿರಿ",clear_holi:"ಸ್ವಚ್ಛಗೊಳಿಸಿ",hint_rakhi:"ರಾಖಿಯ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ",hint_onam:"ಚೆಂಡೆ ಬಾರಿಸಲು ಪೂಕ್ಕಳಂ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ",hint_durga:"ಢಾಕ್ ಬಾರಿಸಿ, ಶಂಖ ಊದಿ",btn_dhak:"ಢಾಕ್",btn_shankh:"ಶಂಖ",hint_ganesh:"ಮೋದಕದ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ",hint_pongal:"ಮಡಕೆ ಉಕ್ಕುವವರೆಗೆ ಟ್ಯಾಪ್ ಮಾಡಿ",hint_mode:"ಹಬ್ಬದ ಮೋಡ್ ಆನ್ ಮಾಡಿ",tag_diwali:"ದೀಪಾವಳಿ",tag_sankranti:"ಮಕರ ಸಂಕ್ರಾಂತಿ",tag_lakshmi:"ಲಕ್ಷ್ಮೀ ಪೂಜೆ",tag_holi:"ಹೋಳಿ",tag_rakhi:"ರಕ್ಷಾ ಬಂಧನ",tag_onam:"ಓಣಂ",tag_durga:"ದುರ್ಗಾ ಪೂಜೆ",tag_ganesh:"ಗಣೇಶ ಚತುರ್ಥಿ",tag_pongal:"ಪೊಂಗಲ್",mode:"ಹಬ್ಬದ ಮೋಡ್",lock_sub:"ಆಚರಣೆಗಳು, ನಿಮ್ಮ ಮನೆತನದ ರೀತಿಯಲ್ಲಿ",try_app:"ಆ್ಯಪ್ ಪ್ರಯತ್ನಿಸಿ",demo_full:"ಪೂರ್ಣ ಆ್ಯಪ್ ಪ್ರಿವ್ಯೂ ತೆರೆಯಿರಿ",app_note:"ಆ್ಯಪ್ ಪ್ರಿವ್ಯೂ ಸದ್ಯಕ್ಕೆ ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿದೆ.",lang:"ಭಾಷೆ",nav_join:"ಮೊದಲ ಪಟ್ಟಿಗೆ ಸೇರಿ",hero_h1:"ಪ್ರತಿ ಆಚರಣೆ, <em>ನಿಮ್ಮ ಮನೆತನದ ರೀತಿಯಲ್ಲಿ.</em>",hero_sub:"ಹಬ್ಬದ ಯೋಜನೆ, ಪೂಜಾ ಸಾಮಗ್ರಿ ಪಟ್ಟಿ ಮತ್ತು ಹಂತ ಹಂತವಾಗಿ ಪೂಜೆ, ನಿಮ್ಮ ಕುಟುಂಬ ನಿಜವಾಗಿ ಪಾಲಿಸುವ ಸಂಪ್ರದಾಯದಲ್ಲಿ. ಮುಂದೇನು ಎಂದು ಕೇಳಲು ಇನ್ನು ಮನೆಗೆ ಫೋನ್ ಮಾಡಬೇಕಿಲ್ಲ.",hero_try:"ಪೂಜೆಯನ್ನು ಪ್ರಯತ್ನಿಸಿ",hero_note:"ಮೊದಲು ಕನ್ನಡ, ತಮಿಳು ಮತ್ತು ತೆಲುಗು ಕುಟುಂಬಗಳಿಗೆ. ಸೇರುವುದು ಉಚಿತ.",
+kn:{fam5_b:"ನಿಮ್ಮ ಕುಟುಂಬದ ಕ್ಯಾಲೆಂಡರ್.",fam5:"ಹಬ್ಬಗಳು, ವ್ರತಗಳು ಮತ್ತು ಕುಟುಂಬದ ದಿನಗಳು, ಹಿಂದಿನವು ಮತ್ತು ಮುಂದಿನವು, ಒಂದೇ ಕಡೆ.",live_in:"{f} {n} ದಿನಗಳಲ್ಲಿ",live_today:"{f} ಇಂದು",fam4_b:"ಹಿರಿಯರು ಇಡೀ ಆಚರಣೆಯನ್ನು ಬರೆಯಬಹುದು.",fam4:"ಹಂತ ಹಂತವಾಗಿ, ಟೈಪ್ ಮಾಡಿ ಅಥವಾ ಮಾತನಾಡಿ, ದೊಡ್ಡ ಸುಲಭ ಅಕ್ಷರಗಳಲ್ಲಿ, ತಮ್ಮ ಧ್ವನಿಯೊಂದಿಗೆ. ಅದು ಇಡೀ ಕುಟುಂಬಕ್ಕೆ ಮಾರ್ಗದರ್ಶಿತ ಪೂಜೆಯಾಗುತ್ತದೆ.",hero_hook:"ಈ ವರ್ಷ ಮನೆಯಿಂದ ದೂರ ದೀಪಾವಳಿ ಆಚರಿಸುತ್ತಿದ್ದೀರಾ?",hint_diwali:"ಹಣತೆ ಹಚ್ಚಲು ಎಲ್ಲಿಯಾದರೂ ಟ್ಯಾಪ್ ಮಾಡಿ",hint_durga:"ಢಾಕ್ ಬಾರಿಸಿ",founder_h:"ವಿಧಿ-ವಿಧಾನ ಏಕೆ",reviewed_by:"ವಿಷಯ ಪರಿಶೀಲನೆ:",how3_p:"ಒಂದೊಂದೇ ಹಂತ, ನಿಮ್ಮ ಲಿಪಿಯಲ್ಲಿ ಮಂತ್ರ ಮತ್ತು ಆಡಿಯೋ, ಪ್ರತಿ ಹಂತದ ಕಾರಣ.",sound_on:"ಧ್ವನಿ ಆನ್",sound_off:"ಧ್ವನಿ ಆಫ್",hint_diwali:"ಆಕಾಶದ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ, ರಾಕೆಟ್ ಹಾರಿಸಿ",hint_kite:"ಗಾಳಿಪಟದ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ, ದಾರ ಕತ್ತರಿಸಿ",hint_bell:"ಘಂಟೆ ಬಾರಿಸಿ",hint_holi:"ಬಣ್ಣ ಎರಚಲು ಟ್ಯಾಪ್ ಮಾಡಿ ಅಥವಾ ಎಳೆಯಿರಿ",clear_holi:"ಸ್ವಚ್ಛಗೊಳಿಸಿ",hint_rakhi:"ರಾಖಿಯ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ",hint_onam:"ಚೆಂಡೆ ಬಾರಿಸಲು ಪೂಕ್ಕಳಂ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ",hint_durga:"ಢಾಕ್ ಬಾರಿಸಿ, ಶಂಖ ಊದಿ",btn_dhak:"ಢಾಕ್",btn_shankh:"ಶಂಖ",hint_ganesh:"ಮೋದಕದ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ",hint_pongal:"ಮಡಕೆ ಉಕ್ಕುವವರೆಗೆ ಟ್ಯಾಪ್ ಮಾಡಿ",hint_mode:"ಹಬ್ಬದ ಮೋಡ್ ಆನ್ ಮಾಡಿ",tag_diwali:"ದೀಪಾವಳಿ",tag_sankranti:"ಮಕರ ಸಂಕ್ರಾಂತಿ",tag_lakshmi:"ಲಕ್ಷ್ಮೀ ಪೂಜೆ",tag_holi:"ಹೋಳಿ",tag_rakhi:"ರಕ್ಷಾ ಬಂಧನ",tag_onam:"ಓಣಂ",tag_durga:"ದುರ್ಗಾ ಪೂಜೆ",tag_ganesh:"ಗಣೇಶ ಚತುರ್ಥಿ",tag_pongal:"ಪೊಂಗಲ್",mode:"ಹಬ್ಬದ ಮೋಡ್",lock_sub:"ಆಚರಣೆಗಳು, ನಿಮ್ಮ ಮನೆತನದ ರೀತಿಯಲ್ಲಿ",try_app:"ಆ್ಯಪ್ ಪ್ರಯತ್ನಿಸಿ",demo_full:"ಪೂರ್ಣ ಆ್ಯಪ್ ಪ್ರಿವ್ಯೂ ತೆರೆಯಿರಿ",app_note:"ಆ್ಯಪ್ ಪ್ರಿವ್ಯೂ ಸದ್ಯಕ್ಕೆ ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿದೆ.",lang:"ಭಾಷೆ",nav_join:"ಮೊದಲ ಪಟ್ಟಿಗೆ ಸೇರಿ",hero_h1:"ಪ್ರತಿ ಆಚರಣೆ, <em>ನಿಮ್ಮ ಮನೆತನದ ರೀತಿಯಲ್ಲಿ.</em>",hero_sub:"ಹಬ್ಬದ ಯೋಜನೆ, ಪೂಜಾ ಸಾಮಗ್ರಿ ಪಟ್ಟಿ ಮತ್ತು ಹಂತ ಹಂತವಾಗಿ ಪೂಜೆ, ನಿಮ್ಮ ಕುಟುಂಬ ನಿಜವಾಗಿ ಪಾಲಿಸುವ ಸಂಪ್ರದಾಯದಲ್ಲಿ. ಮುಂದೇನು ಎಂದು ಕೇಳಲು ಇನ್ನು ಮನೆಗೆ ಫೋನ್ ಮಾಡಬೇಕಿಲ್ಲ.",hero_try:"ಪೂಜೆಯನ್ನು ಪ್ರಯತ್ನಿಸಿ",hero_note:"ಮೊದಲು ಕನ್ನಡ, ತಮಿಳು ಮತ್ತು ತೆಲುಗು ಕುಟುಂಬಗಳಿಗೆ. ಸೇರುವುದು ಉಚಿತ.",
 prob_kicker:"ಸಮಸ್ಯೆ",prob_h:"ಪ್ರತಿ ಹಬ್ಬ ಅಮ್ಮನಿಗೆ ಫೋನ್ ಮಾಡುವುದರಿಂದಲೇ ಶುರು.",prob_p1:"ನಮ್ಮ ಹಬ್ಬಗಳನ್ನು ಹೇಗೆ ಮಾಡಬೇಕೆಂದು ಗೊತ್ತಿರುವವರಿಂದ ನಮ್ಮಲ್ಲಿ ಹಲವರು ಈಗ ದೂರದಲ್ಲಿದ್ದೇವೆ. ಹಾಗಾಗಿ ಅರ್ಧ ನೆನಪಿನಿಂದ, YouTube ನೋಡಿ, ಬೇರೆ ಯಾರದೋ ಸಂಪ್ರದಾಯವನ್ನು ಪಾಲಿಸುತ್ತೇವೆ.",prob_p2:"ಇತರ ಆ್ಯಪ್‌ಗಳು ಪ್ರತಿ ಪೂಜೆಗೆ ಒಂದೇ ಸಾಮಾನ್ಯ ವಿಧಾನ ಕೊಡುತ್ತವೆ. <strong>ಆದರೆ ನಿಮ್ಮ ದೀಪಾವಳಿ ಪಕ್ಕದ ಮನೆಯವರ ದೀಪಾವಳಿ ಅಲ್ಲ</strong>, ಇಂಟರ್ನೆಟ್‌ನದ್ದಂತೂ ಅಲ್ಲವೇ ಅಲ್ಲ.",
 chat1:"ಅಮ್ಮ, ಈ ವರ್ಷ ಎಣ್ಣೆ ಸ್ನಾನ ಶನಿವಾರನಾ ಭಾನುವಾರನಾ?",chat2:"ಕಳಶದಲ್ಲಿ ನಾಣ್ಯ ಹಾಕ್ತೀವಾ? 🙏",chat3:"ಇಲ್ಲಿ ಲಕ್ಷ್ಮೀ ಪೂಜೆ ಎಷ್ಟು ಗಂಟೆಗೆ?",chat4:"ಸಾರಿ, ಯಾವ ಎಲೆ ಅಂದೆ? 😅",chat_online:"ಆನ್‌ಲೈನ್",chat_name:"ಅಮ್ಮ",
 demo_kicker:"ಪ್ರಯತ್ನಿಸಿ",demo_h:"ನಿಮ್ಮ ದೀಪಾವಳಿ, ನಿಮ್ಮ ರೀತಿಯಲ್ಲಿ",demo_p:"ನಿಮ್ಮ ಕುಟುಂಬದ ಸಂಪ್ರದಾಯ ಆರಿಸಿ ಪೂಜೆಯ ಹಂತಗಳನ್ನು ನೋಡಿ. ಹಂತಗಳು ಹೇಗೆ ಬದಲಾಗುತ್ತವೆ ಗಮನಿಸಿ.",demo_trad:"ನಿಮ್ಮ ಸಂಪ್ರದಾಯ",t_kn:"ಕನ್ನಡ",t_ta:"ತಮಿಳು",t_te:"ತೆಲುಗು",demo_step:"ಹಂತ {n} / {t}",demo_say:"ಹೇಳಿ",demo_why:"ಏಕೆ",demo_next:"ಮುಂದಿನ ಹಂತ",demo_back:"ಹಿಂದೆ",demo_again:"ಮತ್ತೆ ಶುರು ಮಾಡಿ",demo_done_h:"ಇದೇ ಆಲೋಚನೆ.",demo_done_p:"ಪೂರ್ಣ ಆ್ಯಪ್‌ನಲ್ಲಿ ಪ್ರತಿ ಹಬ್ಬದ ಪ್ರತಿ ಹಂತ, ಆಡಿಯೋ, ನಿಮ್ಮ ಊರಿನ ಸಮಯ ಮತ್ತು ನಿಮ್ಮ ಕುಟುಂಬದ ಟಿಪ್ಪಣಿಗಳೊಂದಿಗೆ ಇರುತ್ತದೆ.",demo_add:"ನಿಮ್ಮ ಕುಟುಂಬದ ರೀತಿ ಸೇರಿಸಿ",demo_add_ph:"ಉದಾ: ಕಳಶದಲ್ಲಿ ಅಜ್ಜಿಯ ಬೆಳ್ಳಿ ನಾಣ್ಯ ಇಡುತ್ತೇವೆ",demo_save:"ಟಿಪ್ಪಣಿ ಉಳಿಸಿ",demo_note:"ನಿಮ್ಮ ಕುಟುಂಬದ ರೀತಿ",
@@ -764,7 +960,7 @@ cta_kicker:"ಮೊದಲ ಪ್ರವೇಶ",cta_h:"ಇದನ್ನು ಬಳಸ
 share_lead:"ಪ್ರತಿ ಹಬ್ಬಕ್ಕೂ ಮುಂಚೆ ಮನೆಗೆ ಫೋನ್ ಮಾಡುವವರು ನಿಮಗೆ ಗೊತ್ತೇ?",share_li:"LinkedIn‌ನಲ್ಲಿ ಹಂಚಿ",share_x:"X‌ನಲ್ಲಿ ಹಂಚಿ",share_wa:"WhatsApp‌ನಲ್ಲಿ ಹಂಚಿ",foot1:"ಬೆಂಗಳೂರಿನಲ್ಲಿ ತಯಾರಾದದ್ದು",foot2:"ಆಚರಣೆಗಳು ಕುಟುಂಬದಿಂದ ಕುಟುಂಬಕ್ಕೆ ಬೇರೆ. ಸಂದೇಹವಿದ್ದರೆ ಹಿರಿಯರು ಮತ್ತು ಪುರೋಹಿತರ ಮಾತು ಪಾಲಿಸಿ.",
 ph_step:"ಹಂತ 4 / 5 · ಲಕ್ಷ್ಮೀ ಪೂಜೆ",ph_fam_b:"ಅಮ್ಮನ ರೀತಿ",ph_fam:"ಕಳಶದಲ್ಲಿ ಅಜ್ಜಿಯ ಬೆಳ್ಳಿ ನಾಣ್ಯ ಇಡುತ್ತೇವೆ.",share_text:"ವಿಧಿ-ವಿಧಾನ: ಪ್ರತಿ ಆಚರಣೆ, ನಿಮ್ಮ ಮನೆತನದ ರೀತಿಯಲ್ಲಿ. ಹಬ್ಬದ ಯೋಜನೆ, ಸಾಮಗ್ರಿ ಪಟ್ಟಿ ಮತ್ತು ಹಂತ ಹಂತವಾಗಿ ಪೂಜೆ."},
 
-ta:{fam4_b:"பெரியவர்கள் முழுச் சடங்கையும் எழுதலாம்.",fam4:"படிப்படியாக, தட்டச்சு செய்தோ பேசியோ, பெரிய எளிய எழுத்துகளில், அவர்களின் சொந்தக் குரலுடன். அது முழுக் குடும்பத்துக்குமான வழிகாட்டும் பூஜையாகிறது.",hero_hook:"இந்த வருடம் வீட்டை விட்டுத் தொலைவில் தீபாவளி கொண்டாடுகிறீர்களா?",hint_diwali:"அகல் விளக்கேற்ற எங்கும் தட்டுங்கள்",hint_durga:"டாக் முழங்குங்கள்",founder_h:"விதி-விதானம் ஏன்",reviewed_by:"உள்ளடக்கச் சரிபார்ப்பு:",how3_p:"ஒவ்வொரு படியாக, உங்கள் எழுத்தில் மந்திரமும் ஆடியோவும், ஒவ்வொரு படியின் காரணமும்.",sound_on:"ஒலி இயக்கம்",sound_off:"ஒலி நிறுத்தம்",hint_diwali:"வானத்தைத் தட்டி ராக்கெட் விடுங்கள்",hint_kite:"பட்டத்தைத் தட்டி அறுத்து விடுங்கள்",hint_bell:"மணியை அடியுங்கள்",hint_holi:"வண்ணம் வீச தட்டுங்கள் அல்லது இழுங்கள்",clear_holi:"சுத்தம் செய்",hint_rakhi:"ராக்கியைத் தட்டுங்கள்",hint_onam:"செண்டை முழங்க பூக்கோலத்தைத் தட்டுங்கள்",hint_durga:"டாக் முழங்குங்கள், சங்கு ஊதுங்கள்",btn_dhak:"டாக்",btn_shankh:"சங்கு",hint_ganesh:"மோதகத்தைத் தட்டுங்கள்",hint_pongal:"பானை பொங்கும் வரை தட்டுங்கள்",hint_mode:"பண்டிகை மோடை இயக்குங்கள்",tag_diwali:"தீபாவளி",tag_sankranti:"மகர சங்கராந்தி",tag_lakshmi:"லக்ஷ்மி பூஜை",tag_holi:"ஹோலி",tag_rakhi:"ரக்ஷா பந்தன்",tag_onam:"ஓணம்",tag_durga:"துர்கா பூஜை",tag_ganesh:"விநாயகர் சதுர்த்தி",tag_pongal:"பொங்கல்",mode:"பண்டிகை மோட்",lock_sub:"சடங்குகள், உங்கள் குடும்ப முறைப்படி",try_app:"ஆப்பை முயற்சிக்கவும்",demo_full:"முழு ஆப் முன்னோட்டத்தைத் திறக்கவும்",app_note:"ஆப் முன்னோட்டம் இப்போது ஆங்கிலத்தில் மட்டும்.",lang:"மொழி",nav_join:"முன்பதிவுப் பட்டியலில் சேருங்கள்",hero_h1:"ஒவ்வொரு சடங்கும், <em>உங்கள் குடும்ப முறைப்படி.</em>",hero_sub:"பண்டிகைத் திட்டம், பூஜைப் பொருள் பட்டியல், படிப்படியான பூஜை: உங்கள் குடும்பம் உண்மையில் பின்பற்றும் சம்பிரதாயத்தில். அடுத்து என்ன என்று கேட்க இனி வீட்டுக்கு போன் செய்ய வேண்டாம்.",hero_try:"பூஜையை முயற்சிக்கவும்",hero_note:"முதலில் கன்னட, தமிழ், தெலுங்கு குடும்பங்களுக்கு. சேர்வது இலவசம்.",
+ta:{fam5_b:"உங்கள் குடும்பத்தின் நாட்காட்டி.",fam5:"பண்டிகைகள், விரதங்கள், குடும்ப நாட்கள்: கடந்தவை, வரவிருப்பவை, ஒரே இடத்தில்.",live_in:"{f} {n} நாட்களில்",live_today:"{f} இன்று",fam4_b:"பெரியவர்கள் முழுச் சடங்கையும் எழுதலாம்.",fam4:"படிப்படியாக, தட்டச்சு செய்தோ பேசியோ, பெரிய எளிய எழுத்துகளில், அவர்களின் சொந்தக் குரலுடன். அது முழுக் குடும்பத்துக்குமான வழிகாட்டும் பூஜையாகிறது.",hero_hook:"இந்த வருடம் வீட்டை விட்டுத் தொலைவில் தீபாவளி கொண்டாடுகிறீர்களா?",hint_diwali:"அகல் விளக்கேற்ற எங்கும் தட்டுங்கள்",hint_durga:"டாக் முழங்குங்கள்",founder_h:"விதி-விதானம் ஏன்",reviewed_by:"உள்ளடக்கச் சரிபார்ப்பு:",how3_p:"ஒவ்வொரு படியாக, உங்கள் எழுத்தில் மந்திரமும் ஆடியோவும், ஒவ்வொரு படியின் காரணமும்.",sound_on:"ஒலி இயக்கம்",sound_off:"ஒலி நிறுத்தம்",hint_diwali:"வானத்தைத் தட்டி ராக்கெட் விடுங்கள்",hint_kite:"பட்டத்தைத் தட்டி அறுத்து விடுங்கள்",hint_bell:"மணியை அடியுங்கள்",hint_holi:"வண்ணம் வீச தட்டுங்கள் அல்லது இழுங்கள்",clear_holi:"சுத்தம் செய்",hint_rakhi:"ராக்கியைத் தட்டுங்கள்",hint_onam:"செண்டை முழங்க பூக்கோலத்தைத் தட்டுங்கள்",hint_durga:"டாக் முழங்குங்கள், சங்கு ஊதுங்கள்",btn_dhak:"டாக்",btn_shankh:"சங்கு",hint_ganesh:"மோதகத்தைத் தட்டுங்கள்",hint_pongal:"பானை பொங்கும் வரை தட்டுங்கள்",hint_mode:"பண்டிகை மோடை இயக்குங்கள்",tag_diwali:"தீபாவளி",tag_sankranti:"மகர சங்கராந்தி",tag_lakshmi:"லக்ஷ்மி பூஜை",tag_holi:"ஹோலி",tag_rakhi:"ரக்ஷா பந்தன்",tag_onam:"ஓணம்",tag_durga:"துர்கா பூஜை",tag_ganesh:"விநாயகர் சதுர்த்தி",tag_pongal:"பொங்கல்",mode:"பண்டிகை மோட்",lock_sub:"சடங்குகள், உங்கள் குடும்ப முறைப்படி",try_app:"ஆப்பை முயற்சிக்கவும்",demo_full:"முழு ஆப் முன்னோட்டத்தைத் திறக்கவும்",app_note:"ஆப் முன்னோட்டம் இப்போது ஆங்கிலத்தில் மட்டும்.",lang:"மொழி",nav_join:"முன்பதிவுப் பட்டியலில் சேருங்கள்",hero_h1:"ஒவ்வொரு சடங்கும், <em>உங்கள் குடும்ப முறைப்படி.</em>",hero_sub:"பண்டிகைத் திட்டம், பூஜைப் பொருள் பட்டியல், படிப்படியான பூஜை: உங்கள் குடும்பம் உண்மையில் பின்பற்றும் சம்பிரதாயத்தில். அடுத்து என்ன என்று கேட்க இனி வீட்டுக்கு போன் செய்ய வேண்டாம்.",hero_try:"பூஜையை முயற்சிக்கவும்",hero_note:"முதலில் கன்னட, தமிழ், தெலுங்கு குடும்பங்களுக்கு. சேர்வது இலவசம்.",
 prob_kicker:"பிரச்சனை",prob_h:"ஒவ்வொரு பண்டிகையும் அம்மாவுக்கு ஒரு போன் காலில்தான் தொடங்குகிறது.",prob_p1:"நம் பண்டிகைகளை எப்படிச் செய்வது என்று தெரிந்தவர்களிடமிருந்து நம்மில் பலர் இப்போது தொலைவில் வாழ்கிறோம். அதனால் பாதி நினைவில், YouTube பார்த்து, வேறு யாருடைய சம்பிரதாயத்தையோ பின்பற்றுகிறோம்.",prob_p2:"மற்ற ஆப்கள் ஒவ்வொரு பூஜைக்கும் ஒரே பொதுவான முறையைத் தருகின்றன. <strong>ஆனால் உங்கள் தீபாவளி பக்கத்து வீட்டுத் தீபாவளி அல்ல</strong>, இணையத்தின் தீபாவளி நிச்சயமாக அல்ல.",
 chat1:"அம்மா, இந்த வருஷம் எண்ணெய் ஸ்நானம் சனிக்கிழமையா ஞாயிற்றுக்கிழமையா?",chat2:"கலசத்துல காசு போடணுமா? 🙏",chat3:"இங்க லக்ஷ்மி பூஜை எத்தனை மணிக்கு?",chat4:"சாரி, எந்த இலைன்னு சொன்ன? 😅",chat_online:"ஆன்லைன்",chat_name:"அம்மா",
 demo_kicker:"முயற்சித்துப் பாருங்கள்",demo_h:"உங்கள் தீபாவளி, உங்கள் முறையில்",demo_p:"உங்கள் குடும்ப சம்பிரதாயத்தைத் தேர்ந்தெடுத்து பூஜையின் படிகளைப் பாருங்கள். படிகள் எப்படி மாறுகின்றன என்று கவனியுங்கள்.",demo_trad:"உங்கள் சம்பிரதாயம்",t_kn:"கன்னடம்",t_ta:"தமிழ்",t_te:"தெலுங்கு",demo_step:"படி {n} / {t}",demo_say:"சொல்லுங்கள்",demo_why:"ஏன்",demo_next:"அடுத்த படி",demo_back:"பின்செல்",demo_again:"மீண்டும் தொடங்கு",demo_done_h:"இதுதான் யோசனை.",demo_done_p:"முழு ஆப்பில் ஒவ்வொரு பண்டிகையின் ஒவ்வொரு படியும், ஆடியோ, உங்கள் ஊரின் நேரம், உங்கள் குடும்பக் குறிப்புகளுடன் இருக்கும்.",demo_add:"உங்கள் குடும்ப முறையைச் சேர்க்கவும்",demo_add_ph:"உ.தா: கலசத்தில் பாட்டியின் வெள்ளிக் காசு வைப்போம்",demo_save:"குறிப்பைச் சேமி",demo_note:"உங்கள் குடும்ப முறை",
@@ -793,7 +989,7 @@ cta_kicker:"முன்கூட்டிய அணுகல்",cta_h:"இத�
 share_lead:"ஒவ்வொரு பண்டிகைக்கும் முன் வீட்டுக்கு போன் செய்பவர் யாராவது தெரியுமா?",share_li:"LinkedIn-இல் பகிர்",share_x:"X-இல் பகிர்",share_wa:"WhatsApp-இல் பகிர்",foot1:"பெங்களூரில் உருவானது",foot2:"சடங்குகள் குடும்பத்துக்குக் குடும்பம் மாறும். சந்தேகம் இருந்தால் பெரியவர்களையும் புரோகிதரையும் பின்பற்றுங்கள்.",
 ph_step:"படி 4 / 5 · லக்ஷ்மி பூஜை",ph_fam_b:"அம்மாவின் முறை",ph_fam:"கலசத்தில் பாட்டியின் வெள்ளிக் காசு வைப்போம்.",share_text:"விதி-விதானம்: ஒவ்வொரு சடங்கும், உங்கள் குடும்ப முறைப்படி. பண்டிகைத் திட்டம், பூஜைப் பொருள் பட்டியல், படிப்படியான பூஜை."},
 
-te:{fam4_b:"పెద్దలు పూర్తి ఆచారాన్ని రాయవచ్చు.",fam4:"దశలవారీగా, టైప్ చేసి లేదా మాట్లాడి, పెద్ద సులభమైన అక్షరాలతో, తమ సొంత గొంతుతో. అది కుటుంబమంతటికీ మార్గదర్శక పూజ అవుతుంది.",hero_hook:"ఈ ఏడాది ఇంటికి దూరంగా దీపావళి జరుపుకుంటున్నారా?",hint_diwali:"ప్రమిద వెలిగించడానికి ఎక్కడైనా తట్టండి",hint_durga:"ఢాక్ వాయించండి",founder_h:"విధి-విధానం ఎందుకు",reviewed_by:"కంటెంట్ పరిశీలన:",how3_p:"ఒక్కో దశ, మీ లిపిలో మంత్రాలు, ఆడియో, ప్రతి దశ ఎందుకో వివరణ.",sound_on:"శబ్దం ఆన్",sound_off:"శబ్దం ఆఫ్",hint_diwali:"ఆకాశంపై తట్టి రాకెట్ వదలండి",hint_kite:"గాలిపటంపై తట్టి దారం తెంపండి",hint_bell:"గంట మోగించండి",hint_holi:"రంగు చల్లడానికి తట్టండి లేదా లాగండి",clear_holi:"శుభ్రం చేయండి",hint_rakhi:"రాఖీపై తట్టండి",hint_onam:"చెండ వాయించడానికి పూక్కళంపై తట్టండి",hint_durga:"ఢాక్ వాయించండి, శంఖం ఊదండి",btn_dhak:"ఢాక్",btn_shankh:"శంఖం",hint_ganesh:"మోదకంపై తట్టండి",hint_pongal:"కుండ పొంగే వరకు తట్టండి",hint_mode:"పండుగ మోడ్ ఆన్ చేయండి",tag_diwali:"దీపావళి",tag_sankranti:"మకర సంక్రాంతి",tag_lakshmi:"లక్ష్మీ పూజ",tag_holi:"హోళీ",tag_rakhi:"రక్షా బంధన్",tag_onam:"ఓణం",tag_durga:"దుర్గా పూజ",tag_ganesh:"వినాయక చవితి",tag_pongal:"పొంగల్",mode:"పండుగ మోడ్",lock_sub:"ఆచారాలు, మీ కుటుంబ పద్ధతిలో",try_app:"యాప్‌ను ప్రయత్నించండి",demo_full:"పూర్తి యాప్ ప్రివ్యూ తెరవండి",app_note:"యాప్ ప్రివ్యూ ప్రస్తుతం ఇంగ్లీష్‌లో మాత్రమే ఉంది.",lang:"భాష",nav_join:"ముందస్తు జాబితాలో చేరండి",hero_h1:"ప్రతి ఆచారం, <em>మీ కుటుంబ పద్ధతిలో.</em>",hero_sub:"పండుగ ప్రణాళిక, పూజా సామగ్రి జాబితా, దశలవారీ పూజ: మీ కుటుంబం నిజంగా పాటించే సంప్రదాయంలో. తర్వాత ఏం చేయాలో అడగడానికి ఇక ఇంటికి ఫోన్ చేయక్కర్లేదు.",hero_try:"పూజను ప్రయత్నించండి",hero_note:"మొదట కన్నడ, తమిళ, తెలుగు కుటుంబాల కోసం. చేరడం ఉచితం.",
+te:{fam5_b:"మీ కుటుంబ క్యాలెండర్.",fam5:"పండుగలు, వ్రతాలు, కుటుంబ తేదీలు, గడిచినవి, రాబోయేవి, అన్నీ ఒకేచోట.",live_in:"{f} {n} రోజుల్లో",live_today:"{f} ఈరోజు",fam4_b:"పెద్దలు పూర్తి ఆచారాన్ని రాయవచ్చు.",fam4:"దశలవారీగా, టైప్ చేసి లేదా మాట్లాడి, పెద్ద సులభమైన అక్షరాలతో, తమ సొంత గొంతుతో. అది కుటుంబమంతటికీ మార్గదర్శక పూజ అవుతుంది.",hero_hook:"ఈ ఏడాది ఇంటికి దూరంగా దీపావళి జరుపుకుంటున్నారా?",hint_diwali:"ప్రమిద వెలిగించడానికి ఎక్కడైనా తట్టండి",hint_durga:"ఢాక్ వాయించండి",founder_h:"విధి-విధానం ఎందుకు",reviewed_by:"కంటెంట్ పరిశీలన:",how3_p:"ఒక్కో దశ, మీ లిపిలో మంత్రాలు, ఆడియో, ప్రతి దశ ఎందుకో వివరణ.",sound_on:"శబ్దం ఆన్",sound_off:"శబ్దం ఆఫ్",hint_diwali:"ఆకాశంపై తట్టి రాకెట్ వదలండి",hint_kite:"గాలిపటంపై తట్టి దారం తెంపండి",hint_bell:"గంట మోగించండి",hint_holi:"రంగు చల్లడానికి తట్టండి లేదా లాగండి",clear_holi:"శుభ్రం చేయండి",hint_rakhi:"రాఖీపై తట్టండి",hint_onam:"చెండ వాయించడానికి పూక్కళంపై తట్టండి",hint_durga:"ఢాక్ వాయించండి, శంఖం ఊదండి",btn_dhak:"ఢాక్",btn_shankh:"శంఖం",hint_ganesh:"మోదకంపై తట్టండి",hint_pongal:"కుండ పొంగే వరకు తట్టండి",hint_mode:"పండుగ మోడ్ ఆన్ చేయండి",tag_diwali:"దీపావళి",tag_sankranti:"మకర సంక్రాంతి",tag_lakshmi:"లక్ష్మీ పూజ",tag_holi:"హోళీ",tag_rakhi:"రక్షా బంధన్",tag_onam:"ఓణం",tag_durga:"దుర్గా పూజ",tag_ganesh:"వినాయక చవితి",tag_pongal:"పొంగల్",mode:"పండుగ మోడ్",lock_sub:"ఆచారాలు, మీ కుటుంబ పద్ధతిలో",try_app:"యాప్‌ను ప్రయత్నించండి",demo_full:"పూర్తి యాప్ ప్రివ్యూ తెరవండి",app_note:"యాప్ ప్రివ్యూ ప్రస్తుతం ఇంగ్లీష్‌లో మాత్రమే ఉంది.",lang:"భాష",nav_join:"ముందస్తు జాబితాలో చేరండి",hero_h1:"ప్రతి ఆచారం, <em>మీ కుటుంబ పద్ధతిలో.</em>",hero_sub:"పండుగ ప్రణాళిక, పూజా సామగ్రి జాబితా, దశలవారీ పూజ: మీ కుటుంబం నిజంగా పాటించే సంప్రదాయంలో. తర్వాత ఏం చేయాలో అడగడానికి ఇక ఇంటికి ఫోన్ చేయక్కర్లేదు.",hero_try:"పూజను ప్రయత్నించండి",hero_note:"మొదట కన్నడ, తమిళ, తెలుగు కుటుంబాల కోసం. చేరడం ఉచితం.",
 prob_kicker:"సమస్య",prob_h:"ప్రతి పండుగ అమ్మకు ఫోన్‌తోనే మొదలవుతుంది.",prob_p1:"మన పండుగలు ఎలా చేయాలో తెలిసినవారికి మనలో చాలామంది ఇప్పుడు దూరంగా ఉంటున్నాం. అందుకే సగం గుర్తుతో, YouTube చూసి, ఎవరిదో సంప్రదాయాన్ని పాటిస్తున్నాం.",prob_p2:"ఇతర యాప్‌లు ప్రతి పూజకు ఒకే సాధారణ పద్ధతి ఇస్తాయి. <strong>కానీ మీ దీపావళి పక్కింటివారి దీపావళి కాదు</strong>, ఇంటర్నెట్‌ది అసలే కాదు.",
 chat1:"అమ్మా, ఈ ఏడాది తలంటు స్నానం శనివారమా ఆదివారమా?",chat2:"కలశంలో నాణెం వేస్తామా? 🙏",chat3:"ఇక్కడ లక్ష్మీ పూజ ఎన్నింటికి?",chat4:"సారీ, ఏ ఆకులన్నావు? 😅",chat_online:"ఆన్‌లైన్",chat_name:"అమ్మ",
 demo_kicker:"ప్రయత్నించండి",demo_h:"మీ దీపావళి, మీ పద్ధతిలో",demo_p:"మీ కుటుంబ సంప్రదాయం ఎంచుకుని పూజ దశలను చూడండి. దశలు ఎలా మారుతాయో గమనించండి.",demo_trad:"మీ సంప్రదాయం",t_kn:"కన్నడ",t_ta:"తమిళం",t_te:"తెలుగు",demo_step:"దశ {n} / {t}",demo_say:"చెప్పండి",demo_why:"ఎందుకు",demo_next:"తర్వాతి దశ",demo_back:"వెనక్కి",demo_again:"మళ్ళీ మొదలుపెట్టండి",demo_done_h:"ఇదే ఆలోచన.",demo_done_p:"పూర్తి యాప్‌లో ప్రతి పండుగ ప్రతి దశ, ఆడియో, మీ ఊరి సమయాలు, మీ కుటుంబ నోట్స్‌తో ఉంటుంది.",demo_add:"మీ కుటుంబ పద్ధతిని జోడించండి",demo_add_ph:"ఉదా: కలశంలో నానమ్మ వెండి నాణెం ఉంచుతాం",demo_save:"నోట్ సేవ్ చేయండి",demo_note:"మీ కుటుంబ పద్ధతి",
@@ -833,6 +1029,22 @@ const t = k => (T[L][k] ?? T.en[k] ?? "");
 const loaded = new Set();
 function loadFont(code){ if(!FONTS[code] || loaded.has(code)) return; loaded.add(code); const l = document.createElement("link"); l.rel = "stylesheet"; l.href = "https://fonts.googleapis.com/css2?family=" + FONTS[code] + "&display=swap"; document.head.appendChild(l); }
 
+
+
+/* ================= Live pill + dock ================= */
+const LIVE = [["2026-11-08","tag_lakshmi"],["2026-11-24","Karthigai Deepam"],["2027-01-14","tag_sankranti"],["2027-04-07","Ugadi"]];
+function paintLive(){
+  const now = new Date(); now.setHours(0,0,0,0);
+  const next = LIVE.map(([d,k])=>[new Date(d + "T00:00:00"), k]).find(([d])=>d >= now); if(!next) { $("live").hidden = true; return; }
+  const n = Math.round((next[0] - now) / 864e5), name = T.en[next[1]] ? t(next[1]) : next[1];
+  $("liveText").textContent = n === 0 ? t("live_today").replace("{f}", name) : t("live_in").replace("{f}", name).replace("{n}", n);
+}
+function paintDock(){ document.querySelectorAll("#dock a[data-k]").forEach(a=>{ a.title = t(a.dataset.k); a.setAttribute("aria-label", t(a.dataset.k)); }); }
+paintLive(); paintDock();
+if("IntersectionObserver" in window){
+  const dio = new IntersectionObserver(es=>es.forEach(x=>{ if(x.isIntersecting) document.querySelectorAll("#dock a[data-k]").forEach(a=>a.classList.toggle("on", a.getAttribute("href") === "#" + x.target.id)); }), {rootMargin:"-45% 0px -50% 0px"});
+  ["top","how","try","family","faq-s"].forEach(id=>{ const el = document.getElementById(id); if(el) dio.observe(el); });
+}
 
 /* ================= Settings, analytics, honesty ================= */
 const LANGS_OK = (window.VV_LANGS && window.VV_LANGS.length ? window.VV_LANGS : ["en"]).filter(l=>T[l]);
@@ -908,7 +1120,7 @@ function applyLang(){
   if(L !== "en" && L !== "hi") loadFont(L);
   document.querySelectorAll("[data-i]").forEach(el=>{ el.textContent = t(el.dataset.i); });
   document.querySelectorAll("[data-ih]").forEach(el=>{ el.innerHTML = t(el.dataset.ih); });
-  $("brandSub").textContent = BRAND[L]; $("footBrand").textContent = BRAND[L]; $("ctaBrand").textContent = BRAND[L]; $("kicker").textContent = KICK[L];
+  $("brandSub").textContent = BRAND[L]; $("footBrand").textContent = BRAND[L]; paintLive && paintLive(); paintDock && paintDock(); $("ctaBrand").textContent = BRAND[L]; $("kicker").textContent = KICK[L];
   const ps = (L==="ta"||L==="te"||L==="kn") ? L : "kn"; loadFont(ps);
   $("phMantra").textContent = MANTRA.l[ps]; $("phMantra").style.fontFamily = `var(--${ps})`;
   $("phone").setAttribute("aria-label", t("s4_t") + ". " + t("s4_d"));
@@ -1093,7 +1305,7 @@ function shout(text, x, y, color="#D0115C"){
   const el = document.createElement("div"); el.className = "shout"; el.textContent = text; el.style.left = x + "px"; el.style.top = y + "px"; el.style.color = color;
   document.body.appendChild(el); setTimeout(()=>el.remove(), 1800);
 }
-const isUI = el => el.closest("a,button,select,input,label,.phone,.chat,.dpanel,.step-c,.feat,.tcard,.tl > div,.faq,.garland,.addnote,.seg,.walk,.mbar,.fdots");
+const isUI = el => el.closest("a,button,select,input,label,.phone,.chat,.dpanel,.step-c,.feat,.tcard,.tl > div,.faq,.garland,.addnote,.seg,.walk,.mbar,.fdots,.bc,.float,.dock,.live");
 
 /* 1 · Deepavali: tap the sky, launch a rocket */
 const hero = document.querySelector(".hero");
@@ -1123,7 +1335,7 @@ $("dpanel").addEventListener("click", e=>{ if(e.target.closest('[data-d="next"]'
 /* 4 · Holi: throw gulal */
 const holi = document.querySelector(".holi"), hc = $("holiCanvas"), hx = hc.getContext("2d"); let hcol = 0, lastSplat = 0;
 const GULAL = ["#FF3D8B","#2BC46B","#3B82F6","#FFC21E","#9B4DFF","#FF7A2E"];
-function sizeHoli(){ const r = holi.getBoundingClientRect(), d = Math.min(2, devicePixelRatio || 1); const img = hc.width ? hx.getImageData(0,0,hc.width,hc.height) : null; hc.width = r.width*d; hc.height = r.height*d; hx.setTransform(d,0,0,d,0,0); if(img) hx.putImageData(img,0,0); }
+function sizeHoli(){ const r = hc.getBoundingClientRect(), d = Math.min(2, devicePixelRatio || 1); const img = hc.width ? hx.getImageData(0,0,hc.width,hc.height) : null; hc.width = r.width*d; hc.height = r.height*d; hx.setTransform(d,0,0,d,0,0); if(img) hx.putImageData(img,0,0); }
 sizeHoli(); addEventListener("resize", sizeHoli);
 function splat(x, y, big){
   const c = GULAL[hcol++ % GULAL.length], R = big ? 46 + Math.random()*30 : 16 + Math.random()*10;
@@ -1133,8 +1345,8 @@ function splat(x, y, big){
   hx.globalAlpha = 1;
 }
 let drawing = false;
-holi.addEventListener("pointerdown", e=>{ if(isUI(e.target)) return; drawing = true; track("toy-holi"); const r = holi.getBoundingClientRect(); splat(e.clientX - r.left, e.clientY - r.top, true); SND.pop(); burst(e.clientX, e.clientY, 22, [GULAL[(hcol-1+GULAL.length)%GULAL.length]], 3, "dust"); });
-holi.addEventListener("pointermove", e=>{ if(!drawing || isUI(e.target)) return; const now = performance.now(); if(now - lastSplat < 40) return; lastSplat = now; const r = holi.getBoundingClientRect(); hcol--; splat(e.clientX - r.left, e.clientY - r.top, false); hcol++; });
+holi.addEventListener("pointerdown", e=>{ if(isUI(e.target)) return; drawing = true; track("toy-holi"); const r = hc.getBoundingClientRect(); splat(e.clientX - r.left, e.clientY - r.top, true); SND.pop(); burst(e.clientX, e.clientY, 22, [GULAL[(hcol-1+GULAL.length)%GULAL.length]], 3, "dust"); });
+holi.addEventListener("pointermove", e=>{ if(!drawing || isUI(e.target)) return; const now = performance.now(); if(now - lastSplat < 40) return; lastSplat = now; const r = hc.getBoundingClientRect(); hcol--; splat(e.clientX - r.left, e.clientY - r.top, false); hcol++; });
 addEventListener("pointerup", ()=>drawing = false);
 $("clearHoli").addEventListener("click", ()=>{ hx.clearRect(0,0,hc.width,hc.height); });
 
