@@ -163,7 +163,7 @@ table.t th{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:
 
 nav.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:3px solid var(--marigold);
   padding:8px max(16px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));z-index:5}
-nav.tabs .in{max-width:440px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+nav.tabs .in{max-width:440px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
 nav.tabs button{background:none;border:0;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.7rem;font-weight:600;color:var(--muted);padding:6px 0}
 nav.tabs button[aria-current="page"]{color:var(--leaf)}
 nav.tabs svg{width:22px;height:22px}
@@ -298,13 +298,41 @@ nav.tabs svg{width:22px;height:22px}
 .evoice{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .ritcard .t-title{font-size:1.05rem}
 @media (prefers-reduced-motion: reduce){.emic.on,.ebtn.rec{animation:none}}
+
+/* ---- Calendar ---- */
+nav.tabs button{font-size:.66rem}
+.cal-it{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.cal-it:first-child{border-top:0;padding-top:0}
+.cal-it:last-child{padding-bottom:0}
+.cal-it.past{opacity:.62}
+.cal-it.now .cal-date{box-shadow:0 0 0 3px var(--marigold)}
+.cal-date{flex:none;width:56px;border-radius:14px;background:var(--surface);border:2px solid var(--k);display:flex;flex-direction:column;align-items:center;padding:6px 0;line-height:1.1;align-self:flex-start}
+.cal-date b{font:800 1.45rem "Baloo 2",sans-serif;color:var(--k)}
+.cal-date span{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cal-date.sm{width:48px;padding:4px 0}.cal-date.sm b{font-size:1.2rem}
+.cal-body{flex:1;min-width:0}
+.cal-t{font-weight:600;font-family:var(--display);font-size:1.05rem;line-height:1.25}
+.chip.cal-k{background:var(--k);color:#fff}
+.cal-rem[aria-pressed="true"]{background:var(--haldi-soft);border-color:var(--marigold)}
+.cal-mini{display:flex;gap:12px;align-items:center;text-align:left;border:0;background:none;padding:8px 0;border-top:1px solid var(--line);cursor:pointer;font:inherit;color:inherit}
+.cal-mini:first-of-type{border-top:0}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal-grid > b{font-size:.7rem;color:var(--muted);font-weight:600;padding-bottom:4px}
+.cal-day{aspect-ratio:1;border:0;border-radius:10px;background:var(--ground);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:inherit;font-weight:600;color:var(--ink);cursor:pointer;padding:0;min-width:0}
+.cal-day.past{color:var(--muted)}
+.cal-day.today{box-shadow:inset 0 0 0 2px var(--marigold)}
+.cal-day.sel{background:var(--purple);color:#FFF3D6}
+.cal-day i{display:flex;gap:2px;height:6px}
+.cal-day em,.dot{display:inline-block;width:6px;height:6px;border-radius:50%}
+.cal-day.sel em{box-shadow:0 0 0 1px #FFF3D6}
 </style>
 
 <div class="app" id="app"></div>
 <nav class="tabs" id="tabs" aria-label="Main">
   <div class="in">
     <button data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c-2 3-3 4.5-3 6.5a3 3 0 0 0 6 0C15 7.5 14 6 12 3z"/><path d="M4 15h16l-2 5H6z"/></svg>Today</button>
-    <button data-go="prepare"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Plan</button>
+    <button data-go="prepare"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.5 1.5L7.5 5M3.5 12l1.5 1.5 2.5-2.5M3.5 18l1.5 1.5 2.5-2.5"/></svg>Plan</button>
+    <button data-go="calendar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/><circle cx="9" cy="14.5" r="1" fill="currentColor"/><circle cx="15" cy="14.5" r="1" fill="currentColor"/></svg>Calendar</button>
     <button data-go="pujaview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v3"/><circle cx="12" cy="8" r="1.6"/><path d="M12 10c-4 0-6 3-6 7 0 1-1 2-2 3h16c-1-1-2-2-2-3 0-4-2-7-6-7z"/></svg>Puja</button>
     <button data-go="family"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.3"/><path d="M3 20c.5-3.5 3-5.5 6-5.5s5.5 2 6 5.5M15 15.5c2.5-.3 5 1 5.5 4.5"/></svg>Family</button>
   </div>
@@ -324,10 +352,10 @@ document.addEventListener("click", e=>{ const a = e.target.closest("a"); if(!a) 
 
 /* ================= Content (sample: Rao family, Kannada household, Bengaluru) ================= */
 const FEST = {name:"Deepavali", mainDate:"2026-11-08", days:[
-  {date:"2026-11-06", w:"Fri", label:"Neeru tumbuva"},
-  {date:"2026-11-07", w:"Sat", label:"Naraka Chaturdashi"},
+  {date:"2026-11-07", w:"Sat", label:"Neeru tumbuva"},
+  {date:"2026-11-08", w:"Sun", label:"Oil bath at dawn"},
   {date:"2026-11-08", w:"Sun", label:"Lakshmi puja", main:true},
-  {date:"2026-11-09", w:"Mon", label:"Bali Padyami"}]};
+  {date:"2026-11-10", w:"Tue", label:"Bali Padyami"}]};
 
 const MEMBERS = [
   {n:"Anand", r:"You · Bengaluru", i:"An"},
@@ -348,21 +376,21 @@ const PLAN = [
   {date:"2026-11-05", w:"Thu", title:"Sweets and snacks", tasks:[
     {id:"t7", t:"Make karjikai and chakli", b:"Both keep well for a week.", recipe:true},
     {id:"t7b", t:"Make Mysore pak and murukku", b:"From Kavya's side of the family.", side:"sweets"}]},
-  {date:"2026-11-06", w:"Fri", title:"Neeru tumbuva habba", fest:true, tasks:[
+  {date:"2026-11-07", w:"Sat", title:"Neeru tumbuva habba", fest:true, tasks:[
     {id:"t8", t:"Decorate the bathing vessel", b:"Draw rangoli, apply haldi and kumkum, tie a garland around its neck.", time:"Evening", opt:"neeru"},
     {id:"t9", t:"Fill it with fresh water", b:"This water is used for tomorrow's oil bath.", time:"After sunset", opt:"neeru"},
     {id:"t10", t:"Buy flowers, fruits and betel leaves", b:"Fresh for the weekend."},
     {id:"t10b", t:"Draw the Deepavali rangoli", b:"A 7-dot diya design takes about 20 minutes.", rangoli:true}]},
-  {date:"2026-11-07", w:"Sat", title:"Naraka Chaturdashi", fest:true, tasks:[
+  {date:"2026-11-08", w:"Sun", title:"Naraka Chaturdashi, morning", fest:true, tasks:[
     {id:"t11", t:"Oil bath before sunrise (abhyanga snana)", b:"An elder applies warm oil on each person's head before the bath.", time:"Before ~6:15 AM", noteWhere:"Oil bath"},
     {id:"t11b", t:"Take Deepavali marundhu after the bath", b:"A digestive legiyam made with ginger and pepper, from Kavya's side.", side:"oil"},
     {id:"t12", t:"Wear new clothes and light the lamps", b:"The main lamp first, then the diyas at the entrance."},
     {id:"t13", t:"Read the Narakasura story with the kids", b:"Three short pages.", story:"naraka"}]},
-  {date:"2026-11-08", w:"Sun", title:"Lakshmi puja", fest:true, main:true, tasks:[
+  {date:"2026-11-08", w:"Sun", title:"Lakshmi puja, evening", fest:true, main:true, tasks:[
     {id:"t14", t:"Set up the puja area in the afternoon", b:"Kalasha, Lakshmi image, Ganapati, flowers and naivedya ready by 5 PM."},
     {id:"t15", t:"Do the Lakshmi puja with guided mode", b:"Full version about 40 minutes, short version about 15.", time:"Pradosh kaal, ~6:00–8:30 PM", puja:true},
     {id:"t16", t:"Light diyas around the house", b:"Entrance, windows and the tulasi katte."}]},
-  {date:"2026-11-09", w:"Mon", title:"Bali Padyami", fest:true, tasks:[
+  {date:"2026-11-10", w:"Tue", title:"Bali Padyami", fest:true, tasks:[
     {id:"t17", t:"Bali Chakravarti puja", b:"Practices vary a lot between families.", family:true, ask:"How did Ajji do the Bali puja?"},
     {id:"t18", t:"Gopuja", b:"Offer haldi, kumkum and a fruit to a cow, if one is nearby.", opt:"gopuja"},
     {id:"t19", t:"Make Balindra figures", b:"Small figures of Bali shaped from clay or cow dung, placed at the threshold.", opt:"balifig"}]}
@@ -504,7 +532,7 @@ const defaultState = {
     {t:"Offer flowers and a lamp", d:"Put haldi, kumkum and a few flowers on the figure. Light one lamp beside it.", w:"", i:"Haldi, kumkum, flowers, one lamp", audio:""},
     {t:"Call him back next year", d:"Fold your hands and say: Bali raja, come again next year.", w:"Nothing elaborate. Your Ajji always said it simply.", i:"", audio:""},
     {t:"Share something sweet", d:"Give everyone a little holige or any sweet made at home.", w:"", i:"", audio:""}]}],
-  elderLang:"en", elderBig:false,
+  elderLang:"en", elderBig:false, calView:"list", calKind:"all", calAll:false, calPast:false, remind:{},
   onboarded:false, region:"karnataka", practice:"home", famNote:"", lang:"kn", tips:{},
   tasks:{t1:true, t2:true}, items:{s3:true, s7:true, s12:true, s16:true}, extra:[],
   assign:{t4:0, t5:1, t10:2, t7:3},
@@ -518,7 +546,7 @@ const defaultState = {
   samView:"all", pujaLen:"full", aloud:false, servings:{holige:12, karjikai:20},
   budget:[["Priest dakshina",11000],["Puja samagri",4500],["Flowers and decoration",6000],["Lunch for 40 guests",28000],["Return gifts",6000],["Other",3000]],
   griha:{}, vrats:{ekadashi:true, pradosha:false, sankashti:true},
-  shraddha:[{n:"Ajja (Narayana Rao)", masa:"Ashwayuja", paksha:"Krishna", tithi:"Dashami", next:"Tue 3 Nov 2026"}],
+  shraddha:[{n:"Ajja (Narayana Rao)", masa:"Ashwayuja", paksha:"Krishna", tithi:"Dashami", next:"Tue 3 Nov 2026", iso:"2026-11-03"}],
   nri:{on:false, city:"London"}, priestFilter:"All"
 };
 let S = load();
@@ -765,19 +793,166 @@ function ritExtras(s){
 }
 if(location.hash === "#elder") setTimeout(()=>openEditor(null), 300);
 
+
+/* ================= Festival calendar: past, today, upcoming ================= */
+/* Dates from published 2026–27 Hindu calendars (hindu-blog.com, hindutone.com). Lunar dates can differ by a day by region; approx:true marks the ones sources disagree on. */
+const CAL = [
+  {id:"varalakshmi26", d:"2026-08-21", t:"Varamahalakshmi", k:"festival", r:["karnataka","tamil","telugu"], s:"Friday before Shravana Purnima"},
+  {id:"rakhi26", d:"2026-08-27", t:"Raksha Bandhan", k:"festival", r:["all"]},
+  {id:"janma26", d:"2026-09-03", t:"Krishna Janmashtami", k:"festival", r:["all"], s:"Smarta date; Vaishnava homes on 4 Sep"},
+  {id:"ganesha26", d:"2026-09-14", t:"Gowri-Ganesha", k:"festival", r:["karnataka","tamil","telugu","maharashtra"], s:"Ganesh Chaturthi"},
+  {id:"navaratri26", d:"2026-10-11", end:"2026-10-19", t:"Navaratri and Bombe habba", k:"festival", r:["all"], s:"Golu, Bathukamma, garba"},
+  {id:"dasara26", d:"2026-10-20", t:"Vijayadashami", k:"festival", r:["all"], s:"Dasara"},
+  {id:"rambha26", d:"2026-11-05", t:"Rambha Ekadashi", k:"vrat", v:"ekadashi", r:["all"]},
+  {id:"dhanteras26", d:"2026-11-06", t:"Dhanatrayodashi", k:"festival", r:["all"], s:"Dhanteras", occ:"Deepavali"},
+  {id:"pradosh26a", d:"2026-11-06", t:"Pradosha", k:"vrat", v:"pradosha", r:["all"]},
+  {id:"neeru26", d:"2026-11-07", t:"Neeru tumbuva habba", k:"festival", r:["karnataka"], s:"Fill the bathing vessel in the evening", occ:"Deepavali", plan:true},
+  {id:"naraka26", d:"2026-11-08", t:"Naraka Chaturdashi", k:"festival", r:["all"], s:"Oil bath before sunrise", occ:"Deepavali", plan:true},
+  {id:"lakshmi26", d:"2026-11-08", t:"Lakshmi puja", k:"festival", r:["all"], s:"Pradosh kaal, about 6:00–8:30 PM", occ:"Deepavali", plan:true, puja:true, main:true},
+  {id:"bali26", d:"2026-11-10", t:"Bali Padyami", k:"festival", r:["karnataka","maharashtra","gujarat"], s:"Govardhan puja and Padwa elsewhere", occ:"Deepavali", plan:true},
+  {id:"bhaidooj26", d:"2026-11-11", t:"Bhai Dooj", k:"festival", r:["north","maharashtra","gujarat"], s:"Bhaubeej, Bhagini Dwitiya"},
+  {id:"sashti26", d:"2026-11-15", t:"Skanda Sashti (Soorasamharam)", k:"festival", r:["tamil"]},
+  {id:"prabodhini26", d:"2026-11-20", t:"Prabodhini Ekadashi", k:"vrat", v:"ekadashi", r:["all"], s:"Kaisika Ekadashi in Tamil Nadu"},
+  {id:"tulasi26", d:"2026-11-21", t:"Tulasi Habba", k:"festival", r:["karnataka","tamil","telugu","maharashtra"], s:"Utthana Dwadashi, Tulasi vivaha"},
+  {id:"pradosh26b", d:"2026-11-22", t:"Pradosha", k:"vrat", v:"pradosha", r:["all"]},
+  {id:"deepam26", d:"2026-11-24", t:"Karthigai Deepam", k:"festival", r:["tamil","karnataka","telugu"], s:"Kartika Purnima; Dev Deepawali in Varanasi"},
+  {id:"sankashti26", d:"2026-11-27", t:"Sankashti Chaturthi", k:"vrat", v:"sankashti", r:["all"], s:"Break the fast after moonrise, about 8:45 PM"},
+  {id:"utpanna26", d:"2026-12-04", t:"Utpanna Ekadashi", k:"vrat", v:"ekadashi", r:["all"]},
+  {id:"dhanur26", d:"2026-12-16", t:"Dhanurmasa begins", k:"festival", r:["karnataka","tamil","telugu"], s:"Early-morning puja for a month"},
+  {id:"vaikunta26", d:"2026-12-20", t:"Vaikunta Ekadashi", k:"vrat", v:"ekadashi", r:["all"], s:"Mokshada Ekadashi; some calendars say 19 Dec", approx:true},
+  {id:"datta26", d:"2026-12-23", t:"Datta Jayanti", k:"festival", r:["karnataka","maharashtra","telugu"]},
+  {id:"sankranti27", d:"2027-01-14", t:"Makar Sankranti", k:"festival", r:["all"], s:"Ellu-bella, kites, Bhogi the day before"},
+  {id:"pongal27", d:"2027-01-15", t:"Thai Pongal", k:"festival", r:["tamil"]},
+  {id:"rathasaptami27", d:"2027-02-13", t:"Ratha Saptami", k:"festival", r:["karnataka","tamil","telugu"]},
+  {id:"shivaratri27", d:"2027-03-06", t:"Maha Shivaratri", k:"festival", r:["all"], approx:true},
+  {id:"holi27", d:"2027-03-22", t:"Holi", k:"festival", r:["all"], approx:true},
+  {id:"ugadi27", d:"2027-04-07", t:"Ugadi", k:"festival", r:["karnataka","telugu","maharashtra"], s:"Gudi Padwa in Maharashtra; some calendars say 8 Apr", approx:true},
+  {id:"ramanavami27", d:"2027-04-15", t:"Sri Rama Navami", k:"festival", r:["all"]}
+];
+const KIND = {festival:{n:"Festival", c:"var(--leaf)"}, vrat:{n:"Vrat", c:"var(--purple-2)"}, family:{n:"Family", c:"var(--green)"}};
+const WD = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"], MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const iso = dt => `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,"0")}-${String(dt.getDate()).padStart(2,"0")}`;
+const parse = s => { const [y,m,d] = s.split("-").map(Number); return new Date(y, m-1, d); };
+const todayISO = () => iso(new Date());
+const dayDiff = s => Math.round((parse(s) - parse(todayISO())) / 864e5);
+function rel(s, end){ const n = dayDiff(s); if(end && n < 0 && dayDiff(end) >= 0) return "On now"; if(n === 0) return "Today"; if(n === 1) return "Tomorrow"; if(n === -1) return "Yesterday";
+  if(n > 1) return n < 14 ? `In ${n} days` : n < 60 ? `In ${Math.round(n/7)} weeks` : `In ${Math.round(n/30)} months`;
+  const a = -n; return a < 14 ? `${a} days ago` : a < 60 ? `${Math.round(a/7)} weeks ago` : `${Math.round(a/30)} months ago`; }
+function calEvents(){
+  const out = CAL.filter(e => e.k !== "vrat" || S.vrats[e.v]).map(e => Object.assign({}, e));
+  (S.shraddha || []).forEach((s,i)=>{ if(s.iso) out.push({id:"shr"+i, d:s.iso, t:"Shraddha · " + s.n, k:"family", r:["all"], s:`${s.masa} ${s.paksha} ${s.tithi}`}); });
+  return out.sort((a,b)=> a.d < b.d ? -1 : a.d > b.d ? 1 : 0);
+}
+function forMe(e){ return S.calAll || e.k === "family" || e.r.includes("all") || e.r.includes(S.region); }
+function famRit(e){ if(!e.occ && e.k !== "festival") return null; const w = e.t.split(" ")[0].toLowerCase(); return S.rituals.find(r => r.title.toLowerCase().includes(w)) || (e.main ? S.rituals.find(r => r.occ === e.occ) : null); }
+function calItem(e){
+  const dt = parse(e.d), n = dayDiff(e.d), past = n < 0 && !(e.end && dayDiff(e.end) >= 0), r = famRit(e), on = !!(S.remind && S.remind[e.id]);
+  const region = e.r.includes("all") ? "All India" : e.r.map(x=>REGION[x] || x).join(", ");
+  return `<div class="cal-it ${past?"past":""} ${n===0?"now":""}" id="ev-${e.id}">
+    <div class="cal-date" style="--k:${KIND[e.k].c}"><b>${dt.getDate()}</b><span>${WD[dt.getDay()]}</span><span>${MONTHS[dt.getMonth()].slice(0,3)}</span></div>
+    <div class="cal-body">
+      <div class="cal-t">${esc(e.t)}${e.end ? ` <span class="small muted">to ${parse(e.end).getDate()} ${MONTHS[parse(e.end).getMonth()].slice(0,3)}</span>` : ""}</div>
+      ${e.s ? `<div class="sub">${esc(e.s)}</div>` : ""}
+      <div class="wrap-row" style="gap:6px;margin-top:4px"><span class="chip cal-k" style="--k:${KIND[e.k].c}">${KIND[e.k].n}</span><span class="chip assign" style="cursor:default">${esc(region)}</span><span class="chip ${n===0?"today":"time"}">${rel(e.d, e.end)}</span>${e.approx?`<span class="chip assign" style="cursor:default" title="Sources differ by a day">± 1 day</span>`:""}</div>
+      ${past ? "" : `<div class="wrap-row" style="gap:8px;margin-top:8px">
+        ${e.plan ? `<button class="btn ghost sm" data-go="prepare">Open the plan</button>` : ""}
+        ${e.puja ? `<button class="btn primary sm" data-act="puja">Start the puja</button>` : ""}
+        ${r ? `<button class="btn ghost sm" data-act="ritplay" data-id="${r.id}">${esc(r.by)}'s way</button>` : ""}
+        <button class="btn ghost sm cal-rem" aria-pressed="${on}" data-act="calrem" data-id="${e.id}" data-sim>${on ? "Reminder set" : "Remind me"}</button></div>`}
+    </div></div>`;
+}
+function viewCalendar(){
+  const ev = calEvents().filter(forMe).filter(e => S.calKind === "all" || !S.calKind || e.k === S.calKind);
+  const t = todayISO();
+  const today = ev.filter(e => e.d === t || (e.end && e.d <= t && e.end >= t));
+  const up = ev.filter(e => e.d > t);
+  const past = ev.filter(e => (e.end || e.d) < t).reverse();
+  const kinds = [["all","All"],["festival","Festivals"],["vrat","Vrats"],["family","Family"]];
+  let body;
+  if(S.calView === "month"){ body = monthGrid(ev); }
+  else {
+    const byMonth = {}; up.forEach(e => { const k = e.d.slice(0,7); (byMonth[k] ||= []).push(e); });
+    body = `
+      <section class="stack" style="gap:8px"><h2>Today · ${WD[new Date().getDay()]} ${new Date().getDate()} ${MONTHS[new Date().getMonth()].slice(0,3)}</h2>
+        ${today.length ? `<div class="card">${today.map(calItem).join("")}</div>` : `<div class="card"><p class="muted">Nothing on the calendar today.</p></div>`}</section>
+      ${Object.entries(byMonth).map(([k,list])=>`<section class="stack" style="gap:8px"><h2>${MONTHS[Number(k.slice(5))-1]} ${k.slice(0,4)}</h2><div class="card">${list.map(calItem).join("")}</div></section>`).join("")}
+      <section class="stack" style="gap:8px"><button class="link" data-act="calpast" aria-expanded="${!!S.calPast}">${S.calPast ? "Hide" : "Show"} past festivals (${past.length})</button>
+        ${S.calPast ? `<div class="card">${past.map(calItem).join("")}</div>` : ""}</section>`;
+  }
+  return `${protoBar()}
+    <div class="stack" style="gap:6px"><p class="eyebrow">${S.calAll ? "All regions" : esc(REGION[S.region]) + " and all-India"}</p><h1>Festival calendar</h1>
+      <p class="muted">What's coming, what's today, and what's passed. Turn vrats on in <button class="link" data-go="vrats" style="font-size:inherit">Vrats</button> to see them here.</p></div>
+    <div class="row" style="flex-wrap:wrap;gap:8px;justify-content:space-between">
+      <div class="seg" role="group" aria-label="View" style="flex:0 1 220px"><button aria-pressed="${S.calView!=="month"}" data-act="calview" data-v="list">List</button><button aria-pressed="${S.calView==="month"}" data-act="calview" data-v="month">Month</button></div>
+      <label class="row small" style="gap:8px">${sw(S.calAll,"calall",'aria-label="Show all regions"')} All regions</label>
+    </div>
+    <div class="wrap-row">${kinds.map(([k,n])=>`<button class="chip ${(S.calKind||"all")===k?"today":"assign"}" style="padding:6px 12px" data-act="calkind" data-v="${k}">${n}</button>`).join("")}</div>
+    ${body}
+    <section class="card stack" style="gap:8px"><b>Add these to your phone's calendar</b><p class="small muted">Downloads the upcoming dates shown above as a calendar file for Google Calendar or your phone.</p><button class="btn ghost sm" style="align-self:flex-start" data-act="calics">Download calendar file</button></section>
+    <p class="small muted">Dates follow published 2026–27 calendars for India. Lunar dates can differ by a day by region; check your family's panchang.</p>`;
+}
+function monthGrid(ev){
+  const months = []; const first = parse(CAL[0].d), last = parse(CAL[CAL.length-1].d);
+  for(let d = new Date(first.getFullYear(), first.getMonth(), 1); d <= last; d = new Date(d.getFullYear(), d.getMonth()+1, 1)) months.push(iso(d).slice(0,7));
+  let mk = S.calMonth && months.includes(S.calMonth) ? S.calMonth : todayISO().slice(0,7); if(!months.includes(mk)) mk = months[0];
+  const mi = months.indexOf(mk), [y,m] = mk.split("-").map(Number), start = new Date(y, m-1, 1), days = new Date(y, m, 0).getDate(), t = todayISO();
+  const sel = S.calDay && S.calDay.startsWith(mk) ? S.calDay : (t.startsWith(mk) ? t : null);
+  const map = {}; ev.forEach(e => { const a = parse(e.d), b = e.end ? parse(e.end) : a; for(let d = new Date(a); d <= b; d.setDate(d.getDate()+1)){ (map[iso(d)] ||= []).push(e); } });
+  let cells = ""; for(let i=0;i<start.getDay();i++) cells += `<span></span>`;
+  for(let dn=1; dn<=days; dn++){ const k = `${mk}-${String(dn).padStart(2,"0")}`, es = map[k] || [];
+    cells += `<button class="cal-day ${k===t?"today":""} ${k===sel?"sel":""} ${k<t?"past":""}" data-act="calday" data-v="${k}" aria-label="${dn} ${MONTHS[m-1]}${es.length ? ", " + es.map(e=>e.t).join(", ") : ""}"><span>${dn}</span><i>${es.slice(0,3).map(e=>`<em style="background:${KIND[e.k].c}"></em>`).join("")}</i></button>`; }
+  const selEv = sel ? (map[sel] || []) : ev.filter(e => e.d.startsWith(mk));
+  return `<div class="card stack" style="gap:10px">
+      <div class="row between"><button class="btn ghost sm" data-act="calmonth" data-v="${months[mi-1]||""}" ${mi===0?"disabled":""} aria-label="Previous month">‹</button><h2>${MONTHS[m-1]} ${y}</h2><button class="btn ghost sm" data-act="calmonth" data-v="${months[mi+1]||""}" ${mi===months.length-1?"disabled":""} aria-label="Next month">›</button></div>
+      <div class="cal-grid">${WD.map(w=>`<b>${w.slice(0,2)}</b>`).join("")}${cells}</div>
+      <div class="wrap-row small muted" style="gap:12px">${Object.values(KIND).map(k=>`<span><em class="dot" style="background:${k.c}"></em> ${k.n}</span>`).join("")}</div>
+    </div>
+    <section class="stack" style="gap:8px"><h2>${sel ? `${parse(sel).getDate()} ${MONTHS[m-1]}` : `All of ${MONTHS[m-1]}`}</h2>
+      ${selEv.length ? `<div class="card">${selEv.map(calItem).join("")}</div>` : `<div class="card"><p class="muted">Nothing on this day.</p></div>`}</section>`;
+}
+function comingUp(){
+  const t = todayISO(), list = calEvents().filter(forMe).filter(e => e.d >= t || (e.end && e.end >= t)).slice(0,3);
+  if(!list.length) return "";
+  return `<section class="card stack" style="gap:6px"><div class="section-head"><h2>Coming up</h2><button class="link" data-go="calendar">Calendar</button></div>
+    ${list.map(e=>{ const dt = parse(e.d); return `<button class="cal-mini" data-go="calendar"><span class="cal-date sm" style="--k:${KIND[e.k].c}"><b>${dt.getDate()}</b><span>${MONTHS[dt.getMonth()].slice(0,3)}</span></span><span style="flex:1;min-width:0"><span class="t-title" style="display:block">${esc(e.t)}</span><span class="small muted">${KIND[e.k].n} · ${rel(e.d, e.end)}</span></span></button>`; }).join("")}</section>`;
+}
+function downloadIcs(){
+  const t = todayISO(), ev = calEvents().filter(forMe).filter(e => e.d >= t);
+  const stamp = new Date().toISOString().replace(/[-:]/g,"").replace(/\.\d+/,"");
+  const next = s => { const d = parse(s); d.setDate(d.getDate()+1); return iso(d).replace(/-/g,""); };
+  const escI = s => String(s).replace(/[\\,;]/g, m => "\\" + m).replace(/\n/g,"\\n");
+  const lines = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Vidhi-Vidhan//Festival calendar//EN","CALSCALE:GREGORIAN","X-WR-CALNAME:Vidhi-Vidhan festivals"];
+  ev.forEach(e => lines.push("BEGIN:VEVENT", `UID:${e.id}@vidhi-vidhan`, `DTSTAMP:${stamp}`, `DTSTART;VALUE=DATE:${e.d.replace(/-/g,"")}`, `DTEND;VALUE=DATE:${next(e.end || e.d)}`, `SUMMARY:${escI(e.t)}`, `DESCRIPTION:${escI((e.s ? e.s + ". " : "") + "From Vidhi-Vidhan. Check your family's panchang.")}`, "TRANSP:TRANSPARENT", "END:VEVENT"));
+  lines.push("END:VCALENDAR");
+  try{ const url = URL.createObjectURL(new Blob([lines.join("\r\n")], {type:"text/calendar"})); const a = document.createElement("a"); a.href = url; a.download = "vidhi-vidhan-festivals.ics"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url), 4000); toast(`${ev.length} dates downloaded`); }
+  catch(e){ toast("Download isn't available here. Open the app from its website."); }
+  track("calendar-ics");
+}
+document.addEventListener("click", e=>{
+  const b = e.target.closest("[data-act]"); if(!b) return; const a = b.dataset.act;
+  if(a === "calview"){ S.calView = b.dataset.v; save(); rerender(); track("calendar-" + b.dataset.v); }
+  else if(a === "calkind"){ S.calKind = b.dataset.v; save(); rerender(); }
+  else if(a === "calall"){ S.calAll = !S.calAll; save(); rerender(); }
+  else if(a === "calpast"){ S.calPast = !S.calPast; save(); rerender(); }
+  else if(a === "calmonth"){ if(!b.dataset.v) return; S.calMonth = b.dataset.v; S.calDay = null; save(); rerender(); }
+  else if(a === "calday"){ S.calDay = b.dataset.v; save(); rerender(); }
+  else if(a === "calrem"){ S.remind = S.remind || {}; S.remind[b.dataset.id] = !S.remind[b.dataset.id]; save(); rerender(); if(S.remind[b.dataset.id]) toast("In the full app, you'll get a reminder the evening before"); track("calendar-remind"); }
+  else if(a === "calics"){ downloadIcs(); }
+}, true);
+
 /* ================= Router ================= */
-const VIEWS = ["pujaview","home","prepare","samagri","family","more","welcome","events","griha","priests","panchang","vrats","shraddha","recipes","rangoli","stories","nearby","abroad"];
+const VIEWS = ["calendar","pujaview","home","prepare","samagri","family","more","welcome","events","griha","priests","panchang","vrats","shraddha","recipes","rangoli","stories","nearby","abroad"];
 function route(){ const h = location.hash.replace("#",""); return VIEWS.includes(h) ? h : (S.onboarded ? "home" : "welcome"); }
 function go(v){ if(location.hash !== "#"+v) location.hash = v; else render(); }
 window.addEventListener("hashchange", render);
-const TAB_OF = {samagri:"prepare",more:"home",events:"home",griha:"home",priests:"home",panchang:"home",vrats:"home",shraddha:"home",recipes:"home",rangoli:"home",stories:"home",nearby:"home",abroad:"home"};
+const TAB_OF = {samagri:"prepare",more:"home",events:"home",griha:"home",priests:"home",panchang:"calendar",vrats:"calendar",shraddha:"home",recipes:"home",rangoli:"home",stories:"home",nearby:"home",abroad:"home"};
 
 function render(){
   const v = route();
   $("#tabs").hidden = v === "welcome";
   const tab = TAB_OF[v] || v;
   document.querySelectorAll("#tabs button").forEach(b => { if(b.dataset.go===tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
-  const map = {pujaview:viewPuja, home:viewHome, prepare:viewPrepare, samagri:viewSamagri, family:viewFamily, more:viewMore, welcome:viewWelcome, events:viewEvents, griha:viewGriha, priests:viewPriests, panchang:viewPanchang, vrats:viewVrats, shraddha:viewShraddha, recipes:viewRecipes, rangoli:viewRangoli, stories:viewStories, nearby:viewNearby, abroad:viewAbroad};
+  const map = {calendar:viewCalendar, pujaview:viewPuja, home:viewHome, prepare:viewPrepare, samagri:viewSamagri, family:viewFamily, more:viewMore, welcome:viewWelcome, events:viewEvents, griha:viewGriha, priests:viewPriests, panchang:viewPanchang, vrats:viewVrats, shraddha:viewShraddha, recipes:viewRecipes, rangoli:viewRangoli, stories:viewStories, nearby:viewNearby, abroad:viewAbroad};
   MEMBERS[0].n = S.name || "You"; MEMBERS[0].i = (S.name || "You").slice(0,2);
   $("#app").innerHTML = map[v]();
   if(v !== render.last){ track("view-" + v); render.last = v; }
@@ -853,6 +1028,8 @@ function viewHome(){
       ${next ? `<p class="small muted">${next.w}, ${dnum(next.date)} ${mon(next.date)} · ${next.title}</p><div>${nextTasks.map(taskRow).join("")}</div>` : `<p>Everything is done. Shubha Deepavali!</p>`}
     </section>
 
+    ${comingUp()}
+
     <section class="card stack">
       <div class="section-head"><h2>Ask an elder</h2><button class="link" data-go="family">Open</button></div>
       <p class="small muted">${replied} answer${replied===1?"":"s"} saved${pending?`, ${pending} waiting for a reply`:""}. Not sure how your family does a step? Ask on WhatsApp and keep the answer here.</p>
@@ -868,8 +1045,8 @@ function viewHome(){
     <section class="card stack remind">
       <div class="section-head"><h2>On your phone</h2><span class="sample">Coming</span></div>
       <p class="small muted">In the full app, reminders arrive at the right moment, as notifications or on WhatsApp.</p>
-      <div class="notif"><b>Fri 6 Nov · 6:10 PM</b>Sunset now. Fill the bathing vessel for tomorrow's oil bath.</div>
-      <div class="notif"><b>Sat 7 Nov · 5:00 AM</b>Oil bath before 6:15 AM. Amma says: wake everyone by 5.</div>
+      <div class="notif"><b>Sat 7 Nov · 6:10 PM</b>Sunset now. Fill the bathing vessel for tomorrow's oil bath.</div>
+      <div class="notif"><b>Sun 8 Nov · 5:00 AM</b>Oil bath before 6:15 AM. Amma says: wake everyone by 5.</div>
       <div class="notif"><b>Sun 8 Nov · 5:30 PM</b>Lakshmi puja muhurat starts at 6:00. Tap to begin.</div>
     </section>
 
@@ -1092,11 +1269,11 @@ function viewPanchang(){
   return `${back()}
     <div class="stack" style="gap:6px"><p class="eyebrow">Thursday 29 October · Bengaluru</p><h1>Today's panchang</h1><p class="muted">Only what matters for daily life. <span class="sample">Sample data</span></p></div>
     <div class="card"><table class="t">${rows.map(([k,v])=>`<tr><th style="width:40%">${k}</th><td>${v}</td></tr>`).join("")}</table></div>
-    <div class="note" style="background:var(--haldi-soft)"><span class="who">Coming up</span>Ekadashi on Wed 4 Nov. Deepavali starts Fri 6 Nov.</div>
+    <div class="note" style="background:var(--haldi-soft)"><span class="who">Coming up</span>Rambha Ekadashi on Thu 5 Nov. Neeru tumbuva on Sat 7 Nov. Lakshmi puja on Sun 8 Nov.</div>
     <p class="small muted">In the full app, the panchang is calculated for your exact location, including abroad.</p>`;
 }
 function viewVrats(){
-  const V = [["ekadashi","Ekadashi","Twice a month. Your family's rule: no rice; fruit and milk are fine.","Wed 4 Nov"],["pradosha","Pradosha","Evening Shiva puja on the 13th tithi.","Fri 6 Nov"],["sankashti","Sankashti Chaturthi","Ganapati vrat, broken after seeing the moon.","Fri 27 Nov"]];
+  const V = [["ekadashi","Ekadashi","Twice a month. Your family's rule: no rice; fruit and milk are fine.","Thu 5 Nov"],["pradosha","Pradosha","Evening Shiva puja on the 13th tithi.","Fri 6 Nov"],["sankashti","Sankashti Chaturthi","Ganapati vrat, broken after seeing the moon.","Fri 27 Nov"]];
   return `${back()}
     <div class="stack" style="gap:6px"><p class="eyebrow">Vrats</p><h1>The fasts your family keeps</h1><p class="muted">Turn on the ones you follow. You get a reminder the evening before. <span class="sample">Sample dates</span></p></div>
     <div class="card">${V.map(([k,t,b,d])=>`<div class="toggle" style="align-items:flex-start"><div style="min-width:0"><div class="t-title">${t}</div><div class="sub">${b}</div>${S.vrats[k]?`<div class="sub" style="color:var(--leaf);font-weight:600;margin-top:4px">Next: ${d} · reminder at 8 PM the night before</div>`:""}</div>${sw(S.vrats[k],"vrat",`data-k="${k}" aria-label="${t}"`)}</div>`).join("")}</div>`;
