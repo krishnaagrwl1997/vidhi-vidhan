@@ -639,7 +639,8 @@ const ic = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stro
 const HELLO = {karnataka:"Namaskara", tamil:"Vanakkam", telugu:"Namaskaram", maharashtra:"Namaskar", gujarat:"Kem cho", north:"Namaste"};
 function greet(){ return `${HELLO[S.region] || "Namaste"}${S.name ? ", " + esc(S.name) : ""}`; }
 function notReady(){
-  if(S.region === "karnataka") return "";
+  if(S.st === "KA") return "";
+  return `<div class="notice"><b>${esc(stName(S.st))}</b><span class="small">The plan and puja below are a sample Karnataka Deepavali, so you can try how everything works. Your state's festivals and guides are in the Festivals tab and on the calendar.</span><button class="btn primary sm" style="align-self:flex-start" data-go="fests">${U("tab_fests")} →</button></div>`;
   return `<div class="notice"><b>${esc(REGION[S.region])} is coming soon</b><span class="small">For now you're seeing a sample Kannada Deepavali, so you can try how everything works. Tell us your tradition and we'll prioritise it.</span><a class="btn primary sm" style="align-self:flex-start;text-decoration:none" href="${FORM_URL || "../#join"}" ${FORM_URL ? 'target="_blank" rel="noopener"' : ""}>Ask for my tradition</a></div>`;
 }
 const TOUR = [
@@ -881,7 +882,11 @@ function rel(s, end){ const n = dayDiff(s); if(end && n < 0 && dayDiff(end) >= 0
   if(n > 1) return n < 14 ? `In ${n} days` : n < 60 ? `In ${Math.round(n/7)} weeks` : `In ${Math.round(n/30)} months`;
   const a = -n; return a < 14 ? `${a} days ago` : a < 60 ? `${Math.round(a/7)} weeks ago` : `${Math.round(a/30)} months ago`; }
 function calEvents(){
-  const out = CAL.filter(e => e.k !== "vrat" || S.vrats[e.v]).map(e => Object.assign({}, e));
+  const FSTART = "2026-11-13";
+  const out = CAL.filter(e => e.k === "vrat" ? S.vrats[e.v] : (e.k !== "festival" || e.d < FSTART)).map(e => Object.assign({}, e));
+  const fw = x => x.toLowerCase().split(/[ (]/)[0];
+  for(let i = out.length - 1; i >= 0; i--){ const e = out[i]; if(e.k === "vrat" && FESTS.some(f => f.d === e.d && fw(f.n) === fw(e.t))) out.splice(i, 1); }
+  (S.calAll ? FESTS : forState()).forEach(f => out.push({id:"vf-" + f.id, fid:f.id, d:f.d, end:f.e, t:fName(f), k:"festival", r:S.calAll ? (f.r.includes("ALL") ? ["all"] : f.r) : ["all"], s:fName(f) !== f.n ? f.n : "", approx:f.ax}));
   (S.shraddha || []).forEach((s,i)=>{ if(s.iso) out.push({id:"shr"+i, d:s.iso, t:"Shraddha · " + s.n, k:"family", r:["all"], s:`${s.masa} ${s.paksha} ${s.tithi}`}); });
   return out.sort((a,b)=> a.d < b.d ? -1 : a.d > b.d ? 1 : 0);
 }
@@ -889,12 +894,12 @@ function forMe(e){ return S.calAll || e.k === "family" || e.r.includes("all") ||
 function famRit(e){ if(!e.occ && e.k !== "festival") return null; const w = e.t.split(" ")[0].toLowerCase(); return S.rituals.find(r => r.title.toLowerCase().includes(w)) || (e.main ? S.rituals.find(r => r.occ === e.occ) : null); }
 function calItem(e){
   const dt = parse(e.d), n = dayDiff(e.d), past = n < 0 && !(e.end && dayDiff(e.end) >= 0), r = famRit(e), on = !!(S.remind && S.remind[e.id]);
-  const region = e.r.includes("all") ? "All India" : e.r.map(x=>REGION[x] || x).join(", ");
+  const region = e.fid ? (S.calAll ? (e.r.includes("all") ? "All India" : e.r.slice(0,2).map(stName).join(", ") + (e.r.length > 2 ? " +" + (e.r.length - 2) : "")) : stName(S.st)) : e.r.includes("all") ? "All India" : e.r.map(x=>REGION[x] || x).join(", ");
   return `<div class="cal-it ${past?"past":""} ${n===0?"now":""}" id="ev-${e.id}">
     <div class="cal-date" style="--k:${KIND[e.k].c}"><b>${dt.getDate()}</b><span>${WD[dt.getDay()]}</span><span>${MONTHS[dt.getMonth()].slice(0,3)}</span></div>
     <div class="cal-body">
       <div class="cal-t">${esc(e.t)}${e.end ? ` <span class="small muted">to ${parse(e.end).getDate()} ${MONTHS[parse(e.end).getMonth()].slice(0,3)}</span>` : ""}</div>
-      ${e.s ? `<div class="sub">${esc(e.s)}</div>` : ""}
+      ${e.s ? `<div class="sub">${esc(e.s)}</div>` : ""}${e.fid ? `<button class="link" style="margin-top:4px" data-act="openfest" data-id="${e.fid}">${U("steps")} →</button>` : ""}
       <div class="wrap-row" style="gap:6px;margin-top:4px"><span class="chip cal-k" style="--k:${KIND[e.k].c}">${KIND[e.k].n}</span><span class="chip assign" style="cursor:default">${esc(region)}</span><span class="chip ${n===0?"today":"time"}">${rel(e.d, e.end)}</span>${e.approx?`<span class="chip assign" style="cursor:default" title="Sources differ by a day">± 1 day</span>`:""}</div>
       ${past ? "" : `<div class="wrap-row" style="gap:8px;margin-top:8px">
         ${e.plan ? `<button class="btn ghost sm" data-go="prepare">Open the plan</button>` : ""}
@@ -922,7 +927,7 @@ function viewCalendar(){
         ${S.calPast ? `<div class="card">${past.map(calItem).join("")}</div>` : ""}</section>`;
   }
   return `${protoBar()}
-    <div class="stack" style="gap:6px"><p class="eyebrow">${S.calAll ? "All regions" : esc(REGION[S.region]) + " and all-India"}</p><h1>Festival calendar</h1>
+    <div class="stack" style="gap:6px"><p class="eyebrow">${S.calAll ? "All regions" : esc(stName(S.st)) + " and all-India"}</p><h1>Festival calendar</h1>
       <p class="muted">What's coming, what's today, and what's passed. Turn vrats on in <button class="link" data-go="vrats" style="font-size:inherit">Vrats</button> to see them here.</p></div>
     <div class="row" style="flex-wrap:wrap;gap:8px;justify-content:space-between">
       <div class="seg" role="group" aria-label="View" style="flex:0 1 220px"><button aria-pressed="${S.calView!=="month"}" data-act="calview" data-v="list">List</button><button aria-pressed="${S.calView==="month"}" data-act="calview" data-v="month">Month</button></div>
@@ -953,6 +958,11 @@ function monthGrid(ev){
       ${selEv.length ? `<div class="card">${selEv.map(calItem).join("")}</div>` : `<div class="card"><p class="muted">Nothing on this day.</p></div>`}</section>`;
 }
 function comingUp(){
+  const t0 = fToday(), next = forState().filter(f => fDay(f.e || f.d) >= t0).slice(0, 3);
+  if(next.length) return `<section class="card stack" style="gap:6px"><div class="section-head"><h2>${U("coming")} · ${esc(stName(S.st))}</h2><button class="link" data-go="fests">${U("tab_fests")}</button></div>${next.map(fRow).join("")}</section>`;
+  return comingUpOld();
+}
+function comingUpOld(){
   const t = todayISO(), list = calEvents().filter(forMe).filter(e => e.d >= t || (e.end && e.end >= t)).slice(0,3);
   if(!list.length) return "";
   return `<section class="card stack" style="gap:6px"><div class="section-head"><h2>Coming up</h2><button class="link" data-go="calendar">Calendar</button></div>
@@ -985,7 +995,11 @@ document.addEventListener("click", e=>{
 /* ================= Festivals by state, in your language ================= */
 const FREG = window.VV_REGIONS || [], FL = window.VV_LANGS || {en:{own:"English"}}, FUI = window.VV_UI || {en:{}}, FESTS = window.VV_FESTS || [];
 const ST_OF_REGION = {karnataka:"KA", tamil:"TN", telugu:"TS", maharashtra:"MH", gujarat:"GJ", north:"UP"};
+const REGION_OF_ST = {KA:"karnataka", TN:"tamil", PY:"tamil", AP:"telugu", TS:"telugu", MH:"maharashtra", GA:"maharashtra", GJ:"gujarat", DD:"gujarat",
+  UP:"north", UK:"north", BR:"north", JH:"north", DL:"north", HR:"north", HP:"north", PB:"north", CH:"north", RJ:"north", MP:"north", CG:"north", JK:"north", AN:"north"};
+function syncRegion(){ S.region = REGION_OF_ST[S.st] || "other"; S._reg = S.region; }
 if(!S.st) S.st = ST_OF_REGION[S.region] || "KA";
+if(S._reg !== S.region){ if(S._reg !== undefined || S.region !== "karnataka") S.st = ST_OF_REGION[S.region] || S.st; syncRegion(); }
 if(!S.ui || !FL[S.ui]) S.ui = "en";
 S.fneed = S.fneed || {}; S.ftrad = S.ftrad || "all";
 const LOCALE = {en:"en-IN",hi:"hi-IN",kn:"kn-IN",ta:"ta-IN",te:"te-IN",ml:"ml-IN",bn:"bn-IN",mr:"mr-IN",gu:"gu-IN",pa:"pa-IN",or:"or-IN",as:"as-IN"};
@@ -1071,7 +1085,7 @@ document.addEventListener("click", e => {
   if(act === "openfest"){ S.fid = id; save(); go("fest"); track("fest-" + id); }
   else if(act === "locale"){ localeSheet(""); track("locale-open"); }
   else if(act === "setui"){ S.ui = id; save(); applyLocale(); localeSheet(""); rerender(); track("ui-" + id); }
-  else if(act === "setst"){ S.st = id; save(); closeSheet(); if(route() === "fest") go("fests"); else rerender(); track("st-" + id); }
+  else if(act === "setst"){ S.st = id; syncRegion(); save(); closeSheet(); if(route() === "fest") go("fests"); else rerender(); track("st-" + id); }
   else if(act === "ftrad"){ S.ftrad = id; save(); rerender(); }
   else if(act === "fneed"){ const i = +a.dataset.i; (S.fneed[id] ||= [])[i] = !S.fneed[id][i]; save(); rerender(); }
 });
@@ -1154,7 +1168,7 @@ function viewHome(){
     </button>
     <section class="fest" aria-label="Deepavali 2026">
       <svg class="lamps" width="96" height="60" viewBox="0 0 96 60" aria-hidden="true"><g fill="#E9B850"><path d="M14 20c-4 6-5 9-5 11a5 5 0 0 0 10 0c0-2-1-5-5-11z"/><path d="M48 8c-5 8-6 11-6 14a6 6 0 0 0 12 0c0-3-1-6-6-14z"/><path d="M82 20c-4 6-5 9-5 11a5 5 0 0 0 10 0c0-2-1-5-5-11z"/></g><g fill="#B8742A"><path d="M2 38h24c-1 6-6 10-12 10S3 44 2 38z"/><path d="M34 30h28c-1 8-7 13-14 13s-13-5-14-13z"/><path d="M70 38h24c-1 6-6 10-12 10s-11-4-12-10z"/></g></svg>
-      <p class="eyebrow">Deepavali · ${REGION[S.region]} · Bengaluru</p>
+      <p class="eyebrow">Sample · Deepavali · Karnataka · Bengaluru</p>
       <div class="count">${countLabel}</div>
       <div class="days">${FEST.days.map(x=>`<div class="day ${x.main?"main":""}"><b>${x.w} ${dnum(x.date)}</b>${x.label}</div>`).join("")}</div>
       <div class="row" style="flex-wrap:wrap"><button class="btn light" data-act="puja">Start Lakshmi puja</button><button class="btn" style="background:transparent;color:#FFF8E6;border:1px solid rgba(255,255,255,.35)" data-go="prepare">See the full plan</button></div>
@@ -1612,8 +1626,8 @@ document.addEventListener("click", e => {
     case "restart": S.onboarded=false; obStep=0; save(); go("welcome"); break;
     case "ob-next": { const f=$("#famIn"); if(f) S.famNote=f.value.trim().slice(0,120); } if(obStep===0){ const n=$("#nameIn"); if(n) S.name=n.value.trim().slice(0,30); } if(obStep>=3){ track("onboard-" + S.region + "-" + S.practice); S.onboarded=true; S.tourDone=false; save(); obStep=0; go("home"); } else { obStep++; render(); } break;
     case "ob-back": obStep=Math.max(0,obStep-1); render(); break;
-    case "ob-pick": S[a.dataset.key]=a.dataset.val; save(); render(); break;
-    case "ob-skip": { const n=$("#nameIn"); if(n) S.name=n.value.trim().slice(0,30); } S.region="karnataka"; S.practice="home"; S.onboarded=true; S.tourDone=false; save(); obStep=0; go("home"); break;
+    case "ob-pick": S[a.dataset.key]=a.dataset.val; if(a.dataset.key === "region"){ S.st = ST_OF_REGION[S.region] || S.st; syncRegion(); } save(); render(); break;
+    case "ob-skip": { const n=$("#nameIn"); if(n) S.name=n.value.trim().slice(0,30); } S.region="karnataka"; S.st="KA"; S._reg="karnataka"; S.practice="home"; S.onboarded=true; S.tourDone=false; save(); obStep=0; go("home"); break;
     case "tour": if(route()!=="home") go("home"); setTimeout(startTour, 60); track("tour-replay"); break;
     case "tipok": S.tips = S.tips || {}; S.tips[a.dataset.k] = true; save(); rerender(); break;
     case "react": { const v = a.dataset.v; track("puja-react-" + v); const box = $("#react");
