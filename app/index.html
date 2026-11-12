@@ -6,6 +6,7 @@
 <title>Vidhi-Vidhan App</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@600;800&family=Anek+Kannada:wght@600;800&family=Anek+Tamil:wght@600;800&family=Anek+Telugu:wght@600;800&family=Anek+Malayalam:wght@600;800&family=Anek+Bangla:wght@600;800&family=Anek+Gujarati:wght@600;800&family=Anek+Gurmukhi:wght@600;800&family=Anek+Odia:wght@600;800&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@500&family=Tiro+Devanagari+Hindi&family=Hind:wght@400;500;600&family=Noto+Sans+Kannada:wght@400;600&display=swap">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -337,6 +338,33 @@ nav.tabs .in{pointer-events:auto;background:rgba(27,15,58,.9);backdrop-filter:bl
 nav.tabs button{color:#BBA8E8;border-radius:999px;padding:7px 0 6px}
 nav.tabs button[aria-current="page"]{color:#1B0F3A;background:var(--marigold)}
 .chip{font-family:inherit}
+
+/* ---- Festivals by state ---- */
+nav.tabs .in{grid-template-columns:repeat(6,1fr)!important}
+nav.tabs button{font-size:.6rem!important;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.locbar{display:flex;margin-top:-8px}
+.locbar button{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.82rem;font-weight:600;color:var(--ink)}
+.frow{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;text-align:left;padding:12px 14px}
+.frow.past{opacity:.6}
+.fdate{display:flex;flex-direction:column;align-items:center;line-height:1.05;border-right:1px solid var(--line);padding-right:10px}
+.fdate b{font-family:var(--display);font-size:1.5rem}
+.fdate span{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.fbody{display:flex;flex-direction:column;gap:2px;min-width:0}
+.fname{font-weight:700;line-height:1.25;font-family:"Anek Latin","Anek Devanagari","Anek Kannada","Anek Tamil","Anek Telugu","Anek Malayalam","Anek Bangla","Anek Gujarati","Anek Gurmukhi","Anek Odia",var(--body)}
+.flocal{font-size:.82rem;color:var(--muted);font-family:"Anek Devanagari","Anek Kannada","Anek Tamil","Anek Telugu","Anek Malayalam","Anek Bangla","Anek Gujarati","Anek Gurmukhi","Anek Odia",var(--body)}
+.fmeta{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.fwhen{font-size:.78rem;font-weight:600;color:var(--leaf);text-align:right;white-space:nowrap}
+.ftr-H{background:var(--haldi-soft)!important}.ftr-S{background:#E3ECFF!important}.ftr-I{background:#E1F3E8!important}.ftr-C{background:#F3E5F5!important}.ftr-J{background:#FFF1E0!important}.ftr-B{background:#FFEFD5!important}.ftr-T{background:#E8F0E0!important}.ftr-X{background:#EDE7F6!important}
+.fpast summary{cursor:pointer;font-weight:600;color:var(--muted)}
+.fhero{display:flex;flex-direction:column;gap:6px}
+.fscript{font:800 2.6rem/1.3 "Anek Devanagari","Anek Kannada","Anek Tamil","Anek Telugu","Anek Malayalam","Anek Bangla","Anek Gujarati","Anek Gurmukhi","Anek Odia",var(--body);color:var(--leaf);margin:0}
+.fwhenrow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:.92rem;color:var(--muted)}
+.fwhenrow b{color:var(--leaf);font-size:1rem}
+.fsteps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:12px}
+.fsteps li b{display:block;line-height:1.3}
+.langs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
+.langs .opt b{font-family:"Anek Devanagari","Anek Kannada","Anek Tamil","Anek Telugu","Anek Malayalam","Anek Bangla","Anek Gujarati","Anek Gurmukhi","Anek Odia",var(--body)}
+.locst span{font-family:"Anek Devanagari","Anek Kannada","Anek Tamil","Anek Telugu","Anek Malayalam","Anek Bangla","Anek Gujarati","Anek Gurmukhi","Anek Odia",var(--body)}
 </style>
 
 <div class="app" id="app"></div>
@@ -346,6 +374,7 @@ nav.tabs button[aria-current="page"]{color:#1B0F3A;background:var(--marigold)}
     <button data-go="prepare"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.5 1.5L7.5 5M3.5 12l1.5 1.5 2.5-2.5M3.5 18l1.5 1.5 2.5-2.5"/></svg>Plan</button>
     <button data-go="calendar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/><circle cx="9" cy="14.5" r="1" fill="currentColor"/><circle cx="15" cy="14.5" r="1" fill="currentColor"/></svg>Calendar</button>
     <button data-go="pujaview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v3"/><circle cx="12" cy="8" r="1.6"/><path d="M12 10c-4 0-6 3-6 7 0 1-1 2-2 3h16c-1-1-2-2-2-3 0-4-2-7-6-7z"/></svg>Puja</button>
+    <button data-go="fests"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.4l-4.8 2.5.9-5.4L4.2 8.7l5.4-.8z"/></svg>Festivals</button>
     <button data-go="family"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.3"/><path d="M3 20c.5-3.5 3-5.5 6-5.5s5.5 2 6 5.5M15 15.5c2.5-.3 5 1 5.5 4.5"/></svg>Family</button>
   </div>
 </nav>
@@ -355,6 +384,7 @@ nav.tabs button[aria-current="page"]{color:#1B0F3A;background:var(--marigold)}
 <div id="sheet" class="sheet" hidden><div class="sheet-in" id="sheetIn" role="dialog" aria-modal="true"></div></div>
 
 <script src="../config.js"></script>
+<script src="festivals.js"></script>
 <script>
 const FORM_URL = window.VV_FORM_URL || "";
 /* ================= Analytics (GoatCounter, from config.js) ================= */
@@ -952,30 +982,125 @@ document.addEventListener("click", e=>{
   else if(a === "calics"){ downloadIcs(); }
 }, true);
 
+/* ================= Festivals by state, in your language ================= */
+const FREG = window.VV_REGIONS || [], FL = window.VV_LANGS || {en:{own:"English"}}, FUI = window.VV_UI || {en:{}}, FESTS = window.VV_FESTS || [];
+const ST_OF_REGION = {karnataka:"KA", tamil:"TN", telugu:"TS", maharashtra:"MH", gujarat:"GJ", north:"UP"};
+if(!S.st) S.st = ST_OF_REGION[S.region] || "KA";
+if(!S.ui || !FL[S.ui]) S.ui = "en";
+S.fneed = S.fneed || {}; S.ftrad = S.ftrad || "all";
+const LOCALE = {en:"en-IN",hi:"hi-IN",kn:"kn-IN",ta:"ta-IN",te:"te-IN",ml:"ml-IN",bn:"bn-IN",mr:"mr-IN",gu:"gu-IN",pa:"pa-IN",or:"or-IN",as:"as-IN"};
+const U = (k, o) => { let s = (FUI[S.ui] && FUI[S.ui][k]) || FUI.en[k] || k; if(o) s = s.replace(/\{(\w+)\}/g, (_, x) => o[x] !== undefined ? o[x] : ""); return s; };
+const stName = c => { const i = FREG.findIndex(r => r[0] === c); if(i < 0) return c; const L = window.VV_STNAMES && VV_STNAMES[S.ui]; return (L && L.split("|")[i]) || FREG[i][1]; };
+const fName = f => (f.l && f.l[S.ui]) || f.n;
+const fLocal = f => { const own = FREG.find(r => r[0] === S.st); const l = own && own[2]; return (f.l && (f.l[S.ui] || f.l[l])) || ""; };
+const fDay = s => new Date(s + "T00:00:00");
+const fToday = () => { const d = new Date(); d.setHours(0,0,0,0); return d; };
+const fFmt = (s, opt) => { try{ return fDay(s).toLocaleDateString(LOCALE[S.ui] || "en-IN", opt || {weekday:"short", day:"numeric", month:"short", year:"numeric"}); }catch(e){ return s; } };
+const fWhen = f => { const t = fToday(), a = fDay(f.d), b = fDay(f.e || f.d), n = Math.round((a - t) / 864e5);
+  if(t > b) return U("done"); if(t >= a) return f.e ? U("on_now") : U("today"); if(n === 1) return U("tomorrow"); return U("in_days", {n}); };
+const forState = () => FESTS.filter(f => f.r.includes("ALL") || f.r.includes(S.st)).sort((x, y) => x.d < y.d ? -1 : x.d > y.d ? 1 : (x.r.includes("ALL") ? 1 : -1));
+
+function fRow(f){
+  const own = fLocal(f), d = fDay(f.d), up = fDay(f.e || f.d) >= fToday();
+  return `<button class="card frow ${up ? "" : "past"}" data-act="openfest" data-id="${f.id}">
+    <span class="fdate"><b>${d.getDate()}</b><span>${fFmt(f.d, {month:"short"})}</span></span>
+    <span class="fbody"><span class="fname">${esc(fName(f))}</span>${own && own !== fName(f) ? `<span class="flocal">${esc(own)}</span>` : (fName(f) !== f.n ? `<span class="flocal">${esc(f.n)}</span>` : "")}
+      <span class="fmeta"><span class="chip ftr-${f.t}">${U("trad_" + f.t)}</span>${f.ax ? `<span class="chip">~ ${U("approx")}</span>` : ""}</span></span>
+    <span class="fwhen">${fWhen(f)}</span></button>`;
+}
+
+function viewFests(){
+  const all = forState(), t = fToday();
+  const trads = [...new Set(all.map(f => f.t))];
+  const list = S.ftrad === "all" ? all : all.filter(f => f.t === S.ftrad);
+  const up = list.filter(f => fDay(f.e || f.d) >= t), past = list.filter(f => fDay(f.e || f.d) < t);
+  return `${protoBar()}
+    <div class="stack" style="gap:4px"><p class="eyebrow">${U("season")}</p><h1>${esc(U("fests_in", {s: stName(S.st)}))}</h1></div>
+    <div class="wrap-row ftrads">${["all", ...trads].map(k => `<button class="chip ${S.ftrad === k ? "today" : ""}" data-act="ftrad" data-id="${k}">${k === "all" ? U("all") : U("trad_" + k)}</button>`).join("")}</div>
+    <section class="stack"><h2>${U("coming")}</h2>${up.length ? up.map(fRow).join("") : `<p class="muted">${esc(U("none", {s: stName(S.st)}))}</p>`}</section>
+    ${past.length ? `<details class="fpast"><summary>${U("past")} · ${past.length}</summary><div class="stack" style="margin-top:10px">${past.map(fRow).join("")}</div></details>` : ""}
+    <p class="small muted">${U("unreviewed")}${S.ui !== "en" ? " " + U("en_note") : ""}</p>`;
+}
+
+function viewFest(){
+  const f = FESTS.find(x => x.id === S.fid) || forState()[0];
+  if(!f) return viewFests();
+  const own = fLocal(f), have = S.fneed[f.id] || [], n = f.need.filter((_, i) => have[i]).length;
+  const others = f.r.filter(c => c !== S.st && c !== "ALL").length;
+  const regions = f.r.includes("ALL") ? "" : (f.r.includes(S.st) ? stName(S.st) + (others ? ` +${others}` : "") : f.r.slice(0, 2).map(stName).join(" · ") + (f.r.length > 2 ? ` +${f.r.length - 2}` : ""));
+  return `${protoBar()}
+    ${back("fests", U("back"))}
+    <section class="fhero">
+      <p class="eyebrow">${U("trad_" + f.t)}${regions ? " · " + esc(regions) : ""}</p>
+      ${own ? `<p class="fscript" lang="${S.ui}">${esc(own)}</p>` : ""}
+      <h1>${esc(f.n)}</h1>
+      <div class="fwhenrow"><span>${fFmt(f.d)}${f.e ? " – " + fFmt(f.e, {day:"numeric", month:"short"}) : ""}${f.ax ? ` <span class="chip">~ ${U("approx")}</span>` : ""}</span><b>${fWhen(f)}</b></div>
+    </section>
+    <section class="card stack"><h2>${U("what")}</h2><p>${esc(f.m)}</p></section>
+    <section class="card stack"><h2>${U("families")}</h2><p>${esc(f.f)}</p></section>
+    ${f.steps.length ? `<section class="card stack"><h2>${U("steps")}</h2><ol class="fsteps">${f.steps.map(s => `<li><span class="eyebrow">${esc(s[0])}</span><b>${esc(s[1])}</b>${s[2] ? `<p class="small muted">${esc(s[2])}</p>` : ""}</li>`).join("")}</ol></section>` : ""}
+    ${f.need.length ? `<section class="card stack"><div class="section-head"><h2>${U("need")}</h2><span class="small muted">${U("ready", {n, t: f.need.length})}</span></div>
+      <div class="progress"><span style="width:${f.need.length ? n / f.need.length * 100 : 0}%"></span></div>
+      <div>${f.need.map((x, i) => `<div class="item ${have[i] ? "done" : ""}"><button class="check" role="checkbox" aria-checked="${!!have[i]}" data-act="fneed" data-id="${f.id}" data-i="${i}" aria-label="${esc(x)}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></button><span class="t-title">${esc(x)}</span></div>`).join("")}</div></section>` : ""}
+    ${f.food.length ? `<section class="card stack"><h2>${U("food")}</h2><div class="wrap-row">${f.food.map(x => `<span class="chip time">${esc(x)}</span>`).join("")}</div></section>` : ""}
+    ${f.v ? `<section class="card stack"><h2>${U("regional")}</h2><p>${esc(f.v)}</p></section>` : ""}
+    <p class="small muted">${U("unreviewed")}${S.ui !== "en" ? " " + U("en_note") : ""}</p>`;
+}
+
+function localeSheet(q){
+  q = (q || "").toLowerCase();
+  const row = r => `<button class="opt locst" aria-pressed="${r[0] === S.st}" data-act="setst" data-id="${r[0]}"><b>${esc(stName(r[0]))}</b><span>${FESTS.filter(f => f.r.includes(r[0])).length} · ${FL[r[2]].own}</span></button>`;
+  const f = arr => arr.filter(r => !q || r[1].toLowerCase().includes(q) || stName(r[0]).toLowerCase().includes(q));
+  sheet(`<h2>${U("choose")}</h2>
+    <p class="eyebrow" style="margin-top:14px">${U("language")}</p>
+    <div class="langs">${Object.entries(FL).map(([k, v]) => `<button class="opt" aria-pressed="${k === S.ui}" data-act="setui" data-id="${k}" lang="${k}"><b>${v.own}</b><span>${v.name}</span></button>`).join("")}</div>
+    <p class="eyebrow" style="margin-top:18px">${U("state")}</p>
+    <input type="text" id="locq" placeholder="${U("search")}" value="${esc(q)}" style="margin-top:6px">
+    <p class="small muted" style="margin-top:10px">${U("states")}</p><div class="opts">${f(FREG.filter(r => r[3] === "s")).map(row).join("")}</div>
+    <p class="small muted" style="margin-top:12px">${U("uts")}</p><div class="opts">${f(FREG.filter(r => r[3] === "u")).map(row).join("")}</div>`);
+  const i = document.getElementById("locq"); if(i){ i.oninput = () => { const v = i.value, p = i.selectionStart; localeSheet(v); const j = document.getElementById("locq"); j.focus(); j.setSelectionRange(p, p); }; }
+}
+function applyLocale(){
+  document.documentElement.lang = S.ui;
+  const lab = {home:"tab_home", prepare:"tab_plan", calendar:"tab_cal", pujaview:"tab_puja", family:"tab_family", fests:"tab_fests"};
+  document.querySelectorAll("#tabs button[data-go]").forEach(b => { const k = lab[b.dataset.go]; if(!k) return; const sv = b.querySelector("svg"); b.textContent = ""; if(sv) b.appendChild(sv); b.appendChild(document.createTextNode(U(k))); });
+}
+document.addEventListener("click", e => {
+  const a = e.target.closest("[data-act]"); if(!a) return;
+  const act = a.dataset.act, id = a.dataset.id;
+  if(act === "openfest"){ S.fid = id; save(); go("fest"); track("fest-" + id); }
+  else if(act === "locale"){ localeSheet(""); track("locale-open"); }
+  else if(act === "setui"){ S.ui = id; save(); applyLocale(); localeSheet(""); rerender(); track("ui-" + id); }
+  else if(act === "setst"){ S.st = id; save(); closeSheet(); if(route() === "fest") go("fests"); else rerender(); track("st-" + id); }
+  else if(act === "ftrad"){ S.ftrad = id; save(); rerender(); }
+  else if(act === "fneed"){ const i = +a.dataset.i; (S.fneed[id] ||= [])[i] = !S.fneed[id][i]; save(); rerender(); }
+});
+
 /* ================= Router ================= */
-const VIEWS = ["calendar","pujaview","home","prepare","samagri","family","more","welcome","events","griha","priests","panchang","vrats","shraddha","recipes","rangoli","stories","nearby","abroad"];
+const VIEWS = ["fests","fest","calendar","pujaview","home","prepare","samagri","family","more","welcome","events","griha","priests","panchang","vrats","shraddha","recipes","rangoli","stories","nearby","abroad"];
 function route(){ const h = location.hash.replace("#",""); return VIEWS.includes(h) ? h : (S.onboarded ? "home" : "welcome"); }
 function go(v){ if(location.hash !== "#"+v) location.hash = v; else render(); }
 window.addEventListener("hashchange", render);
-const TAB_OF = {samagri:"prepare",more:"home",events:"home",griha:"home",priests:"home",panchang:"calendar",vrats:"calendar",shraddha:"home",recipes:"home",rangoli:"home",stories:"home",nearby:"home",abroad:"home"};
+const TAB_OF = {fest:"fests",samagri:"prepare",more:"home",events:"home",griha:"home",priests:"home",panchang:"calendar",vrats:"calendar",shraddha:"home",recipes:"home",rangoli:"home",stories:"home",nearby:"home",abroad:"home"};
 
 function render(){
   const v = route();
   $("#tabs").hidden = v === "welcome";
   const tab = TAB_OF[v] || v;
   document.querySelectorAll("#tabs button").forEach(b => { if(b.dataset.go===tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
-  const map = {calendar:viewCalendar, pujaview:viewPuja, home:viewHome, prepare:viewPrepare, samagri:viewSamagri, family:viewFamily, more:viewMore, welcome:viewWelcome, events:viewEvents, griha:viewGriha, priests:viewPriests, panchang:viewPanchang, vrats:viewVrats, shraddha:viewShraddha, recipes:viewRecipes, rangoli:viewRangoli, stories:viewStories, nearby:viewNearby, abroad:viewAbroad};
+  const map = {fests:viewFests, fest:viewFest, calendar:viewCalendar, pujaview:viewPuja, home:viewHome, prepare:viewPrepare, samagri:viewSamagri, family:viewFamily, more:viewMore, welcome:viewWelcome, events:viewEvents, griha:viewGriha, priests:viewPriests, panchang:viewPanchang, vrats:viewVrats, shraddha:viewShraddha, recipes:viewRecipes, rangoli:viewRangoli, stories:viewStories, nearby:viewNearby, abroad:viewAbroad};
   MEMBERS[0].n = S.name || "You"; MEMBERS[0].i = (S.name || "You").slice(0,2);
   $("#app").innerHTML = map[v]();
   if(v !== render.last){ track("view-" + v); render.last = v; }
   $("#fab").hidden = v === "welcome";
   if(v === "home" && S.onboarded && !S.tourDone) setTimeout(startTour, 350);
+  applyLocale();
   if(!render.keep) window.scrollTo(0,0);
   render.keep = false;
 }
 function rerender(){ render.keep = true; const y = window.scrollY; render(); window.scrollTo(0,y); }
 
-function protoBar(){ return `<div class="appbar"><a class="lk" href="../" aria-label="Vidhi-Vidhan website"><span class="d">विधि-विधान</span><span class="w">Vidhi-Vidhan</span></a><div class="acts"><button data-act="tour">Tour</button><button data-act="restart">Start over</button><a class="j" href="${FORM_URL || "../#join"}" ${FORM_URL ? 'target="_blank" rel="noopener"' : ""}>Join</a></div></div><p class="prev-note">Early preview · sample content, not yet reviewed by a priest · stays on your phone</p>`; }
+function protoBar(){ return `<div class="appbar"><a class="lk" href="../" aria-label="Vidhi-Vidhan website"><span class="d">विधि-विधान</span><span class="w">Vidhi-Vidhan</span></a><div class="acts"><button data-act="tour">Tour</button><button data-act="restart">Start over</button><a class="j" href="${FORM_URL || "../#join"}" ${FORM_URL ? 'target="_blank" rel="noopener"' : ""}>Join</a></div></div><div class="locbar"><button data-act="locale" aria-label="${U("choose")}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.3-7-12a7 7 0 0 1 14 0c0 5.7-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>${esc(stName(S.st))} · ${FL[S.ui].own} ▾</button></div><p class="prev-note">Early preview · sample content, not yet reviewed by a priest · stays on your phone</p>`; }
 
 /* ================= Onboarding ================= */
 let obStep = 0;
