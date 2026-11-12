@@ -345,7 +345,7 @@ VV_FESTS.push(
  steps:[["Morning","Bath","An early bath; a holy dip in a river where possible, sesame in the bath water in many homes."],
   ["Morning","Puja to Surya","Offer arghya and the new harvest to the sun."],["Day","Share the sweet","Go to neighbours and relatives with ellu-bella or tilgul."],
   ["Day","Daan","Give til, khichdi, blankets or food to those who need them."],["Afternoon","Kites","Fly kites, especially in Gujarat, Rajasthan and Telangana."]],
- v:"Also Pongal (Tamil Nadu), Uttarayan (Gujarat), Lohri and Maghi (Punjab), Magh Bihu (Assam), Poush Sankranti (Bengal) and Makaravilakku (Kerala)."},
+ v:"Also Pongal (Tamil Nadu), Uttarayan (Gujarat), Lohri and Maghi (Punjab), Magh Bihu (Assam), Poush Sankranti (Bengal) and Makaravilakku (Kerala). Many families do the main rituals on 15 January, when the sun crosses after sunset on the 14th."},
 
 {id:"pongal", n:"Thai Pongal", l:{ta:"தைப் பொங்கல்"}, t:"H", r:["TN","PY"], d:"2027-01-15", e:"2027-01-17",
  m:"The Tamil harvest festival on the first day of the month of Thai, thanking the sun, the cattle and the land.",
@@ -389,7 +389,7 @@ VV_FESTS.push(
  steps:[["41 days before","Vratham","Pilgrims wear the mala, keep celibacy and eat satvik food."],["Day","Thiruvabharanam","The sacred ornaments arrive at the shrine."],["Evening","Makarajyothi","Darshan of the jyothi on Ponnambalamedu."]],
  v:""},
 
-{id:"gurugobind", n:"Guru Gobind Singh Jayanti", l:{pa:"ਗੁਰੂ ਗੋਬਿੰਦ ਸਿੰਘ ਜੀ ਦਾ ਪ੍ਰਕਾਸ਼ ਪੁਰਬ", hi:"गुरु गोबिंद सिंह जयंती"}, t:"S", r:["ALL"], d:"2027-01-15", ax:1,
+{id:"gurugobind", n:"Guru Gobind Singh Jayanti", l:{pa:"ਗੁਰੂ ਗੋਬਿੰਦ ਸਿੰਘ ਜੀ ਦਾ ਪ੍ਰਕਾਸ਼ ਪੁਰਬ", hi:"गुरु गोबिंद सिंह जयंती"}, t:"S", r:["ALL"], d:"2027-01-15",
  m:"Parkash Purab of Guru Gobind Singh Ji, the tenth Sikh Guru, who founded the Khalsa.",
  f:"Gurdwaras hold nagar kirtan, Akhand Path, kirtan and langar, as on other Gurpurabs.",
  food:["Langar","Kada prasad"],
@@ -397,7 +397,7 @@ VV_FESTS.push(
  steps:[["Day before","Nagar kirtan","Procession through the town."],["Morning","Kirtan","Hymns and katha at the gurdwara."],["Day","Langar","Eat together and do seva."]],
  v:"Biggest at Takht Sri Patna Sahib, his birthplace."},
 
-{id:"thaipusam", n:"Thaipusam", l:{ta:"தைப்பூசம்"}, t:"H", r:["TN","PY","KL"], d:"2027-01-22", ax:1,
+{id:"thaipusam", n:"Thaipusam", l:{ta:"தைப்பூசம்"}, t:"H", r:["TN","PY","KL"], d:"2027-01-22",
  m:"The day Parvati gave Murugan the vel (spear), on Pusam nakshatra in Thai.",
  f:"Devotees fast, carry kavadi or milk pots (paal kudam) to Murugan temples, and many walk to Palani.",
  food:["Panchamirtham (Palani prasadam)"],
@@ -413,7 +413,7 @@ VV_FESTS.push(
  steps:[["Morning","Offerings","Offer food at the family's ancestor shrine."],["Day","Community","Join the community ceremony."]],
  v:""},
 
-{id:"losar", n:"Losar", l:{}, t:"B", r:["SK","AR","HP","LA"], d:"2027-02-07", ax:1,
+{id:"losar", n:"Losar", l:{}, t:"B", r:["SK","AR","HP","LA"], d:"2027-02-07",
  m:"The Tibetan new year, celebrated by Tibetan Buddhist families across the Himalaya.",
  f:"Families clean the house, prepare khapse, set up a chemar bo (offering box of barley and tsampa), visit the monastery, and greet each other with 'Tashi delek'.",
  food:["Khapse","Guthuk (soup on the eve)","Butter tea and chhang"],
@@ -421,7 +421,7 @@ VV_FESTS.push(
  steps:[["Eve · Gutor","Guthuk","Eat guthuk soup and throw out the old year's dough figure."],["Day 1","Offerings","Offer at the family shrine; family time."],["Day 2","Visits","Visit relatives and the monastery."],["Day 3","Prayer flags","Hang new prayer flags."]],
  v:"In Sikkim the date is also observed as Sonam Losar or Gyalpo Losar; Ladakhi Losar falls earlier, in December."},
 
-{id:"vasantpanchami", n:"Vasant Panchami / Saraswati Puja", l:{hi:"वसंत पंचमी", bn:"সরস্বতী পূজা", or:"ସରସ୍ୱତୀ ପୂଜା", as:"সৰস্বতী পূজা"}, t:"H", r:["ALL"], d:"2027-02-11", ax:1,
+{id:"vasantpanchami", n:"Vasant Panchami / Saraswati Puja", l:{hi:"वसंत पंचमी", bn:"সরস্বতী পূজা", or:"ସରସ୍ୱତୀ ପୂଜା", as:"সৰস্বতী পূজা"}, t:"H", r:["ALL"], d:"2027-02-11",
  m:"The coming of spring and the day of Saraswati, goddess of learning and the arts.",
  f:"Families wear yellow, worship Saraswati with books and instruments placed before her, and many young children write their first letters (vidyarambh, hate khori). In Bengal and Odisha schools and homes set up Saraswati idols.",
  food:["Kesari bhaat, boondi or yellow sweets","Khichuri and labra (Bengal)","Plum (kul) only after the puja, in Bengali homes"],
@@ -463,7 +463,7 @@ VV_FESTS.push(
 );
 /* Season 1 · March–April 2027 */
 VV_FESTS.push(
-{id:"shivaratri", n:"Maha Shivaratri", l:{hi:"महाशिवरात्रि", kn:"ಮಹಾಶಿವರಾತ್ರಿ", ta:"மகா சிவராத்திரி", te:"మహాశివరాత్రి", mr:"महाशिवरात्री", bn:"মহাশিবরাত্রি"}, t:"H", r:["ALL"], d:"2027-03-06", ax:1,
+{id:"shivaratri", n:"Maha Shivaratri", l:{hi:"महाशिवरात्रि", kn:"ಮಹಾಶಿವರಾತ್ರಿ", ta:"மகா சிவராத்திரி", te:"మహాశివరాత్రి", mr:"महाशिवरात्री", bn:"মহাশিবরাত্রি"}, t:"H", r:["ALL"], d:"2027-03-06",
  m:"The great night of Shiva, in the month of Phalguna (Magha in southern calendars).",
  f:"Families fast, offer abhisheka to the Shiva linga with water, milk and bilva leaves, and stay awake through the night in four prahars of worship.",
  food:["Fruit, milk and sabudana while fasting","Thandai in North India"],
@@ -480,7 +480,7 @@ VV_FESTS.push(
  steps:[["Day","Dances","Cheraw and other dances in Aizawl and every town."],["Day","Feast","Shared food and music."]],
  v:"Usually the first week of March."},
 
-{id:"eidulfitr", n:"Eid al-Fitr", l:{hi:"ईद-उल-फ़ित्र", ml:"ചെറിയ പെരുന്നാൾ", ta:"ரம்ஜான்", bn:"ঈদুল ফিতর"}, t:"I", r:["ALL"], d:"2027-03-10", ax:1,
+{id:"eidulfitr", n:"Eid al-Fitr", l:{hi:"ईद-उल-फ़ित्र", ml:"ചെറിയ പെരുന്നാൾ", ta:"ரம்ஜான்", bn:"ঈদুল ফিতর"}, t:"I", r:["ALL"], d:"2027-03-09", ax:1,
  m:"The festival that ends Ramadan, the month of fasting. The date depends on the sighting of the new moon.",
  f:"Families give Zakat al-Fitr (charity) before the prayer, bathe and wear new clothes, attend the Eid prayer at the mosque or eidgah, embrace and say 'Eid Mubarak', and visit family with sweets. Children receive eidi.",
  food:["Sheer khurma","Seviyan","Biryani","Haleem during Ramadan"],
@@ -489,16 +489,16 @@ VV_FESTS.push(
   ["Morning","Eid prayer","Attend the congregational prayer."],["Day","Greetings and visits","Embrace, say 'Eid Mubarak', visit family and neighbours."],["Day","Eidi","Give eidi to children."]],
  v:"In Kerala it is Cheriya Perunnal. If the moon is seen a day later, Eid moves by one day."},
 
-{id:"holi", n:"Holi", l:{hi:"होली", mr:"होळी", gu:"હોળી", pa:"ਹੋਲੀ"}, t:"H", r:["UP","UK","BR","JH","DL","HR","HP","PB","CH","RJ","MP","CG","GJ","MH","GA","JK","AN","DD"], d:"2027-03-22", ax:1,
+{id:"holi", n:"Holi", l:{hi:"होली", mr:"होळी", gu:"હોળી", pa:"ਹੋਲੀ"}, t:"H", r:["UP","UK","BR","JH","DL","HR","HP","PB","CH","RJ","MP","CG","GJ","MH","GA","JK","AN","DD"], d:"2027-03-22",
  m:"The festival of colours on Phalguna Purnima, celebrating the victory of Prahlad's faith over Holika, and the love of Radha and Krishna.",
  f:"On the eve families light the Holika bonfire and walk around it. Next morning everyone plays with colour, starting with the elders, then eats gujiya and drinks thandai.",
  food:["Gujiya","Thandai","Malpua and dahi bhalla","Puran poli in Maharashtra"],
  need:["Wood and cow-dung cakes for Holika","Raw cotton thread to tie around the pyre","Coconut, wheat ears and roli for the Holika puja","Natural colours (gulal)","Pichkari"],
  steps:[["Eve · Holika Dahan","Holika puja","Tie raw thread around the pyre, offer coconut, wheat ears, roli and water."],["Eve","Light the fire","Light the fire at the muhurat and walk around it; roast new wheat in it."],
   ["Morning","Colours","Put a little gulal on the elders' feet first, then play."],["Afternoon","Bath and food","Bathe, put on fresh clothes, eat together."],["Evening","Visits","Visit friends and relatives with sweets."]],
- v:"Braj (Mathura, Vrindavan, Barsana) celebrates for over a week, including Lathmar Holi. Goa has Shigmo, Maharashtra Shimga and Rang Panchami. Use natural colours and keep pets indoors."},
+ v:"Holika Dahan is on 21 March. Braj (Mathura, Vrindavan, Barsana) celebrates for over a week, including Lathmar Holi. Goa has Shigmo, Maharashtra Shimga and Rang Panchami. Use natural colours and keep pets indoors."},
 
-{id:"doljatra", n:"Dol Jatra", l:{bn:"দোলযাত্রা", or:"ଦୋଳ ପୂର୍ଣ୍ଣିମା", as:"দ'ল যাত্ৰা"}, t:"H", r:["WB","OD","AS","TR"], d:"2027-03-22", ax:1,
+{id:"doljatra", n:"Dol Jatra", l:{bn:"দোলযাত্রা", or:"ଦୋଳ ପୂର୍ଣ୍ଣିମା", as:"দ'ল যাত্ৰা"}, t:"H", r:["WB","OD","AS","TR"], d:"2027-03-21", ax:1,
  m:"Holi in Bengal, Odisha and Assam: Krishna and Radha are placed on a decorated swing (dol) and offered abir.",
  f:"Families put abir on Krishna's feet, then on the elders' feet, sing, and visit with sweets. In Shantiniketan it is Basanta Utsav. The eve is Nyara Pora (Chanchar).",
  food:["Malpua","Narkel naru","Sandesh"],
@@ -514,16 +514,16 @@ VV_FESTS.push(
  steps:[["Good Friday","Way of the Cross","Attend the service; many families fast."],["Saturday night","Easter vigil","Candlelight vigil and Mass."],["Easter Sunday","Celebrate","Mass, then a family meal."]],
  v:""},
 
-{id:"ugadi", n:"Ugadi", l:{kn:"ಯುಗಾದಿ", te:"ఉగాది"}, t:"H", r:["KA","AP","TS"], d:"2027-04-07", ax:1,
+{id:"ugadi", n:"Ugadi", l:{kn:"ಯುಗಾದಿ", te:"ఉగాది"}, t:"H", r:["KA","AP","TS"], d:"2027-04-07",
  m:"The new year in the Kannada and Telugu lunar calendar, on Chaitra Shukla Pratipada.",
  f:"Families wake early for an oil bath, hang a toran of mango leaves, eat bevu-bella (neem and jaggery) or Ugadi pachadi with six tastes for the bitter and sweet of the coming year, and listen to the new year's panchanga.",
  food:["Bevu-bella (Karnataka)","Ugadi pachadi (Telugu homes)","Holige / obbattu","Mango chitranna"],
  need:["Mango leaves for the toran","Neem flowers and jaggery","Tamarind, raw mango, salt and chilli for pachadi","Oil for the bath","New panchanga"],
  steps:[["Dawn","Oil bath","An oil bath for everyone; new clothes."],["Morning","Toran and rangoli","Hang mango leaves at the door, draw rangoli."],
   ["Morning","Puja","Puja at home and offer the new year's first food."],["Morning","Bevu-bella","Everyone eats a little bevu-bella or pachadi, the bitter with the sweet."],["10 am or so","Panchanga shravana","Read or listen to the new year's panchanga."]],
- v:"In Maharashtra the same day is Gudi Padwa; in Kashmir, Navreh; among Sindhis, Cheti Chand is a day later. Some calendars date it 8 Apr."},
+ v:"In Maharashtra the same day is Gudi Padwa; in Kashmir, Navreh; among Sindhis, Cheti Chand is a day later."},
 
-{id:"gudipadwa", n:"Gudi Padwa", l:{mr:"गुढीपाडवा"}, t:"H", r:["MH","GA"], d:"2027-04-07", ax:1,
+{id:"gudipadwa", n:"Gudi Padwa", l:{mr:"गुढीपाडवा"}, t:"H", r:["MH","GA"], d:"2027-04-07",
  m:"The Marathi new year, on Chaitra Shukla Pratipada.",
  f:"Families raise a gudi at the window or door: a bamboo staff with a bright cloth, neem and mango leaves, a sugar garland and an upturned copper or silver pot. Then neem-jaggery and a festive meal.",
  food:["Neem leaves with jaggery","Shrikhand-puri","Puran poli"],
@@ -538,7 +538,7 @@ VV_FESTS.push(
  food:["Tahiri (sweet rice)","Sai bhaji","Seyal mani"],
  need:["Bahrano: flour lamp, sugar, cloves, cardamom, fruit, a coconut"],
  steps:[["Morning","Puja","Pray to Jhulelal at home or the tikano."],["Evening","Bahrano","Carry the offering to the water and immerse it."],["Evening","Procession","Join the procession with music."]],
- v:""},
+ v:"Some calendars date it 7 Apr."},
 
 {id:"sajibu", n:"Sajibu Cheiraoba", l:{}, t:"T", r:["MN"], d:"2027-04-07", ax:1,
  m:"The Meitei new year, on the first day of the month of Sajibu.",
@@ -548,7 +548,7 @@ VV_FESTS.push(
  steps:[["Morning","Cook","Cook the feast together."],["Morning","Offer","Offer it at the gate to Lainingthou Sanamahi and the house deities."],["Afternoon","Climb a hill","Walk up Cheiraoching or a nearby hill."]],
  v:""},
 
-{id:"gangaur", n:"Gangaur", l:{hi:"गणगौर", gu:"ગણગૌર"}, t:"H", r:["RJ","MP","GJ"], d:"2027-04-09", ax:1,
+{id:"gangaur", n:"Gangaur", l:{hi:"गणगौर", gu:"ગણગૌર"}, t:"H", r:["RJ","MP","GJ"], d:"2027-04-09",
  m:"Rajasthan's festival of Gauri (Parvati), for marital happiness, ending on Chaitra Shukla Tritiya.",
  f:"Women make clay images of Gauri and Isar (Shiva), worship them for up to eighteen days from the day after Holi, sing Gangaur songs, and on the last day carry them in procession to a lake or well.",
  food:["Ghewar","Gunas (fried sweets)"],
@@ -564,16 +564,16 @@ VV_FESTS.push(
  steps:[["Morning","Gurdwara","Kirtan, Ardas and a reading."],["Day","Nagar kirtan and langar","Join the procession; eat and serve at the langar."],["Day","Fairs","Bhangra, gidda and the village fair."]],
  v:"Also the Hindu solar new year in many states: Vishu, Puthandu, Rongali Bihu, Pohela Boishakh and Pana Sankranti fall the same day or the next."},
 
-{id:"vishu", n:"Vishu", l:{ml:"വിഷു"}, t:"H", r:["KL","LD"], d:"2027-04-15", ax:1,
+{id:"vishu", n:"Vishu", l:{ml:"വിഷു"}, t:"H", r:["KL","LD"], d:"2027-04-15",
  m:"The Malayalam new year, when the sun enters Medam (Aries).",
  f:"The night before, the mother arranges the Vishukkani: rice, golden cucumber, konna flowers, fruit, gold, a mirror and a lamp before Krishna. At dawn each person is led blindfolded to see the kani first. Elders give vishukkaineettam (money) and the family eats a sadya.",
  food:["Vishu sadya","Vishu katta (rice with coconut milk)","Mampazha pulissery"],
  need:["Konna (golden shower) flowers","Uruli (bell-metal vessel)","Rice, golden cucumber, mango, jackfruit","Gold, coins, a mirror, a lamp","Coins for kaineettam","Small crackers (padakkam)"],
  steps:[["Night before","Arrange the kani","Fill the uruli and set it before Krishna, with the lamp ready."],["Dawn","Vishukkani","Light the lamp; lead everyone, eyes closed, to see the kani first."],
   ["Morning","Kaineettam","Elders give coins to children and the family."],["Noon","Sadya","The Vishu feast."],["Evening","Padakkam","Small crackers in the evening."]],
- v:"Some calendars date it 14 Apr."},
+ v:""},
 
-{id:"puthandu", n:"Puthandu", l:{ta:"புத்தாண்டு"}, t:"H", r:["TN","PY"], d:"2027-04-14", ax:1,
+{id:"puthandu", n:"Puthandu", l:{ta:"புத்தாண்டு"}, t:"H", r:["TN","PY"], d:"2027-04-14",
  m:"The Tamil new year on the first day of Chithirai.",
  f:"Families arrange a kanni tray of fruit, flowers, gold and a mirror to see first thing, draw a kolam, eat mango pachadi with six tastes, and read the new panchangam.",
  food:["Mango pachadi","Vadai and payasam"],
@@ -613,7 +613,7 @@ VV_FESTS.push(
  steps:[["Morning","Fast and puja","Puja with Ram Raksha Stotra or a Ramayana reading."],["Noon","The birth","At noon, rock the cradle and sing."],["Afternoon","Prasad","Share panakam and kosambari or panjiri."],["Evening","Kalyanam","In many homes and temples, Sita-Rama Kalyanam."]],
  v:"Bhadrachalam's Kalyanam is the biggest in the Telugu states; Ayodhya's celebration is the biggest in the north."},
 
-{id:"mahavirjayanti", n:"Mahavir Jayanti", l:{hi:"महावीर जयंती", gu:"મહાવીર જયંતી", kn:"ಮಹಾವೀರ ಜಯಂತಿ"}, t:"J", r:["ALL"], d:"2027-04-19", ax:1,
+{id:"mahavirjayanti", n:"Mahavir Jayanti", l:{hi:"महावीर जयंती", gu:"મહાવીર જયંતી", kn:"ಮಹಾವೀರ ಜಯಂತಿ"}, t:"J", r:["ALL"], d:"2027-04-19",
  m:"The birth of Mahavira, the 24th Jain Tirthankara.",
  f:"Jain families visit the derasar or basadi, perform abhishek of the Tirthankara's image, join the rath yatra, give in charity and many fast.",
  food:["Jain food without root vegetables"],
@@ -621,11 +621,11 @@ VV_FESTS.push(
  steps:[["Morning","Abhishek","Bathe the image of Mahavira in the temple."],["Morning","Procession","Join the rath yatra."],["Day","Daan","Give in charity; many feed animals and the poor."]],
  v:""},
 
-{id:"hanumanjayanti", n:"Hanuman Jayanti", l:{hi:"हनुमान जयंती", mr:"हनुमान जयंती"}, t:"H", r:["UP","UK","BR","JH","DL","HR","RJ","MP","CG","MH","GJ","PB","HP"], d:"2027-04-21", ax:1,
+{id:"hanumanjayanti", n:"Hanuman Jayanti", l:{hi:"हनुमान जयंती", mr:"हनुमान जयंती"}, t:"H", r:["UP","UK","BR","JH","DL","HR","RJ","MP","CG","MH","GJ","PB","HP"], d:"2027-04-20",
  m:"The birth of Hanuman, on Chaitra Purnima in North and West India.",
  f:"Families visit the Hanuman temple at dawn, recite the Hanuman Chalisa, offer sindoor and jasmine oil, and share boondi or laddu.",
  food:["Boondi laddu","Besan laddu"],
  need:["Sindoor and jasmine oil","Red flowers","Hanuman Chalisa"],
  steps:[["Dawn","Temple","Hanuman is said to be born at sunrise; visit the temple early."],["Morning","Chalisa","Recite the Hanuman Chalisa, eleven times if you can."],["Day","Prasad","Share laddu and boondi."]],
- v:"Karnataka observes Hanuma Jayanti in Margashira (December), Tamil Nadu in Margazhi, and Telugu homes in Vaishakha."}
+ v:"Karnataka observes Hanuma Jayanti in Margashira (December), Tamil Nadu in Margazhi, and Telugu homes in Vaishakha (31 May 2027)."}
 );
