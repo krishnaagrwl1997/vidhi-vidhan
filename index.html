@@ -640,6 +640,34 @@ footer .in{display:block;max-width:1380px}
 .dock a.dtry:hover{background:#FFC24A}
 @media (max-width:380px){.dock a:not(.dtry){width:36px;height:36px}}
 @media (prefers-reduced-motion: reduce){.float,.pulse{animation:none}}
+
+/* =====================================================================
+   Calmer pass: one idea per section, one toy per page, less to read.
+   ===================================================================== */
+/* removed: ticker, the separate walkthrough (the demo shows the same thing), extra toys */
+.ticker,#how{display:none!important}
+.hint,.hero-hint,#modeBtn,#dhakBtn,#clearHoli,.btn-shankh{display:none!important}
+.hero .hero-hint{display:flex!important}
+.hero .hero-hint .hint{display:inline-flex!important}
+/* sound: icon only */
+.sndbtn .sl{display:none!important}
+.sndbtn{width:38px;height:38px;padding:0!important;justify-content:center}
+/* hero: tighter */
+.hero .hero-in{padding-bottom:120px}
+.stage{margin-top:44px}
+/* family: four cards, two by two */
+.b-notes,.b-rakhi{display:none!important}
+.b-ask,.b-write,.b-two,.b-cal{grid-column:span 3!important}
+.b-cal{display:flex!important;flex-direction:column}
+.b-cal .mini{grid-row:auto}
+@media (max-width:900px){.b-ask,.b-write,.b-two,.b-cal{grid-column:span 2!important}}
+@media (max-width:560px){.b-ask,.b-write,.b-two,.b-cal{grid-column:span 1!important}}
+/* sections breathe a little more and say less */
+section.band .panel > .in{padding-block:clamp(56px,7vw,92px)}
+.lead{max-width:34em}
+/* dock: hidden over the hero */
+.dock{opacity:0;pointer-events:none;transform:translate(-50%,16px);transition:opacity .25s,transform .25s}
+.dock.show{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
 </style>
 
 <nav class="top" id="nav"><div class="in">
@@ -660,7 +688,7 @@ footer .in{display:block;max-width:1380px}
   <svg class="toran" id="toran" viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"></svg>
   <div class="in hero-in">
     <div class="hero-copy">
-      <a class="live" href="#how" id="live"><span class="pulse" aria-hidden="true"></span><span id="liveText">Deepavali</span></a>
+      <a class="live" href="#try" id="live"><span class="pulse" aria-hidden="true"></span><span id="liveText">Deepavali</span></a>
       <p class="kicker" id="kicker">विधि-विधान से</p>
       <h1 data-ih="hero_h1">Every ritual, done <em>your family's way.</em></h1>
       <p class="hook" id="hook" data-i="hero_hook" hidden>Doing Deepavali away from home this year?</p>
@@ -850,7 +878,7 @@ footer .in{display:block;max-width:1380px}
 </div></footer>
 <nav class="dock" id="dock" aria-label="Sections">
   <a href="#top" data-k="tag_diwali" aria-label="Top"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-2 3-3 4.5-3 6.5a3 3 0 0 0 6 0C15 7.5 14 6 12 3z"/><path d="M4 14h16c-1 4-4 6-8 6s-7-2-8-6z"/></svg></a>
-  <a href="#how" data-k="how_kicker" aria-label="How it works"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.4" fill="currentColor"/><circle cx="4.5" cy="12" r="1.4" fill="currentColor"/><circle cx="4.5" cy="18" r="1.4" fill="currentColor"/></svg></a>
+  <a href="#try" data-k="demo_kicker" aria-label="Try it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.4" fill="currentColor"/><circle cx="4.5" cy="12" r="1.4" fill="currentColor"/><circle cx="4.5" cy="18" r="1.4" fill="currentColor"/></svg></a>
   <a href="#try" data-k="demo_kicker" aria-label="Try a puja"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3"/><path d="M12 8c-4 0-6 3-6 7 0 1-1 2-2 3h16c-1-1-2-2-2-3 0-4-2-7-6-7z"/></svg></a>
   <a href="#family" data-k="fam_kicker" aria-label="Family"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.3"/><path d="M3 20c.5-3.5 3-5.5 6-5.5s5.5 2 6 5.5M15 15.5c2.5-.3 5 1 5.5 4.5"/></svg></a>
   <a href="#faq-s" data-k="faq_kicker" aria-label="Questions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7M12 17h.01"/></svg></a>
@@ -1046,6 +1074,9 @@ if("IntersectionObserver" in window){
   ["top","how","try","family","faq-s"].forEach(id=>{ const el = document.getElementById(id); if(el) dio.observe(el); });
 }
 
+/* dock shows once you scroll past the hero */
+(function(){ const d = document.getElementById("dock"), h = document.querySelector("header.hero"); if(!d || !h) return;
+  const f = () => d.classList.toggle("show", window.scrollY > h.offsetHeight - 200); f(); window.addEventListener("scroll", f, {passive:true}); })();
 /* ================= Settings, analytics, honesty ================= */
 const LANGS_OK = (window.VV_LANGS && window.VV_LANGS.length ? window.VV_LANGS : ["en"]).filter(l=>T[l]);
 function track(name){ try{ const gc = window.goatcounter; if(gc && gc.count) gc.count({path:"event/" + name, title:name, event:true}); }catch(e){} }
@@ -1124,7 +1155,7 @@ function applyLang(){
   const ps = (L==="ta"||L==="te"||L==="kn") ? L : "kn"; loadFont(ps);
   $("phMantra").textContent = MANTRA.l[ps]; $("phMantra").style.fontFamily = `var(--${ps})`;
   $("phone").setAttribute("aria-label", t("s4_t") + ". " + t("s4_d"));
-  $("faq").innerHTML = [1,2,3,4,5,6,7,8].map(i=>`<details><summary>${esc(t("q"+i))}</summary><p>${esc(t("a"+i))}</p></details>`).join("");
+  $("faq").innerHTML = [1,2,4,7,8].map(i=>`<details><summary>${esc(t("q"+i))}</summary><p>${esc(t("a"+i))}</p></details>`).join("");
   $("langSel").value = L;
   const url = location.href.split("#")[0], txt = t("share_text");
   $("shareLi").href = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(url);
